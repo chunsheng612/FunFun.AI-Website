@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方方老師 AI 工具箱 | 專業教育 AI 應用</title>
+    <meta name="description" content="探索方方老師精心設計的 AI 工具，涵蓋課程設計、教材產出、教學評量與行政輔助，提升教育專業與效率。">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --color-background: #FAF3E0;
+            --color-text: #2F2F2F;
+            --color-text-light: #555555;
+            --color-primary: #C19A6B;
+            --color-primary-dark: #a78050;
+            --color-white: #FFFFFF;
+            --color-border: #e0e0e0;
+            --color-card-bg: #FFFFFF;
+            --color-footer-bg: #2F2F2F;
+            --color-footer-text: #FAF3E0;
+            --color-filter-bg: #ffffff;
+            --color-filter-active-bg: var(--color-primary);
+            --color-filter-active-text: var(--color-white);
+            --particle-color-1: #C19A6B;
+            --particle-color-2: #FFFFFF;
+            --particle-color-3: #F0EAD6;
+
+            --font-family-main: 'Poppins', 'Noto Sans TC', sans-serif;
+
+            --spacing-small: 8px;
+            --spacing-medium: 16px;
+            --spacing-large: 32px;
+            --spacing-xlarge: 64px;
+            --spacing-xxlarge: 96px;
+
+            --border-radius-small: 4px;
+            --border-radius-medium: 8px;
+            --border-radius-large: 12px;
+            --border-radius-round: 50px;
+
+            --transition-speed: 0.3s;
+            --transition-ease: ease;
+            --transition-slow: 0.6s;
+
+            --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.07);
+            --shadow-medium: 0 6px 15px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --shadow-image: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-family-main);
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-background);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--spacing-medium);
+            padding-right: var(--spacing-medium);
+            position: relative;
+            z-index: 2;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            margin-bottom: var(--spacing-medium);
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+
+        a:hover, a:focus {
+            color: var(--color-primary-dark);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        main {
+             position: relative;
+             z-index: 1;
+        }
+
+        #tsparticles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+             background-color: var(--color-background);
+        }
+        .hero + #tsparticles {
+             height: calc(100% + 200px);
+        }
+
+
+        .site-header {
+            padding: var(--spacing-medium) 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            border-bottom: 1px solid var(--color-border);
+            box-shadow: var(--shadow-light);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            width: 100%;
+        }
+
+        .site-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            gap: var(--spacing-large);
+            margin: 0;
+            padding: 0;
+        }
+        .main-nav a {
+            color: var(--color-text);
+            font-weight: 600;
+            text-decoration: none;
+            padding: var(--spacing-small) 0;
+            position: relative;
+            transition: color var(--transition-speed) var(--transition-ease);
+        }
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--color-primary);
+            transition: width var(--transition-speed) var(--transition-ease);
+        }
+        .main-nav a:hover,
+        .main-nav a:focus {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+        .main-nav a:hover::after,
+        .main-nav a:focus::after {
+            width: 100%;
+        }
+
+        .hero {
+            position: relative;
+            z-index: 2;
+            padding: var(--spacing-xlarge) 0;
+            border-bottom: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .hero .container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-large);
+        }
+
+        .hero-content {
+            flex: 1 1 60%;
+            text-align: left;
+        }
+
+        .hero-image {
+            flex: 0 0 auto;
+            max-width: 300px;
+        }
+
+        .hero-image img {
+             border-radius: var(--border-radius-large);
+             box-shadow: var(--shadow-image);
+             transform: translateY(0);
+             transition: transform 0.5s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-medium);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-large);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(145deg, var(--color-primary), var(--color-primary-dark));
+            color: var(--color-white);
+            padding: var(--spacing-medium) var(--spacing-xlarge);
+            border-radius: var(--border-radius-medium);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+            box-shadow: 0 4px 10px rgba(193, 154, 107, 0.4);
+            border: none;
+        }
+
+        .cta-button:hover, .cta-button:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(193, 154, 107, 0.5);
+            color: var(--color-white);
+            text-decoration: none;
+        }
+
+        #tools {
+            padding: var(--spacing-xlarge) 0 var(--spacing-xxlarge) 0;
+            position: relative;
+            z-index: 2;
+            background-color: var(--color-background);
+        }
+
+        .main-section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-large);
+            color: var(--color-text);
+            font-weight: 700;
+            position: relative;
+            padding-bottom: var(--spacing-medium);
+        }
+        .main-section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--color-primary);
+            margin: var(--spacing-medium) auto 0;
+            border-radius: 2px;
+        }
+
+        #tool-controls {
+            margin-bottom: var(--spacing-xlarge);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-medium);
+            align-items: center;
+            justify-content: center;
+        }
+
+        #tool-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--spacing-small);
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        .filter-button {
+            padding: var(--spacing-small) var(--spacing-medium);
+            border: 1px solid var(--color-border);
+            background-color: var(--color-filter-bg);
+            color: var(--color-text-light);
+            border-radius: var(--border-radius-round);
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease), border-color var(--transition-speed) var(--transition-ease);
+            white-space: nowrap;
+            font-size: 0.9rem;
+        }
+
+        .filter-button:hover {
+            border-color: var(--color-primary);
+            color: var(--color-primary);
+            background-color: #fdfaf5;
+        }
+
+        .filter-button.active {
+            background-color: var(--color-filter-active-bg);
+            color: var(--color-filter-active-text);
+            border-color: var(--color-primary-dark);
+            font-weight: 600;
+        }
+
+        #tool-search {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-small);
+            min-width: 250px;
+        }
+
+        #tool-search label {
+            font-weight: 500;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        #search-input {
+            padding: var(--spacing-small) var(--spacing-medium);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-round);
+            font-family: inherit;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: border-color var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
+        }
+        #search-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px rgba(193, 154, 107, 0.2);
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-large);
+        }
+
+        .tool-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: var(--border-radius-medium);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: var(--shadow-medium);
+            transition: transform var(--transition-speed) var(--transition-ease),
+                        box-shadow var(--transition-speed) var(--transition-ease),
+                        opacity var(--transition-slow) var(--transition-ease);
+            opacity: 1;
+        }
+
+        .tool-card.scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .tool-card.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .tool-card.hidden {
+            opacity: 0 !important;
+            transform: scale(0.95) !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            border: none !important;
+            line-height: 0 !important;
+            font-size: 0 !important;
+            pointer-events: none;
+            transition: opacity 0.2s ease, transform 0.2s ease, height 0s ease 0.2s, padding 0s ease 0.2s, margin 0s ease 0.2s, border 0s ease 0.2s, line-height 0s ease 0.2s, font-size 0s ease 0.2s;
+        }
+
+        .tool-card:not(.hidden) .card-content {
+             padding: var(--spacing-large);
+             transition: padding var(--transition-speed) var(--transition-ease);
+        }
+        .tool-card.hidden .card-content {
+            padding: 0 !important;
+        }
+
+
+        .tool-card:hover {
+           box-shadow: var(--shadow-large);
+        }
+        .tool-card.is-visible:hover {
+             transform: translateY(-8px);
+        }
+
+
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--color-text);
+            margin-bottom: var(--spacing-small);
+            line-height: 1.4;
+        }
+
+        .tool-description {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            margin-bottom: var(--spacing-large);
+            flex-grow: 1;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .tool-button {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 2px solid var(--color-primary);
+            padding: calc(var(--spacing-small) * 1.2) calc(var(--spacing-medium) * 1.2);
+            border-radius: var(--border-radius-small);
+            text-align: center;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: auto;
+            transition: background-color var(--transition-speed) var(--transition-ease), color var(--transition-speed) var(--transition-ease), transform var(--transition-speed) var(--transition-ease);
+            align-self: flex-start;
+            margin-right: var(--spacing-small);
+            margin-bottom: var(--spacing-small);
+        }
+
+        .tool-button:hover, .tool-button:focus {
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            text-decoration: none;
+            transform: scale(1.05);
+        }
+
+        .tool-button.secondary {
+            color: #777;
+            border-color: #ccc;
+        }
+        .tool-button.secondary:hover, .tool-button.secondary:focus {
+            background-color: #eee;
+            color: var(--color-text);
+            border-color: #eee;
+        }
+
+        .site-footer {
+            background-color: var(--color-footer-bg);
+            color: var(--color-footer-text);
+            text-align: center;
+            padding: var(--spacing-large) 0;
+            margin-top: var(--spacing-xlarge);
+            position: relative;
+            z-index: 2;
+        }
+
+        .site-footer p {
+            margin-bottom: var(--spacing-small);
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        .site-footer a {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .site-footer a:hover {
+            color: var(--color-white);
+        }
+
+        @media (max-width: 992px) {
+             .hero .container { gap: var(--spacing-medium); }
+             .hero-title { font-size: 2.5rem; }
+             .hero-subtitle { font-size: 1.15rem; }
+             .hero-image { max-width: 250px; }
+             .tool-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+             .main-section-title { font-size: 2.2rem; }
+             #tool-controls { justify-content: space-between; }
+        }
+
+        @media (max-width: 768px) {
+            .site-header .container { flex-direction: column; align-items: center; text-align: center; }
+            .site-title { margin-bottom: var(--spacing-medium); }
+            .main-nav { margin-top: 0; }
+            .main-nav ul { justify-content: center; flex-wrap: wrap; gap: var(--spacing-medium); }
+            .hero .container { flex-direction: column; text-align: center; }
+            .hero-content { text-align: center; margin-bottom: var(--spacing-large); }
+            .hero-image { max-width: 200px; margin: 0 auto; }
+            .hero { padding: var(--spacing-large) 0 var(--spacing-xlarge) 0; }
+            .hero-title { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; max-width: 90%; margin-left: auto; margin-right: auto; }
+            .main-section-title { font-size: 2rem; }
+            #tool-controls { flex-direction: column; align-items: center; gap: var(--spacing-large); }
+            #tool-search { width: 80%; max-width: 400px; }
+            .tool-grid { gap: var(--spacing-medium); }
+        }
+
+        @media (max-width: 480px) {
+            html { font-size: 15px; }
+            .container { padding-left: var(--spacing-small); padding-right: var(--spacing-small); }
+            .hero-title { font-size: 1.9rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .cta-button { padding: var(--spacing-medium) var(--spacing-large); font-size: 1rem; }
+            .main-section-title { font-size: 1.8rem; }
+            #tool-filters { gap: calc(var(--spacing-small) * 0.75); }
+            .filter-button { font-size: 0.85rem; padding: calc(var(--spacing-small)*0.8) var(--spacing-medium); }
+            #tool-search { width: 95%; }
+            .tool-name { font-size: 1.2rem; }
+            .tool-description { font-size: 0.9rem; }
+            .tool-card:not(.hidden) .card-content { padding: var(--spacing-medium); }
+            .tool-button { width: 100%; margin-right: 0; padding: var(--spacing-small) var(--spacing-medium); font-size: 0.95rem; text-align: center; }
+            .tool-button + .tool-button { margin-top: var(--spacing-small); }
+        }
+
+    </style>
+</head>
+<body>
+    <div id="tsparticles"></div>
+
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">方方老師 AI 工具箱</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#tools">瀏覽所有工具</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h2 class="hero-title">AI 智慧，教育升級</h2>
+                    <p class="hero-subtitle">探索一系列專為教育工作者設計的高效 AI 工具，涵蓋課程設計、教材產出、評量輔助與行政優化，激發教學無限可能。</p>
+                    <a href="#tools" class="cta-button">開始探索</a>
+                </div>
+                <div class="hero-image">
+                    <img src="方方老師空白背景.png" alt="方方老師 AI 工具箱 代表圖像">
+                </div>
+            </div>
+        </section>
+
+        <section id="tools">
+            <div class="container">
+                <h2 class="main-section-title">AI 工具總覽</h2>
+
+                 <div id="tool-controls">
+                    <div id="tool-filters">
+                        <button class="filter-button active" data-filter="all">顯示全部</button>
+                        <button class="filter-button" data-filter="推薦類">👑 推薦類</button>
+                        <button class="filter-button" data-filter="課程與教學設計">課程與教學設計</button>
+                        <button class="filter-button" data-filter="教材產出">教材產出</button>
+                        <button class="filter-button" data-filter="教師工作">教師工作</button>
+                        <button class="filter-button" data-filter="評量設計">評量設計</button>
+                        <button class="filter-button" data-filter="行政工作">行政工作</button>
+                        <button class="filter-button" data-filter="教師能力">教師能力</button>
+                        <button class="filter-button" data-filter="上課工具/專題發想">上課工具/專題發想</button>
+                        <button class="filter-button" data-filter="網路資源/其他">網路資源/其他</button>
+                    </div>
+                    <div id="tool-search">
+                         <label for="search-input">搜尋：</label>
+                         <input type="text" id="search-input" placeholder="輸入關鍵字...">
+                    </div>
+                 </div>
+
+                <div class="tool-grid">
+
+                    <div class="tool-card scroll-animate" data-category="推薦類" data-tool-id="https://poe.com/FunFun-plan.design">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】素養導向教案AI設計工具</h4>
+                            <p class="tool-description">根據108課綱，透過簡單步驟設計專業教案。</p>
+                            <a href="https://poe.com/FunFun-plan.design" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="推薦類" data-tool-id="https://poe.com/FunFun-Design.Exam">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】素養導向評量AI設計工具</h4>
+                            <p class="tool-description">根據108課綱，透過簡單步驟設計專業評量。</p>
+                            <a href="https://poe.com/FunFun-Design.Exam" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="推薦類" data-tool-id="https://poe.com/FunFun.Tutor-Writing">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】AI 作文小助教（工具）</h4>
+                            <p class="tool-description">上傳作文的掃描檔／照片，即可快速進行批改。</p>
+                            <a href="https://poe.com/FunFun.Tutor-Writing" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="推薦類" data-tool-id="https://poe.com/FunFun.Official-Help">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】學校公文撰寫AI系統</h4>
+                            <p class="tool-description">輸入相關的來文，即可快速產出相關文章。</p>
+                            <a href="https://poe.com/FunFun.Official-Help" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+
+
+                    <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://aistudio.google.com/prompts/1xy8kNhwCgaU-LTM9s50SguyWJIhj8_2_">
+                        <div class="card-content">
+                            <h4 class="tool-name">教案設計小幫手（Google AI Studio）</h4>
+                            <p class="tool-description">跟著AI的引導，可以一步一步完成自己的教案，直接產出Word檔。</p>
+                            <a href="https://aistudio.google.com/prompts/1xy8kNhwCgaU-LTM9s50SguyWJIhj8_2_" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/Design_inquirylesson">
+                        <div class="card-content">
+                            <h4 class="tool-name">教案設計機器人</h4>
+                            <p class="tool-description">給予教學目標，可以設計教學演示／公開課的課程教案，方便老師進行備課。</p>
+                            <a href="https://poe.com/Design_inquirylesson" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun-plan.design">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】素養導向教案AI設計工具</h4>
+                            <p class="tool-description">根據108課綱，透過簡單步驟設計專業教案。</p>
+                            <a href="https://poe.com/FunFun-plan.design" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun-Design.Exam">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】素養導向評量AI設計工具</h4>
+                            <p class="tool-description">根據108課綱，透過簡單步驟設計專業評量。</p>
+                            <a href="https://poe.com/FunFun-Design.Exam" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.SRL-PBL-Plan">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】SRL&PBL課程AI設計工具</h4>
+                            <p class="tool-description">透過八個步驟，打造完整專業的專題導向學習課程。</p>
+                            <a href="https://poe.com/FunFun.SRL-PBL-Plan" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.Story-Word">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】生字語詞短文產生器</h4>
+                            <p class="tool-description">透過課文中的生字語詞，創作一個關於偉人的啟發性短文，用以讓學生練習生字。</p>
+                            <a href="https://poe.com/FunFun.Story-Word" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.Text-Analysis">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】國語文本分析與學習單AI設計工具</h4>
+                            <p class="tool-description">上傳文章，即可快速分析文本當中的要點、修辭等，並生成活動與學習單。</p>
+                            <a href="https://poe.com/FunFun.Text-Analysis" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.IDEA-AI">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】IDEA跨領域AI設計教案</h4>
+                            <p class="tool-description">透過三個步驟，打造完整專業的IEDEA學習課程。</p>
+                            <a href="https://poe.com/FunFun.IDEA-AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-File">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】學校計畫／校事會議／課程教案生成助手</h4>
+                            <p class="tool-description">上傳格式，即可一步一步跟著完成完成文件的撰寫。</p>
+                            <a href="https://poe.com/FunFun.AI-File" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-MathEECC">
+                         <div class="card-content">
+                            <h4 class="tool-name">EECC教案設計機器人</h4>
+                            <p class="tool-description">數學EECC教案設計機器人，利於設計數學課程。</p>
+                            <a href="https://poe.com/FunFun.AI-MathEECC" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/Student_graduatepoet">
+                         <div class="card-content">
+                            <h4 class="tool-name">畢業的寫詩機器人</h4>
+                            <p class="tool-description">輸入想要藏頭的句子或詞，即可產出祝賀學生畢業的詩句禮物。</p>
+                            <a href="https://poe.com/Student_graduatepoet" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-STEAMClass">
+                         <div class="card-content">
+                            <h4 class="tool-name">STEAM課程設計機器人</h4>
+                            <p class="tool-description">給予教學目標，即可產出關於STEAM跨領域課程教案</p>
+                            <a href="https://poe.com/FunFun.AI-STEAMClass" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-THSD.Plan">
+                         <div class="card-content">
+                            <h4 class="tool-name">THSD教案撰寫機器人</h4>
+                            <p class="tool-description">給予簡單的構想、設計方向，即可產出THSD計畫教案</p>
+                            <a href="https://poe.com/FunFun.AI-THSD.Plan" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-SRL.PBL">
+                         <div class="card-content">
+                            <h4 class="tool-name">SRL&PBL課程規劃機器人</h4>
+                            <p class="tool-description">給予簡單的構想、設計方向，即可產出PBL八步驟課程教案</p>
+                            <a href="https://poe.com/FunFun.AI-SRL.PBL" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-GreenBuild">
+                         <div class="card-content">
+                            <h4 class="tool-name">綠建築繪圖提示詞機器人</h4>
+                            <p class="tool-description">請給予綠建築的相關設計想法或需求，生成AI繪圖的提示詞</p>
+                            <a href="https://poe.com/FunFun.AI-GreenBuild" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-LessonPlan">
+                         <div class="card-content">
+                            <h4 class="tool-name">教案撰寫機器人 (New)</h4>
+                            <p class="tool-description">給予教學目標，可以設計教學演示／公開課的課程教案，方便老師進行備課。</p>
+                            <a href="https://poe.com/FunFun.AI-LessonPlan" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-WISE.Plan">
+                         <div class="card-content">
+                            <h4 class="tool-name">W.I.S.E教案設計機器人</h4>
+                            <p class="tool-description">給予教學目標，可以設計W.I.S.E教學演示／公開課的課程教案。</p>
+                            <a href="https://poe.com/FunFun.AI-WISE.Plan" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="課程與教學設計" data-tool-id="https://poe.com/FunFun.AI-LessonHelp">
+                         <div class="card-content">
+                            <h4 class="tool-name">教案分析與設計機器人</h4>
+                            <p class="tool-description">給予教案，即可幫助教師優化課程、提升教學互動、強化評量設計</p>
+                            <a href="https://poe.com/FunFun.AI-LessonHelp" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/Student_Reading.1-2">
+                         <div class="card-content">
+                            <h4 class="tool-name">低年級教材改寫機器人</h4>
+                            <p class="tool-description">給予網路的文章或新聞，即可產出適合國小低學生閱讀教材。</p>
+                            <a href="https://poe.com/Student_Reading.1-2" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/Student_Reading.3-4">
+                         <div class="card-content">
+                            <h4 class="tool-name">中年級教材改寫機器人</h4>
+                            <p class="tool-description">給予網路的文章或新聞，即可產出適合國小中年級閱讀教材。</p>
+                            <a href="https://poe.com/Student_Reading.3-4" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/Student_Reading.5-6">
+                         <div class="card-content">
+                            <h4 class="tool-name">高年級教材改寫機器人</h4>
+                            <p class="tool-description">給予網路的文章或新聞，即可產出適合國小高年級閱讀教材。</p>
+                            <a href="https://poe.com/Student_Reading.5-6" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-Writing">
+                         <div class="card-content">
+                            <h4 class="tool-name">全年段教材改寫機器人 (結合Pirls四層次)</h4>
+                            <p class="tool-description">產出適合閱讀的小說故事，可供家長讓孩子認識議題（丟入國際新聞）、老師可結合SDGs或議題設計校訂課程。</p>
+                            <a href="https://poe.com/FunFun.AI-Writing" target="_blank" rel="noopener noreferrer" class="tool-button">Poe 版 →</a>
+                            <a href="https://aistudio.google.com/app/prompts/1Mg0b-WOBtYudxlnV6ggSDHGJ4d3NWeRq" target="_blank" rel="noopener noreferrer" class="tool-button secondary">AI Studio 版 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-Expository">
+                         <div class="card-content">
+                            <h4 class="tool-name">說明文本閱讀教材改寫</h4>
+                            <p class="tool-description">產出適合閱讀的說明文本，可供家長讓孩子認識議題（丟入國際新聞）、老師可結合SDGs或議題設計校訂課程。</p>
+                            <a href="https://poe.com/FunFun.AI-Expository" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-SDGs.Story">
+                         <div class="card-content">
+                            <h4 class="tool-name">教材改寫小說機器人 (結合Pirls四層次)</h4>
+                            <p class="tool-description">提供給老師／家長，能將社會性議題的新聞、文章改寫成少年小說。</p>
+                            <a href="https://poe.com/FunFun.AI-SDGs.Story" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-4Fsheet">
+                         <div class="card-content">
+                            <h4 class="tool-name">教學學習單生成機器人</h4>
+                            <p class="tool-description">給我教材、教案、教學目標等，即可生成對應的學習單！</p>
+                            <a href="https://poe.com/FunFun.AI-4Fsheet" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-Media.Lit">
+                         <div class="card-content">
+                            <h4 class="tool-name">媒體素養課程教案機器人</h4>
+                            <p class="tool-description">給予你的想法或架構，我會幫你生成媒體素養課程教案。</p>
+                            <a href="https://poe.com/FunFun.AI-Media.Lit" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-En.Quotes">
+                         <div class="card-content">
+                            <h4 class="tool-name">英語名言機器人</h4>
+                            <p class="tool-description">給予想要的名言類型，幫您生成約15秒的廣播名言。</p>
+                            <a href="https://poe.com/FunFun.AI-En.Quotes" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-RadioDrama">
+                         <div class="card-content">
+                            <h4 class="tool-name">Podcast腳本撰寫機器人</h4>
+                            <p class="tool-description">給予想要參考的故事，將會協助撰寫成Podcast朗讀稿。</p>
+                            <a href="https://poe.com/FunFun.AI-RadioDrama" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/English-Drama.AI">
+                         <div class="card-content">
+                            <h4 class="tool-name">英語SDGs劇本機器人</h4>
+                            <p class="tool-description">請給予主題或文本，將可以幫你改寫成英語話劇的劇本。</p>
+                            <a href="https://poe.com/English-Drama.AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-Ch.Drama">
+                         <div class="card-content">
+                            <h4 class="tool-name">中文SDGs劇本機器人</h4>
+                            <p class="tool-description">請給予主題或文本，將可以幫你改寫成中文話劇的劇本。</p>
+                            <a href="https://poe.com/FunFun.AI-Ch.Drama" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-Disaster">
+                         <div class="card-content">
+                            <h4 class="tool-name">防災創意說故事機器人</h4>
+                            <p class="tool-description">給我文章、要素與風格，我可以幫您寫成防災戲劇的劇本。</p>
+                            <a href="https://poe.com/FunFun.AI-Disaster" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-StoryWeave">
+                         <div class="card-content">
+                            <h4 class="tool-name">故事語織小幫手</h4>
+                            <p class="tool-description">請給我語詞、孩子的年紀、名人的名字，我會寫成一篇故事。</p>
+                            <a href="https://poe.com/FunFun.AI-StoryWeave" target="_blank" rel="noopener noreferrer" class="tool-button">Poe 版 →</a>
+                            <a href="https://aistudio.google.com/u/1/prompts/1RpBbRPGtT6mYj2Ol8Xg55R-NlTtU9s03" target="_blank" rel="noopener noreferrer" class="tool-button secondary">AI Studio 版 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教材產出" data-tool-id="https://poe.com/FunFun.AI-Worksheet">
+                         <div class="card-content">
+                            <h4 class="tool-name">數位學習單AI設計助手</h4>
+                            <p class="tool-description">透過這個AI工具，即可引導將現有的學習單變成數位學習單。</p>
+                            <a href="https://poe.com/FunFun.AI-Worksheet" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card scroll-animate" data-category="教師工作" data-tool-id="https://poe.com/Students-feedback">
+                          <div class="card-content">
+                             <h4 class="tool-name">期末評語機器人</h4>
+                             <p class="tool-description">給予學生的優點、缺點、姓名，即可快速撰寫學生的學期末評語，供老師期末參考。</p>
+                             <a href="https://poe.com/Students-feedback" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                     <div class="tool-card scroll-animate" data-category="教師工作" data-tool-id="https://poe.com/FunFun.AI-counsell">
+                          <div class="card-content">
+                             <h4 class="tool-name">輔導紀錄撰寫機器人（請謹慎使用）</h4>
+                             <p class="tool-description">簡述與孩子之間發生的事件、或孩子的日常表現，協助您彙整成輔導紀錄。</p>
+                             <a href="https://poe.com/FunFun.AI-counsell" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                     <div class="tool-card scroll-animate" data-category="教師工作" data-tool-id="https://poe.com/Respond.S.Parents">
+                          <div class="card-content">
+                             <h4 class="tool-name">家長要求回覆機器人</h4>
+                             <p class="tool-description">給予家長的意見、給予老師的對話，以友善的方式回覆家長。</p>
+                             <a href="https://poe.com/Respond.S.Parents" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                     <div class="tool-card scroll-animate" data-category="教師工作" data-tool-id="https://poe.com/Investigation.School">
+                          <div class="card-content">
+                             <h4 class="tool-name">校事會議調查小組機器人</h4>
+                             <p class="tool-description">請給我目前學校調查的資料、證據，協助您分析該校事會議，並寫成校事會議成果報告。</p>
+                             <a href="https://poe.com/Investigation.School" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                      <div class="tool-card scroll-animate" data-category="教師工作" data-tool-id="https://poe.com/FunFun.AI-SEL">
+                          <div class="card-content">
+                             <h4 class="tool-name">SEL機器人</h4>
+                             <p class="tool-description">基於SEL的聊天機器人，用以了解自己內心的情緒。</p>
+                             <a href="https://poe.com/FunFun.AI-SEL" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                      <div class="tool-card scroll-animate" data-category="教師工作" data-tool-id="https://poe.com/FunFun.AI-ComParents">
+                          <div class="card-content">
+                             <h4 class="tool-name">溝通家長突發事件小幫手</h4>
+                             <p class="tool-description">簡述發生的事情，即可生成給家長的訊息，並邀請家長來學校共同會談。</p>
+                             <a href="https://poe.com/FunFun.AI-ComParents" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-PIRLS.Que">
+                         <div class="card-content">
+                            <h4 class="tool-name">PIRLS四層次閱讀測驗</h4>
+                            <p class="tool-description">給予文章，會根據PIRLS四層次提問設計閱讀測驗題目。</p>
+                             <a href="https://poe.com/FunFun.AI-PIRLS.Que" target="_blank" rel="noopener noreferrer" class="tool-button">Poe 版 →</a>
+                             <a href="https://aistudio.google.com/app/prompts/1Yy94CORXVTKRQMniyJKHfp9wjlf73FTo" target="_blank" rel="noopener noreferrer" class="tool-button secondary">AI Studio 版 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-Math.Que">
+                         <div class="card-content">
+                            <h4 class="tool-name">數學素養試題設計機器人</h4>
+                            <p class="tool-description">提供學習內容、表現或評量的目標，產出數學科素養導向試題。</p>
+                            <a href="https://poe.com/FunFun.AI-Math.Que" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-Sci.Que">
+                         <div class="card-content">
+                            <h4 class="tool-name">自然素養試題設計機器人</h4>
+                            <p class="tool-description">提供學習內容、表現或評量的目標，產出自然科素養導向試題。</p>
+                            <a href="https://poe.com/FunFun.AI-Sci.Que" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/Measurement.AI">
+                         <div class="card-content">
+                            <h4 class="tool-name">設計標準本位評量規準</h4>
+                            <p class="tool-description">請給我你的教案／學習目標，我會依照標準本位評量幫您設計評量規準。</p>
+                            <a href="https://poe.com/Measurement.AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-St.Essay.E">
+                         <div class="card-content">
+                            <h4 class="tool-name">國小作文評分機器人</h4>
+                            <p class="tool-description">小學生專用，請拍攝孩子的作文（越清楚越好），我可以協助您評分作文。</p>
+                            <a href="https://poe.com/FunFun.AI-St.Essay.E" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-St.Essay.J">
+                         <div class="card-content">
+                            <h4 class="tool-name">國中會考作文批改機器人</h4>
+                            <p class="tool-description">國中生專用，請拍攝孩子的作文（越清楚越好），我可以協助您以會考標準評分作文。</p>
+                            <a href="https://poe.com/FunFun.AI-St.Essay.J" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-St.Essay.S">
+                         <div class="card-content">
+                            <h4 class="tool-name">高中學測國語手寫機器人</h4>
+                            <p class="tool-description">高中生專用，請拍攝孩子的作文（越清楚越好），我可以協助您以學測標準評分國語作文手寫。</p>
+                            <a href="https://poe.com/FunFun.AI-St.Essay.S" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-Stu.En.E">
+                         <div class="card-content">
+                            <h4 class="tool-name">高中英語手寫評分機器人</h4>
+                            <p class="tool-description">高中生專用，請拍攝孩子的作文（越清楚越好），我可以協助您以學測標準評分英文手寫部分。</p>
+                            <a href="https://poe.com/FunFun.AI-Stu.En.E" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/AI.Grading-Robot">
+                         <div class="card-content">
+                            <h4 class="tool-name">專題評分機器人</h4>
+                            <p class="tool-description">標準本位專題競賽評分專用，給我學生作品，幫您評分專題。</p>
+                            <a href="https://poe.com/AI.Grading-Robot" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-Diary.Aide">
+                         <div class="card-content">
+                            <h4 class="tool-name">自評日記小助手</h4>
+                            <p class="tool-description">方便自行拍照自評日記，上傳之後即可給予建議和鼓勵喔！</p>
+                            <a href="https://poe.com/FunFun.AI-Diary.Aide" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-SRL.Stu">
+                         <div class="card-content">
+                            <h4 class="tool-name">SRL自評檢核表設計機器人</h4>
+                            <p class="tool-description">給予教案PDF檔案，或相關資料，可以幫您生成SRL檢核表。</p>
+                            <a href="https://poe.com/FunFun.AI-SRL.Stu" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-SRL.Group">
+                         <div class="card-content">
+                            <h4 class="tool-name">SRL組間互評設計機器人</h4>
+                            <p class="tool-description">給予教案PDF檔案，或相關資料，可以幫您生成SRL組間互評表。</p>
+                            <a href="https://poe.com/FunFun.AI-SRL.Group" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-SRL.inTeam">
+                         <div class="card-content">
+                            <h4 class="tool-name">SRL組內評分設計機器人</h4>
+                            <p class="tool-description">給予教案PDF檔案，或相關資料，可以幫您生成SRL組內評分表。</p>
+                            <a href="https://poe.com/FunFun.AI-SRL.inTeam" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-ChoiceQ">
+                         <div class="card-content">
+                            <h4 class="tool-name">國小AI命題機器人</h4>
+                            <p class="tool-description">給予文本，可以幫您生成10題選擇題。</p>
+                            <a href="https://poe.com/FunFun.AI-ChoiceQ" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-ERCAHelper">
+                         <div class="card-content">
+                            <h4 class="tool-name">英語閱讀理解小助手</h4>
+                            <p class="tool-description">給予教材、年級，可以幫您生成給孩子的閱讀理解試題。</p>
+                            <a href="https://poe.com/FunFun.AI-ERCAHelper" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.Game-Reading">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】閱讀評量（遊戲）</h4>
+                            <p class="tool-description">提升閱讀理解能力，通過挑戰使學習變得更加有趣。</p>
+                            <a href="https://poe.com/FunFun.Game-Reading" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.Game-MathGame">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】數學加減法-快樂水果園</h4>
+                            <p class="tool-description">幫助小動物收集水果， 練習加減法。</p>
+                            <a href="https://poe.com/FunFun.Game-MathGame" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.Game-Traffic">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】交通安全大挑戰（遊戲）</h4>
+                            <p class="tool-description">在遊戲中，學習如何在各種交通情境中保護自己。</p>
+                            <a href="https://poe.com/FunFun.Game-Traffic" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.Tutor-Writing">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】AI 作文小助教（工具）</h4>
+                            <p class="tool-description">上傳作文的掃描檔／照片，即可快速進行批改。</p>
+                            <a href="https://poe.com/FunFun.Tutor-Writing" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="評量設計" data-tool-id="https://poe.com/FunFun.AI-Idiom">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】AI 成語妙畫師</h4>
+                            <p class="tool-description">用圖像學習成語的互動式學習平台。</p>
+                            <a href="https://poe.com/FunFun.AI-Idiom" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-Reply">
+                         <div class="card-content">
+                            <h4 class="tool-name">行政領導者回覆機器人</h4>
+                            <p class="tool-description">先別生氣或難過，給予來自行政端不友善的言論，將協助您回覆。</p>
+                            <a href="https://poe.com/FunFun.AI-Reply" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/Law.AI-Procurement">
+                         <div class="card-content">
+                            <h4 class="tool-name">採購法案例分析機器人</h4>
+                            <p class="tool-description">給予採購相關案例，會幫你進行初步分析採購是否違法，並給予具體建議。</p>
+                            <a href="https://poe.com/Law.AI-Procurement" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/All-the-best.poet">
+                         <div class="card-content">
+                            <h4 class="tool-name">老師轉換學校的寫詩機器人</h4>
+                            <p class="tool-description">給予要藏頭的句子，例如：送的「禮物」、老師「名字」，將會寫成一首祝老師離開的藏頭詩。</p>
+                            <a href="https://poe.com/All-the-best.poet" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-Assignment">
+                         <div class="card-content">
+                            <h4 class="tool-name">寒暑假作業設計機器人</h4>
+                            <p class="tool-description">給予相關資訊，即可幫您設計寒暑假作業。</p>
+                            <a href="https://poe.com/FunFun.AI-Assignment" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-Arrange.LE">
+                         <div class="card-content">
+                            <h4 class="tool-name">編排課程機器人</h4>
+                            <p class="tool-description">給予教師的配課表、老師的需求，即可協助進行配課。</p>
+                            <a href="https://poe.com/FunFun.AI-Arrange.LE" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-Early.File">
+                         <div class="card-content">
+                            <h4 class="tool-name">幼兒園教師卓越產出機器人</h4>
+                            <p class="tool-description">給予幼兒園的教師卓越資料，即可協助修改與調整。</p>
+                            <a href="https://poe.com/FunFun.AI-Early.File" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-FormalHelp">
+                         <div class="card-content">
+                            <h4 class="tool-name">公文撰寫小幫手</h4>
+                            <p class="tool-description">給予公文的來文或撰文需求，即可產出公文簽或公文函。</p>
+                            <a href="https://poe.com/FunFun.AI-FormalHelp" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-ReplyForm">
+                         <div class="card-content">
+                            <h4 class="tool-name">活動通知表單小幫手</h4>
+                            <p class="tool-description">給予相關的資料，即可產出給予家長的活動通知單／回條。</p>
+                            <a href="https://poe.com/FunFun.AI-ReplyForm" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.School-Stu.Q">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】校園學生Q版AI轉換</h4>
+                            <p class="tool-description">上傳學生的圖片，即可快速轉成Q版可愛的圖片，可用於成果簡報。</p>
+                            <a href="https://poe.com/FunFun.School-Stu.Q" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.Official-Help">
+                        <div class="card-content">
+                            <h4 class="tool-name">👑 【方方老師】學校公文撰寫AI系統</h4>
+                            <p class="tool-description">輸入相關的來文，即可快速產出相關文章。</p>
+                            <a href="https://poe.com/FunFun.Official-Help" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-Reading">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】閱讀理解策略融入國語課程設計</h4>
+                            <p class="tool-description">跟著步驟，可以快速設計閱讀融入國語文課程設計。</p>
+                            <a href="https://poe.com/FunFun.AI-Reading" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.Reply-AI">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】回覆家長萬事通</h4>
+                            <p class="tool-description">根據情境，給予快速回饋的回覆建議。</p>
+                            <a href="https://poe.com/FunFun.Reply-AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.Suno-Music">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】Suno音樂生成提示詞</h4>
+                            <p class="tool-description">跟著步驟，即可產出可以丟入Suno的提示詞。</p>
+                            <a href="https://poe.com/FunFun.Suno-Music" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.AI-File">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】學校計畫／校事會議／課程教案生成助手</h4>
+                            <p class="tool-description">上傳格式，即可一步一步跟著完成完成文件的撰寫。</p>
+                            <a href="https://poe.com/FunFun.AI-File" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+
+                    <div
+class="tool-card scroll-animate" data-category="行政工作" data-tool-id="https://poe.com/FunFun.Reply">
+                         <div class="card-content">
+                            <h4 class="tool-name">【方方老師】生成通知單與 Line 訊息</h4>
+                            <p class="tool-description">上傳內容，即可改寫成Line訊息或通知單。</p>
+                            <a href="https://poe.com/FunFun.Reply" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div                          class="tool-card scroll-animate" data-category="教師能力" data-tool-id="https://poe.com/Teacher.exam.resp">
+                         <div class="card-content">
+                            <h4 class="tool-name">口試擬答機器人</h4>
+                            <p class="tool-description">給予題目，能協助進行有結構性的模擬答案，進行口試練習。</p>
+                            <a href="https://poe.com/Teacher.exam.resp" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教師能力" data-tool-id="https://poe.com/Self-introduction.AI">
+                         <div class="card-content">
+                            <h4 class="tool-name">自我介紹調整潤飾機器人</h4>
+                            <p class="tool-description">給與自我介紹，將會幫您歸納、統整並修正，讓自我介紹更完整。</p>
+                            <a href="https://poe.com/Self-introduction.AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教師能力" data-tool-id="https://poe.com/Self-intro.Que.AI">
+                         <div class="card-content">
+                            <h4 class="tool-name">自我介紹提問機器人 (模擬提問與答案)</h4>
+                            <p class="tool-description">給與自我介紹，將會幫您歸納、統整，並針對您的自我介紹提問，隨後檢附參考答案。</p>
+                            <a href="https://poe.com/Self-intro.Que.AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="教師能力" data-tool-id="https://poe.com/FunFun.Teacher-Exam">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】教甄口試與課程設計實戰</h4>
+                            <p class="tool-description">可以全方面的由AI出題、互動、教案編寫等，訓練自己的能力。</p>
+                            <a href="https://poe.com/FunFun.Teacher-Exam" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Game-book-AI">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】失敗與挫折生命故事引導應用</h4>
+                            <p class="tool-description">幫助你發掘生命故事，整理思緒，讓想法更具體、更完整的引導工具。</p>
+                            <a href="https://poe.com/FunFun.Game-book-AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Game-building">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】小小綠建築設計師（遊戲）</h4>
+                            <p class="tool-description">互動遊戲將引導你設計一個環保、防震綠建築。</p>
+                            <a href="https://poe.com/FunFun.Game-building" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.SDGs-Story">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】SDGs故事AI設計工具</h4>
+                            <p class="tool-description">透過互動引導，引導創作SDGs 故事。</p>
+                            <a href="https://poe.com/FunFun.SDGs-Story" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Image-Create">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】Q版頭像AI生成工具</h4>
+                            <p class="tool-description">上傳人物照片，透過AI轉換為精美的Q版可愛風格。</p>
+                            <a href="https://poe.com/FunFun.Image-Create" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Draw-Q.Photo">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】照片轉卡通風格AI設計工具</h4>
+                            <p class="tool-description">上傳各種照片，透過AI轉換為精美的Q版可愛風格。</p>
+                            <a href="https://poe.com/FunFun.Draw-Q.Photo" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Explore-Help">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】走讀體驗探究 (STW、Super3、Big6)</h4>
+                            <p class="tool-description">輸入踏查的地點，ai會給學生觀察和引導的方向。</p>
+                            <a href="https://poe.com/FunFun.Explore-Help" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Regional-AI">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】舊屋改造家AI設計工具</h4>
+                            <p class="tool-description">依照上面輸入自己的看法，即可匯出自己地方創生的AI工具。</p>
+                            <a href="https://poe.com/FunFun.Regional-AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.AI-Question">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】探究式提問引導學習平台</h4>
+                            <p class="tool-description">學生只要輸入自己的文本，即可練習提問。</p>
+                            <a href="https://poe.com/FunFun.AI-Question" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Content.AI">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】內容整理AI小幫手</h4>
+                            <p class="tool-description">學生只要輸入找到的內容，即可請AI協助整理。</p>
+                            <a href="https://poe.com/FunFun.Content.AI" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.CreatorStudio">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】小小創意家的圖像工坊</h4>
+                            <p class="tool-description">輸入自己想繪製的元素、風格，即可繪製圖像。</p>
+                            <a href="https://poe.com/FunFun.CreatorStudio" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Speech-Chi">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】國語演說練習AI助理</h4>
+                            <p class="tool-description">協助老師培訓語文演說，引導學生自學練習。</p>
+                            <a href="https://poe.com/FunFun.Speech-Chi" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+                    <div class="tool-card scroll-animate" data-category="上課工具/專題發想" data-tool-id="https://poe.com/FunFun.Inquiry-Teach">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】專題探究引導AI助理</h4>
+                            <p class="tool-description">協助老師引導學生進行專題探究歷程練習。</p>
+                            <a href="https://poe.com/FunFun.Inquiry-Teach" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                        </div>
+                    </div>
+
+                    <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://huggingface.co/spaces/Xenova/whisper-web">
+                          <div class="card-content">
+                             <h4 class="tool-name">語音轉文字</h4>
+                             <p class="tool-description">給予錄音檔案，即可產出語音轉文字 (使用 Whisper 模型)。</p>
+                             <a href="https://huggingface.co/spaces/Xenova/whisper-web" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/SciencefairsCopilot">
+                          <div class="card-content">
+                             <h4 class="tool-name">科展問題發想機器人</h4>
+                             <p class="tool-description">將參考台灣歷年的科展作品，並給予科展問題發想的靈感方向。</p>
+                             <a href="https://poe.com/SciencefairsCopilot" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/fakefact1.0">
+                          <div class="card-content">
+                             <h4 class="tool-name">辨識假新聞機器人</h4>
+                             <p class="tool-description">這是一個辨別假訊息的機器人，請讓我幫你辨識出假訊息。</p>
+                             <a href="https://poe.com/fakefact1.0" target="_blank" rel="noopener noreferrer" class="tool-button">前往工具 →</a>
+                         </div>
+                     </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.Game-Magic">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】魔法：地牢探索（遊戲）</h4>
+                            <p class="tool-description">進入充滿魔法與怪物的地牢，展開冒險旅程。</p>
+                            <a href="https://poe.com/FunFun.Game-Magic" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.Star-War">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】空戰：超新星紀元（遊戲）</h4>
+                            <p class="tool-description">駕駛未來戰機，在星際間展開激烈的空戰。</p>
+                            <a href="https://poe.com/FunFun.Star-War" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.Game-Snake">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】多元貪食蛇（遊戲）</h4>
+                            <p class="tool-description">經典貪食蛇遊戲，加入更多趣味元素與挑戰。</p>
+                            <a href="https://poe.com/FunFun.Game-Snake" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.Game-Police">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】警察捉小偷（遊戲）</h4>
+                            <p class="tool-description">扮演警察或小偷，展開一場鬥智鬥勇的追逐戰。</p>
+                            <a href="https://poe.com/FunFun.Game-Police" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.PathofShadows">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】影之道 Path of Shadows</h4>
+                            <p class="tool-description">化身潛行刺客，在陰影中穿梭，完成任務。</p>
+                            <a href="https://poe.com/FunFun.PathofShadows" target="_blank" rel="noopener noreferrer" class="tool-button">開始遊戲 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.AI-MBTI">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】MBTI心理類型探索</h4>
+                            <p class="tool-description">透過互動問答，探索您的 MBTI 人格類型特質。</p>
+                            <a href="https://poe.com/FunFun.AI-MBTI" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.Fortune-Told">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】五行八卦命理分析</h4>
+                            <p class="tool-description">基於傳統命理學，提供個人運勢與性格分析參考。</p>
+                            <a href="https://poe.com/FunFun.Fortune-Told" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+                     <div class="tool-card scroll-animate" data-category="網路資源/其他" data-tool-id="https://poe.com/FunFun.AniMagic">
+                        <div class="card-content">
+                            <h4 class="tool-name">【方方老師】AniMagic AI - 風格畫境 (需高點數)</h4>
+                            <p class="tool-description">強大的 AI 圖像生成工具，將您的想法轉化為獨特風格的畫作。</p>
+                            <a href="https://poe.com/FunFun.AniMagic" target="_blank" rel="noopener noreferrer" class="tool-button">前往應用 →</a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© 2024 方方老師 AI 工具箱. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterContainer = document.getElementById('tool-filters');
+            const searchInput = document.getElementById('search-input');
+            const toolCards = document.querySelectorAll('.tool-card');
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const toolGrid = document.querySelector('.tool-grid');
+
+            function filterAndSearchTools() {
+                const searchTerm = searchInput.value.toLowerCase().trim();
+                const activeFilter = filterContainer.querySelector('.filter-button.active').dataset.filter;
+                let hasVisibleCard = false;
+                const visibleToolIds = new Set(); // Track IDs of tools shown in this pass
+
+                toolCards.forEach(card => {
+                    const category = card.dataset.category;
+                    const toolId = card.dataset.toolId; // Get the unique tool identifier
+                    const toolName = card.querySelector('.tool-name')?.textContent.toLowerCase() || '';
+                    const toolDescription = card.querySelector('.tool-description')?.textContent.toLowerCase() || '';
+                    const cardText = toolName + ' ' + toolDescription;
+
+                    const filterMatch = (activeFilter === 'all' || category === activeFilter);
+                    const searchMatch = (searchTerm === '' || cardText.includes(searchTerm));
+                    const initiallyVisible = filterMatch && searchMatch;
+
+                    let shouldBeVisibleFinal = false;
+
+                    if (initiallyVisible) {
+                        if (activeFilter === 'all') {
+                            // If 'all' filter, check for duplicates using toolId
+                            if (!visibleToolIds.has(toolId)) {
+                                shouldBeVisibleFinal = true;
+                                visibleToolIds.add(toolId); // Mark this tool ID as shown
+                            } else {
+                                // Duplicate found for 'all' filter, hide this one
+                                shouldBeVisibleFinal = false;
+                            }
+                        } else {
+                            // Not 'all' filter, just show if it matches filter/search
+                            shouldBeVisibleFinal = true;
+                        }
+                    }
+
+                    // Apply visibility based on the final decision
+                    if (shouldBeVisibleFinal) {
+                        card.style.display = 'flex';
+                        // Ensure is-visible class is added for animation if needed by observer
+                        // Observer will handle adding/removing 'is-visible', just make sure hidden isn't blocking
+                        card.classList.remove('hidden');
+                        hasVisibleCard = true;
+                    } else {
+                        card.classList.add('hidden');
+                        card.style.display = 'none'; // Hide card
+                    }
+                });
+
+
+                 const noResultsMessage = document.getElementById('no-results-message');
+                 if (!hasVisibleCard && !noResultsMessage) {
+                     const messageDiv = document.createElement('div');
+                     messageDiv.id = 'no-results-message';
+                     messageDiv.textContent = '找不到符合條件的工具。';
+                     messageDiv.style.textAlign = 'center';
+                     messageDiv.style.marginTop = 'var(--spacing-large)';
+                     messageDiv.style.color = 'var(--color-text-light)';
+                     toolGrid.parentNode.insertBefore(messageDiv, toolGrid.nextSibling);
+                 } else if (hasVisibleCard && noResultsMessage) {
+                     noResultsMessage.remove();
+                 }
+            }
+
+            if (filterContainer) {
+                filterContainer.addEventListener('click', (event) => {
+                    if (event.target.classList.contains('filter-button')) {
+                        filterButtons.forEach(button => button.classList.remove('active'));
+                        event.target.classList.add('active');
+                        filterAndSearchTools();
+                         // Re-trigger animations on filter change if desired
+                        // cardObserver.disconnect(); // Stop observing old elements
+                        // cardsToAnimate.forEach(card => cardObserver.observe(card)); // Re-observe all
+                    }
+                });
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', filterAndSearchTools);
+            }
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.length > 1 && targetId !== '#tools') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset - 20;
+
+                            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                        }
+                    } else if (targetId === '#') {
+                         window.scrollTo({ top: 0, behavior: 'smooth' });
+                    } else if (targetId === '#tools') {
+                         const toolsSection = document.getElementById('tools');
+                         if (toolsSection) {
+                              const headerOffset = document.querySelector('.site-header')?.offsetHeight || 0;
+                              const elementPosition = toolsSection.getBoundingClientRect().top;
+                              const controlsHeight = document.getElementById('tool-controls')?.offsetHeight || 50;
+                              const offsetPosition = elementPosition + window.pageYOffset - headerOffset - controlsHeight - 20;
+                               window.scrollTo({ top: Math.max(0, offsetPosition), behavior: 'smooth' });
+                         }
+                    }
+                });
+            });
+
+            tsParticles.load("tsparticles", {
+                fpsLimit: 60,
+                particles: {
+                    number: { value: 50, density: { enable: true, value_area: 800 } },
+                    color: { value: ["#C19A6B", "#FFFFFF", "#F0EAD6"] },
+                    shape: { type: "circle" },
+                    opacity: { value: 0.6, random: true, anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false } },
+                    size: { value: 3, random: true, anim: { enable: false, speed: 4, size_min: 0.3, sync: false } },
+                    links: { enable: true, distance: 150, color: "#C19A6B", opacity: 0.4, width: 1 },
+                    move: { enable: true, speed: 1, direction: "none", random: true, straight: false, out_mode: "out", bounce: false, attract: { enable: false, rotateX: 600, rotateY: 1200 } }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" }, resize: true },
+                    modes: { grab: { distance: 140, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
+                },
+                retina_detect: true,
+                 background: { color: "#FAF3E0" }
+            });
+
+             const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+             const observerCallback = (entries, observer) => {
+                entries.forEach(entry => {
+                    // Check if the card is not currently hidden by the filter/search logic
+                    const isHiddenByFilter = entry.target.classList.contains('hidden') || entry.target.style.display === 'none';
+
+                    if (entry.isIntersecting && !isHiddenByFilter) {
+                        entry.target.classList.add('is-visible');
+                        // observer.unobserve(entry.target); // Uncomment to animate only once
+                    } else {
+                         // Only remove if you want animation to repeat when scrolling out
+                         // entry.target.classList.remove('is-visible');
+                    }
+                });
+             };
+             const cardObserver = new IntersectionObserver(observerCallback, observerOptions);
+             const cardsToAnimate = document.querySelectorAll('.tool-card.scroll-animate');
+             cardsToAnimate.forEach(card => cardObserver.observe(card));
+
+             filterAndSearchTools(); // Run filter once on load
+
+        });
+    </script>
+
+</body>
+</html>
