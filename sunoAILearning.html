@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suno AI 在國小至國中教育場域的應用指南</title>
+    <style>
+        :root {
+            --primary-color: #a1887f; /* 捻色調 / Muted Terracotta */
+            --correct-color: #5a9c6c; /* 柔和綠 / Muted Green */
+            --incorrect-color: #c96567; /* 柔和紅 / Muted Red */
+            --secondary-color: #d2b48c; /* 淺咖啡 / Tan */
+            --bg-color: #f9f5f0; /* 米色背景 / Beige Background */
+            --glass-bg: rgba(243, 240, 233, 0.75); /* 玻璃背景 */
+            --text-color: #4a4a4a; /* 深灰色文字 */
+            --heading-color: #6d4c41; /* 深咖啡色標題 */
+        }
+        
+        html {
+            font-size: 110%; 
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: var(--text-color);
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        #ebook-container {
+            width: 95%;
+            max-width: 1200px;
+            height: 95vh;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            display: flex;
+            overflow: hidden;
+        }
+
+        #toc-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0px 20px rgba(0,0,0,0.05);
+        }
+
+        #toc-sidebar h2 {
+            font-size: 1.6rem;
+            color: var(--heading-color);
+            border-bottom: 2px solid rgba(161, 136, 127, 0.2);
+            padding-bottom: 1rem;
+            margin: 0 0 1.5rem 0;
+            text-align: left;
+        }
+
+        #toc-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+        }
+
+        #toc-list li {
+            padding: 0.9rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+            font-size: 1.05rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        #toc-list li:hover {
+            background-color: rgba(255,255,255, 0.5);
+            color: var(--heading-color);
+        }
+
+        #toc-list li.active {
+            background-color: #fff;
+            color: var(--heading-color);
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #main-content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #ebook-header {
+            background-color: #fff;
+            color: var(--heading-color);
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        #ebook-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        #page-content {
+            flex-grow: 1;
+            padding: 2rem 3.5rem;
+            position: relative;
+            overflow-y: auto; /* Enable scrolling for tool list */
+        }
+        
+        .page-scrollable .page {
+            height: auto;
+            justify-content: flex-start;
+        }
+
+        .page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            animation: fadeIn 0.5s;
+        }
+        .page.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .page-icon { width: 80px; height: 80px; margin: 0 auto 1.5rem; display: block; }
+        .content-layout { display: flex; align-items: center; gap: 2.5rem; }
+        .content-text { flex: 1; }
+        .content-image { width: 140px; flex-shrink: 0; }
+        .content-image svg { width: 100%; height: auto; }
+
+        h2, h3 {
+            text-align: center;
+            color: var(--heading-color);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 1rem;
+            margin: 0 0 2rem 0;
+        }
+        h3 { text-align: left; font-size: 1.5rem; margin-top: 1.5rem; }
+        h3.no-margin-top { margin-top: 0; }
+        p, ul, ol { font-size: 1.15rem; line-height: 2; }
+        li { margin-bottom: 1rem; }
+        ol li { margin-bottom: 1.2rem; }
+        
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        #navigation {
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        #navigation button {
+            background-color: var(--correct-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        #navigation button:disabled { background-color: #d8d8d8; cursor: not-allowed; }
+        #navigation button:not(:disabled):hover { opacity: 0.9; }
+        #page-indicator { font-size: 1rem; font-weight: bold; color: #475569; min-width: 100px; }
+        .toc-button { display: none; }
+
+        .quiz-container { text-align: center; width: 100%; }
+        #quiz-progress-bar-container { width: 100%; background-color: #eee; border-radius: 5px; margin-bottom: 1.5rem; }
+        #quiz-progress-bar { height: 10px; width: 0%; background-color: var(--primary-color); border-radius: 5px; transition: width 0.3s; }
+        .quiz-question p { font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem; text-align: left; }
+        .answer-options { display: flex; flex-direction: column; gap: 0.7rem; }
+        .answer-btn { width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; background-color: #fff; border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s; font-size: 1rem; }
+        .answer-btn:hover:not(:disabled) { background-color: #f0f3f8; border-color: var(--secondary-color); }
+        .answer-btn.correct { background-color: #dcfce7; border-color: var(--correct-color); color: #166534; font-weight: bold; }
+        .answer-btn.incorrect { background-color: #fee2e2; border-color: var(--incorrect-color); color: #991b1b; }
+        .answer-btn:disabled { cursor: not-allowed; opacity: 0.9; }
+        #quiz-feedback { margin-top: 1rem; font-weight: bold; height: 2rem; }
+        #quiz-next-btn { background-color: var(--secondary-color); padding: 0.8rem 1.8rem; font-size: 1.1rem; visibility: hidden; }
+        #quiz-result { font-size: 1.8rem; font-weight: bold; color: var(--heading-color); }
+
+        @media (max-width: 1024px) {
+            #ebook-container {
+                flex-direction: column;
+                height: 98vh;
+            }
+            #toc-sidebar {
+                width: auto;
+                height: auto;
+                flex-shrink: 1;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            }
+            #toc-sidebar h2 { display: none; }
+            #toc-list {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                scrollbar-width: thin;
+            }
+            #toc-list li {
+                flex-shrink: 0;
+                margin-right: 0.5rem;
+                margin-bottom: 0;
+            }
+            #page-content { padding: 1.5rem; }
+        }
+        
+        @media (max-width: 768px) {
+            html { font-size: 100%; }
+            .content-layout { flex-direction: column; }
+            .content-image { width: 100px; margin-bottom: 1rem; }
+            #navigation button { padding: 0.6rem 0.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ebook-container">
+        <div id="toc-sidebar">
+            <h2>目錄</h2>
+            <ul id="toc-list"></ul>
+        </div>
+        <div id="main-content-area">
+            <div id="ebook-header">
+                <h1>Suno AI 在國小至國中教育場域的應用指南</h1>
+            </div>
+            <div id="page-content">
+                <div class="page active">
+                    <svg class="page-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z" fill="var(--primary-color)"/></svg>
+                    <h2>Suno AI 工具簡介與功能特色</h2>
+                    <div class="content-layout">
+                        <div class="content-text">
+                            <h3>什麼是 Suno AI？</h3>
+                            <p>Suno AI 是一款被譽為「音樂界的 ChatGPT」的 AI 音樂生成工具。它可以根據使用者提供的文字描述，自動創作出一首完整的歌曲，包含<strong class="highlight-text">旋律、編曲，甚至模擬人聲演唱</strong>。</p>
+                            <p>它極大地降低了音樂創作的門檻，讓沒有作曲基礎的師生也能輕鬆成為作曲家。</p>
+                        </div>
+                        <div class="content-image">
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="var(--primary-color)"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <h3>核心功能一覽</h3>
+                     <ul>
+                        <li><strong class="highlight-text">多語言歌詞創作</strong>：支援包含中文在內的多種語言，師生可以放心使用中文進行創作。</li>
+                        <li><strong class="highlight-text">帶歌詞或純音樂</strong>：可自由選擇生成帶有人聲演唱的歌曲，或僅有背景音樂的純伴奏。</li>
+                        <li><strong class="highlight-text">多樣的音樂風格</strong>：支援流行、民謠、搖滾、電子等多種曲風，並可指定情緒、節奏、樂器等元素。</li>
+                         <li><strong class="highlight-text">免費額度</strong>：每個免費帳號每天有 50 個點數，每次創作（生成兩首歌曲）消耗 5 點，相當於每天可免費生成 10 首歌曲。</li>
+                    </ul>
+                </div>
+                <div class="page">
+                    <svg class="page-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" fill="var(--primary-color)"/></svg>
+                    <h2>教師應用場景與策略</h2>
+                    <h3 class="no-margin-top">1. 音樂課課程素材創作</h3>
+                    <ul>
+                        <li><b>自製節奏與和聲範例</b>：快速生成特定拍子（如 4/4 拍、3/4 拍）或和弦進行（如 I-V-vi-IV）的伴奏，作為學生的練習背景音。</li>
+                        <br>
+                        <li><b>旋律教學與視唱練習</b>：生成獨一無二的短旋律，讓學生練習視唱或聽寫，避免學生事先預習答案。</li>
+                    </ul>
+                </div>
+                <div class="page">
+                     <h3>2. 班級活動與影片配樂</h3>
+                     <ul>
+                        <li><b>班級主題曲/畢業歌創作</b>：引導學生共同討論主題、創作歌詞，再由 Suno 譜曲，創作出屬於自己班級的獨特歌曲，凝聚班級向心力。</li>
+                        <br>
+                        <li><b>自製教學影片配樂</b>：老師可以根據影片主題（如科學知識、歷史故事）生成風格相符的背景音樂，無需擔心版權問題。</li>
+                     </ul>
+                </div>
+                <div class="page">
+                    <h3>3. 跨領域教學的創新導入</h3>
+                     <div class="content-layout">
+                        <div class="content-text">
+                            <p>Suno 是進行跨領域教學的絕佳橋樑：</p>
+                             <ul>
+                                <li><strong class="highlight-text">語文 × 音樂</strong>：將學生創作的詩詞或課文改寫成歌詞，再由 Suno 譜成歌曲，深化對文本情感的理解。</li>
+                                <br>
+                                <li><strong class="highlight-text">自然/社會 × 音樂</strong>：為特定科學主題（如環保）或歷史事件創作宣傳歌曲，將知識點融入音樂，提升學習趣味與記憶效果。</li>
+                            </ul>
+                        </div>
+                        <div class="content-image">
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v1.5c0 1.38 1.12 2.5 2.5 2.5s2.5-1.12 2.5-2.5V19h4c1.1 0 2-.9 2-2v-4h1.5c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5z" fill="var(--primary-color)"/></svg>
+                        </div>
+                    </div>
+                </div>
+                 <div class="page">
+                    <svg class="page-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.4 7.34L16.66 4.6l-9.51 9.51 2.45 2.45.29.3.29.29 2.74 2.74 9.51-9.51-2.74-2.74zM4 20h16v2H4v-2z" fill="var(--primary-color)"></path></svg>
+                    <h2>技術整合與協作流程</h2>
+                    <h3 class="no-margin-top">將 Suno 音樂導入常用教學平台</h3>
+                     <ul>
+                        <li><b>Google 簡報 / Canva</b>：下載 Suno 生成的 MP3 音檔，上傳至雲端硬碟或 Canva 媒體庫，即可作為簡報的背景音樂。</li>
+                        <br>
+                        <li><b>CapCut / 剪映</b>：在剪輯軟體中，匯入 Suno 的 MP3 音檔到音軌上，即可作為影片的配樂或主題曲。</li>
+                    </ul>
+                </div>
+                 <div class="page">
+                    <h3>結合 ChatGPT 提升創作效率</h3>
+                     <p>雖然 Suno 能自動生成歌詞，但我們可以聯合 ChatGPT 等文字 AI，產出品質更高的內容：</p>
+                    <ol>
+                        <li><b>生成歌詞</b>：請 ChatGPT 寫一首符合主題、結構完整的歌詞。例如：「<strong class="highlight-text">請為一首關於友誼的畢業歌寫中文歌詞，四段歌詞含副歌，風格溫馨感人。</strong>」</li>
+                        <li><b>優化提示詞</b>：請 ChatGPT 幫忙產生更精準的英文音樂風格描述。例如：「<strong class="highlight-text">我想創作一首奇幻森林冒險氛圍的音樂，請幫我寫一段英文提示詞。</strong>」</li>
+                        <li><b>譜寫歌曲</b>：將 ChatGPT 生成的優質文字內容，複製到 Suno 的 Custom 模式中進行譜曲。</li>
+                    </ol>
+                </div>
+                <div class="page">
+                    <svg class="page-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="var(--primary-color)"/></svg>
+                    <h2>技術與教育層面的提醒</h2>
+                     <div class="content-layout">
+                        <div class="content-text">
+                            <h3 class="no-margin-top">版權與倫理</h3>
+                             <ul>
+                                <li><b>商用規範</b>：Suno <strong class="highlight-text">免費版</strong>的作品**禁止**任何商業用途。若需公開發表（如上傳至有營利的 YouTube 頻道），必須升級至付費版。</li>
+                                <li><b>學術誠信</b>：應教導學生誠實註明 AI 創作的部分，不可將 AI 作品冒充為個人獨立創作。</li>
+                            </ul>
+                        </div>
+                        <div class="content-image">
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="var(--primary-color)"/></svg>
+                        </div>
+                    </div>
+                </div>
+                 <div class="page">
+                     <h3>教學引導</h3>
+                     <ul>
+                        <li><b>價值引導</b>：引導學生思考 AI 作為「輔助工具」的角色，是幫助我們快速實現創意，而非取代學習樂理與樂器的過程。</li>
+                        <br>
+                        <li><b>內容審查</b>：AI 生成的歌詞內容大多正面，但仍可能出現不適合兒童的詞語。老師在課堂上使用時應先**審核內容**，或多使用**純音樂模式**。</li>
+                     </ul>
+                </div>
+                
+                <!-- Quiz Page -->
+                <div class="page">
+                    <h2>最終學習評量</h2>
+                    <div class="quiz-container">
+                        <div id="quiz-progress-bar-container"><div id="quiz-progress-bar"></div></div>
+                        <div id="quiz-question-area"></div>
+                        <div id="quiz-feedback"></div>
+                        <button id="quiz-next-btn" onclick="nextQuestion()">下一題</button>
+                        <div id="quiz-result-area" style="display: none;">
+                            <div id="quiz-result"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="navigation">
+                <button id="prev-btn" onclick="changePage(-1)">上一頁</button>
+                <span id="page-indicator"></span>
+                <button class="toc-button" onclick="goToPage(1)">回目錄</button>
+                <button id="next-btn" onclick="changePage(1)">下一頁</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const chapterMapping = [
+            { name: "歡迎", startPage: 1, endPage: 1 },
+            { name: "Suno AI 工具簡介", startPage: 2, endPage: 3 },
+            { name: "教師應用場景與策略", startPage: 4, endPage: 6 },
+            { name: "技術整合與協作流程", startPage: 7, endPage: 8 },
+            { name: "技術與教育提醒", startPage: 9, endPage: 10 },
+            { name: "最終學習評量", startPage: 11, endPage: 11 }
+        ];
+
+        let currentPageIndex = 1;
+        const pages = document.querySelectorAll('#page-content .page');
+        const totalPages = pages.length;
+        const pageIndicator = document.getElementById('page-indicator');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const tocList = document.getElementById('toc-list');
+
+        function buildTOC() {
+            tocList.innerHTML = '';
+            chapterMapping.forEach((chapter, index) => {
+                const li = document.createElement('li');
+                li.textContent = chapter.name;
+                li.onclick = () => goToPage(chapter.startPage);
+                li.dataset.chapterIndex = index;
+                tocList.appendChild(li);
+            });
+        }
+        
+        function updateActiveTocItem() {
+            const tocItems = document.querySelectorAll('#toc-list li');
+            let activeChapterIndex = -1;
+            
+            chapterMapping.forEach((chapter, index) => {
+                if (currentPageIndex >= chapter.startPage && currentPageIndex <= chapter.endPage) {
+                    activeChapterIndex = index;
+                }
+            });
+
+            tocItems.forEach((item, index) => {
+                item.classList.toggle('active', index === activeChapterIndex);
+            });
+        }
+
+        function showPage(index) {
+            pages.forEach((page, i) => page.classList.toggle('active', i === (index -1)));
+            updateNavigation();
+            updateActiveTocItem();
+            if (index === chapterMapping[chapterMapping.length -1].startPage) {
+                startQuiz();
+            }
+        }
+
+        function updateNavigation() {
+            pageIndicator.textContent = `第 ${currentPageIndex} / ${totalPages} 頁`;
+            prevBtn.disabled = currentPageIndex === 1;
+            nextBtn.disabled = currentPageIndex === totalPages;
+        }
+
+        function changePage(direction) {
+            const newIndex = currentPageIndex + direction;
+            if (newIndex >= 1 && newIndex <= totalPages) {
+                currentPageIndex = newIndex;
+                showPage(newIndex);
+            }
+        }
+        
+        function goToPage(pageNumber) {
+            currentPageIndex = pageNumber;
+            showPage(pageNumber);
+        }
+
+        const quizData = [
+            { question: "1. Suno AI 的主要功能是什麼？", options: ["繪製圖片", "根據文字描述生成完整歌曲", "撰寫論文"], correct: 1 },
+            { question: "2. 老師想製作一段沒有人聲演唱的背景音樂，應該開啟 Suno 的哪個模式？", options: ["Custom 模式", "Instrumental (純伴奏) 開關", "Remix 功能"], correct: 1 },
+            { question: "3. Suno AI 的免費帳號，每天大約可以生成幾首原創歌曲？", options: ["1首", "10首", "無限制"], correct: 1 },
+            { question: "4. 一位語文老師想將學生寫的詩變成歌曲，最適合的操作流程是？", options: ["直接把詩丟給 Suno，讓 AI 自動創作", "先請 ChatGPT 將詩改寫成結構化的歌詞，再貼到 Suno 的 Custom 模式譜曲", "只能請學生自己唱"], correct: 1 },
+            { question: "5. 在課堂上使用 Suno 免費版生成的班歌，是否可以上傳到有開啟營利的學校 YouTube 頻道？", options: ["可以，因為是學校活動", "不可以，因為免費版禁止商業用途", "不一定，看歌曲好不好聽"], correct: 1 },
+            { question: "6. 老師想讓 AI 生成一首帶有「觀點辯論」風格的語音摘要，這應該是哪個 AI 工具的功能？", options: ["NotebookLM", "Suno AI", "ChatGPT"], correct: 0 },
+            { question: "7. 在跨領域課程中，老師可以如何結合自然科學與 Suno AI？", options: ["用 Suno 計算物理公式", "為環保議題創作宣傳歌曲", "用 Suno 分析化學元素"], correct: 1 },
+            { question: "8. 當 Suno 生成的歌曲不符合預期時，應該怎麼辦？", options: ["放棄使用", "調整並優化提示詞，或使用 Remix 功能再試一次", "只能接受結果"], correct: 1 },
+            { question: "9. 老師想將 Suno 生成的音樂放入 Google 簡報中，正確的步驟是？", options: ["直接複製 Suno 網址貼上", "下載 MP3 音檔，上傳到雲端硬碟後再從簡報中插入", "只能螢幕錄影"], correct: 1 },
+            { question: "10. 在教學上，引導學生使用 Suno AI 最重要的教育價值是什麼？",
+             options: ["讓學生學會如何快速完成音樂作業", "將 AI 作為實現創意的輔助工具，並從中學習審美與批判思考", "證明人類不再需要學習音樂"], correct: 1 }
+        ];
+        
+        let currentQuestionIndex = 0, score = 0, quizActive = false;
+
+        function startQuiz() {
+            if (quizActive) return;
+            quizActive = true;
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('quiz-question-area').style.display = 'block';
+            document.getElementById('quiz-result-area').style.display = 'none';
+            document.getElementById('quiz-feedback').style.display = 'block';
+            document.getElementById('quiz-next-btn').style.visibility = 'hidden';
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const questionData = quizData[currentQuestionIndex];
+            const questionArea = document.getElementById('quiz-question-area');
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex) / quizData.length) * 100}%`;
+            document.getElementById('quiz-feedback').innerHTML = '';
+            
+            let optionsHtml = questionData.options.map((option, i) => 
+                `<button class="answer-btn" onclick="checkAnswer(${i}, this)">${option}</button>`
+            ).join('');
+            
+            questionArea.innerHTML = `<div class="quiz-question"><p>${questionData.question}</p><div class="answer-options">${optionsHtml}</div></div>`;
+        }
+
+        function checkAnswer(selectedIndex, button) {
+            const questionData = quizData[currentQuestionIndex];
+            const optionsContainer = button.parentElement;
+            const feedbackEl = document.getElementById('quiz-feedback');
+            
+            Array.from(optionsContainer.children).forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === questionData.correct) {
+                button.classList.add('correct');
+                feedbackEl.textContent = '答對了！';
+                feedbackEl.style.color = 'var(--correct-color)';
+                score++;
+            } else {
+                button.classList.add('incorrect');
+                optionsContainer.children[questionData.correct].classList.add('correct');
+                feedbackEl.textContent = '答錯了！';
+                feedbackEl.style.color = 'var(--incorrect-color)';
+            }
+            
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.textContent = (currentQuestionIndex === quizData.length - 1) ? "顯示總分" : "下一題";
+            nextBtn.style.visibility = 'visible';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                document.getElementById('quiz-next-btn').style.visibility = 'hidden';
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            document.getElementById('quiz-question-area').style.display = 'none';
+            document.getElementById('quiz-next-btn').style.visibility = 'hidden';
+            document.getElementById('quiz-feedback').style.display = 'none';
+            document.getElementById('quiz-progress-bar').style.width = '100%';
+
+            const resultArea = document.getElementById('quiz-result-area');
+            document.getElementById('quiz-result').textContent = `你的總分是：${score} / ${quizData.length} 分！`;
+            resultArea.style.display = 'block';
+            quizActive = false;
+        }
+        
+        // Initial setup
+        buildTOC();
+        showPage(currentPageIndex);
+    </script>
+
+</body>
+</html>
