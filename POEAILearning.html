@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>【方方老師】Poe AI 學習手冊</title>
+    <style>
+        :root {
+            --primary-color: #a1887f; /* 捻色調 / Muted Terracotta */
+            --correct-color: #5a9c6c; /* 柔和綠 / Muted Green */
+            --incorrect-color: #c96567; /* 柔和紅 / Muted Red */
+            --secondary-color: #d2b48c; /* 淺咖啡 / Tan */
+            --bg-color: #f9f5f0; /* 米色背景 / Beige Background */
+            --glass-bg: rgba(243, 240, 233, 0.75); /* 玻璃背景 */
+            --text-color: #4a4a4a; /* 深灰色文字 */
+            --heading-color: #6d4c41; /* 深咖啡色標題 */
+        }
+        
+        html {
+            font-size: 110%; 
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: var(--text-color);
+            background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        #ebook-container {
+            width: 95%;
+            max-width: 1200px;
+            height: 95vh;
+            background-color: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            display: flex;
+            overflow: hidden;
+        }
+
+        #toc-sidebar {
+            width: 300px;
+            flex-shrink: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 0px 20px rgba(0,0,0,0.05);
+        }
+
+        #toc-sidebar h2 {
+            font-size: 1.6rem;
+            color: var(--heading-color);
+            border-bottom: 2px solid rgba(161, 136, 127, 0.2);
+            padding-bottom: 1rem;
+            margin: 0 0 1.5rem 0;
+            text-align: left;
+        }
+
+        #toc-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            overflow-y: auto;
+        }
+
+        #toc-list li {
+            padding: 0.9rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.25s ease-in-out;
+            font-size: 1.05rem;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            text-align: left;
+            position: relative;
+        }
+
+        #toc-list li:hover {
+            background-color: rgba(255,255,255, 0.5);
+            color: var(--heading-color);
+        }
+
+        #toc-list li.active {
+            background-color: #fff;
+            color: var(--heading-color);
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        #main-content-area {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        #ebook-header {
+            background-color: #fff;
+            color: var(--heading-color);
+            padding: 1.2rem 1.5rem;
+            text-align: center;
+            flex-shrink: 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        #ebook-header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        #page-content {
+            flex-grow: 1;
+            padding: 2rem 3.5rem;
+            position: relative;
+            overflow-y: auto; /* Enable scrolling for tool list */
+        }
+        
+        .page-scrollable .page {
+            height: auto;
+            justify-content: flex-start;
+        }
+
+        .page {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            animation: fadeIn 0.5s;
+        }
+        .page.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .page-icon { width: 80px; height: 80px; margin: 0 auto 1.5rem; display: block; }
+        .content-layout { display: flex; align-items: center; gap: 2.5rem; }
+        .content-text { flex: 1; }
+        .content-image { width: 140px; flex-shrink: 0; }
+        .content-image svg { width: 100%; height: auto; }
+
+        h2, h3 {
+            text-align: center;
+            color: var(--heading-color);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 1rem;
+            margin: 0 0 2rem 0;
+        }
+        h3 { text-align: left; font-size: 1.5rem; margin-top: 1.5rem; }
+        h3.no-margin-top { margin-top: 0; }
+        p, ul, ol { font-size: 1.15rem; line-height: 2; }
+        li { margin-bottom: 1rem; }
+        ol li { margin-bottom: 1.2rem; }
+        
+        .highlight-text {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tool-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .tool-name { font-size: 1.2rem; color: var(--heading-color); margin-top: 0; margin-bottom: 0.5rem; }
+        .tool-description { margin-top: 0; margin-bottom: 1.5rem; flex-grow: 1; font-size: 1rem; line-height: 1.6;}
+        .tool-buttons { margin-top: auto; }
+        .tool-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: #fff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            margin-top: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .tool-button:hover { background-color: #e8a556; }
+        
+        .welcome-page { align-items: center; text-align: center; }
+        .welcome-page .page-icon { width: 120px; height: 120px; }
+        .welcome-page p { font-size: 1.2rem; color: var(--text-color); }
+        .start-button {
+             background-color: var(--primary-color);
+             color: white;
+             border: none;
+             padding: 1rem 2.5rem;
+             border-radius: 12px;
+             cursor: pointer;
+             font-size: 1.2rem;
+             font-weight: bold;
+             margin-top: 2rem;
+             transition: all 0.2s;
+        }
+        .start-button:hover {
+            background-color: var(--heading-color);
+            box-shadow: 0 4px 15px rgba(161, 136, 127, 0.4);
+        }
+
+        #navigation {
+            padding: 1rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        #navigation button {
+            background-color: var(--correct-color);
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        #navigation button:disabled { background-color: #d8d8d8; cursor: not-allowed; }
+        #navigation button:not(:disabled):hover { opacity: 0.9; }
+        #page-indicator { font-size: 1rem; font-weight: bold; color: #475569; min-width: 100px; }
+        .toc-button { display: none; }
+
+        .quiz-container { text-align: center; width: 100%; }
+        #quiz-progress-bar-container { width: 100%; background-color: #eee; border-radius: 5px; margin-bottom: 1.5rem; }
+        #quiz-progress-bar { height: 10px; width: 0%; background-color: var(--primary-color); border-radius: 5px; transition: width 0.3s; }
+        .quiz-question p { font-weight: bold; font-size: 1.2rem; margin-bottom: 1rem; text-align: left; }
+        .answer-options { display: flex; flex-direction: column; gap: 0.7rem; }
+        .answer-btn { width: 100%; padding: 0.8rem; border: 2px solid #cbd5e1; background-color: #fff; border-radius: 8px; cursor: pointer; text-align: left; transition: all 0.2s; font-size: 1rem; }
+        .answer-btn:hover:not(:disabled) { background-color: #f0f3f8; border-color: var(--secondary-color); }
+        .answer-btn.correct { background-color: #dcfce7; border-color: var(--correct-color); color: #166534; font-weight: bold; }
+        .answer-btn.incorrect { background-color: #fee2e2; border-color: var(--incorrect-color); color: #991b1b; }
+        .answer-btn:disabled { cursor: not-allowed; opacity: 0.9; }
+        #quiz-feedback { margin-top: 1rem; font-weight: bold; height: 2rem; }
+        #quiz-next-btn { background-color: var(--secondary-color); padding: 0.8rem 1.8rem; font-size: 1.1rem; visibility: hidden; }
+        #quiz-result { font-size: 1.8rem; font-weight: bold; color: var(--heading-color); }
+
+        @media (max-width: 1024px) {
+            #ebook-container {
+                flex-direction: column;
+                height: 98vh;
+            }
+            #toc-sidebar {
+                width: auto;
+                height: auto;
+                flex-shrink: 1;
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            }
+            #toc-sidebar h2 { display: none; }
+            #toc-list {
+                display: flex;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+                scrollbar-width: thin;
+            }
+            #toc-list li {
+                flex-shrink: 0;
+                margin-right: 0.5rem;
+                margin-bottom: 0;
+            }
+            #page-content { padding: 1.5rem; }
+        }
+        
+        @media (max-width: 768px) {
+            html { font-size: 100%; }
+            .content-layout { flex-direction: column; }
+            .content-image { width: 100px; margin-bottom: 1rem; }
+            #navigation button { padding: 0.6rem 0.8rem; }
+            .tool-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="ebook-container">
+        <div id="toc-sidebar">
+            <h2>目錄</h2>
+            <ul id="toc-list"></ul>
+        </div>
+        <div id="main-content-area">
+            <div id="ebook-header">
+                <h1>Poe AI 學習手冊 (方方老師版)</h1>
+            </div>
+            <div id="page-content">
+                 <div class="page active welcome-page">
+                    <svg class="page-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" fill="var(--primary-color)"/></svg>
+                    <h2>歡迎來到 Poe AI 學習手冊</h2>
+                    <p>本手冊整合了方方老師設計的 Poe AI 教育工具，提供一個完整的學習與應用資源庫。</p>
+                    <button class="start-button" onclick="goToPage(2)">開始學習 →</button>
+                </div>
+
+                <div class="page">
+                    <h2>認識 Poe AI</h2>
+                    <div class="content-layout">
+                        <div class="content-text">
+                            <h3>什麼是 Poe AI？</h3>
+                            <p>Poe 是一個由 Quora 推出的<strong class="highlight-text">對話式 AI 平台</strong>，它的最大特色是整合了多種不同公司開發的大型語言模型（如 GPT-4、Claude、Gemini 等）。</p>
+                            <p>使用者可以在一個介面中，自由切換不同的 AI 模型進行對話，體驗各模型的獨特優勢。</p>
+                        </div>
+                        <div class="content-image">
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" fill="var(--primary-color)"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="page">
+                    <h3>常用聊天機器人介紹</h3>
+                    <ul>
+                        <li><b>GPT-4 (OpenAI)</b>：功能強大且全面，適合回答問題、撰寫文章、程式碼解說等。</li>
+                        <li><b>Claude-3 (Anthropic)</b>：強調安全與對話品質，擅長長對話的記憶與追問。</li>
+                        <li><b>Gemini (Google)</b>：在常識問答與跨領域知識檢索上表現優異。</li>
+                        <li><b>Mistral (Mistral AI)</b>：反應快速、應用靈活，適合需要即時互動的教學環節。</li>
+                    </ul>
+                </div>
+                <div class="page page-scrollable">
+                    <h2>AI 工具箱：課程與教學設計</h2>
+                    <div class="tool-grid" id="tools-cat-1"></div>
+                </div>
+                 <div class="page page-scrollable">
+                    <h2>AI 工具箱：教材產出</h2>
+                    <div class="tool-grid" id="tools-cat-2"></div>
+                </div>
+                 <div class="page page-scrollable">
+                    <h2>AI 工具箱：教師工作</h2>
+                    <div class="tool-grid" id="tools-cat-3"></div>
+                </div>
+                <div class="page page-scrollable">
+                    <h2>AI 工具箱：評量設計</h2>
+                    <div class="tool-grid" id="tools-cat-4"></div>
+                </div>
+                <div class="page page-scrollable">
+                    <h2>AI 工具箱：行政工作</h2>
+                    <div class="tool-grid" id="tools-cat-5"></div>
+                </div>
+                <div class="page page-scrollable">
+                    <h2>AI 工具箱：上課工具/專題發想</h2>
+                    <div class="tool-grid" id="tools-cat-6"></div>
+                </div>
+                 <div class="page page-scrollable">
+                    <h2>AI 工具箱：自製遊戲與課堂工具</h2>
+                    <div class="tool-grid" id="tools-cat-7"></div>
+                </div>
+                <div class="page">
+                    <svg class="page-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z" fill="var(--primary-color)"/></svg>
+                    <h2>常見問題與注意事項</h2>
+                    <h3 class="no-margin-top">安全與正確使用</h3>
+                     <div class="content-layout">
+                        <div class="content-text">
+                             <ul>
+                                <li><b>安全使用</b>：避免在對話中輸入個資或敏感資訊。</li>
+                                <li><b>AI 誤用提醒</b>：AI 的目的是輔助學習，而非取代思考。應明確告知學生不得將 AI 生成的作業直接提交。</li>
+                                <li><b>教師引導</b>：老師需監督並適時介入，釐清 AI 產出的知識與教材的異同。</li>
+                            </ul>
+                        </div>
+                        <div class="content-image">
+                           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" fill="var(--primary-color)"/></svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quiz Page -->
+                <div class="page">
+                    <h2>最終學習評量</h2>
+                    <div class="quiz-container">
+                        <div id="quiz-progress-bar-container"><div id="quiz-progress-bar"></div></div>
+                        <div id="quiz-question-area"></div>
+                        <div id="quiz-feedback"></div>
+                        <button id="quiz-next-btn" onclick="nextQuestion()">下一題</button>
+                        <div id="quiz-result-area" style="display: none;">
+                            <div id="quiz-result"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="navigation">
+                <button id="prev-btn" onclick="changePage(-1)">上一頁</button>
+                <span id="page-indicator"></span>
+                <button class="toc-button" onclick="goToPage(1)">回目錄</button>
+                <button id="next-btn" onclick="changePage(1)">下一頁</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data for all tools from the website
+        const allTools = [
+            { name: "👑 素養導向教案AI設計工具", description: "根據108課綱，透過簡單步驟設計專業教案。", links: [{ text: "前往應用 →", url: "https://poe.com/FunFun-plan.design" }], category: 1 },
+            { name: "👑 素養導向評量AI設計工具", description: "根據108課綱，透過簡單步驟設計專業評量。", links: [{ text: "前往應用 →", url: "https://poe.com/FunFun-Design.Exam" }], category: 1 },
+            { name: "國語文本SEL提問精靈", description: "輸入不同的文本，即可生成理解＋SEL的提問範例。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.SEL-Chinese" }], category: 1 },
+            { name: "SRL&PBL課程AI設計工具", description: "透過八個步驟，打造完整專業的專題導向學習課程。", links: [{ text: "前往應用 →", url: "https://poe.com/FunFun.SRL-PBL-Plan" }], category: 1 },
+            { name: "國語文本分析與學習單AI設計工具", description: "上傳文章，即可快速分析文本當中的要點、修辭等，並生成活動與學習單。", links: [{ text: "前往應用 →", url: "https://poe.com/FunFun.Text-Analysis" }], category: 1 },
+            { name: "👑 AI遊戲設計師", description: "上傳教學檔案，即可快速產出給學生的互動遊戲。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.Game-AI" }], category: 2 },
+            { name: "👑 媒體素養教學故事生成器", description: "選擇媒體識讀種類，即可快速生成故事及學習單。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.literacyStory" }], category: 2 },
+            { name: "👑 教案轉簡報工具", description: "上傳教學檔案，即可快速產出各種簡報。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.MarkdowntoPPT" }], category: 2 },
+            { name: "👑 知識轉譯 AI 網頁生成器", description: "上傳知識內容，即可快速產出成精美網頁。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.Knowledge-Web" }], category: 2 },
+            { name: "👑 AI桌遊設計師", description: "上傳教學檔案，即可快速產出給學生的桌遊。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.AI-TableGame" }], category: 2 },
+            { name: "👑 AI 作文小助教", description: "上傳作文的掃描檔／照片，即可快速進行批改。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.Tutor-Writing" }], category: 3 },
+            { name: "👑 回覆家長萬事通", description: "根據情境，給予快速回饋的回覆建議。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.Reply-AI" }], category: 3 },
+            { name: "👑 期末評語撰寫AI系統", description: "可依照綜合、分科等需求撰寫期末評語。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.AI-Comments" }], category: 3 },
+            { name: "👑 親師溝通AI客製化機器人", description: "上傳與家長對話的紀錄，即可快速變成個人的回覆家長小助理！", links: [{ text: "前往應用 →", url: "https://poe.com/FunFun.Communication" }], category: 3 },
+            { name: "👑 PIRLS四層次閱讀測驗", description: "給予文章，會根據PIRLS四層次提問設計閱讀測驗題目。", links: [{ text: "Poe 版 →", url: "https://poe.com/FunFun.AI-PIRLS.Que" }, { text: "AI Studio 版 →", url: "https://aistudio.google.com/app/prompts/1Yy94CORXVTKRQMniyJKHfp9wjlf73FTo" }], category: 4 },
+            { name: "數學素養試題設計機器人", description: "提供學習內容、表現或評量的目標，產出數學科素養導向試題。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.AI-Math.Que" }], category: 4 },
+            { name: "自然素養試題設計機器人", description: "提供學習內容、表現或評量的目標，產出自然科素養導向試題。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.AI-Sci.Que" }], category: 4 },
+            { name: "國中會考作文批改機器人", description: "國中生專用，請拍攝孩子的作文，以會考標準評分作文。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.AI-St.Essay.J" }], category: 4 },
+            { name: "👑 學校公文撰寫AI系統", description: "輸入相關的來文，即可快速產出相關文章。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.Official-Help" }], category: 5 },
+            { name: "採購法案例分析機器人", description: "給予採購相關案例，會幫你進行初步分析採購是否違法。", links: [{ text: "前往工具 →", url: "https://poe.com/Law.AI-Procurement" }], category: 5 },
+            { name: "👑 生成通知單與 Line 訊息", description: "上傳內容，即可改寫成Line訊息或通知單。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.Reply" }], category: 5 },
+            { name: "👑 國小學生專用GPT", description: "符合國小學生知識自學與討論。", links: [{ text: "POE版本 →", url: "https://poe.com/FunFun.School-GPT" }, { text: "edcafe版本 →", url: "https://app.edcafe.ai/chatbots/6891cdc47e625c37a0ca2a5e" }], category: 6 },
+            { name: "👑 啟思導師", description: "上傳圖片、文字等，即可讓AI引導學生思考與解題。", links: [{ text: "前往工具 →", url: "https://poe.com/FunFun.InsightSolver" }], category: 6 },
+            { name: "👑 Line 貼圖生成小工具", description: "上傳角色圖片或真人照片，即可生成32張風格一致的去背貼圖！", links: [{ text: "前往使用 →", url: "https://g.co/gemini/share/32768162f059" }, { text: "2.0版 →", url: "https://g.co/gemini/share/7ce66bdce85c" }], category: 6 },
+            { name: "👑 【方方老師】EKO(阿醜)防災大冒險", description: "一局遊戲30秒，適合闖關活動、防災推廣使用！", links: [{ text: "前往遊戲 →", url: "https://changsheng0612.itch.io/funfungame-ekodisasterpreventionparkour" }], category: 7 },
+            { name: "👑 【方方老師】地球保衛隊：R-Bot 的崛起", description: "透過遊戲，跟著孩子一起認識資源回收吧！", links: [{ text: "前往遊戲 →", url: "https://changsheng0612.itch.io/funfungame-earthguardian" }], category: 7 },
+            { name: "👑 【方方老師】教室管理系統2.0", description: "整合抽籤、計時、加分、訂正系統！", links: [{ text: "前往工具 →", url: "https://chunsheng612.github.io/class-powerhouse-2.0/" }], category: 7 },
+            { name: "👑 【方方老師】智慧聯絡簿", description: "老師每日可以編輯聯絡簿，讓學生晨光時間可以抄寫聯絡簿。", links: [{ text: "前往工具 →", url: "https://chunsheng612.github.io/contactbook/" }], category: 7 }
+        ];
+
+        const chapterMapping = [
+            { name: "歡迎", startPage: 1, endPage: 1 },
+            { name: "認識 Poe AI", startPage: 2, endPage: 3 },
+            { name: "AI 工具箱：課程與教學設計", startPage: 4, endPage: 4 },
+            { name: "AI 工具箱：教材產出", startPage: 5, endPage: 5 },
+            { name: "AI 工具箱：教師行政與評量", startPage: 6, endPage: 6 },
+            { name: "常見問題與注意事項", startPage: 7, endPage: 7 },
+            { name: "最終學習評量", startPage: 8, endPage: 8 }
+        ];
+
+        let currentPageIndex = 1;
+        const pages = document.querySelectorAll('#page-content .page');
+        const totalPages = pages.length;
+        const pageIndicator = document.getElementById('page-indicator');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const tocList = document.getElementById('toc-list');
+        
+        function populateTools() {
+            const containers = {
+                1: document.getElementById('tools-cat-1'),
+                2: document.getElementById('tools-cat-2'),
+                3: document.getElementById('tools-cat-3'),
+                4: document.getElementById('tools-cat-4'),
+                5: document.getElementById('tools-cat-5'),
+                6: document.getElementById('tools-cat-6'),
+                7: document.getElementById('tools-cat-7'),
+            };
+
+            allTools.forEach(tool => {
+                const container = containers[tool.category];
+                if (container) {
+                    const card = document.createElement('div');
+                    card.className = 'tool-card';
+                    
+                    let buttonsHtml = tool.links.map(link => 
+                        `<a href="${link.url}" target="_blank" rel="noopener noreferrer" class="tool-button">${link.text}</a>`
+                    ).join('');
+
+                    card.innerHTML = `
+                        <div class="card-content">
+                            <h4 class="tool-name">${tool.name}</h4>
+                            <p class="tool-description">${tool.description}</p>
+                            <div class="tool-buttons">${buttonsHtml}</div>
+                        </div>`;
+                    container.appendChild(card);
+                }
+            });
+        }
+
+
+        function buildTOC() {
+            tocList.innerHTML = '';
+            chapterMapping.forEach((chapter, index) => {
+                const li = document.createElement('li');
+                li.textContent = chapter.name;
+                li.onclick = () => goToPage(chapter.startPage);
+                li.dataset.chapterIndex = index;
+                tocList.appendChild(li);
+            });
+        }
+        
+        function updateActiveTocItem() {
+            const tocItems = document.querySelectorAll('#toc-list li');
+            let activeChapterIndex = -1;
+            
+            chapterMapping.forEach((chapter, index) => {
+                if (currentPageIndex >= chapter.startPage && currentPageIndex <= chapter.endPage) {
+                    activeChapterIndex = index;
+                }
+            });
+
+            tocItems.forEach((item, index) => {
+                item.classList.toggle('active', index === activeChapterIndex);
+            });
+        }
+
+        function showPage(index) {
+            pages.forEach((page, i) => page.classList.toggle('active', i === (index -1)));
+            updateNavigation();
+            updateActiveTocItem();
+            if (index === chapterMapping[chapterMapping.length -1].startPage) {
+                startQuiz();
+            }
+        }
+
+        function updateNavigation() {
+            pageIndicator.textContent = `第 ${currentPageIndex} / ${totalPages} 頁`;
+            prevBtn.disabled = currentPageIndex === 1;
+            nextBtn.disabled = currentPageIndex === totalPages;
+        }
+
+        function changePage(direction) {
+            const newIndex = currentPageIndex + direction;
+            if (newIndex >= 1 && newIndex <= totalPages) {
+                currentPageIndex = newIndex;
+                showPage(newIndex);
+            }
+        }
+        
+        function goToPage(pageNumber) {
+            currentPageIndex = pageNumber;
+            showPage(pageNumber);
+        }
+
+        const quizData = [
+            { question: "1. Poe AI 平台最大的特色是什麼？", options: ["只能使用GPT-4", "整合了多種不同的大型語言模型", "只能畫圖"], correct: 1 },
+            { question: "2. 老師想設計一個需要長時間對話、且 AI 需記住前面討論內容的複雜教學情境，哪個模型可能最適合？", options: ["GPT-4", "Claude-3", "Mistral"], correct: 1 },
+            { question: "3. 一位學生想請 AI 幫忙檢查數學題的解題步驟，但不希望 AI 直接給答案，他應該怎麼做？", options: ["直接問「答案是多少」", "先自己解題，再把過程貼給AI請它檢查", "複製題目給AI，讓它做完"], correct: 1 },
+            { question: "4. 以下哪個提示詞最適合用來請 Poe AI 輔助社會科教學？", options: ["寫一首詩", "講個笑話", "請扮演一位歷史老師，講解第二次世界大戰的主要原因"], correct: 2 },
+            { question: "5. 「方方老師」的哪個Poe AI工具，可以幫助老師根據108課綱設計專業教案？", options: ["AI 作文小助教", "素養導向教案AI設計工具", "回覆家長萬事通"], correct: 1 },
+            { question: "6. 學生在 Poe 上與 AI 對話時，應該避免輸入什麼資訊？", options: ["課業問題", "自己的姓名、地址等個人資料", "歷史事件名稱"], correct: 1 },
+            { question: "7. 如果老師想快速生成一份關於「地球日環保活動」的教案大綱，哪個模型反應最快、最適合即時互動？", options: ["Gemini", "Claude-3", "Mistral"], correct: 2 },
+            { question: "8. Poe 平台的主要功能不包含以下哪一項？", options: ["跨模型對話", "自動幫你完成所有學校作業", "文本生成與知識問答"], correct: 1 },
+            { question: "9. 老師引導學生使用 Poe AI 時，最重要的教學態度是什麼？", options: ["讓學生自由探索，完全不干預", "監督並適時介入，教導學生批判性思考與查證", "禁止學生使用"], correct: 1 },
+            { question: "10. 如果一位學生想請 AI 幫忙潤飾英文作文，他應該如何使用才不算學術不誠信？", options: ["讓 AI 整篇重寫，然後直接交出去", "將自己寫好的初稿交給 AI，請它針對文法或語氣提供修改建議", "直接複製網路上的文章請 AI 改寫"], correct: 1 }
+        ];
+        
+        let currentQuestionIndex = 0, score = 0, quizActive = false;
+
+        function startQuiz() {
+            if (quizActive) return;
+            quizActive = true;
+            currentQuestionIndex = 0;
+            score = 0;
+            document.getElementById('quiz-question-area').style.display = 'block';
+            document.getElementById('quiz-result-area').style.display = 'none';
+            document.getElementById('quiz-feedback').style.display = 'block';
+            document.getElementById('quiz-next-btn').style.visibility = 'hidden';
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const questionData = quizData[currentQuestionIndex];
+            const questionArea = document.getElementById('quiz-question-area');
+            document.getElementById('quiz-progress-bar').style.width = `${((currentQuestionIndex) / quizData.length) * 100}%`;
+            document.getElementById('quiz-feedback').innerHTML = '';
+            
+            let optionsHtml = questionData.options.map((option, i) => 
+                `<button class="answer-btn" onclick="checkAnswer(${i}, this)">${option}</button>`
+            ).join('');
+            
+            questionArea.innerHTML = `<div class="quiz-question"><p>${questionData.question}</p><div class="answer-options">${optionsHtml}</div></div>`;
+        }
+
+        function checkAnswer(selectedIndex, button) {
+            const questionData = quizData[currentQuestionIndex];
+            const optionsContainer = button.parentElement;
+            const feedbackEl = document.getElementById('quiz-feedback');
+            
+            Array.from(optionsContainer.children).forEach(btn => btn.disabled = true);
+
+            if (selectedIndex === questionData.correct) {
+                button.classList.add('correct');
+                feedbackEl.textContent = '答對了！';
+                feedbackEl.style.color = 'var(--correct-color)';
+                score++;
+            } else {
+                button.classList.add('incorrect');
+                optionsContainer.children[questionData.correct].classList.add('correct');
+                feedbackEl.textContent = '答錯了！';
+                feedbackEl.style.color = 'var(--incorrect-color)';
+            }
+            
+            const nextBtn = document.getElementById('quiz-next-btn');
+            nextBtn.textContent = (currentQuestionIndex === quizData.length - 1) ? "顯示總分" : "下一題";
+            nextBtn.style.visibility = 'visible';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.length) {
+                document.getElementById('quiz-next-btn').style.visibility = 'hidden';
+                displayQuestion();
+            } else {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            document.getElementById('quiz-question-area').style.display = 'none';
+            document.getElementById('quiz-next-btn').style.visibility = 'hidden';
+            document.getElementById('quiz-feedback').style.display = 'none';
+            document.getElementById('quiz-progress-bar').style.width = '100%';
+
+            const resultArea = document.getElementById('quiz-result-area');
+            document.getElementById('quiz-result').textContent = `你的總分是：${score} / ${quizData.length} 分！`;
+            resultArea.style.display = 'block';
+            quizActive = false;
+        }
+        
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            populateTools();
+            buildTOC();
+            showPage(currentPageIndex);
+        });
+    </script>
+
+</body>
+</html>
