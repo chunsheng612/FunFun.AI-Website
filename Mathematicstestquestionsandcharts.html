@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>數學教具產生器</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #F8FAFC; 
+        }
+        .main-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 80rem;
+            min-height: 80vh;
+        }
+        .sidebar-btn {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            color: #475569;
+            transition: all 0.2s ease-in-out;
+        }
+        .sidebar-btn:hover {
+            background-color: #E0E7FF;
+            color: #312E81;
+        }
+        .sidebar-btn.active {
+            background-color: #4F46E5;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .view-container {
+            display: none;
+        }
+        .view-container.active {
+            display: block;
+        }
+        .shape-canvas-container {
+            position: relative;
+            height: 60vh;
+            width: 100%;
+        }
+        #shapeCanvas, #coordinateCanvas, #clockCanvas, #fractionCanvas, #solidCanvas, #numberLineCanvas {
+            cursor: default;
+        }
+        #shapeCanvas.drawing-mode {
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center min-h-screen bg-slate-100">
+    <h1 class="text-4xl font-bold text-gray-700 mb-8">數學試題繪圖工具</h1>
+    <div class="main-container mx-auto">
+        <!-- Sidebar for Categories -->
+        <aside class="bg-white rounded-2xl shadow-lg p-4 flex flex-col gap-2">
+            <button class="sidebar-btn active" data-view="chart-view">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M2 11h16v2H2v-2zm13-4H5v2h10V7zM4 5h12v2H4V5zM2 15h16v2H2v-2z"/></svg>
+                統計圖表
+            </button>
+            <button class="sidebar-btn" data-view="shape-view">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 5.555a1 1 0 011.89 0l1.445 3.556 3.92.362a1 1 0 01.572 1.74l-2.9 2.52.855 3.86a1 1 0 01-1.474 1.082L10 16.333l-3.363 1.95a1 1 0 01-1.474-1.082l.855-3.86-2.9-2.52a1 1 0 01.572-1.74l3.92-.362L9.555 5.555z" clip-rule="evenodd" /></svg>
+                平面圖形
+            </button>
+            <button class="sidebar-btn" data-view="solid-view">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a2 2 0 00-2 2v12a2 2 0 002 2h8a2 2 0 002-2V4a2 2 0 00-2-2h-8zM2 8a2 2 0 012-2h4v12H4a2 2 0 01-2-2V8z"/></svg>
+                立體圖形
+            </button>
+             <button class="sidebar-btn" data-view="coordinate-view">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3zm2 2v10h10V5H5z" clip-rule="evenodd" /><path d="M5 10h10v1H5v-1zM10 5v10h1V5h-1z" /></svg>
+                坐標平面
+            </button>
+             <button class="sidebar-btn" data-view="number-line-view">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2.75 10.75A.75.75 0 013.5 10h13a.75.75 0 010 1.5h-13a.75.75 0 01-.75-.75zM10 2.75a.75.75 0 01.75.75v13a.75.75 0 01-1.5 0v-13A.75.75 0 0110 2.75z" clip-rule="evenodd" /></svg>
+                數線
+            </button>
+             <button class="sidebar-btn" data-view="fraction-view">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd" /></svg>
+                分數圖示
+            </button>
+            <button class="sidebar-btn" data-view="tools-view">
+                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0L8.21 5.15a1.5 1.5 0 01-1.02.74l-2.23.32c-1.6.23-2.26 2.18-1.04 3.33l1.62 1.58a1.5 1.5 0 01-.4 2.22l-1.02 2.04c-.94 1.88.58 4.01 2.56 3.4l2.12-.63a1.5 1.5 0 011.4.09l1.83 1.22c1.47.98 3.28-.43 3.28-2.12V12a1.5 1.5 0 01.8-1.32l1.68-1.02c1.37-..83.77-2.9-1.06-3.2l-2.3-.39a1.5 1.5 0 01-1.12-1.02l-1.3-2.48zM10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" clip-rule="evenodd" /></svg>
+                其他工具
+            </button>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="bg-white rounded-2xl shadow-lg p-4 md:p-6">
+            <!-- 圖表產生器視圖 -->
+            <div id="chart-view" class="view-container active">
+                <div class="grid grid-cols-12 gap-4 md:gap-6">
+                    <div class="col-span-12 md:col-span-9 bg-pink-50 rounded-2xl p-4 md:p-6">
+                        <h2 id="chart-title-display" class="text-xl md:text-2xl font-bold text-center mb-4 text-gray-700">3年甲班班長投票數</h2>
+                        <div id="canvas-container" class="chart-container" style="height: 50vh;"><canvas id="myChart"></canvas></div>
+                        <div id="table-container" class="hidden overflow-x-auto"></div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 flex md:flex-col justify-around md:justify-start gap-4">
+                        <button onclick="changeChartType('bar')" class="chart-type-btn icon-btn active flex-1 md:flex-none flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow hover:bg-red-100 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-red-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M3 3a1 1 0 000 2v8a1 1 0 001 1h12a1 1 0 001-1V5a1 1 0 000-2H4a1 1 0 00-1-1zm1 2h12v8H4V5zm2 1h2v5H6V6zm4 0h2v3h-2V6zm4 0h2v4h-2V6z" clip-rule="evenodd" /></svg><span class="mt-1 text-sm font-medium text-gray-600">長條圖</span></button>
+                        <button onclick="changeChartType('line')" class="chart-type-btn icon-btn flex-1 md:flex-none flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow hover:bg-blue-100 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-400" viewBox="0 0 20 20" fill="currentColor"><path d="M2 10a1 1 0 011-1h1.414l2.293-2.293a1 1 0 111.414 1.414L6.414 10H10a1 1 0 110 2H6.414l-1.707 1.707a1 1 0 01-1.414-1.414L5.586 11H3a1 1 0 01-1-1zm15 0a1 1 0 01-1 1h-4.414l-1.707 1.707a1 1 0 11-1.414-1.414L11.586 11H9a1 1 0 110-2h2.586l1.707-1.707a1 1 0 111.414 1.414L13.586 10H18a1 1 0 01-1 1z" /></svg><span class="mt-1 text-sm font-medium text-gray-600">折線圖</span></button>
+                        <button onclick="changeChartType('pie')" class="chart-type-btn icon-btn flex-1 md:flex-none flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow hover:bg-yellow-100 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-yellow-400" viewBox="0 0 20 20" fill="currentColor"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zM6.879 6.879A5.965 5.965 0 0110 4c.85 0 1.66.173 2.4.482l-3.528 3.528A5.965 5.965 0 016 10c0-.39.038-.77.109-1.144L6.879 6.88zM10 16c-1.12 0-2.17-.306-3.04-.84l5.656-5.656A5.986 5.986 0 0116 10c0 3.314-2.686 6-6 6z" /></svg><span class="mt-1 text-sm font-medium text-gray-600">圓餅圖</span></button>
+                        <button onclick="changeChartType('doughnut')" class="chart-type-btn icon-btn flex-1 md:flex-none flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow hover:bg-purple-100 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-purple-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-3a5 5 0 100-10 5 5 0 000 10z" clip-rule="evenodd" /></svg><span class="mt-1 text-sm font-medium text-gray-600">環圈圖</span></button>
+                        <button onclick="changeChartType('table')" class="chart-type-btn icon-btn flex-1 md:flex-none flex flex-col items-center justify-center bg-white p-3 rounded-2xl shadow hover:bg-green-100 transition-colors"><svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-green-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 3a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zm0 2h10v2H5V5zm0 4h10v2H5V9zm0 4h10v2H5v-2z" clip-rule="evenodd" /></svg><span class="mt-1 text-sm font-medium text-gray-600">表格</span></button>
+                    </div>
+                    <div class="col-span-12 bg-gray-50 rounded-2xl p-4 md:p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div><label for="title-input" class="block text-sm font-medium text-gray-700 mb-1">圖表標題</label><input type="text" id="title-input" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" value="3年甲班班長投票數"></div>
+                            <div><label for="y-axis-label-input" class="block text-sm font-medium text-gray-700 mb-1">Y軸標題</label><input type="text" id="y-axis-label-input" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500" value="得票數 (張)"></div>
+                        </div>
+                        <hr class="my-4"><div id="data-inputs-container"></div>
+                        <div class="flex flex-wrap items-center justify-between mt-4 gap-4">
+                            <button id="add-row-btn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors shadow">＋ 新增項目</button>
+                            <button id="generate-chart-btn" class="px-6 py-3 bg-green-500 text-white font-bold rounded-lg hover:bg-green-600 transition-colors shadow-lg">產生圖表</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 圖形繪製器視圖 -->
+            <div id="shape-view" class="view-container">
+                 <div class="grid grid-cols-12 gap-4 md:gap-6 h-full">
+                    <div class="col-span-12 md:col-span-9 bg-blue-50 rounded-2xl p-4 md:p-6">
+                        <div class="shape-canvas-container flex items-center justify-center">
+                            <canvas id="shapeCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 bg-gray-50 rounded-2xl p-4 md:p-6 flex flex-col justify-center">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="shape-type-select" class="block text-sm font-medium text-gray-700">圖形類型</label>
+                                <select id="shape-type-select" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                    <option value="custom">自訂圖形 (手繪)</option>
+                                    <option value="symmetry">線對稱圖形</option>
+                                    <option value="polygon">正多邊形</option>
+                                    <option value="triangle" selected>三角形</option>
+                                    <option value="rhombus">菱形</option>
+                                    <option value="trapezoid">梯形</option>
+                                </select>
+                            </div>
+                            <div id="shape-inputs-container"></div>
+                            <button id="draw-shape-btn" class="w-full mt-4 px-6 py-3 bg-indigo-500 text-white font-bold rounded-lg hover:bg-indigo-600 transition-colors shadow-lg">繪製圖形</button>
+                            <div id="custom-shape-controls" class="hidden space-y-2 mt-4">
+                                <p class="text-sm text-center text-gray-600">請在左側畫布上點擊以新增頂點。</p>
+                                <button id="finish-custom-shape-btn" class="w-full px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600">完成繪製</button>
+                                <button id="clear-custom-shape-btn" class="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">清除重畫</button>
+                            </div>
+                            <div id="shape-info-box" class="hidden mt-4 w-full bg-white p-3 rounded-xl shadow-md"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 立體圖形視圖 -->
+            <div id="solid-view" class="view-container">
+                 <div class="grid grid-cols-12 gap-4 md:gap-6 h-full">
+                    <div class="col-span-12 md:col-span-9 bg-cyan-50 rounded-2xl p-2 md:p-4 h-full">
+                        <div class="shape-canvas-container flex items-center justify-center">
+                            <canvas id="solidCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 bg-gray-50 rounded-2xl p-4 md:p-6 flex flex-col">
+                        <div class="space-y-4">
+                            <div>
+                                <label for="solid-type-select" class="block text-sm font-medium text-gray-700">圖形類型</label>
+                                <select id="solid-type-select" class="mt-1 w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500">
+                                    <option value="cuboid">長方體</option>
+                                    <option value="cylinder">圓柱體</option>
+                                    <option value="cone">圓錐體</option>
+                                    <option value="pyramid">正四角錐</option>
+                                    <option value="sphere">球體</option>
+                                </select>
+                            </div>
+                            <div id="solid-inputs-container">
+                                <!-- Dynamic inputs will be inserted here -->
+                            </div>
+                            <button id="draw-solid-btn" class="w-full mt-4 px-6 py-3 bg-cyan-500 text-white font-bold rounded-lg hover:bg-cyan-600">繪製</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 坐標平面視圖 -->
+            <div id="coordinate-view" class="view-container">
+                 <div class="grid grid-cols-12 gap-4 md:gap-6 h-full">
+                    <div class="col-span-12 md:col-span-9 bg-green-50 rounded-2xl p-2 md:p-4 h-full">
+                        <div class="shape-canvas-container flex items-center justify-center">
+                            <canvas id="coordinateCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 bg-gray-50 rounded-2xl p-4 md:p-6 flex flex-col">
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">坐標平面設定</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div><label for="x-min" class="text-sm">X 最小</label><input type="number" id="x-min" value="-10" class="w-full mt-1 p-1 border rounded"></div>
+                                <div><label for="x-max" class="text-sm">X 最大</label><input type="number" id="x-max" value="10" class="w-full mt-1 p-1 border rounded"></div>
+                                <div><label for="y-min" class="text-sm">Y 最小</label><input type="number" id="y-min" value="-10" class="w-full mt-1 p-1 border rounded"></div>
+                                <div><label for="y-max" class="text-sm">Y 最大</label><input type="number" id="y-max" value="10" class="w-full mt-1 p-1 border rounded"></div>
+                            </div>
+                            <div>
+                                <label for="points-input" class="block text-sm font-medium text-gray-700">輸入坐標點</label>
+                                <textarea id="points-input" rows="4" class="mt-1 w-full p-2 border rounded" placeholder="例如：&#10;A(2, 3)&#10;B(-4, 1)"></textarea>
+                            </div>
+                            <div>
+                                <label class="flex items-center"><input type="checkbox" id="connect-points-check" class="h-4 w-4 rounded border-gray-300"><span class="ml-2 text-sm text-gray-600">連接坐標點</span></label>
+                            </div>
+                             <button id="plot-points-btn" class="w-full mt-4 px-6 py-3 bg-teal-500 text-white font-bold rounded-lg hover:bg-teal-600">繪製</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 數線視圖 -->
+            <div id="number-line-view" class="view-container">
+                 <div class="grid grid-cols-12 gap-4 md:gap-6 h-full">
+                    <div class="col-span-12 md:col-span-9 bg-lime-50 rounded-2xl p-2 md:p-4 h-full">
+                        <div class="shape-canvas-container flex items-center justify-center">
+                            <canvas id="numberLineCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 bg-gray-50 rounded-2xl p-4 md:p-6 flex flex-col">
+                        <h4 class="text-lg font-bold text-gray-800 mb-2">數線設定</h4>
+                        <div class="space-y-4">
+                            <div class="grid grid-cols-2 gap-2">
+                                <div><label for="nl-min" class="text-sm">最小值</label><input type="number" id="nl-min" value="-5" class="w-full mt-1 p-1 border rounded"></div>
+                                <div><label for="nl-max" class="text-sm">最大值</label><input type="number" id="nl-max" value="5" class="w-full mt-1 p-1 border rounded"></div>
+                            </div>
+                            <div><label for="nl-step" class="text-sm">間距</label><input type="number" id="nl-step" value="1" min="0.1" step="0.1" class="w-full mt-1 p-1 border rounded"></div>
+                            <div>
+                                <label for="nl-points-input" class="block text-sm font-medium text-gray-700">標示點</label>
+                                <textarea id="nl-points-input" rows="4" class="mt-1 w-full p-2 border rounded" placeholder="例如：&#10;A=2.5&#10;B=-3"></textarea>
+                            </div>
+                             <button id="plot-nl-btn" class="w-full mt-4 px-6 py-3 bg-lime-500 text-white font-bold rounded-lg hover:bg-lime-600">繪製</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 分數圖示視圖 -->
+            <div id="fraction-view" class="view-container">
+                <div class="grid grid-cols-12 gap-4 md:gap-6 h-full">
+                    <div class="col-span-12 md:col-span-9 bg-purple-50 rounded-2xl p-2 md:p-4 h-full">
+                        <div class="shape-canvas-container flex items-center justify-center">
+                            <canvas id="fractionCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 bg-gray-50 rounded-2xl p-4 md:p-6 flex flex-col">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">分數設定</h4>
+                        <div class="space-y-4">
+                            <div><label for="numerator-input" class="text-sm">分子</label><input type="number" id="numerator-input" value="3" min="0" class="w-full mt-1 p-1 border rounded"></div>
+                            <div><label for="denominator-input" class="text-sm">分母</label><input type="number" id="denominator-input" value="8" min="1" class="w-full mt-1 p-1 border rounded"></div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700">樣式</label>
+                                <div class="mt-2 grid grid-cols-3 gap-2">
+                                    <button id="fraction-bar-btn" class="fraction-style-btn flex-1 px-3 py-2 bg-violet-500 text-white rounded-lg text-sm">長條</button>
+                                    <button id="fraction-circle-btn" class="fraction-style-btn flex-1 px-3 py-2 bg-white text-gray-700 rounded-lg text-sm">圓形</button>
+                                    <button id="fraction-grid-btn" class="fraction-style-btn flex-1 px-3 py-2 bg-white text-gray-700 rounded-lg text-sm">網格</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 其他工具視圖 -->
+             <div id="tools-view" class="view-container">
+                <div class="grid grid-cols-12 gap-4 md:gap-6 h-full">
+                    <div class="col-span-12 md:col-span-9 bg-yellow-50 rounded-2xl p-2 md:p-4 h-full">
+                        <div class="shape-canvas-container flex items-center justify-center">
+                            <canvas id="clockCanvas"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 md:col-span-3 bg-gray-50 rounded-2xl p-4 md:p-6 flex flex-col">
+                        <h4 class="text-lg font-bold text-gray-800 mb-4">時鐘設定</h4>
+                        <div class="space-y-4">
+                            <div><label for="hour-input" class="text-sm">時 (1-12)</label><input type="number" id="hour-input" value="10" min="1" max="12" class="w-full mt-1 p-1 border rounded"></div>
+                            <div><label for="minute-input" class="text-sm">分 (0-59)</label><input type="number" id="minute-input" value="10" min="0" max="59" class="w-full mt-1 p-1 border rounded"></div>
+                            <button id="draw-clock-btn" class="w-full mt-4 px-6 py-3 bg-orange-500 text-white font-bold rounded-lg hover:bg-orange-600">設定時間</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="mt-6">
+        <a href="https://www.facebook.com/FunFun.AI.Teacher/" target="_blank" rel="noopener noreferrer" class="text-sm text-gray-500 hover:text-gray-700 transition-colors bg-white/70 px-4 py-2 rounded-lg shadow">
+            Created by 方方老師
+        </a>
+    </footer>
+
+<script>
+// --- Global View Switching Logic ---
+const viewButtons = document.querySelectorAll('.sidebar-btn');
+const views = document.querySelectorAll('.view-container');
+let myChartInstance = null; // Declare globally
+
+viewButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const targetViewId = btn.dataset.view;
+        views.forEach(view => view.classList.toggle('active', view.id === targetViewId));
+        viewButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        setTimeout(() => {
+            if (targetViewId === 'chart-view' && myChartInstance) myChartInstance.resize();
+            if (targetViewId === 'shape-view') drawShape();
+            if (targetViewId === 'solid-view') drawSolidShape();
+            if (targetViewId === 'coordinate-view') drawCoordinatePlane();
+            if (targetViewId === 'number-line-view') drawNumberLine();
+            if (targetViewId === 'fraction-view') drawFraction();
+            if (targetViewId === 'tools-view') drawClock();
+        }, 0);
+    });
+});
+
+// --- Chart Generator Code ---
+const ctx = document.getElementById('myChart').getContext('2d');
+const canvasContainer = document.getElementById('canvas-container');
+const tableContainer = document.getElementById('table-container');
+const dataInputsContainer = document.getElementById('data-inputs-container');
+const titleInput = document.getElementById('title-input');
+const yAxisLabelInput = document.getElementById('y-axis-label-input');
+const chartTitleDisplay = document.getElementById('chart-title-display');
+let chartData = [{ label: '黃大恩', value: 9 }, { label: '金小平', value: 13 }, { label: '謝宜宣', value: 11 }];
+const chartColors = ['#FF8A80', '#8C9EFF', '#80D8FF', '#A7FFEB', '#CCFF90', '#FFFF8D', '#FFD180', '#FF9E80', '#CF9EFF', '#FF80AB'];
+let currentChartType = 'bar';
+
+function renderInputRows() { dataInputsContainer.innerHTML = ''; chartData.forEach((data, index) => { const row = document.createElement('div'); row.className = 'grid grid-cols-12 gap-2 data-input-row items-center'; row.innerHTML = `<div class="col-span-5"><input type="text" placeholder="項目名稱" value="${data.label}" oninput="updateData(${index}, 'label', this.value)" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm"></div><div class="col-span-5"><input type="number" placeholder="數值" value="${data.value}" oninput="updateData(${index}, 'value', this.value)" class="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm"></div><div class="col-span-2"><button onclick="removeRow(${index})" class="w-full px-2 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">移除</button></div>`; dataInputsContainer.appendChild(row); }); }
+function updateData(index, key, value) { chartData[index][key] = (key === 'value') ? (value === '' ? 0 : parseFloat(value)) : value; }
+function addRow() { chartData.push({ label: '', value: 0 }); renderInputRows(); }
+function removeRow(index) { chartData.splice(index, 1); renderInputRows(); generateChart(); }
+function changeChartType(type) { document.querySelectorAll('.chart-type-btn').forEach(btn => btn.classList.remove('active')); const activeButton = Array.from(document.querySelectorAll('.chart-type-btn')).find(btn => btn.getAttribute('onclick').includes(`'${type}'`)); if (activeButton) activeButton.classList.add('active'); currentChartType = type; generateChart(); }
+function generateChart() { if(!ctx) return; chartTitleDisplay.textContent = titleInput.value || '圖表標題'; if (currentChartType === 'table') { canvasContainer.classList.add('hidden'); tableContainer.classList.remove('hidden'); generateTable(); return; } canvasContainer.classList.remove('hidden'); tableContainer.classList.add('hidden'); if (myChartInstance) myChartInstance.destroy(); const config = { type: currentChartType, data: { labels: chartData.map(d => d.label), datasets: [{ label: yAxisLabelInput.value || '數值', data: chartData.map(d => d.value), backgroundColor: chartColors, borderColor: currentChartType === 'line' ? '#F87171' : chartColors, borderWidth: currentChartType === 'line' ? 3 : 1, fill: currentChartType !== 'line', tension: 0.1 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: currentChartType === 'pie' || currentChartType === 'doughnut' }, title: { display: false } }, scales: { y: { beginAtZero: true, display: ['bar', 'line'].includes(currentChartType), title: { display: true, text: yAxisLabelInput.value } }, x: { display: ['bar', 'line'].includes(currentChartType) } } } }; myChartInstance = new Chart(ctx, config); }
+function generateTable() { const labels = chartData.map(d => d.label); const values = chartData.map(d => d.value); let tableHTML = `<table class="w-full text-sm text-left text-gray-500 rounded-lg overflow-hidden"><thead class="text-xs text-gray-700 uppercase bg-gray-200"><tr><th scope="col" class="px-6 py-3">項目</th><th scope="col" class="px-6 py-3">數量</th></tr></thead><tbody>`; labels.forEach((label, i) => { tableHTML += `<tr class="bg-white border-b hover:bg-gray-50"><td class="px-6 py-4 font-medium text-gray-900">${label || '-'}</td><td class="px-6 py-4">${values[i] ?? '-'}</td></tr>`; }); tableHTML += `</tbody></table>`; tableContainer.innerHTML = tableHTML; }
+
+// --- Shape Drawer Code ---
+const shapeCanvas = document.getElementById('shapeCanvas');
+const shapeCtx = shapeCanvas.getContext('2d');
+const shapeTypeSelect = document.getElementById('shape-type-select');
+const shapeInputsContainer = document.getElementById('shape-inputs-container');
+const shapeInfoBox = document.getElementById('shape-info-box');
+const drawShapeBtn = document.getElementById('draw-shape-btn');
+const customShapeControls = document.getElementById('custom-shape-controls');
+let customPoints = [];
+
+function updateShapeInfoBox(lines) { if (!shapeInfoBox) return; if (lines && lines.length > 0) { shapeInfoBox.innerHTML = `<h4 class="text-sm font-bold text-gray-900 mb-2">圖形資訊</h4>` + lines.map(line => `<p class="text-sm text-gray-800 font-medium">${line}</p>`).join(''); shapeInfoBox.classList.remove('hidden'); } else { shapeInfoBox.innerHTML = ''; shapeInfoBox.classList.add('hidden'); } }
+function handleCanvasClick(event) { const rect = shapeCanvas.getBoundingClientRect(); const x = event.clientX - rect.left; const y = event.clientY - rect.top; customPoints.push({ x, y }); if (shapeTypeSelect.value === 'symmetry') { drawSymmetryShape(false); } else { drawCustomShape(false); } }
+function setupCustomDrawMode(enable, isSymmetry = false) { if (enable) { shapeCanvas.classList.add('drawing-mode'); customPoints = []; shapeCtx.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height); if (isSymmetry) { updateShapeInfoBox(['在對稱線一側點擊以建立頂點']); drawSymmetryShape(false); } else { updateShapeInfoBox(['點擊畫布以建立頂點']); } shapeCanvas.addEventListener('click', handleCanvasClick); } else { shapeCanvas.classList.remove('drawing-mode'); shapeCanvas.removeEventListener('click', handleCanvasClick); } }
+function updateShapeInputs() { const shapeType = shapeTypeSelect.value; let inputsHTML = ''; setupCustomDrawMode(false); customShapeControls.classList.add('hidden'); drawShapeBtn.classList.remove('hidden'); shapeInputsContainer.classList.remove('hidden'); switch (shapeType) { case 'custom': shapeInputsContainer.classList.add('hidden'); drawShapeBtn.classList.add('hidden'); customShapeControls.classList.remove('hidden'); setupCustomDrawMode(true); break; case 'symmetry': shapeInputsContainer.classList.add('hidden'); drawShapeBtn.classList.add('hidden'); customShapeControls.classList.remove('hidden'); setupCustomDrawMode(true, true); break; case 'triangle': inputsHTML = `<div><label for="sideA" class="block text-sm font-medium text-gray-700">邊長 A (px)</label><input type="number" id="sideA" value="120" min="10" class="mt-1 w-full p-2 border rounded"></div><div><label for="sideB" class="block text-sm font-medium text-gray-700">邊長 B (px)</label><input type="number" id="sideB" value="100" min="10" class="mt-1 w-full p-2 border rounded"></div><div><label for="angleC" class="block text-sm font-medium text-gray-700">夾角 C (°)</label><input type="number" id="angleC" value="60" min="1" max="179" class="mt-1 w-full p-2 border rounded"></div>`; break; case 'rhombus': inputsHTML = `<div><label for="rhombus-side" class="block text-sm font-medium text-gray-700">邊長 (px)</label><input type="number" id="rhombus-side" value="100" min="10" class="mt-1 w-full p-2 border rounded"></div><div><label for="rhombus-angle" class="block text-sm font-medium text-gray-700">一個內角 (°)</label><input type="number" id="rhombus-angle" value="70" min="1" max="179" class="mt-1 w-full p-2 border rounded"></div>`; break; case 'trapezoid': inputsHTML = `<div><label for="top-base" class="block text-sm font-medium text-gray-700">上底 (px)</label><input type="number" id="top-base" value="80" min="10" class="mt-1 w-full p-2 border rounded"></div><div><label for="bottom-base" class="block text-sm font-medium text-gray-700">下底 (px)</label><input type="number" id="bottom-base" value="150" min="10" class="mt-1 w-full p-2 border rounded"></div><div><label for="trap-height" class="block text-sm font-medium text-gray-700">高 (px)</label><input type="number" id="trap-height" value="70" min="10" class="mt-1 w-full p-2 border rounded"></div>`; break; case 'polygon': default: inputsHTML = `<div><label for="sides-input" class="block text-sm font-medium text-gray-700">邊數 (3-12)</label><input type="number" id="sides-input" value="5" min="3" max="12" class="mt-1 w-full p-2 border rounded"></div><div><label for="length-input" class="block text-sm font-medium text-gray-700">邊長 (px)</label><input type="number" id="length-input" value="100" min="10" class="mt-1 w-full p-2 border rounded"></div>`; break; } shapeInputsContainer.innerHTML = inputsHTML; }
+function drawShape() { const parent = shapeCanvas.parentElement; if (!parent || parent.clientWidth === 0) return; shapeCanvas.width = parent.clientWidth; shapeCanvas.height = parent.clientHeight; const shapeType = shapeTypeSelect.value; shapeCtx.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height); if (shapeType === 'custom') { drawCustomShape(false); return; } if (shapeType === 'symmetry') { drawSymmetryShape(false); return; } switch (shapeType) { case 'triangle': drawTriangle(); break; case 'rhombus': drawRhombus(); break; case 'trapezoid': drawTrapezoid(); break; case 'polygon': default: drawRegularPolygon(); break; } }
+function applyTransformsAndDraw(points, strokeStyle, shouldClose = true) { if (points.length === 0) return; const minX = Math.min(...points.map(p => p.x)); const maxX = Math.max(...points.map(p => p.x)); const minY = Math.min(...points.map(p => p.y)); const maxY = Math.max(...points.map(p => p.y)); const shapeWidth = maxX - minX; const shapeHeight = maxY - minY; if(shapeWidth === 0 || shapeHeight === 0) return; const shapeCenterX = minX + shapeWidth / 2; const shapeCenterY = minY + shapeHeight / 2; const scale = Math.min(shapeCanvas.width * 0.9 / shapeWidth, shapeCanvas.height * 0.9 / shapeHeight); shapeCtx.save(); shapeCtx.translate(shapeCanvas.width / 2, shapeCanvas.height / 2); shapeCtx.scale(scale, scale); shapeCtx.translate(-shapeCenterX, -shapeCenterY); shapeCtx.beginPath(); shapeCtx.moveTo(points[0].x, points[0].y); for (let i = 1; i < points.length; i++) { shapeCtx.lineTo(points[i].x, points[i].y); } if (shouldClose) { shapeCtx.closePath(); } shapeCtx.strokeStyle = strokeStyle; shapeCtx.lineWidth = 3 / scale; shapeCtx.stroke(); shapeCtx.restore(); }
+function drawCustomShape(isFinished) { shapeCtx.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height); if (customPoints.length === 0) return; shapeCtx.beginPath(); shapeCtx.moveTo(customPoints[0].x, customPoints[0].y); for(let i = 1; i < customPoints.length; i++) { shapeCtx.lineTo(customPoints[i].x, customPoints[i].y); } if (isFinished) { shapeCtx.closePath(); } shapeCtx.strokeStyle = '#DB2777'; shapeCtx.lineWidth = 2; shapeCtx.stroke(); customPoints.forEach(p => { shapeCtx.beginPath(); shapeCtx.arc(p.x, p.y, 4, 0, 2 * Math.PI); shapeCtx.fillStyle = '#DB2777'; shapeCtx.fill(); }); }
+function drawSymmetryShape(isFinished) { shapeCtx.clearRect(0, 0, shapeCanvas.width, shapeCanvas.height); const centerX = shapeCanvas.width / 2; shapeCtx.beginPath(); shapeCtx.setLineDash([5, 5]); shapeCtx.moveTo(centerX, 0); shapeCtx.lineTo(centerX, shapeCanvas.height); shapeCtx.strokeStyle = '#9CA3AF'; shapeCtx.lineWidth = 1; shapeCtx.stroke(); shapeCtx.setLineDash([]); if (customPoints.length === 0) return; const mirroredPoints = customPoints.map(p => ({ x: shapeCanvas.width - p.x, y: p.y })); const allPoints = isFinished ? [...customPoints, ...mirroredPoints.reverse()] : customPoints; shapeCtx.beginPath(); shapeCtx.moveTo(allPoints[0].x, allPoints[0].y); for(let i = 1; i < allPoints.length; i++) { shapeCtx.lineTo(allPoints[i].x, allPoints[i].y); } if (isFinished) { shapeCtx.closePath(); } shapeCtx.strokeStyle = '#10B981'; shapeCtx.lineWidth = 2; shapeCtx.stroke(); if (!isFinished && customPoints.length > 0) { shapeCtx.beginPath(); shapeCtx.moveTo(mirroredPoints[0].x, mirroredPoints[0].y); for(let i = 1; i < mirroredPoints.length; i++) { shapeCtx.lineTo(mirroredPoints[i].x, mirroredPoints[i].y); } shapeCtx.stroke(); } }
+function drawRegularPolygon() { const sides = parseInt(document.getElementById('sides-input').value); const sideLength = parseInt(document.getElementById('length-input').value); if (sides < 3 || !sideLength) return; const radius = sideLength / (2 * Math.sin(Math.PI / sides)); const points = []; for (let i = 0; i < sides; i++) { const angle = (i * 2 * Math.PI / sides) - (Math.PI / 2); points.push({ x: radius * Math.cos(angle), y: radius * Math.sin(angle) }); } applyTransformsAndDraw(points, '#4F46E5'); const interiorAngle = ((sides - 2) * 180 / sides).toFixed(1); updateShapeInfoBox([ `正${sides}邊形`, `邊長: ${sideLength}px`, `內角: ${interiorAngle}°` ]); }
+function drawTriangle() { const a = parseFloat(document.getElementById('sideA').value); const b = parseFloat(document.getElementById('sideB').value); const angleC_deg = parseFloat(document.getElementById('angleC').value); if (!a || !b || !angleC_deg) return; const angleC_rad = angleC_deg * Math.PI / 180; const c = Math.sqrt(a*a + b*b - 2*a*b*Math.cos(angleC_rad)); const cosA = (b*b + c*c - a*a) / (2*b*c); const angleA_rad = Math.acos(Math.max(-1, Math.min(1, cosA))); const angleB_rad = Math.PI - angleA_rad - angleC_rad; const angleA_deg = angleA_rad * 180 / Math.PI; const angleB_deg = angleB_rad * 180 / Math.PI; const points = [ {x: 0, y: 0}, {x: c, y: 0}, {x: b * Math.cos(angleA_rad), y: -b * Math.sin(angleA_rad)} ]; applyTransformsAndDraw(points, '#059669'); let type = '銳角三角形'; if (Math.abs(angleA_deg - 90) < 0.1 || Math.abs(angleB_deg - 90) < 0.1 || Math.abs(angleC_deg - 90) < 0.1) { type = '直角三角形'; } else if (angleA_deg > 90 || angleB_deg > 90 || angleC_deg > 90) { type = '鈍角三角形'; } updateShapeInfoBox([ type, `邊長: ${a.toFixed(0)}, ${b.toFixed(0)}, ${c.toFixed(0)}`, `角度: ${angleA_deg.toFixed(1)}°, ${angleB_deg.toFixed(1)}°, ${angleC_deg.toFixed(1)}°` ]); }
+function drawRhombus() { const side = parseFloat(document.getElementById('rhombus-side').value); const angle1_deg = parseFloat(document.getElementById('rhombus-angle').value); if (!side || !angle1_deg) return; const angle1_rad = angle1_deg * Math.PI / 180; const angle2_deg = 180 - angle1_deg; const h = side * Math.sin(angle1_rad); const x_offset = side * Math.cos(angle1_rad); const points = [ {x: 0, y: h}, {x: side, y: h}, {x: side + x_offset, y: 0}, {x: x_offset, y: 0} ]; applyTransformsAndDraw(points, '#D97706'); updateShapeInfoBox([ '菱形', `邊長: ${side}`, `內角: ${angle1_deg.toFixed(1)}°, ${angle2_deg.toFixed(1)}°` ]); }
+function drawTrapezoid() { const topBase = parseFloat(document.getElementById('top-base').value); const bottomBase = parseFloat(document.getElementById('bottom-base').value); const height = parseFloat(document.getElementById('trap-height').value); if (!topBase || !bottomBase || !height) return; const points = [ {x: -bottomBase/2, y: height/2}, {x: bottomBase/2, y: height/2}, {x: topBase/2, y: -height/2}, {x: -topBase/2, y: -height/2} ]; applyTransformsAndDraw(points, '#7C3AED'); updateShapeInfoBox([ '梯形', `上底: ${topBase}, 下底: ${bottomBase}, 高: ${height}` ]); }
+
+// --- Solid Shape Code ---
+const solidCanvas = document.getElementById('solidCanvas');
+const solidCtx = solidCanvas.getContext('2d');
+const solidTypeSelect = document.getElementById('solid-type-select');
+const solidInputsContainer = document.getElementById('solid-inputs-container');
+
+function updateSolidInputs() {
+    const type = solidTypeSelect.value;
+    let html = '';
+    switch (type) {
+        case 'cylinder':
+        case 'cone':
+            html = `<div><label for="solid-radius" class="text-sm">半徑</label><input type="number" id="solid-radius" value="50" min="10" class="w-full mt-1 p-1 border rounded"></div>
+                    <div><label for="solid-height" class="text-sm">高</label><input type="number" id="solid-height" value="100" min="10" class="w-full mt-1 p-1 border rounded"></div>`;
+            break;
+        case 'pyramid':
+             html = `<div><label for="solid-base" class="text-sm">底邊長</label><input type="number" id="solid-base" value="80" min="10" class="w-full mt-1 p-1 border rounded"></div>
+                    <div><label for="solid-height" class="text-sm">高</label><input type="number" id="solid-height" value="100" min="10" class="w-full mt-1 p-1 border rounded"></div>`;
+            break;
+        case 'sphere':
+             html = `<div><label for="solid-radius" class="text-sm">半徑</label><input type="number" id="solid-radius" value="80" min="10" class="w-full mt-1 p-1 border rounded"></div>`;
+            break;
+        case 'cuboid':
+        default:
+            html = `<div><label for="solid-length" class="text-sm">長</label><input type="number" id="solid-length" value="100" min="10" class="w-full mt-1 p-1 border rounded"></div>
+                    <div><label for="solid-width" class="text-sm">寬</label><input type="number" id="solid-width" value="80" min="10" class="w-full mt-1 p-1 border rounded"></div>
+                    <div><label for="solid-height" class="text-sm">高</label><input type="number" id="solid-height" value="60" min="10" class="w-full mt-1 p-1 border rounded"></div>`;
+            break;
+    }
+    solidInputsContainer.innerHTML = html;
+}
+
+function drawSolidShape() {
+    const parent = solidCanvas.parentElement;
+    if (!parent || parent.clientWidth === 0) return;
+    solidCanvas.width = parent.clientWidth;
+    solidCanvas.height = parent.clientHeight;
+    solidCtx.clearRect(0, 0, solidCanvas.width, solidCanvas.height);
+    
+    const type = solidTypeSelect.value;
+    switch(type) {
+        case 'cylinder': drawCylinder(); break;
+        case 'cone': drawCone(); break;
+        case 'pyramid': drawPyramid(); break;
+        case 'sphere': drawSphere(); break;
+        case 'cuboid':
+        default: drawCuboid(); break;
+    }
+}
+
+function drawEdge(ctx, p, i, j, dashed = false) {
+    ctx.beginPath();
+    if(dashed) ctx.setLineDash([5, 5]);
+    ctx.moveTo(p[i].x, p[i].y);
+    ctx.lineTo(p[j].x, p[j].y);
+    ctx.stroke();
+    if(dashed) ctx.setLineDash([]);
+}
+
+function drawCuboid() {
+    const l = parseFloat(document.getElementById('solid-length').value);
+    const w = parseFloat(document.getElementById('solid-width').value);
+    const h = parseFloat(document.getElementById('solid-height').value);
+    if (isNaN(l) || isNaN(w) || isNaN(h)) return;
+
+    const scale = Math.min(solidCanvas.width / (l + w), solidCanvas.height / (h + w)) * 0.7;
+    const l_s = l * scale, w_s = w * scale, h_s = h * scale;
+    const cx = solidCanvas.width / 2, cy = solidCanvas.height / 2;
+    const angle = Math.PI / 6;
+
+    const points = [
+        { x: -l_s / 2, y: -w_s / 2, z: -h_s / 2 }, { x: l_s / 2, y: -w_s / 2, z: -h_s / 2 },
+        { x: l_s / 2, y: w_s / 2, z: -h_s / 2 }, { x: -l_s / 2, y: w_s / 2, z: -h_s / 2 },
+        { x: -l_s / 2, y: -w_s / 2, z: h_s / 2 }, { x: l_s / 2, y: -w_s / 2, z: h_s / 2 },
+        { x: l_s / 2, y: w_s / 2, z: h_s / 2 }, { x: -l_s / 2, y: w_s / 2, z: h_s / 2 }
+    ];
+
+    const projected = points.map(p => ({
+        x: cx + (p.x - p.y) * Math.cos(angle),
+        y: cy + (-p.z + (p.x + p.y) * Math.sin(angle))
+    }));
+
+    solidCtx.lineWidth = 2;
+    solidCtx.strokeStyle = '#0891B2';
+
+    drawEdge(solidCtx, projected, 0, 1, true); drawEdge(solidCtx, projected, 1, 2); drawEdge(solidCtx, projected, 2, 3); drawEdge(solidCtx, projected, 3, 0, true);
+    drawEdge(solidCtx, projected, 4, 5); drawEdge(solidCtx, projected, 5, 6); drawEdge(solidCtx, projected, 6, 7); drawEdge(solidCtx, projected, 7, 4);
+    drawEdge(solidCtx, projected, 0, 4, true); drawEdge(solidCtx, projected, 1, 5); drawEdge(solidCtx, projected, 2, 6); drawEdge(solidCtx, projected, 3, 7);
+}
+
+function drawCylinder() {
+    const r = parseFloat(document.getElementById('solid-radius').value);
+    const h = parseFloat(document.getElementById('solid-height').value);
+    if (isNaN(r) || isNaN(h)) return;
+
+    const scale = Math.min(solidCanvas.width / (r * 2), solidCanvas.height / h) * 0.7;
+    const r_s = r * scale, h_s = h * scale;
+    const cx = solidCanvas.width / 2, cy = solidCanvas.height / 2;
+    const ellipseRatio = 0.4;
+
+    solidCtx.lineWidth = 2;
+    solidCtx.strokeStyle = '#0891B2';
+
+    solidCtx.beginPath();
+    solidCtx.ellipse(cx, cy - h_s / 2, r_s, r_s * ellipseRatio, 0, 0, 2 * Math.PI);
+    solidCtx.stroke();
+    solidCtx.beginPath();
+    solidCtx.setLineDash([5, 5]);
+    solidCtx.ellipse(cx, cy + h_s / 2, r_s, r_s * ellipseRatio, 0, Math.PI, 2 * Math.PI);
+    solidCtx.stroke();
+    solidCtx.beginPath();
+    solidCtx.setLineDash([]);
+    solidCtx.ellipse(cx, cy + h_s / 2, r_s, r_s * ellipseRatio, 0, 0, Math.PI);
+    solidCtx.stroke();
+    
+    solidCtx.beginPath(); solidCtx.moveTo(cx - r_s, cy - h_s/2); solidCtx.lineTo(cx - r_s, cy + h_s/2); solidCtx.stroke();
+    solidCtx.beginPath(); solidCtx.moveTo(cx + r_s, cy - h_s/2); solidCtx.lineTo(cx + r_s, cy + h_s/2); solidCtx.stroke();
+}
+
+function drawCone() {
+    const r = parseFloat(document.getElementById('solid-radius').value);
+    const h = parseFloat(document.getElementById('solid-height').value);
+    if (isNaN(r) || isNaN(h)) return;
+
+    const scale = Math.min(solidCanvas.width / (r * 2), solidCanvas.height / h) * 0.7;
+    const r_s = r * scale, h_s = h * scale;
+    const cx = solidCanvas.width / 2, cy = solidCanvas.height / 2;
+    const apex = {x: cx, y: cy - h_s/2};
+    const ellipseY = cy + h_s/2;
+    const ellipseRatio = 0.4;
+
+    solidCtx.lineWidth = 2;
+    solidCtx.strokeStyle = '#0891B2';
+
+    solidCtx.beginPath();
+    solidCtx.setLineDash([5, 5]);
+    solidCtx.ellipse(cx, ellipseY, r_s, r_s * ellipseRatio, 0, Math.PI, 2 * Math.PI);
+    solidCtx.stroke();
+    solidCtx.beginPath();
+    solidCtx.setLineDash([]);
+    solidCtx.ellipse(cx, ellipseY, r_s, r_s * ellipseRatio, 0, 0, Math.PI);
+    solidCtx.stroke();
+
+    solidCtx.beginPath(); solidCtx.moveTo(apex.x, apex.y); solidCtx.lineTo(cx - r_s, ellipseY); solidCtx.stroke();
+    solidCtx.beginPath(); solidCtx.moveTo(apex.x, apex.y); solidCtx.lineTo(cx + r_s, ellipseY); solidCtx.stroke();
+}
+
+function drawPyramid() {
+    const b = parseFloat(document.getElementById('solid-base').value);
+    const h = parseFloat(document.getElementById('solid-height').value);
+    if (isNaN(b) || isNaN(h)) return;
+
+    const scale = Math.min(solidCanvas.width / b, solidCanvas.height / h) * 0.45; // Further reduced scale
+    const b_s = b * scale, h_s = h * scale;
+    const cx = solidCanvas.width / 2, cy = solidCanvas.height / 2;
+    const angle = Math.PI / 6;
+
+    const points = [
+        { x: -b_s/2, y: -b_s/2, z: -h_s/2}, { x: b_s/2, y: -b_s/2, z: -h_s/2},
+        { x: b_s/2, y: b_s/2, z: -h_s/2}, { x: -b_s/2, y: b_s/2, z: -h_s/2},
+        { x: 0, y: 0, z: h_s/2}
+    ];
+
+     const projected = points.map(p => ({
+        x: cx + (p.x - p.y) * Math.cos(angle),
+        y: cy + (-p.z + (p.x + p.y) * Math.sin(angle))
+    }));
+    
+    solidCtx.lineWidth = 2;
+    solidCtx.strokeStyle = '#0891B2';
+
+    drawEdge(solidCtx, projected, 0, 1, true);
+    drawEdge(solidCtx, projected, 1, 2);
+    drawEdge(solidCtx, projected, 2, 3);
+    drawEdge(solidCtx, projected, 3, 0, true);
+    drawEdge(solidCtx, projected, 0, 4, true);
+    drawEdge(solidCtx, projected, 1, 4);
+    drawEdge(solidCtx, projected, 2, 4);
+    drawEdge(solidCtx, projected, 3, 4);
+}
+
+function drawSphere() {
+    const r = parseFloat(document.getElementById('solid-radius').value);
+    if (isNaN(r)) return;
+
+    const scale = Math.min(solidCanvas.width / (r * 2), solidCanvas.height / (r * 2)) * 0.7;
+    const r_s = r * scale;
+    const cx = solidCanvas.width / 2, cy = solidCanvas.height / 2;
+    const ellipseRatio = 0.25;
+    
+    solidCtx.lineWidth = 2;
+    solidCtx.strokeStyle = '#0891B2';
+
+    solidCtx.beginPath();
+    solidCtx.arc(cx, cy, r_s, 0, 2 * Math.PI);
+    solidCtx.stroke();
+    
+    solidCtx.beginPath();
+    solidCtx.ellipse(cx, cy, r_s, r_s * ellipseRatio, 0, 0, 2 * Math.PI);
+    solidCtx.stroke();
+
+    solidCtx.beginPath();
+    solidCtx.setLineDash([5, 5]);
+    solidCtx.ellipse(cx, cy, r_s * ellipseRatio, r_s, 0, Math.PI/2, 3*Math.PI/2);
+    solidCtx.stroke();
+    solidCtx.beginPath();
+    solidCtx.setLineDash([]);
+    solidCtx.ellipse(cx, cy, r_s * ellipseRatio, r_s, 0, -Math.PI/2, Math.PI/2);
+    solidCtx.stroke();
+}
+
+
+// --- Coordinate Plane Code ---
+const coordCanvas = document.getElementById('coordinateCanvas');
+const coordCtx = coordCanvas.getContext('2d');
+const xMinInput = document.getElementById('x-min');
+const xMaxInput = document.getElementById('x-max');
+const yMinInput = document.getElementById('y-min');
+const yMaxInput = document.getElementById('y-max');
+const pointsInput = document.getElementById('points-input');
+const connectPointsCheck = document.getElementById('connect-points-check');
+const plotBtn = document.getElementById('plot-points-btn');
+
+function drawCoordinatePlane() {
+    const parent = coordCanvas.parentElement;
+    if (!parent || parent.clientWidth === 0) return;
+    coordCanvas.width = parent.clientWidth;
+    coordCanvas.height = parent.clientHeight;
+
+    const xMin = parseFloat(xMinInput.value);
+    const xMax = parseFloat(xMaxInput.value);
+    const yMin = parseFloat(yMinInput.value);
+    const yMax = parseFloat(yMaxInput.value);
+
+    const rangeX = xMax - xMin;
+    const rangeY = yMax - yMin;
+    
+    if(rangeX === 0 || rangeY === 0) return;
+
+    const mapToCanvas = (x, y) => {
+        const canvasX = (x - xMin) / rangeX * coordCanvas.width;
+        const canvasY = (yMax - y) / rangeY * coordCanvas.height;
+        return { x: canvasX, y: canvasY };
+    };
+
+    coordCtx.clearRect(0, 0, coordCanvas.width, coordCanvas.height);
+    coordCtx.strokeStyle = '#D1D5DB';
+    coordCtx.lineWidth = 1;
+
+    for (let i = Math.ceil(xMin); i <= Math.floor(xMax); i++) {
+        const { x } = mapToCanvas(i, yMin);
+        coordCtx.beginPath();
+        coordCtx.moveTo(x, 0);
+        coordCtx.lineTo(x, coordCanvas.height);
+        coordCtx.stroke();
+    }
+    for (let i = Math.ceil(yMin); i <= Math.floor(yMax); i++) {
+        const { y } = mapToCanvas(xMin, i);
+        coordCtx.beginPath();
+        coordCtx.moveTo(0, y);
+        coordCtx.lineTo(coordCanvas.width, y);
+        coordCtx.stroke();
+    }
+
+    coordCtx.strokeStyle = '#111827';
+    coordCtx.lineWidth = 2;
+    const origin = mapToCanvas(0, 0);
+    coordCtx.beginPath();
+    coordCtx.moveTo(origin.x, 0);
+    coordCtx.lineTo(origin.x, coordCanvas.height);
+    coordCtx.stroke();
+    coordCtx.beginPath();
+    coordCtx.moveTo(0, origin.y);
+    coordCtx.lineTo(coordCanvas.width, origin.y);
+    coordCtx.stroke();
+    
+    coordCtx.fillStyle = '#374151';
+    coordCtx.font = '12px Noto Sans TC';
+    coordCtx.textAlign = 'center';
+    coordCtx.textBaseline = 'top';
+    for (let i = Math.ceil(xMin); i <= Math.floor(xMax); i++) {
+        if (i !== 0) {
+            const { x } = mapToCanvas(i, 0);
+            coordCtx.fillText(i, x, origin.y + 5);
+        }
+    }
+    coordCtx.textAlign = 'right';
+    coordCtx.textBaseline = 'middle';
+     for (let i = Math.ceil(yMin); i <= Math.floor(yMax); i++) {
+        if (i !== 0) {
+            const { y } = mapToCanvas(0, i);
+            coordCtx.fillText(i, origin.x - 5, y);
+        }
+    }
+    
+    return mapToCanvas;
+}
+
+function plotPoints() {
+    const mapToCanvas = drawCoordinatePlane();
+    if (!mapToCanvas) return;
+    const text = pointsInput.value;
+    const regex = /([A-Za-z]+)\s*\(\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*\)/g;
+    let match;
+    const points = [];
+    while ((match = regex.exec(text)) !== null) {
+        points.push({
+            label: match[1],
+            x: parseFloat(match[2]),
+            y: parseFloat(match[3])
+        });
+    }
+
+    points.forEach(p => {
+        const { x, y } = mapToCanvas(p.x, p.y);
+        coordCtx.beginPath();
+        coordCtx.arc(x, y, 5, 0, 2 * Math.PI);
+        coordCtx.fillStyle = '#EF4444';
+        coordCtx.fill();
+        coordCtx.fillStyle = '#1F2937';
+        coordCtx.font = 'bold 14px Noto Sans TC';
+        coordCtx.fillText(`${p.label}(${p.x},${p.y})`, x + 8, y - 8);
+    });
+    
+    if (connectPointsCheck.checked && points.length > 1) {
+        coordCtx.beginPath();
+        const firstPoint = mapToCanvas(points[0].x, points[0].y);
+        coordCtx.moveTo(firstPoint.x, firstPoint.y);
+        for (let i = 1; i < points.length; i++) {
+            const { x, y } = mapToCanvas(points[i].x, points[i].y);
+            coordCtx.lineTo(x, y);
+        }
+        coordCtx.strokeStyle = '#1D4ED8';
+        coordCtx.lineWidth = 2;
+        coordCtx.stroke();
+    }
+}
+
+// --- Number Line Code ---
+const nlCanvas = document.getElementById('numberLineCanvas');
+const nlCtx = nlCanvas.getContext('2d');
+
+function drawNumberLine() {
+    const parent = nlCanvas.parentElement;
+    if (!parent || parent.clientWidth === 0) return;
+    nlCanvas.width = parent.clientWidth;
+    nlCanvas.height = parent.clientHeight;
+    
+    const min = parseFloat(document.getElementById('nl-min').value);
+    const max = parseFloat(document.getElementById('nl-max').value);
+    const step = parseFloat(document.getElementById('nl-step').value);
+    const pointsText = document.getElementById('nl-points-input').value;
+
+    if (isNaN(min) || isNaN(max) || isNaN(step) || max <= min || step <= 0) return;
+
+    nlCtx.clearRect(0, 0, nlCanvas.width, nlCanvas.height);
+    
+    const padding = 40;
+    const y = nlCanvas.height / 2;
+    const mapToCanvas = val => padding + (val - min) / (max - min) * (nlCanvas.width - 2 * padding);
+
+    nlCtx.beginPath();
+    nlCtx.moveTo(padding - 10, y);
+    nlCtx.lineTo(nlCanvas.width - padding + 10, y);
+    nlCtx.strokeStyle = '#333';
+    nlCtx.lineWidth = 2;
+    nlCtx.stroke();
+    nlCtx.beginPath(); nlCtx.moveTo(padding, y); nlCtx.lineTo(padding - 10, y - 5); nlCtx.lineTo(padding - 10, y + 5); nlCtx.closePath(); nlCtx.fillStyle = '#333'; nlCtx.fill();
+    nlCtx.beginPath(); nlCtx.moveTo(nlCanvas.width - padding, y); nlCtx.lineTo(nlCanvas.width - padding + 10, y - 5); nlCtx.lineTo(nlCanvas.width - padding + 10, y + 5); nlCtx.closePath(); nlCtx.fill();
+
+    nlCtx.font = '14px Noto Sans TC';
+    nlCtx.textAlign = 'center';
+    for (let i = min; i <= max; i += step) {
+        const x = mapToCanvas(i);
+        nlCtx.beginPath();
+        nlCtx.moveTo(x, y - 10);
+        nlCtx.lineTo(x, y + 10);
+        nlCtx.stroke();
+        nlCtx.fillText(Number.isInteger(i) ? i : i.toFixed(1), x, y + 30);
+    }
+    
+    const regex = /([A-Za-z]+)\s*=\s*(-?\d+\.?\d*)/g;
+    let match;
+    while ((match = regex.exec(pointsText)) !== null) {
+        const label = match[1];
+        const val = parseFloat(match[2]);
+        if (val >= min && val <= max) {
+            const x = mapToCanvas(val);
+            nlCtx.beginPath();
+            nlCtx.arc(x, y, 5, 0, 2 * Math.PI);
+            nlCtx.fillStyle = '#C026D3';
+            nlCtx.fill();
+            nlCtx.fillStyle = '#1F2937';
+            nlCtx.font = 'bold 14px Noto Sans TC';
+            nlCtx.fillText(label, x, y - 20);
+        }
+    }
+}
+
+// --- Fraction Code ---
+const fractionCanvas = document.getElementById('fractionCanvas');
+const fractionCtx = fractionCanvas.getContext('2d');
+const numeratorInput = document.getElementById('numerator-input');
+const denominatorInput = document.getElementById('denominator-input');
+const fractionBarBtn = document.getElementById('fraction-bar-btn');
+const fractionCircleBtn = document.getElementById('fraction-circle-btn');
+const fractionGridBtn = document.getElementById('fraction-grid-btn');
+let fractionStyle = 'bar';
+
+function drawFraction() {
+    const parent = fractionCanvas.parentElement;
+    if (!parent || parent.clientWidth === 0) return;
+    fractionCanvas.width = parent.clientWidth;
+    fractionCanvas.height = parent.clientHeight;
+    
+    const num = parseInt(numeratorInput.value);
+    const den = parseInt(denominatorInput.value);
+
+    if (isNaN(num) || isNaN(den) || den <= 0) return;
+
+    fractionCtx.clearRect(0, 0, fractionCanvas.width, fractionCanvas.height);
+    
+    if (fractionStyle === 'bar') {
+        drawFractionBar(num, den);
+    } else if (fractionStyle === 'circle') {
+        drawFractionCircle(num, den);
+    } else {
+        drawFractionGrid(num, den);
+    }
+
+    fractionCtx.fillStyle = '#111827';
+    fractionCtx.font = `bold ${Math.min(fractionCanvas.width, fractionCanvas.height) * 0.1}px Noto Sans TC`;
+    fractionCtx.textAlign = 'center';
+    fractionCtx.textBaseline = 'middle';
+    fractionCtx.fillText(`${num} / ${den}`, fractionCanvas.width / 2, fractionCanvas.height * 0.9);
+}
+
+function drawFractionBar(num, den) {
+    const padding = 40;
+    const barWidth = fractionCanvas.width - 2 * padding;
+    const barHeight = fractionCanvas.height * 0.4;
+    const startX = padding;
+    const startY = fractionCanvas.height / 2 - barHeight / 2;
+    const segmentWidth = barWidth / den;
+    
+    fractionCtx.strokeStyle = '#4B5563';
+    fractionCtx.lineWidth = 2;
+    
+    for (let i = 0; i < den; i++) {
+        const x = startX + i * segmentWidth;
+        if (i < num) {
+            fractionCtx.fillStyle = '#A78BFA';
+            fractionCtx.fillRect(x, startY, segmentWidth, barHeight);
+        }
+        fractionCtx.strokeRect(x, startY, segmentWidth, barHeight);
+    }
+}
+
+function drawFractionCircle(num, den) {
+    const centerX = fractionCanvas.width / 2;
+    const centerY = fractionCanvas.height / 2 - 20;
+    const radius = Math.min(centerX, centerY) * 0.7;
+    const angleStep = 2 * Math.PI / den;
+    
+    fractionCtx.strokeStyle = '#4B5563';
+    fractionCtx.lineWidth = 2;
+
+    for (let i = 0; i < den; i++) {
+        const startAngle = i * angleStep - Math.PI / 2;
+        const endAngle = (i + 1) * angleStep - Math.PI / 2;
+        
+        fractionCtx.beginPath();
+        fractionCtx.moveTo(centerX, centerY);
+        fractionCtx.arc(centerX, centerY, radius, startAngle, endAngle);
+        fractionCtx.closePath();
+        
+        if (i < num) {
+            fractionCtx.fillStyle = '#A78BFA';
+            fractionCtx.fill();
+        }
+        fractionCtx.stroke();
+    }
+}
+
+function findBestFactors(n) {
+    if (n <= 3) return [1, n];
+    const sqrt = Math.sqrt(n);
+    for (let i = Math.floor(sqrt); i >= 1; i--) {
+        if (n % i === 0) {
+            return [i, n / i];
+        }
+    }
+    return [1, n];
+}
+
+function drawFractionGrid(num, den) {
+    const [rows, cols] = findBestFactors(den);
+    const padding = 40;
+    const availableWidth = fractionCanvas.width - 2 * padding;
+    const availableHeight = fractionCanvas.height * 0.7 - padding;
+    const cellWidth = availableWidth / cols;
+    const cellHeight = availableHeight / rows;
+    const startX = (fractionCanvas.width - availableWidth) / 2;
+    const startY = (fractionCanvas.height * 0.8 - availableHeight) / 2;
+    
+    fractionCtx.strokeStyle = '#4B5563';
+    fractionCtx.lineWidth = 2;
+
+    let count = 0;
+    for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+            const x = startX + c * cellWidth;
+            const y = startY + r * cellHeight;
+            if (count < num) {
+                fractionCtx.fillStyle = '#A78BFA';
+                fractionCtx.fillRect(x, y, cellWidth, cellHeight);
+            }
+            fractionCtx.strokeRect(x, y, cellWidth, cellHeight);
+            count++;
+        }
+    }
+}
+
+// --- Clock Code ---
+const clockCanvas = document.getElementById('clockCanvas');
+const clockCtx = clockCanvas.getContext('2d');
+const hourInput = document.getElementById('hour-input');
+const minuteInput = document.getElementById('minute-input');
+
+function drawClock() {
+    const parent = clockCanvas.parentElement;
+    if (!parent || parent.clientWidth === 0) return;
+    clockCanvas.width = parent.clientWidth;
+    clockCanvas.height = parent.clientHeight;
+    const radius = Math.min(clockCanvas.width, clockCanvas.height) * 0.45;
+    const centerX = clockCanvas.width / 2;
+    const centerY = clockCanvas.height / 2;
+
+    clockCtx.clearRect(0, 0, clockCanvas.width, clockCanvas.height);
+    
+    clockCtx.beginPath();
+    clockCtx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    clockCtx.fillStyle = 'white';
+    clockCtx.fill();
+    clockCtx.strokeStyle = '#333';
+    clockCtx.lineWidth = 4;
+    clockCtx.stroke();
+
+    clockCtx.beginPath();
+    clockCtx.arc(centerX, centerY, 5, 0, 2 * Math.PI);
+    clockCtx.fillStyle = '#333';
+    clockCtx.fill();
+
+    clockCtx.font = `${radius * 0.15}px Noto Sans TC`;
+    clockCtx.textBaseline = 'middle';
+    clockCtx.textAlign = 'center';
+    for (let num = 1; num <= 12; num++) {
+        const angle = num * Math.PI / 6 - Math.PI / 2;
+        const x = centerX + Math.cos(angle) * radius * 0.85;
+        const y = centerY + Math.sin(angle) * radius * 0.85;
+        clockCtx.fillText(num.toString(), x, y);
+    }
+    
+    const hour = parseInt(hourInput.value);
+    const minute = parseInt(minuteInput.value);
+    
+    const hourAngle = (hour % 12 + minute / 60) * Math.PI / 6 - Math.PI / 2;
+    drawHand(hourAngle, radius * 0.5, 6);
+    
+    const minuteAngle = (minute / 60) * 2 * Math.PI - Math.PI / 2;
+    drawHand(minuteAngle, radius * 0.75, 4);
+
+    function drawHand(angle, length, width) {
+        clockCtx.beginPath();
+        clockCtx.lineWidth = width;
+        clockCtx.lineCap = 'round';
+        clockCtx.moveTo(centerX, centerY);
+        clockCtx.lineTo(centerX + Math.cos(angle) * length, centerY + Math.sin(angle) * length);
+        clockCtx.stroke();
+    }
+}
+
+
+// --- Initial Load ---
+window.onload = () => {
+    // Chart init
+    renderInputRows();
+    generateChart();
+    document.getElementById('add-row-btn').addEventListener('click', addRow);
+    document.getElementById('generate-chart-btn').addEventListener('click', generateChart);
+    
+    // Shape init
+    shapeTypeSelect.addEventListener('change', () => {
+      updateShapeInputs();
+      drawShape();
+    });
+    drawShapeBtn.addEventListener('click', drawShape);
+    document.getElementById('finish-custom-shape-btn').addEventListener('click', () => {
+        if (shapeTypeSelect.value === 'symmetry') {
+            drawSymmetryShape(true);
+            updateShapeInfoBox(['線對稱圖形', `頂點數: ${customPoints.length * 2}`]);
+        } else {
+            drawCustomShape(true);
+            updateShapeInfoBox(['自訂圖形', `頂點數: ${customPoints.length}`]);
+        }
+        setupCustomDrawMode(false);
+    });
+    document.getElementById('clear-custom-shape-btn').addEventListener('click', () => {
+        setupCustomDrawMode(true, shapeTypeSelect.value === 'symmetry');
+    });
+    updateShapeInputs();
+
+    // Solid Init
+    solidTypeSelect.addEventListener('change', () => {
+        updateSolidInputs();
+        drawSolidShape();
+    });
+    document.getElementById('draw-solid-btn').addEventListener('click', drawSolidShape);
+    updateSolidInputs();
+
+    // Number Line Init
+    document.getElementById('plot-nl-btn').addEventListener('click', drawNumberLine);
+    
+    // Fraction init
+    numeratorInput.addEventListener('input', drawFraction);
+    denominatorInput.addEventListener('input', drawFraction);
+    const fractionButtons = {
+        bar: fractionBarBtn,
+        circle: fractionCircleBtn,
+        grid: fractionGridBtn
+    };
+    Object.keys(fractionButtons).forEach(key => {
+        fractionButtons[key].addEventListener('click', () => {
+            fractionStyle = key;
+            Object.values(fractionButtons).forEach(btn => {
+                btn.classList.replace('bg-violet-500', 'bg-white');
+                btn.classList.replace('text-white', 'text-gray-700');
+            });
+            fractionButtons[key].classList.replace('bg-white', 'bg-violet-500');
+            fractionButtons[key].classList.replace('text-gray-700', 'text-white');
+            drawFraction();
+        });
+    });
+
+    // Coordinate Plane init
+    plotBtn.addEventListener('click', plotPoints);
+    
+    // Clock init
+    document.getElementById('draw-clock-btn').addEventListener('click', drawClock);
+    
+    // Activate the first view by default
+    document.querySelector('.sidebar-btn').click();
+};
+</script>
+</body>
+</html>
+
+
+
