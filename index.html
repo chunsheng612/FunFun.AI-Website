@@ -3,11 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>方方老師 AI 工具箱 | 專業教育 </title>
+    <title>方方老師 AI 工具箱 | 教育專業 </title>
     <meta name="description" content="探索方方老師精心設計的 AI 工具，具備淺色與深色雙主題模式，涵蓋課程設計、教材產出、教學評量與行政輔助，提升教育專業與效率。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@500&display=swap" rel="stylesheet">
+
+    <!-- ====================================================== -->
+    <!-- PWA (Progressive Web App) Configuration - START         -->
+    <!-- ====================================================== -->
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Theme Color for Browser UI (matches dark theme) -->
+    <meta name="theme-color" content="#0F0F1B">
+
+    <!-- Apple Touch Icon (App Icon for iOS) -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- Tell iOS it's a web app -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <!-- App Title on iOS Home Screen -->
+    <meta name="apple-mobile-web-app-title" content="方方AI工具箱">
+
+    <!-- Status Bar Style on iOS -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <!-- ====================================================== -->
+    <!-- PWA (Progressive Web App) Configuration - END           -->
+    <!-- ====================================================== -->
 
     <style>
         /* CSS Properties for Animation */
@@ -142,7 +168,6 @@
             gap: var(--spacing-large);
         }
 
-        /* --- ANIMATION FIX: Removed conflicting initial animation --- */
         .tool-card {
             display: flex;
             flex-direction: column;
@@ -321,6 +346,15 @@
             
             initializeTheme();
             
+            // Register the Service Worker for PWA
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                }).catch(function(error) {
+                    console.log('Service Worker registration failed:', error);
+                });
+            }
+
             const allTools = await loadToolsFromSheet(GOOGLE_SHEET_URL);
             if (allTools.length > 0) {
                 generateFilterButtons(allTools);
@@ -476,4 +510,4 @@
         }
     </script>
 </body>
-</html>```
+</html>
