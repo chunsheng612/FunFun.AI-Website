@@ -3,45 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>方方老師 AI 工具箱 | 教育專業 </title>
+    <title>方方老師 AI 工具箱 | 雙主題風格版</title>
     <meta name="description" content="探索方方老師精心設計的 AI 工具，具備淺色與深色雙主題模式，涵蓋課程設計、教材產出、教學評量與行政輔助，提升教育專業與效率。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Inter:wght@500&display=swap" rel="stylesheet">
 
-    <!-- ====================================================== -->
-    <!-- PWA (Progressive Web App) Configuration - START         -->
-    <!-- ====================================================== -->
-
-    <!-- Web App Manifest -->
+    <!-- PWA (Progressive Web App) Configuration -->
     <link rel="manifest" href="manifest.json">
-
-    <!-- Theme Color for Browser UI (matches dark theme) -->
     <meta name="theme-color" content="#0F0F1B">
-
-    <!-- Apple Touch Icon (App Icon for iOS) -->
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-    <!-- Tell iOS it's a web app -->
     <meta name="apple-mobile-web-app-capable" content="yes">
-
-    <!-- App Title on iOS Home Screen -->
     <meta name="apple-mobile-web-app-title" content="方方AI工具箱">
-
-    <!-- Status Bar Style on iOS -->
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-    <!-- ====================================================== -->
-    <!-- PWA (Progressive Web App) Configuration - END           -->
-    <!-- ====================================================== -->
-
     <style>
-        /* CSS Properties for Animation */
         @property --angle-1 { syntax: "<angle>"; inherits: false; initial-value: -75deg; }
         @property --angle-2 { syntax: "<angle>"; inherits: false; initial-value: -45deg; }
 
         :root {
-            /* --- Dark Mode Colors (Default) --- */
             --color-background: #0F0F1B;
             --color-text-primary: #ffffff;
             --color-text-secondary: rgba(255, 255, 255, 0.85);
@@ -55,8 +35,6 @@
             --color-button-shadow-2: rgba(255, 255, 255, 0.5);
             --color-button-shadow-3: rgba(0, 0, 0, 0.2);
             --color-button-shadow-4: rgba(255, 255, 255, 0.2);
-
-            /* --- Shared Variables --- */
             --anim--hover-time: 400ms;
             --anim--hover-ease: cubic-bezier(0.25, 1, 0.5, 1);
             --spacing-small: 8px;
@@ -67,7 +45,6 @@
         }
         
         body.light-mode {
-            /* --- Light Mode Color Overrides --- */
             --color-background: #F0F2F5;
             --color-text-primary: #0F0F1B;
             --color-text-secondary: rgba(15, 15, 27, 0.85);
@@ -95,9 +72,7 @@
             color: var(--color-text-secondary);
             transition: background 0.5s ease;
         }
-        body.light-mode {
-             background-image: url('ai-tools-bg-light.png');
-        }
+        body.light-mode { background-image: url('ai-tools-bg-light.png'); }
 
         #tsparticles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; }
         h1, h2, h3, h4 { color: var(--color-text-primary); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); font-weight: 700; }
@@ -153,7 +128,29 @@
             margin-bottom: var(--spacing-xlarge); display: flex; flex-direction: column;
             align-items: center; gap: 1.5rem;
         }
-        #tool-filters { display: flex; flex-wrap: wrap; gap: var(--spacing-medium); justify-content: center; }
+        
+        #tool-filters {
+            position: relative; display: flex;
+            justify-content: center; width: 100%;
+        }
+        .dropdown-button {
+             display: flex; align-items: center; gap: var(--spacing-small);
+        }
+        .dropdown-menu {
+            position: absolute; top: 110%; left: 50%; z-index: 10;
+            display: flex; flex-direction: column; gap: var(--spacing-small);
+            padding: var(--spacing-small); min-width: 200px;
+            opacity: 0; visibility: hidden;
+            transform-origin: top center;
+            /* FIX 2: Added animation */
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            transform: translateX(-50%) translateY(-10px) scaleY(0.95);
+        }
+        .dropdown-menu.visible {
+            opacity: 1; visibility: visible;
+            transform: translateX(-50%) translateY(0) scaleY(1);
+        }
+        
         #search-input {
             background-color: var(--color-input-bg); border: 1px solid var(--color-input-border);
             border-radius: 999px; padding: 0.75rem 1.5rem; color: var(--color-text-primary);
@@ -168,14 +165,8 @@
             gap: var(--spacing-large);
         }
 
-        .tool-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-        .tool-card.hidden {
-            display: none !important;
-        }
+        .tool-card { display: flex; flex-direction: column; height: 100%; }
+        .tool-card.hidden { display: none !important; }
         
         @keyframes subtle-shake {
             0%, 100% { transform: translateY(-5px) scale(1.02) rotate(0deg); }
@@ -196,15 +187,10 @@
         .tool-description { font-size: 0.9rem; flex-grow: 1; margin-bottom: 1.5rem; }
         
         .card-buttons {
-            margin-top: auto;
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-small);
-            justify-content: flex-start;
+            margin-top: auto; display: flex; flex-wrap: wrap;
+            gap: var(--spacing-small); justify-content: flex-start;
         }
-        .card-buttons .button-wrap {
-            flex-grow: 0;
-        }
+        .card-buttons .button-wrap { flex-grow: 0; }
 
         .button-wrap {
             position: relative; z-index: 2; border-radius: 999vw;
@@ -220,6 +206,10 @@
             box-shadow: inset 0 0.125em 0.125em var(--color-button-shadow-1), inset 0 -0.125em 0.125em var(--color-button-shadow-2), 0 0.25em 0.125em -0.125em var(--color-button-shadow-3), 0 0 0.1em 0.25em inset var(--color-button-shadow-4);
             backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
             transition: all var(--anim--hover-time) var(--anim--hover-ease);
+             /* FIX 1: Ensure text inside button is centered */
+            display: flex;
+            justify-content: center;
+            width: 100%;
         }
         .button-wrap button:hover { transform: scale(0.975); }
         .button-wrap button:active, .button-wrap button.active {
@@ -287,11 +277,8 @@
                         <span>方方老師 | 專業AI應用</span>
                     </button>
                 </div>
-                <!-- Theme Switcher Button -->
                 <div class="button-wrap">
-                    <button id="theme-switcher" aria-label="切換佈景主題">
-                        <!-- Icons will be injected by JavaScript -->
-                    </button>
+                    <button id="theme-switcher" aria-label="切換佈景主題"></button>
                 </div>
             </nav>
         </div>
@@ -320,7 +307,14 @@
                 <h2 class="main-section-title">AI 工具總覽</h2>
                  <div id="tool-controls">
                     <div id="tool-filters">
-                         <!-- Filter buttons will be dynamically generated here -->
+                        <div class="button-wrap">
+                            <button id="dropdown-btn" class="dropdown-button">
+                                <span>篩選分類 ▼</span>
+                            </button>
+                        </div>
+                        <div id="dropdown-menu-container" class="dropdown-menu glass-container">
+                             <!-- Filter options will be injected here -->
+                        </div>
                     </div>
                     <div id="tool-search">
                          <input type="text" id="search-input" placeholder="輸入關鍵字搜尋...">
@@ -346,13 +340,8 @@
             
             initializeTheme();
             
-            // Register the Service Worker for PWA
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/sw.js').then(function(registration) {
-                    console.log('Service Worker registered with scope:', registration.scope);
-                }).catch(function(error) {
-                    console.log('Service Worker registration failed:', error);
-                });
+                navigator.serviceWorker.register('/sw.js').catch(err => console.error('Service Worker registration failed:', err));
             }
 
             const allTools = await loadToolsFromSheet(GOOGLE_SHEET_URL);
@@ -362,7 +351,6 @@
             }
         });
         
-        // --- THEME SWITCHER LOGIC ---
         const themeSwitcher = document.getElementById('theme-switcher');
         const body = document.body;
         const sunIcon = `<span class="theme-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12,18c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S15.31,18,12,18zM12,8c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C16,9.79,14.21,8,12,8zM11,1h2v3h-2V1zM11,20h2v3h-2V20zM3.55,4.95l1.41-1.41L7.05,5.64L5.64,7.05L3.55,4.95zM16.95,18.36l1.41-1.41l2.12,2.12l-1.41,1.41L16.95,18.36zM1,11h3v2H1V11zM20,11h3v2h-3V11zM5.64,16.95l1.41,1.41L4.95,20.45l-1.41-1.41L5.64,16.95zM18.36,5.64l1.41,1.41L20.45,4.95l-1.41-1.41L18.36,5.64z"/></svg></span>`;
@@ -380,42 +368,65 @@
             const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
             const currentTheme = savedTheme || (prefersLight ? 'light' : 'dark');
             setTheme(currentTheme);
-
             themeSwitcher.addEventListener('click', () => {
-                const newTheme = body.classList.contains('light-mode') ? 'dark' : 'light';
-                setTheme(newTheme);
+                setTheme(body.classList.contains('light-mode') ? 'dark' : 'light');
             });
         }
         
-        // --- DYNAMIC CONTENT LOGIC ---
+        // FIX 3: Define your custom category sort order here
+        const categoryOrder = [
+            "推薦工具",
+            "教學備課",
+            "評量設計",
+            "評量設計",
+            "教師工作",
+            "行政工作",
+            "學生學習",
+            "班級經營",
+            "學習遊戲",
+            "教師增能",
+            "學術研究",
+            "學習手冊",
+            "其他資源",
+            "研習工具",
+            "課程成果",
+        ];
+
         async function loadToolsFromSheet(sheetUrl) {
             const toolGrid = document.querySelector('.tool-grid');
-            const allTools = [];
+            const toolMap = new Map();
             try {
                 const response = await fetch(sheetUrl);
                 if (!response.ok) throw new Error(`Network response error: ${response.statusText}`);
                 const csvText = await response.text();
-                toolGrid.innerHTML = '';
                 const rows = csvText.trim().split('\n').slice(1);
                 rows.forEach(row => {
                     const columns = row.split(',').map(col => col.trim());
                     const [name, description, category, url1, url1Name, url2, url2Name] = columns;
                     if (!name) return;
-                    allTools.push({ name, description, category, url1, url1Name, url2, url2Name });
+                    if (toolMap.has(name)) {
+                        toolMap.get(name).categories.push(category || '未分類');
+                    } else {
+                        toolMap.set(name, { description, categories: [category || '未分類'], url1, url1Name, url2, url2Name });
+                    }
+                });
+                
+                toolGrid.innerHTML = '';
+                toolMap.forEach((data, name) => {
                     const card = document.createElement('div');
                     card.className = 'tool-card glass-container interactive-card';
-                    card.dataset.category = category || '未分類';
+                    card.dataset.category = data.categories.join(','); 
                     let buttonsHTML = '';
-                    if (url1 && url1.startsWith('http')) {
-                        buttonsHTML += `<div class="button-wrap"><button onclick="window.open('${url1}', '_blank')"><span>${url1Name || '前往應用 →'}</span></button></div>`;
+                    if (data.url1 && data.url1.startsWith('http')) {
+                        buttonsHTML += `<div class="button-wrap"><button onclick="window.open('${data.url1}', '_blank')"><span>${data.url1Name || '前往應用 →'}</span></button></div>`;
                     }
-                    if (url2 && url2.startsWith('http')) {
-                        buttonsHTML += `<div class="button-wrap"><button onclick="window.open('${url2}', '_blank')"><span>${url2Name || '前往應用 →'}</span></button></div>`;
+                    if (data.url2 && data.url2.startsWith('http')) {
+                        buttonsHTML += `<div class="button-wrap"><button onclick="window.open('${data.url2}', '_blank')"><span>${data.url2Name || '前往應用 →'}</span></button></div>`;
                     }
-                    card.innerHTML = `<div class="card-content"><h4 class="tool-name">${name}</h4><p class="tool-description">${description || '暫無說明'}</p><div class="card-buttons">${buttonsHTML}</div></div>`;
+                    card.innerHTML = `<div class="card-content"><h4 class="tool-name">${name}</h4><p class="tool-description">${data.description || '暫無說明'}</p><div class="card-buttons">${buttonsHTML}</div></div>`;
                     toolGrid.appendChild(card);
                 });
-                return allTools;
+                return Array.from(toolMap.values());
             } catch (error) {
                 console.error('Error fetching/parsing sheet data:', error);
                 document.getElementById('loading-message').textContent = '工具載入失敗，請確認 Google Sheet 共用權限已設為「知道連結的任何人」。';
@@ -424,34 +435,45 @@
         }
 
         function generateFilterButtons(tools) {
-            const filterContainer = document.getElementById('tool-filters');
-            const categories = [...new Set(tools.map(tool => tool.category).filter(Boolean))];
-            let buttonsHTML = `<div class="button-wrap"><button class="filter-btn active" data-filter="all"><span>顯示全部</span></button></div>`;
+            const dropdownMenu = document.getElementById('dropdown-menu-container');
+            const categories = [...new Set(tools.flatMap(tool => tool.categories))];
+            
+            // Apply custom sort order
+            categories.sort((a, b) => {
+                const indexA = categoryOrder.indexOf(a);
+                const indexB = categoryOrder.indexOf(b);
+                const effectiveIndexA = indexA === -1 ? Infinity : indexA;
+                const effectiveIndexB = indexB === -1 ? Infinity : indexB;
+                return effectiveIndexA - effectiveIndexB;
+            });
+
+            let buttonsHTML = `<div class="button-wrap"><button class="filter-btn" data-filter="all"><span>顯示全部</span></button></div>`;
             categories.forEach(category => {
                 buttonsHTML += `<div class="button-wrap"><button class="filter-btn" data-filter="${category}"><span>${category}</span></button></div>`;
             });
-            filterContainer.innerHTML = buttonsHTML;
+            dropdownMenu.innerHTML = buttonsHTML;
         }
 
         function initializePageFunctions() {
-            const filterContainer = document.getElementById('tool-filters');
+            const dropdownBtn = document.getElementById('dropdown-btn');
+            const dropdownMenu = document.getElementById('dropdown-menu-container');
             const searchInput = document.getElementById('search-input');
             const mainTitle = document.querySelector('.main-section-title');
             const toolCards = document.querySelectorAll('.tool-card'); 
+            let activeFilter = 'all';
 
             function filterAndSearchTools() {
                 const searchTerm = searchInput.value.toLowerCase().trim();
-                const activeFilterBtn = filterContainer.querySelector('button.active');
-                const activeFilter = activeFilterBtn ? activeFilterBtn.dataset.filter : 'all';
                 let hasVisibleCard = false;
                 toolCards.forEach(card => {
-                    const category = card.dataset.category;
+                    const categories = card.dataset.category.split(',');
                     const cardText = card.textContent.toLowerCase();
-                    const filterMatch = (activeFilter === 'all' || category === activeFilter);
+                    const filterMatch = (activeFilter === 'all' || categories.includes(activeFilter));
                     const searchMatch = (searchTerm === '' || cardText.includes(searchTerm));
                     card.classList.toggle('hidden', !(filterMatch && searchMatch));
                     if (filterMatch && searchMatch) hasVisibleCard = true;
                 });
+                
                 let noResultsMessage = document.getElementById('no-results-message');
                 if (!hasVisibleCard && !noResultsMessage) {
                     const toolGrid = document.querySelector('.tool-grid');
@@ -464,21 +486,31 @@
                 }
             }
 
-            if (filterContainer) {
-                filterContainer.addEventListener('click', (event) => {
-                    const clickedButton = event.target.closest('button.filter-btn');
-                    if (clickedButton) {
-                        filterContainer.querySelectorAll('button').forEach(button => button.classList.remove('active'));
-                        clickedButton.classList.add('active');
-                        mainTitle.style.opacity = 0;
-                        setTimeout(() => {
-                            mainTitle.textContent = (clickedButton.dataset.filter === 'all') ? 'AI 工具總覽' : clickedButton.querySelector('span').textContent;
-                            mainTitle.style.opacity = 1;
-                        }, 150);
-                        filterAndSearchTools();
-                    }
-                });
-            }
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                dropdownMenu.classList.toggle('visible');
+            });
+            document.addEventListener('click', () => dropdownMenu.classList.remove('visible'));
+            
+            dropdownMenu.addEventListener('click', (event) => {
+                const clickedButton = event.target.closest('button.filter-btn');
+                if (clickedButton) {
+                    event.stopPropagation();
+                    activeFilter = clickedButton.dataset.filter;
+                    const buttonText = clickedButton.querySelector('span').textContent;
+
+                    dropdownBtn.querySelector('span').textContent = `${buttonText} ▼`;
+                    dropdownMenu.classList.remove('visible');
+
+                    mainTitle.style.opacity = 0;
+                    setTimeout(() => {
+                        mainTitle.textContent = (activeFilter === 'all') ? 'AI 工具總覽' : buttonText;
+                        mainTitle.style.opacity = 1;
+                    }, 150);
+                    filterAndSearchTools();
+                }
+            });
+
             if (searchInput) searchInput.addEventListener('input', filterAndSearchTools);
         }
 
@@ -497,7 +529,6 @@
                 interactivity: { events: { onHover: { enable: true, mode: "bubble" } }, modes: { bubble: { distance: 200, size: 5, duration: 2, opacity: 1 } } },
                 detectRetina: true,
             };
-
             if (theme === 'light') {
                 baseConfig.particles.color = { value: ["#0F0F1B", "#4a4e91"] };
                 baseConfig.particles.links.color = "#0F0F1B";
@@ -505,7 +536,6 @@
                 baseConfig.particles.color = { value: ["#ffffff", "#a7a7d1"] };
                 baseConfig.particles.links.color = "#ffffff";
             }
-            
             tsParticles.load({ id: "tsparticles", options: baseConfig });
         }
     </script>
