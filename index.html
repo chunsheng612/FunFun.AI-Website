@@ -6,7 +6,7 @@
     <title>方方老師 教育AI工具箱</title>
     <meta name="description" content="方方老師精心設計的 AI 工具矩陣，液態玻璃特效介面，提升教育專業與效率。">
     
-    <!-- === Favicon === -->
+    <!-- === 修正 Favicon 404 錯誤 === -->
     <link rel="icon" type="image/png" href="方方老師空白背景.png">
     <link rel="apple-touch-icon" href="方方老師空白背景.png">
 
@@ -14,7 +14,6 @@
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- PWA Configuration -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#0F0F1B">
     
@@ -36,7 +35,6 @@
             --color-accent-hover: rgba(167, 167, 209, 0.2);
             --color-heart: #ff4757;
             
-            /* 液態按鈕專屬變數 */
             --color-button-shadow-1: rgba(0, 0, 0, 0.05);
             --color-button-shadow-2: rgba(255, 255, 255, 0.5);
             --color-button-shadow-3: rgba(0, 0, 0, 0.2);
@@ -60,7 +58,6 @@
             --color-accent-hover: rgba(111, 78, 55, 0.1);
             --color-heart: #D84315;
 
-            /* 液態按鈕淺色變數 */
             --color-button-shadow-1: rgba(255, 255, 255, 0.8);
             --color-button-shadow-2: rgba(0, 0, 0, 0.1);
             --color-button-shadow-3: rgba(0, 0, 0, 0.05);
@@ -70,7 +67,6 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100%; overflow: hidden; font-family: "Inter", "Noto Sans TC", sans-serif; }
         
-        /* 釋放背景圖！移除沉重的遮罩 */
         body {
             background-color: var(--color-background);
             background-image: url('ai-tools-bg-black.png');
@@ -82,16 +78,8 @@
 
         #tsparticles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;}
 
-        /* === Animations === */
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(25px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes heartBounce {
-            0% { transform: scale(1); }
-            40% { transform: scale(1.35); }
-            100% { transform: scale(1); }
-        }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(25px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes heartBounce { 0% { transform: scale(1); } 40% { transform: scale(1.35); } 100% { transform: scale(1); } }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* === App Layout === */
@@ -115,9 +103,7 @@
         .sidebar::-webkit-scrollbar { display: none; }
         .sidebar.collapsed-desktop { width: 0; margin: 0; padding: 0; opacity: 0; border: none; pointer-events: none; }
 
-        .nav-section-title {
-            font-size: 0.75rem; color: var(--color-text-secondary); margin: 16px 0 8px 12px; font-weight: 600; letter-spacing: 0.5px;
-        }
+        .nav-section-title { font-size: 0.75rem; color: var(--color-text-secondary); margin: 16px 0 8px 12px; font-weight: 600; letter-spacing: 0.5px; }
 
         .nav-btn {
             display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; border: none; background: transparent;
@@ -209,12 +195,22 @@
         
         .card-header { display: flex; align-items: flex-start; gap: 12px; padding-right: 28px;}
         
+        /* 🏆 修正 SVG 黑塊問題：使用獨立 Class 並強制實心填色 */
         .card-icon {
             color: var(--color-accent); flex-shrink: 0; display: flex; align-items: center; justify-content: center;
             background: var(--color-input-bg); padding: 8px; border-radius: 12px; border: 1px solid var(--color-glass-border);
             transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
         }
         .card-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round;}
+        
+        .card-icon.featured {
+            background-color: var(--color-text-primary);
+            color: var(--color-bg-base);
+            border-color: transparent;
+        }
+        /* 讓星星變成實心，完美解決淺色模式下隱形的問題 */
+        .card-icon.featured svg { fill: currentColor; stroke: none; }
+        
         .tool-card:hover .card-icon { transform: scale(1.1) rotate(-3deg); }
 
         .tool-name { font-size: 1.1rem; font-weight: 700; line-height: 1.35; margin-top: 2px; color: var(--color-text-primary);}
@@ -237,14 +233,13 @@
         .fav-btn.active { color: var(--color-heart); opacity: 1;}
         .fav-btn.active svg { fill: currentColor; stroke: currentColor; animation: heartBounce 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
-        /* === 🏆 完美回歸：液態玻璃按鈕 === */
-        .card-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; justify-content: flex-start; }
+        /* === 🏆 完美排版：100% 寬度堆疊液態玻璃按鈕 === */
+        .card-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: 14px; }
         .button-wrap {
-            /* 讓按鈕固定排版，最多兩欄，單顆則占滿 */
-            flex: 0 0 calc(50% - 5px); min-width: 0; position: relative; z-index: 2; border-radius: 999vw;
+            width: 100%; /* 強制 100%，解決 3 顆按鈕排版破洞與文字擠壓問題 */
+            position: relative; z-index: 2; border-radius: 999vw;
             background: transparent; pointer-events: none;
         }
-        .button-wrap:only-child { flex: 1 1 100%; }
         .button-wrap button {
             --border-width: 2px; all: unset; cursor: pointer; position: relative;
             pointer-events: auto; z-index: 3;
@@ -252,19 +247,18 @@
             border-radius: 999vw; box-shadow: inset 0 0.125em 0.125em var(--color-button-shadow-1), inset 0 -0.125em 0.125em var(--color-button-shadow-2), 0 0.25em 0.125em -0.125em var(--color-button-shadow-3), 0 0 0.1em 0.25em inset var(--color-button-shadow-4);
             backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
             transition: transform var(--anim--hover-time) var(--anim--hover-ease);
-            display: flex; justify-content: center; width: 100%; height: 100%;
+            display: flex; justify-content: flex-start; /* 文字統一靠左，展現俐落列感 */
+            width: 100%; padding: 10px 16px; box-sizing: border-box;
         }
         body.light-mode .button-wrap button { background: linear-gradient(-75deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02)); }
         
-        .button-wrap button:hover { transform: scale(0.97); }
-        .button-wrap button:active { transform: scale(0.94); background: linear-gradient(-75deg, rgba(150, 120, 255, 0.1), rgba(180, 150, 255, 0.3), rgba(150, 120, 255, 0.1)); }
+        .button-wrap button:hover { transform: scale(0.98); }
+        .button-wrap button:active { transform: scale(0.96); background: linear-gradient(-75deg, rgba(150, 120, 255, 0.1), rgba(180, 150, 255, 0.3), rgba(150, 120, 255, 0.1)); }
         
         .button-wrap button span {
-            position: relative; display: flex; align-items: center; justify-content: center;
-            font-weight: 500; font-size: 0.85rem; line-height: 1.25;
+            position: relative; display: block; font-weight: 500; font-size: 0.9rem;
             color: var(--color-text-primary); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            padding: 0.7em 0.8em; width: 100%; text-align: center;
-            white-space: normal; word-break: keep-all;
+            text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
         }
         body.light-mode .button-wrap button span { text-shadow: none; font-weight: 600;}
         
@@ -306,18 +300,14 @@
         .footer-link:hover { text-decoration-color: var(--color-accent); color: var(--color-accent);}
 
         /* --- Mobile Responsive --- */
-        .sidebar-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(4px); z-index: 95; opacity: 0; transition: opacity 0.3s;
-        }
+        .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); z-index: 95; opacity: 0; transition: opacity 0.3s; }
 
         @media (max-width: 900px) { .brand-title { display: none; } }
 
         @media (max-width: 768px) {
             .sidebar {
-                position: fixed; top: 0; left: 0; height: calc(100vh - 24px);
-                transform: translateX(-120%); margin: 12px; width: 260px;
-                background: var(--color-bg-base); border: 1px solid var(--color-glass-border); box-shadow: 4px 0 24px rgba(0,0,0,0.3);
+                position: fixed; top: 0; left: 0; height: calc(100vh - 24px); transform: translateX(-120%); margin: 12px; width: 260px;
+                background: var(--color-background); border: 1px solid var(--color-glass-border); box-shadow: 4px 0 24px rgba(0,0,0,0.3);
             }
             .sidebar.active { transform: translateX(0); }
             .sidebar-overlay.active { display: block; opacity: 1; }
@@ -326,8 +316,7 @@
             
             .search-container {
                 display: none; position: absolute; inset: 0; padding: 0 16px;
-                background: var(--color-bg-base); border-radius: 20px; border: 1px solid var(--color-glass-border);
-                z-index: 10; align-items: center; gap: 10px;
+                background: var(--color-background); border-radius: 20px; border: 1px solid var(--color-glass-border); z-index: 10; align-items: center; gap: 10px;
             }
             .search-container.mobile-active { display: flex; animation: fadeIn 0.2s ease;}
             .search-container .search-icon { left: 44px; }
@@ -582,11 +571,10 @@
                         }
                     }
 
-                    // Card Icons
                     let iconHTML = `<div class="card-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>`;
                     
                     if (data.categories[0].includes('新手推薦')) {
-                        iconHTML = `<div class="card-icon" style="color:var(--color-bg-base); background:var(--color-text-primary); border-color:transparent;" title="新手推薦">${categoryIcons['新手推薦']}</div>`;
+                        iconHTML = `<div class="card-icon featured" title="新手推薦">${categoryIcons['新手推薦']}</div>`;
                     }
 
                     const isFav = favorites.includes(name);
