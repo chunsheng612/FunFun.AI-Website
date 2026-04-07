@@ -94,7 +94,6 @@
         }
         .sidebar::-webkit-scrollbar { display: none; }
         
-        /* Desktop Collapse State */
         .sidebar.collapsed-desktop {
             width: 0; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0; opacity: 0; border: none; box-shadow: none; pointer-events: none;
         }
@@ -220,10 +219,11 @@
         .fav-btn.active { color: var(--color-heart); }
         .fav-btn.active svg { fill: var(--color-heart); stroke: var(--color-heart); }
 
-        /* Liquid Glass Buttons */
-        .card-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; }
+        /* === Fix: Liquid Glass Buttons Layout === */
+        .card-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: auto; justify-content: flex-start; }
         .button-wrap {
-            flex: 1 1 calc(50% - 5px); min-width: 130px; position: relative; z-index: 2; border-radius: 999vw;
+            /* 強制每個按鈕固定寬度 50% 扣掉間距，不管有幾顆都不會拉長變形 */
+            flex: 0 0 calc(50% - 5px); min-width: 0; position: relative; z-index: 2; border-radius: 999vw;
             background: transparent; pointer-events: none;
         }
         .button-wrap button {
@@ -233,16 +233,18 @@
             border-radius: 999vw; box-shadow: inset 0 0.125em 0.125em var(--color-button-shadow-1), inset 0 -0.125em 0.125em var(--color-button-shadow-2), 0 0.25em 0.125em -0.125em var(--color-button-shadow-3), 0 0 0.1em 0.25em inset var(--color-button-shadow-4);
             backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
             transition: transform var(--anim--hover-time) var(--anim--hover-ease);
-            display: flex; justify-content: center; width: 100%;
+            display: flex; justify-content: center; width: 100%; height: 100%;
         }
         body.light-mode .button-wrap button { background: linear-gradient(-75deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.02)); }
         .button-wrap button:hover { transform: scale(0.97); }
         .button-wrap button:active { transform: scale(0.94); background: linear-gradient(-75deg, rgba(150, 120, 255, 0.1), rgba(180, 150, 255, 0.3), rgba(150, 120, 255, 0.1)); }
         
         .button-wrap button span {
-            position: relative; display: block; font-weight: 500; font-size: 0.85rem;
+            position: relative; display: flex; align-items: center; justify-content: center;
+            font-weight: 500; font-size: 0.8rem; line-height: 1.25;
             color: var(--color-text-primary); text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            padding: 0.7em 1em; width: 100%; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+            padding: 0.6em 0.8em; width: 100%; text-align: center;
+            white-space: normal; word-break: keep-all;
         }
         body.light-mode .button-wrap button span { text-shadow: none; }
         .button-wrap button span::after {
@@ -301,7 +303,6 @@
             
             .topbar { margin: 12px; height: 60px; padding: 0 16px; gap: 12px; }
             
-            /* Mobile Search Magic */
             .search-container {
                 display: none; position: absolute; inset: 0; padding: 0 16px;
                 background: var(--color-glass-bg); backdrop-filter: blur(20px); border-radius: 20px;
@@ -314,7 +315,7 @@
             
             .mobile-search-btn { display: flex; align-items: center; justify-content: center; margin-left: auto;}
             .mobile-search-back { display: block; padding: 4px; flex-shrink: 0;}
-            .clear-btn { right: 48px; } /* Adjust for back button space */
+            .clear-btn { right: 48px; } 
             
             .content-area { padding: 16px 12px; }
             .tool-grid { grid-template-columns: 1fr; gap: 16px; }
@@ -322,28 +323,21 @@
     </style>
 </head>
 <body>
-    <!-- Particles Background -->
     <div id="tsparticles"></div>
     
     <div class="app-container">
-        <!-- Sidebar Backdrop for Mobile -->
         <div class="sidebar-overlay" id="sidebar-overlay"></div>
 
-        <!-- Left Sidebar Navigation -->
         <nav class="sidebar glass-panel" id="sidebar">
             <div class="nav-section-title">導覽選單</div>
-            <div id="nav-container">
-                <!-- Nav buttons injected via JS -->
-            </div>
+            <div id="nav-container"></div>
             
             <div style="margin-top: auto; padding-top: 20px; text-align: center; opacity: 0.5; font-size: 0.8rem;">
                 © 方方老師 <br> 教育 AI 工具箱
             </div>
         </nav>
 
-        <!-- Main Workspace -->
         <div class="main-wrapper">
-            <!-- Top Header -->
             <header class="topbar glass-panel" id="topbar">
                 <div class="brand-area">
                     <button class="hamburger-btn" id="hamburger-btn" aria-label="選單">
@@ -353,7 +347,6 @@
                     <div class="brand-title">教育AI工具箱</div>
                 </div>
 
-                <!-- Desktop / Mobile Active Search Container -->
                 <div class="search-container" id="search-container">
                     <button class="mobile-search-back" id="mobile-search-back" aria-label="返回">
                         <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -363,7 +356,6 @@
                     <button class="clear-btn" id="clear-btn">✖</button>
                 </div>
 
-                <!-- Mobile Search Trigger Button -->
                 <button class="mobile-search-btn" id="mobile-search-btn" aria-label="搜尋">
                     <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 </button>
@@ -376,12 +368,11 @@
                 </div>
             </header>
 
-            <!-- Scrollable Content Area -->
             <main class="content-area" id="content-area">
                 <div class="section-header">
                     <h2 class="section-title" id="section-title">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-                        全部工具
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        新手推薦
                     </h2>
                 </div>
                 
@@ -391,7 +382,6 @@
                     </h3>
                 </div>
 
-                <!-- Footer Explanations -->
                 <footer class="main-footer glass-panel">
                     <div class="footer-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
@@ -426,13 +416,31 @@
             "專業進修與生活": `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`
         };
 
-        const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "專業進修與生活"];
-        
-        // Favorite System
+        const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "專業進修與生活", "全部工具"];
         let favorites = JSON.parse(localStorage.getItem('aiToolsFavs') || '[]');
 
+        function parseCSVRow(str) {
+            const result = [];
+            let current = '';
+            let inQuotes = false;
+            for (let i = 0; i < str.length; i++) {
+                const char = str[i];
+                if (char === '"' && str[i+1] === '"') {
+                    current += '"'; i++;
+                } else if (char === '"') {
+                    inQuotes = !inQuotes;
+                } else if (char === ',' && !inQuotes) {
+                    result.push(current.trim());
+                    current = '';
+                } else {
+                    current += char;
+                }
+            }
+            result.push(current.trim());
+            return result;
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
-            // ⚠️ 這是您 V5 最終版的 Google Sheet CSV
             const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvCdiSmDl50u_UubeTSYR5zKqOtZgVZjOV52kR1gVX2QD6KLzdQ9fqHL7o6Hp9x7F4y8aYXJaqV1xP/pub?output=csv';
             
             initializeTheme();
@@ -446,7 +454,6 @@
             }
         });
 
-        // === Sidebar & Mobile Menu Toggle ===
         function initializeSidebarToggle() {
             const hamburger = document.getElementById('hamburger-btn');
             const sidebar = document.getElementById('sidebar');
@@ -468,7 +475,6 @@
             });
         }
         
-        // === Mobile Search Toggle ===
         function initializeMobileSearch() {
             const searchBtn = document.getElementById('mobile-search-btn');
             const searchContainer = document.getElementById('search-container');
@@ -489,7 +495,6 @@
             });
         }
         
-        // === Theme System ===
         const themeSwitcher = document.getElementById('theme-switcher');
         const body = document.body;
         const sunIcon = `<svg viewBox="0 0 24 24"><path d="M12,18c-3.31,0-6-2.69-6-6s2.69-6,6-6s6,2.69,6,6S15.31,18,12,18zM12,8c-2.21,0-4,1.79-4,4c0,2.21,1.79,4,4,4s4-1.79,4-4C16,9.79,14.21,8,12,8zM11,1h2v3h-2V1zM11,20h2v3h-2V20zM3.55,4.95l1.41-1.41L7.05,5.64L5.64,7.05L3.55,4.95zM16.95,18.36l1.41-1.41l2.12,2.12l-1.41,1.41L16.95,18.36zM1,11h3v2H1V11zM20,11h3v2h-3V11zM5.64,16.95l1.41,1.41L4.95,20.45l-1.41-1.41L5.64,16.95zM18.36,5.64l1.41,1.41L20.45,4.95l-1.41-1.41L18.36,5.64z"/></svg>`;
@@ -510,7 +515,6 @@
             themeSwitcher.addEventListener('click', () => setTheme(body.classList.contains('light-mode') ? 'dark' : 'light'));
         }
 
-        // === Data Fetch & Render ===
         async function loadToolsFromSheet(sheetUrl) {
             const toolGrid = document.getElementById('tool-grid');
             const toolMap = new Map();
@@ -521,8 +525,8 @@
                 const rows = csvText.trim().split('\n').slice(1);
                 
                 rows.forEach(row => {
-                    const columns = row.split('\t').length > 1 ? row.split('\t') : row.split(','); 
-                    let [name, description, category, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name] = columns.map(c => c ? c.trim().replace(/^"|"$/g, '') : '');
+                    const columns = row.indexOf('\t') > -1 ? row.split('\t') : parseCSVRow(row);
+                    let [name, description, category, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name] = columns;
                     
                     if (!name) return;
                     if (toolMap.has(name)) {
@@ -532,7 +536,6 @@
                     }
                 });
                 
-                // 排序邏輯：被收藏(愛心)的工具永遠排在前面
                 const sortedTools = Array.from(toolMap.entries()).sort((a, b) => {
                     const aFav = favorites.includes(a[0]) ? -1 : 1;
                     const bFav = favorites.includes(b[0]) ? -1 : 1;
@@ -544,7 +547,7 @@
                     const card = document.createElement('div');
                     card.className = 'tool-card glass-panel';
                     card.dataset.category = data.categories.join(','); 
-                    card.dataset.name = name; // For favorite matching
+                    card.dataset.name = name;
                     
                     let buttonsHTML = '';
                     for(let i=1; i<=4; i++) {
@@ -583,6 +586,8 @@
                     `;
                     toolGrid.appendChild(card);
                 });
+                
+                executeSearch();
                 return Array.from(toolMap.values());
             } catch (error) {
                 console.error(error);
@@ -591,7 +596,6 @@
             }
         }
 
-        // === Favorite Logic ===
         window.toggleFavorite = function(toolName, btnElement) {
             if(favorites.includes(toolName)) {
                 favorites = favorites.filter(n => n !== toolName);
@@ -602,57 +606,74 @@
             }
             localStorage.setItem('aiToolsFavs', JSON.stringify(favorites));
             
-            // If we are currently in "我的收藏" tab, hide the un-favorited card immediately
             if(activeFilter === '我的收藏' && !favorites.includes(toolName)) {
                 btnElement.closest('.tool-card').classList.add('hidden');
             }
         };
 
-        // === Navigation Sidebar ===
-        let activeFilter = 'all';
+        // 修改點 1：將切換分類的功能獨立出來，方便搜尋框呼叫
+        function switchCategory(categoryName) {
+            const navContainer = document.getElementById('nav-container');
+            const btns = navContainer.querySelectorAll('.nav-btn');
+            
+            btns.forEach(t => {
+                t.classList.remove('active');
+                if(t.dataset.filter === categoryName) {
+                    t.classList.add('active');
+                }
+            });
+            
+            activeFilter = categoryName;
+            const sectionTitle = document.getElementById('section-title');
+            sectionTitle.innerHTML = `${categoryIcons[activeFilter]} ${activeFilter}`;
+            document.getElementById('content-area').scrollTo(0,0);
+        }
+
+        let activeFilter = '新手推薦';
         function generateNavButtons() {
             const navContainer = document.getElementById('nav-container');
-            let navHTML = `<button class="nav-btn active" data-filter="all">${categoryIcons["全部工具"]} 全部工具</button>`;
+            let navHTML = '';
             
             orderedCategories.forEach(category => {
-                navHTML += `<button class="nav-btn" data-filter="${category}">${categoryIcons[category]} ${category}</button>`;
+                const isActive = category === activeFilter ? 'active' : '';
+                navHTML += `<button class="nav-btn ${isActive}" data-filter="${category}">${categoryIcons[category]} ${category}</button>`;
             });
             navContainer.innerHTML = navHTML;
 
             const btns = navContainer.querySelectorAll('.nav-btn');
             btns.forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    btns.forEach(t => t.classList.remove('active'));
-                    e.currentTarget.classList.add('active');
-                    activeFilter = e.currentTarget.dataset.filter;
-                    
-                    const sectionTitle = document.getElementById('section-title');
-                    sectionTitle.innerHTML = `${categoryIcons[activeFilter === 'all' ? '全部工具' : activeFilter]} ${activeFilter === 'all' ? '全部工具' : activeFilter}`;
+                    switchCategory(e.currentTarget.dataset.filter);
                     
                     if(window.innerWidth <= 768) {
                         document.getElementById('sidebar').classList.remove('active');
                         document.getElementById('sidebar-overlay').classList.remove('active');
                     }
-                    
-                    document.getElementById('content-area').scrollTo(0,0);
                     executeSearch();
                 });
             });
         }
 
-        // === Search & Filter System ===
         function initializeSearch() {
             const searchInput = document.getElementById('search-input');
             const clearBtn = document.getElementById('clear-btn');
             
             searchInput.addEventListener('input', () => {
-                clearBtn.style.display = searchInput.value.length > 0 ? 'block' : 'none';
+                const isTyping = searchInput.value.trim().length > 0;
+                clearBtn.style.display = isTyping ? 'block' : 'none';
+                
+                // 修改點 2：當使用者開始打字，自動切換到「全部工具」
+                if (isTyping && activeFilter !== '全部工具') {
+                    switchCategory('全部工具');
+                }
+                
                 executeSearch();
             });
 
             clearBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 clearBtn.style.display = 'none';
+                // 清空搜尋時，保持在「全部工具」以便瀏覽
                 executeSearch();
                 searchInput.focus();
             });
@@ -668,12 +689,11 @@
                 const name = card.dataset.name;
                 const text = card.textContent.toLowerCase();
                 
-                // Logic for "我的收藏" tab
                 let filterMatch = false;
                 if(activeFilter === '我的收藏') {
                     filterMatch = favorites.includes(name);
                 } else {
-                    filterMatch = (activeFilter === 'all' || cats.includes(activeFilter));
+                    filterMatch = (activeFilter === '全部工具' || cats.includes(activeFilter));
                 }
 
                 const searchMatch = (searchTerm === '' || text.includes(searchTerm));
@@ -689,12 +709,14 @@
             } else if (hasVisible && noMsg) {
                 noMsg.remove();
             }
+            
+            const loadingMsg = document.getElementById('loading-message');
+            if (loadingMsg) loadingMsg.remove();
         }
 
-        // === Particles Background ===
         function initializeParticles(theme = 'dark') {
             const container = tsParticles.domItem(0);
-            if(container) container.destroy(); // Fix issue where old particles block light mode background
+            if(container) container.destroy();
 
             const baseConfig = {
                 fpsLimit: 60, background: { color: { value: "transparent" } },
