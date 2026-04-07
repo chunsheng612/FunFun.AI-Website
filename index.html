@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>方方老師 教育AI工具箱</title>
+    <title>方方老師 教育AI工具箱 | 專業情境動態版</title>
     <meta name="description" content="方方老師精心設計的 AI 工具矩陣，極簡溫暖的介面，提升教育專業與效率。">
+    
+    <!-- === Favicon 修正區塊：指定網頁分頁小圖示，解決 404 錯誤 === -->
+    <link rel="icon" type="image/png" href="方方老師空白背景.png">
+    <link rel="apple-touch-icon" href="方方老師空白背景.png">
+    <!-- ==================================================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -270,7 +276,7 @@
 
         /* --- Mobile Responsive --- */
         .sidebar-overlay {
-            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6);
             backdrop-filter: blur(4px); z-index: 95; opacity: 0; transition: opacity 0.3s;
         }
 
@@ -436,7 +442,7 @@
             if (allTools.length > 0) {
                 generateNavButtons();
                 initializeSearch();
-                document.getElementById('main-footer').style.display = 'flex'; // 載入完成才顯示 footer
+                document.getElementById('main-footer').style.display = 'flex'; 
             }
         });
 
@@ -547,11 +553,9 @@
                         }
                     }
 
-                    // Unified clean icons for all cards
                     let iconHTML = `<div class="card-icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>`;
                     
                     if (data.categories[0].includes('新手推薦')) {
-                        // Special styling for featured
                         iconHTML = `<div class="card-icon" style="color:var(--color-bg-base); background:var(--color-text-primary); border-color:transparent;" title="新手推薦">${categoryIcons['新手推薦']}</div>`;
                     }
 
@@ -593,7 +597,6 @@
             localStorage.setItem('aiToolsFavs', JSON.stringify(favorites));
             
             if(activeFilter === '我的收藏' && !favorites.includes(toolName)) {
-                // If unfavorited while in fav tab, fade out then hide
                 btnElement.closest('.tool-card').style.opacity = '0';
                 setTimeout(() => {
                     btnElement.closest('.tool-card').classList.add('hidden');
@@ -636,4 +639,115 @@
                     
                     if(window.innerWidth <= 768) {
                         document.getElementById('sidebar').classList.remove('active');
-                        doc
+                        document.getElementById('sidebar-overlay').classList.remove('active');
+                    }
+                    
+                    const searchInput = document.getElementById('search-input');
+                    if(searchInput.value !== '') {
+                        searchInput.value = '';
+                        document.getElementById('clear-btn').style.display = 'none';
+                    }
+                    
+                    executeSearch();
+                });
+            });
+        }
+
+        function initializeSearch() {
+            const searchInput = document.getElementById('search-input');
+            const clearBtn = document.getElementById('clear-btn');
+            
+            searchInput.addEventListener('input', () => {
+                const isTyping = searchInput.value.trim().length > 0;
+                clearBtn.style.display = isTyping ? 'block' : 'none';
+                
+                if (isTyping && activeFilter !== '全部工具') {
+                    switchCategory('全部工具');
+                }
+                
+                executeSearch();
+            });
+
+            clearBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                clearBtn.style.display = 'none';
+                executeSearch();
+                searchInput.focus();
+            });
+        }
+
+        function executeSearch() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const toolCards = document.querySelectorAll('.tool-card');
+            let hasVisible = false;
+            let delayIndex = 0;
+
+            toolCards.forEach(card => {
+                const cats = card.dataset.category;
+                const name = card.dataset.name;
+                const text = card.textContent.toLowerCase();
+                
+                let filterMatch = false;
+                if(activeFilter === '我的收藏') {
+                    filterMatch = favorites.includes(name);
+                } else {
+                    filterMatch = (activeFilter === '全部工具' || cats.includes(activeFilter));
+                }
+
+                const searchMatch = (searchTerm === '' || text.includes(searchTerm));
+                
+                if (filterMatch && searchMatch) {
+                    card.classList.remove('hidden');
+                    card.style.animation = 'none';
+                    void card.offsetWidth; 
+                    card.style.animation = `fadeSlideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${delayIndex * 0.04}s`;
+                    delayIndex++;
+                    hasVisible = true;
+                } else {
+                    card.classList.add('hidden');
+                    card.style.animation = 'none'; 
+                    card.style.opacity = '0';
+                }
+            });
+
+            let noMsg = document.getElementById('no-results');
+            if (!hasVisible && !noMsg) {
+                const grid = document.getElementById('tool-grid');
+                grid.insertAdjacentHTML('beforeend', '<h3 id="no-results" style="text-align:center; grid-column:1/-1; opacity:0.6; padding-top: 40px; font-weight: 400; animation: fadeIn 0.5s forwards;">尚未收藏工具，或找不到符合的結果。</h3>');
+            } else if (hasVisible && noMsg) {
+                noMsg.remove();
+            }
+            
+            const loadingMsg = document.getElementById('loading-message');
+            if (loadingMsg) loadingMsg.remove();
+        }
+
+        function initializeParticles(theme = 'dark') {
+            const container = tsParticles.domItem(0);
+            if(container) container.destroy();
+
+            const baseConfig = {
+                fpsLimit: 60, background: { color: { value: "transparent" } },
+                particles: {
+                    number: { value: 15, density: { enable: true, area: 800 } },
+                    shape: { type: "circle" },
+                    opacity: { value: { min: 0.05, max: 0.15 } },
+                    size: { value: { min: 1, max: 2 } },
+                    links: { enable: true, distance: 150, opacity: 0.05, width: 1 },
+                    move: { enable: true, speed: 0.5, direction: "none", random: true }
+                },
+                detectRetina: true,
+            };
+            if (theme === 'light') {
+                baseConfig.particles.color = { value: ["#3E2723", "#6F4E37"] };
+                baseConfig.particles.links.color = "#6F4E37";
+                baseConfig.particles.opacity = { value: { min: 0.1, max: 0.2 } };
+            } else {
+                baseConfig.particles.color = { value: ["#ffffff"] };
+                baseConfig.particles.links.color = "#ffffff";
+            }
+            tsParticles.load({ id: "tsparticles", options: baseConfig });
+        }
+    </script>
+</body>
+</html>
