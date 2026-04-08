@@ -289,23 +289,31 @@
     
     <!-- Firebase SDK (Module) -->
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+     // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-        // ==========================================
-        // ⚠️ 1. 請在這裡貼上您新建立的 Firebase 設定
-        // ==========================================
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID"
-        };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDZCPINzOhuohHBqdvThiHAM0Z9I6o4wGk",
+  authDomain: "funfun-ai-tools.firebaseapp.com",
+  projectId: "funfun-ai-tools",
+  storageBucket: "funfun-ai-tools.firebasestorage.app",
+  messagingSenderId: "240849963300",
+  appId: "1:240849963300:web:5d11251b34e3ea80410bb1",
+  measurementId: "G-PGFBT4728X"
+};
 
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
         // ==========================================
         // ⚠️ 2. 請貼上您 Google Sheet (V5 完美版) 的 TSV 網址
         // ==========================================
-        const GOOGLE_SHEET_URL = 'YOUR_CSV_OR_TSV_URL';
+        const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvCdiSmDl50u_UubeTSYR5zKqOtZgVZjOV52kR1gVX2QD6KLzdQ9fqHL7o6Hp9x7F4y8aYXJaqV1xP/pub?output=csv';
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
@@ -388,7 +396,7 @@
         // ==========================
         window.toggleFavorite = async function(toolName, btnElement) {
             if (!currentUser) {
-                alert("💡 請先點擊右上角「登入收藏」，才能將工具加入您的專屬清單喔！");
+                alert("請先點擊右上角「登入收藏」，才能將工具加入您的專屬清單喔！");
                 return;
             }
             const isFav = userFavorites.includes(toolName);
@@ -479,7 +487,7 @@
                     
                     const selectedCat = e.currentTarget.dataset.cat;
                     if (selectedCat === '我的收藏' && !currentUser) {
-                        alert('💡 請先點擊右上角按鈕登入，才能查看您的專屬收藏清單喔！');
+                        alert('請先點擊右上角按鈕登入，才能查看您的專屬收藏清單喔！');
                         e.currentTarget.classList.remove('active');
                         container.querySelector('.filter-tab[data-cat="全部"]').classList.add('active');
                         filterByTab('全部');
