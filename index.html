@@ -393,9 +393,10 @@
                 </button>
 
                 <div class="topbar-actions">
-                    <!-- 收藏儲存提示按鈕 -->
-                    <button id="auth-btn" class="auth-btn" aria-label="收藏儲存位置">
-                        <span id="auth-text">本機收藏</span>
+                    <!-- Firebase 登入按鈕 -->
+                    <button id="auth-btn" class="auth-btn" aria-label="登入收藏">
+                        <img id="user-avatar" src="" alt="Avatar">
+                        <span id="auth-text">登入收藏</span>
                     </button>
 
                     <button class="icon-btn" id="theme-switcher" aria-label="切換佈景主題" title="切換深淺模式"></button>
@@ -440,17 +441,39 @@
     <!-- 粒子特效套件 -->
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
 
-    <!-- 主程式邏輯 (以 Module 方式載入) -->
+    <!-- Firebase SDK & 主程式邏輯 (以 Module 方式載入) -->
     <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
         // ==========================================
-        // ⚠️ 1. 您的 Google Sheet CSV/TSV 網址
+        // ⚠️ 1. 您的 Firebase 設定
+        // ==========================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyDZCPINzOhuohHBqdvThiHAM0Z9I6o4wGk",
+            authDomain: "funfun-ai-tools.firebaseapp.com",
+            projectId: "funfun-ai-tools",
+            storageBucket: "funfun-ai-tools.firebasestorage.app",
+            messagingSenderId: "240849963300",
+            appId: "1:240849963300:web:5d11251b34e3ea80410bb1",
+            measurementId: "G-PGFBT4728X"
+        };
+
+        // ==========================================
+        // ⚠️ 2. 您的 Google Sheet CSV/TSV 網址
         // ==========================================
         const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvCdiSmDl50u_UubeTSYR5zKqOtZgVZjOV52kR1gVX2QD6KLzdQ9fqHL7o6Hp9x7F4y8aYXJaqV1xP/pub?output=csv';
 
+        // 初始化 Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
         // 全域狀態管理
+        let currentUser = null;
         let favorites = [];
         window.activeFilter = '新手推薦'; // 讓全域可讀取
-        const FAVORITES_STORAGE_KEY = 'ffai_favorites_v1';
 
         const categoryIcons = {
             "我的收藏": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
@@ -492,8 +515,7 @@
             initializeTheme();
             initializeSidebarToggle();
             initializeMobileSearch();
-            initializeFavorites();
-            setupFavoriteStorageBadge();
+            setupAuth(); // 啟動 Firebase 監聽
 
             const allTools = await loadToolsFromSheet(GOOGLE_SHEET_URL);
             if (allTools.length > 0) {
@@ -503,34 +525,59 @@
             }
         });
 
-        function initializeFavorites() {
-            try {
-                const raw = localStorage.getItem(FAVORITES_STORAGE_KEY);
-                const parsed = raw ? JSON.parse(raw) : [];
-                favorites = Array.isArray(parsed) ? parsed : [];
-            } catch (error) {
-                console.error('收藏資料讀取失敗，已重設。', error);
-                favorites = [];
-            }
-        }
-
-        function persistFavorites() {
-            localStorage.setItem(FAVORITES_STORAGE_KEY, JSON.stringify(favorites));
-        }
-
-        function setupFavoriteStorageBadge() {
+        // ==========================
+        // 登入驗證與 Firebase 同步
+        // ==========================
+        function setupAuth() {
             const authBtn = document.getElementById('auth-btn');
             const authText = document.getElementById('auth-text');
-            authText.textContent = "本機收藏";
+            const userAvatar = document.getElementById('user-avatar');
+
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    currentUser = user;
+                    authText.textContent = "登出";
+                    userAvatar.src = user.photoURL;
+                    userAvatar.style.display = "block";
+
+                    const docSnap = await getDoc(doc(db, "users", user.uid));
+                    favorites = docSnap.exists() ? (docSnap.data().favorites || []) : [];
+                    updateAllHearts();
+
+                    if (window.activeFilter === '我的收藏') executeSearch();
+                } else {
+                    currentUser = null;
+                    favorites = [];
+                    authText.textContent = "登入收藏";
+                    userAvatar.style.display = "none";
+                    updateAllHearts();
+
+                    if (window.activeFilter === '我的收藏') {
+                        switchCategory('新手推薦');
+                        executeSearch();
+                    }
+                }
+            });
+
             authBtn.addEventListener('click', () => {
-                alert('此版本收藏儲存在本機瀏覽器 localStorage，不需登入，也不會曝光 Firebase 金鑰。');
+                if (currentUser) {
+                    signOut(auth).then(() => alert("已登出！"));
+                } else {
+                    const provider = new GoogleAuthProvider();
+                    signInWithPopup(auth, provider).catch(error => console.error("登入失敗", error));
+                }
             });
         }
 
         // ==========================
         // 愛心點擊邏輯 (掛載到 window)
         // ==========================
-        window.toggleFavorite = function(toolName, btnElement) {
+        window.toggleFavorite = async function(toolName, btnElement) {
+            if (!currentUser) {
+                alert("💡 請先點擊右上角「登入收藏」，才能將工具加入您的專屬清單喔！");
+                return;
+            }
+
             const isFav = favorites.includes(toolName);
             if (isFav) {
                 favorites = favorites.filter(n => n !== toolName);
@@ -539,7 +586,11 @@
                 favorites.push(toolName);
                 btnElement.classList.add('active');
             }
-            persistFavorites();
+            try {
+                await setDoc(doc(db, "users", currentUser.uid), { favorites }, { merge: true });
+            } catch (error) {
+                console.error("收藏同步失敗", error);
+            }
             
             // 若在收藏頁取消，動畫隱藏
             if(window.activeFilter === '我的收藏' && !favorites.includes(toolName)) {
@@ -702,6 +753,11 @@
         }
 
         window.switchCategory = function(categoryName) {
+            if (categoryName === '我的收藏' && !currentUser) {
+                alert('💡 請先點擊右上角登入，才能查看專屬收藏清單喔！');
+                return;
+            }
+
             const navContainer = document.getElementById('nav-container');
             const btns = navContainer.querySelectorAll('.nav-btn');
             
@@ -735,7 +791,7 @@
                     window.switchCategory(targetCat);
                     
                     // 手機版自動收起選單
-                    if(window.innerWidth <= 768) {
+                    if(window.innerWidth <= 768 && targetCat !== '我的收藏' || (targetCat === '我的收藏' && currentUser)) {
                         document.getElementById('sidebar').classList.remove('active');
                         document.getElementById('sidebar-overlay').classList.remove('active');
                     }
