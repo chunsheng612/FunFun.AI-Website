@@ -473,6 +473,7 @@
         // 全域狀態管理
         let currentUser = null;
         let favorites = [];
+        let availableCategories = new Set();
         window.activeFilter = '新手推薦'; // 讓全域可讀取
 
         const categoryIcons = {
@@ -485,10 +486,34 @@
             "班級經營與互動": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
             "親師溝通與行政": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
             "學生自學與遊戲": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"/><path d="M6 12h4"/><path d="M8 10v4"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></svg>`,
+            "特殊教育類別": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="3"/><path d="M6 21v-2a6 6 0 0 1 12 0v2"/><path d="M4 11h16"/><path d="M8 11l1.5 5"/><path d="M16 11l-1.5 5"/></svg>`,
             "專業進修與生活": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`
         };
 
-        const orderedCategories =["我的收藏", "新手推薦", "精選必備", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "專業進修與生活", "全部工具"];
+        const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "特殊教育類別", "專業進修與生活", "全部工具"];
+
+        function getCategoryIcon(categoryName) {
+            return categoryIcons[categoryName] || categoryIcons["全部工具"];
+        }
+
+        function getVisibleCategories() {
+            const lastCategory = "全部工具";
+            const fixedCategories = orderedCategories.filter(category => category !== lastCategory);
+            const dynamicCategories = Array.from(availableCategories)
+                .filter(category => category && !orderedCategories.includes(category))
+                .sort((a, b) => a.localeCompare(b, 'zh-Hant'));
+
+            return [...fixedCategories, ...dynamicCategories, lastCategory];
+        }
+
+        function splitCategoryNames(categoryValue) {
+            const categories = (categoryValue || '未分類')
+                .split(/[、,，]/)
+                .map(category => category.trim())
+                .filter(Boolean);
+
+            return categories.length ? categories : ['未分類'];
+        }
 
         function parseCSVRow(str) {
             const result =[];
@@ -680,6 +705,7 @@
         async function loadToolsFromSheet(sheetUrl) {
             const toolGrid = document.getElementById('tool-grid');
             const toolMap = new Map();
+            availableCategories = new Set();
             try {
                 const response = await fetch(sheetUrl);
                 if (!response.ok) throw new Error('Network error');
@@ -691,10 +717,17 @@
                     let[name, description, category, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name] = columns;
                     
                     if (!name) return;
+                    const normalizedCategories = splitCategoryNames(category);
+                    normalizedCategories.forEach(categoryName => availableCategories.add(categoryName));
+
                     if (toolMap.has(name)) {
-                        toolMap.get(name).categories.push(category || '未分類');
+                        normalizedCategories.forEach(categoryName => {
+                            if (!toolMap.get(name).categories.includes(categoryName)) {
+                                toolMap.get(name).categories.push(categoryName);
+                            }
+                        });
                     } else {
-                        toolMap.set(name, { description, categories: [category || '未分類'], url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name });
+                        toolMap.set(name, { description, categories: normalizedCategories, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name });
                     }
                 });
                 
@@ -719,10 +752,10 @@
                         }
                     }
 
-                    let iconHTML = `<div class="card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg></div>`;
+                    let iconHTML = `<div class="card-icon">${getCategoryIcon(data.categories[0])}</div>`;
                     
                     if (data.categories[0].includes('新手推薦') || data.categories[0].includes('精選必備')) {
-                        iconHTML = `<div class="card-icon" style="color:var(--color-background); background:var(--color-text-primary); border-color:transparent;" title="精選推薦">${categoryIcons['新手推薦']}</div>`;
+                        iconHTML = `<div class="card-icon" style="color:var(--color-background); background:var(--color-text-primary); border-color:transparent;" title="精選推薦">${getCategoryIcon('新手推薦')}</div>`;
                     }
 
                     const isFav = favorites.includes(name);
@@ -770,7 +803,7 @@
             
             window.activeFilter = categoryName;
             const sectionTitle = document.getElementById('section-title');
-            sectionTitle.innerHTML = `${categoryIcons[window.activeFilter]} ${window.activeFilter}`;
+            sectionTitle.innerHTML = `${getCategoryIcon(window.activeFilter)} ${window.activeFilter}`;
             document.getElementById('content-area').scrollTo(0,0);
         }
 
@@ -778,9 +811,9 @@
             const navContainer = document.getElementById('nav-container');
             let navHTML = '';
             
-            orderedCategories.forEach(category => {
+            getVisibleCategories().forEach(category => {
                 const isActive = category === window.activeFilter ? 'active' : '';
-                navHTML += `<button class="nav-btn ${isActive}" data-filter="${category}">${categoryIcons[category]} ${category}</button>`;
+                navHTML += `<button class="nav-btn ${isActive}" data-filter="${category}">${getCategoryIcon(category)} ${category}</button>`;
             });
             navContainer.innerHTML = navHTML;
 
