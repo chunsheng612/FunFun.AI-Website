@@ -1,10 +1,12 @@
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
   './',
   './index.html',
   './manifest.json',
+  './assets/css/main.css',
+  './assets/js/app.js',
   './POEAILearning.html',
   './sunoAILearning.html',
   './notionAI.html',
