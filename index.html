@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>方方老師 教育AI工具箱</title>
     <meta name="description" content="方方老師精心設計的 AI 工具矩陣，液態玻璃特效介面，提升教育專業與效率。">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https://lh3.googleusercontent.com https://*.googleusercontent.com; font-src 'self' https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.gstatic.com; connect-src 'self' https://docs.google.com https://accounts.google.com https://*.googleusercontent.com https://*.googleapis.com https://*.gstatic.com https://*.firebaseio.com https://*.firebaseapp.com; frame-src https://accounts.google.com https://*.firebaseapp.com; worker-src 'self'; manifest-src 'self'; form-action 'self' mailto: https://forms.gle;">
     
     <!-- === Favicon === -->
     <link rel="icon" type="image/png" href="assets/images/方方老師空白背景.png">
@@ -12,6 +14,11 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="dns-prefetch" href="https://docs.google.com">
+    <link rel="preload" as="image" href="assets/images/ai-tools-bg-black.png" media="(prefers-color-scheme: dark)">
+    <link rel="preload" as="image" href="assets/images/ai-tools-bg-light.png" media="(prefers-color-scheme: light)">
+    <link rel="preload" as="image" href="assets/images/方方老師空白背景.png">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- PWA Configuration -->
@@ -212,6 +219,7 @@
             border-radius: 20px; padding: 20px; display: flex; flex-direction: column; gap: 12px;
             position: relative; transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
             opacity: 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            content-visibility: auto; contain-intrinsic-size: 180px;
         }
         .tool-card.hidden { display: none !important; }
         .tool-card:hover { 
@@ -303,6 +311,16 @@
         }
         body.light-mode .button-wrap button::after { background: conic-gradient(from var(--angle-1) at 50% 50%, rgba(111, 78, 55, 0.2), rgba(0, 0, 0, 0) 5% 40%, rgba(111, 78, 55, 0.2) 50%, rgba(0, 0, 0, 0) 60% 95%, rgba(111, 78, 55, 0.2)), linear-gradient(180deg, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1)); box-shadow: inset 0 0 0 calc(var(--border-width) / 2) rgba(111, 78, 55, 0.2);}
         .button-wrap button:hover::after { --angle-1: -125deg; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+            #tsparticles { display: none; }
+        }
 
         /* --- Footer Info Area --- */
         .main-footer {
@@ -400,7 +418,7 @@
                     </button>
 
                     <button class="icon-btn" id="theme-switcher" aria-label="切換佈景主題" title="切換深淺模式"></button>
-                    <button class="icon-btn" onclick="window.open('https://www.facebook.com/FunFun.AI.Teacher/', '_blank')" title="前往主網站">
+                    <button class="icon-btn" id="facebook-link-btn" title="前往主網站" aria-label="前往主網站">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     </button>
                 </div>
@@ -431,7 +449,7 @@
                     </div>
                     <div class="footer-item">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-                        <div><strong>錯誤回報：</strong>若遇連結失效或工具異常，歡迎填寫 <a href="https://forms.gle/W56XCMkEDWqyT5fRA" target="_blank" class="footer-link">錯誤回報表單</a>，我將盡快修復。</div>
+                        <div><strong>錯誤回報：</strong>若遇連結失效或工具異常，歡迎填寫 <a href="https://forms.gle/W56XCMkEDWqyT5fRA" target="_blank" rel="noopener noreferrer" class="footer-link">錯誤回報表單</a>，我將盡快修復。</div>
                     </div>
                 </footer>
             </main>
@@ -464,6 +482,8 @@
         // ⚠️ 2. 您的 Google Sheet CSV/TSV 網址
         // ==========================================
         const GOOGLE_SHEET_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRvCdiSmDl50u_UubeTSYR5zKqOtZgVZjOV52kR1gVX2QD6KLzdQ9fqHL7o6Hp9x7F4y8aYXJaqV1xP/pub?output=csv';
+        const TOOL_CACHE_KEY = 'funfun-ai-tools.csv.v2';
+        const SHEET_FETCH_TIMEOUT_MS = 8000;
 
         // 初始化 Firebase
         const app = initializeApp(firebaseConfig);
@@ -536,18 +556,104 @@
             return result;
         }
 
+        function getSafeExternalUrl(value) {
+            try {
+                const url = new URL(value, window.location.href);
+                return ['http:', 'https:'].includes(url.protocol) ? url.href : null;
+            } catch {
+                return null;
+            }
+        }
+
+        function openExternalLink(value) {
+            const safeUrl = getSafeExternalUrl(value);
+            if (!safeUrl) return;
+
+            const openedWindow = window.open(safeUrl, '_blank', 'noopener,noreferrer');
+            if (openedWindow) openedWindow.opener = null;
+        }
+
+        function createIconNode(categoryName) {
+            const template = document.createElement('template');
+            template.innerHTML = getCategoryIcon(categoryName).trim();
+            return template.content.firstElementChild || document.createTextNode('');
+        }
+
+        function setSectionTitle(categoryName) {
+            const sectionTitle = document.getElementById('section-title');
+            const titleText = document.createElement('span');
+            titleText.textContent = categoryName;
+            sectionTitle.replaceChildren(createIconNode(categoryName), titleText);
+        }
+
+        function showReadyUI() {
+            generateNavButtons();
+            setSectionTitle(window.activeFilter);
+            document.getElementById('main-footer').style.display = 'flex';
+        }
+
+        function readCachedSheetText() {
+            try {
+                const cached = JSON.parse(localStorage.getItem(TOOL_CACHE_KEY) || 'null');
+                if (!cached || typeof cached.csvText !== 'string') return null;
+                return cached;
+            } catch {
+                localStorage.removeItem(TOOL_CACHE_KEY);
+                return null;
+            }
+        }
+
+        function writeCachedSheetText(csvText) {
+            try {
+                localStorage.setItem(TOOL_CACHE_KEY, JSON.stringify({
+                    csvText,
+                    timestamp: Date.now()
+                }));
+            } catch (error) {
+                console.warn('工具資料快取寫入失敗', error);
+            }
+        }
+
+        async function fetchSheetText(sheetUrl) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), SHEET_FETCH_TIMEOUT_MS);
+
+            try {
+                const response = await fetch(sheetUrl, {
+                    cache: 'no-store',
+                    signal: controller.signal
+                });
+                if (!response.ok) throw new Error(`Sheet fetch failed: ${response.status}`);
+                return await response.text();
+            } finally {
+                clearTimeout(timeoutId);
+            }
+        }
+
+        function registerServiceWorker() {
+            const canRegister = 'serviceWorker' in navigator &&
+                (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname));
+
+            if (!canRegister) return;
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').catch(error => {
+                    console.warn('Service worker 註冊失敗', error);
+                });
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', async () => {
             initializeTheme();
             initializeSidebarToggle();
             initializeMobileSearch();
+            initializeExternalLinks();
+            initializeSearch();
             setupAuth(); // 啟動 Firebase 監聽
+            registerServiceWorker();
 
             const allTools = await loadToolsFromSheet(GOOGLE_SHEET_URL);
-            if (allTools.length > 0) {
-                generateNavButtons();
-                initializeSearch();
-                document.getElementById('main-footer').style.display = 'flex'; 
-            }
+            if (allTools.length > 0) showReadyUI();
         });
 
         // ==========================
@@ -591,6 +697,12 @@
                     const provider = new GoogleAuthProvider();
                     signInWithPopup(auth, provider).catch(error => console.error("登入失敗", error));
                 }
+            });
+        }
+
+        function initializeExternalLinks() {
+            document.getElementById('facebook-link-btn').addEventListener('click', () => {
+                openExternalLink('https://www.facebook.com/FunFun.AI.Teacher/');
             });
         }
 
@@ -702,86 +814,162 @@
             themeSwitcher.addEventListener('click', () => setTheme(body.classList.contains('light-mode') ? 'dark' : 'light'));
         }
 
-        async function loadToolsFromSheet(sheetUrl) {
-            const toolGrid = document.getElementById('tool-grid');
+        function parseToolsFromCSV(csvText) {
             const toolMap = new Map();
             availableCategories = new Set();
-            try {
-                const response = await fetch(sheetUrl);
-                if (!response.ok) throw new Error('Network error');
-                const csvText = await response.text();
-                const rows = csvText.trim().split('\n').slice(1);
-                
-                rows.forEach(row => {
-                    const columns = row.indexOf('\t') > -1 ? row.split('\t') : parseCSVRow(row);
-                    let[name, description, category, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name] = columns;
-                    
-                    if (!name) return;
-                    const normalizedCategories = splitCategoryNames(category);
-                    normalizedCategories.forEach(categoryName => availableCategories.add(categoryName));
 
-                    if (toolMap.has(name)) {
-                        normalizedCategories.forEach(categoryName => {
-                            if (!toolMap.get(name).categories.includes(categoryName)) {
-                                toolMap.get(name).categories.push(categoryName);
-                            }
-                        });
-                    } else {
-                        toolMap.set(name, { description, categories: normalizedCategories, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name });
-                    }
-                });
-                
-                const sortedTools = Array.from(toolMap.entries());
+            csvText.trim().split(/\r?\n/).slice(1).forEach(row => {
+                const columns = row.indexOf('\t') > -1 ? row.split('\t') : parseCSVRow(row);
+                let[name, description, category, url1, url1Name, url2, url2Name, url3, url3Name, url4, url4Name] = columns;
 
-                toolGrid.innerHTML = '';
-                sortedTools.forEach(([name, data]) => {
-                    const card = document.createElement('div');
-                    card.className = 'tool-card glass-panel';
-                    card.dataset.category = data.categories.join(','); 
-                    card.dataset.name = name;
-                    
-                    let buttonsHTML = '';
-                    for(let i=1; i<=4; i++) {
-                        if(data[`url${i}`] && data[`url${i}`].startsWith('http')) {
-                            buttonsHTML += `
-                            <div class="button-wrap">
-                                <button onclick="window.open('${data[`url${i}`]}', '_blank')">
-                                    <span>${data[`url${i}Name`] || '開啟工具'}</span>
-                                </button>
-                            </div>`;
+                name = (name || '').trim();
+                if (!name) return;
+
+                const normalizedCategories = splitCategoryNames(category);
+                normalizedCategories.forEach(categoryName => availableCategories.add(categoryName));
+
+                if (toolMap.has(name)) {
+                    normalizedCategories.forEach(categoryName => {
+                        if (!toolMap.get(name).categories.includes(categoryName)) {
+                            toolMap.get(name).categories.push(categoryName);
                         }
-                    }
+                    });
+                } else {
+                    toolMap.set(name, {
+                        description: description || '',
+                        categories: normalizedCategories,
+                        url1,
+                        url1Name,
+                        url2,
+                        url2Name,
+                        url3,
+                        url3Name,
+                        url4,
+                        url4Name
+                    });
+                }
+            });
 
-                    let iconHTML = `<div class="card-icon">${getCategoryIcon(data.categories[0])}</div>`;
-                    
-                    if (data.categories[0].includes('新手推薦') || data.categories[0].includes('精選必備')) {
-                        iconHTML = `<div class="card-icon" style="color:var(--color-background); background:var(--color-text-primary); border-color:transparent;" title="精選推薦">${getCategoryIcon('新手推薦')}</div>`;
-                    }
+            return toolMap;
+        }
 
-                    const isFav = favorites.includes(name);
-                    const heartClass = isFav ? 'fav-btn active' : 'fav-btn';
-                    const heartIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+        function createToolCard(name, data) {
+            const card = document.createElement('div');
+            card.className = 'tool-card glass-panel';
+            card.dataset.category = data.categories.join('\u001f');
+            card.dataset.name = name;
+            card.dataset.search = [
+                name,
+                data.description || '',
+                data.categories.join(' '),
+                data.url1Name || '',
+                data.url2Name || '',
+                data.url3Name || '',
+                data.url4Name || ''
+            ].join(' ').toLowerCase();
 
-                    card.innerHTML = `
-                        <button class="${heartClass}" onclick="toggleFavorite('${name}', this)" aria-label="加入收藏" title="加入我的收藏">
-                            ${heartIcon}
-                        </button>
-                        <div class="card-header">
-                            ${iconHTML}
-                            <h4 class="tool-name">${name}</h4>
-                        </div>
-                        <p class="tool-description" title="${data.description || ''}">${data.description || ''}</p>
-                        <div class="card-buttons">${buttonsHTML}</div>
-                    `;
-                    toolGrid.appendChild(card);
-                });
-                
-                executeSearch();
-                return Array.from(toolMap.values());
+            const favBtn = document.createElement('button');
+            favBtn.type = 'button';
+            favBtn.className = favorites.includes(name) ? 'fav-btn active' : 'fav-btn';
+            favBtn.setAttribute('aria-label', `加入收藏：${name}`);
+            favBtn.title = '加入我的收藏';
+            favBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+            favBtn.addEventListener('click', () => window.toggleFavorite(name, favBtn));
+
+            const header = document.createElement('div');
+            header.className = 'card-header';
+
+            const icon = document.createElement('div');
+            icon.className = 'card-icon';
+            icon.appendChild(createIconNode(data.categories[0]));
+
+            if (data.categories[0].includes('新手推薦') || data.categories[0].includes('精選必備')) {
+                icon.style.color = 'var(--color-background)';
+                icon.style.background = 'var(--color-text-primary)';
+                icon.style.borderColor = 'transparent';
+                icon.title = '精選推薦';
+                icon.replaceChildren(createIconNode('新手推薦'));
+            }
+
+            const title = document.createElement('h4');
+            title.className = 'tool-name';
+            title.textContent = name;
+
+            header.append(icon, title);
+
+            const description = document.createElement('p');
+            description.className = 'tool-description';
+            description.title = data.description || '';
+            description.textContent = data.description || '';
+
+            const buttons = document.createElement('div');
+            buttons.className = 'card-buttons';
+
+            for(let i = 1; i <= 4; i++) {
+                const safeUrl = getSafeExternalUrl(data[`url${i}`]);
+                if (safeUrl) {
+                    const wrap = document.createElement('div');
+                    wrap.className = 'button-wrap';
+
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.addEventListener('click', () => openExternalLink(safeUrl));
+
+                    const label = document.createElement('span');
+                    label.textContent = data[`url${i}Name`] || '開啟工具';
+
+                    button.appendChild(label);
+                    wrap.appendChild(button);
+                    buttons.appendChild(wrap);
+                }
+            }
+
+            card.append(favBtn, header, description, buttons);
+            return card;
+        }
+
+        function renderToolsFromCSV(csvText) {
+            const toolGrid = document.getElementById('tool-grid');
+            const toolMap = parseToolsFromCSV(csvText);
+            const sortedTools = Array.from(toolMap.entries());
+            const fragment = document.createDocumentFragment();
+
+            sortedTools.forEach(([name, data]) => {
+                fragment.appendChild(createToolCard(name, data));
+            });
+
+            toolGrid.replaceChildren(fragment);
+            showReadyUI();
+            updateAllHearts();
+            executeSearch();
+
+            return Array.from(toolMap.values());
+        }
+
+        async function loadToolsFromSheet(sheetUrl) {
+            let renderedTools = [];
+            const cachedSheet = readCachedSheetText();
+
+            if (cachedSheet) {
+                renderedTools = renderToolsFromCSV(cachedSheet.csvText);
+            }
+
+            try {
+                const csvText = await fetchSheetText(sheetUrl);
+                if (!cachedSheet || cachedSheet.csvText !== csvText) {
+                    renderedTools = renderToolsFromCSV(csvText);
+                }
+                writeCachedSheetText(csvText);
+                return renderedTools;
             } catch (error) {
-                console.error(error);
-                document.getElementById('loading-message').textContent = '資料載入失敗，請確認 Google Sheet 發佈設定。';
-                return[];
+                console.warn('工具資料讀取失敗，改用快取資料', error);
+                if (renderedTools.length > 0) return renderedTools;
+
+                const loadingMessage = document.getElementById('loading-message');
+                if (loadingMessage) {
+                    loadingMessage.textContent = '資料載入失敗，請確認網路或 Google Sheet 發佈設定。';
+                }
+                return [];
             }
         }
 
@@ -802,23 +990,25 @@
             });
             
             window.activeFilter = categoryName;
-            const sectionTitle = document.getElementById('section-title');
-            sectionTitle.innerHTML = `${getCategoryIcon(window.activeFilter)} ${window.activeFilter}`;
+            setSectionTitle(window.activeFilter);
             document.getElementById('content-area').scrollTo(0,0);
         }
 
         function generateNavButtons() {
             const navContainer = document.getElementById('nav-container');
-            let navHTML = '';
+            const fragment = document.createDocumentFragment();
             
             getVisibleCategories().forEach(category => {
-                const isActive = category === window.activeFilter ? 'active' : '';
-                navHTML += `<button class="nav-btn ${isActive}" data-filter="${category}">${getCategoryIcon(category)} ${category}</button>`;
-            });
-            navContainer.innerHTML = navHTML;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = category === window.activeFilter ? 'nav-btn active' : 'nav-btn';
+                btn.dataset.filter = category;
+                btn.appendChild(createIconNode(category));
 
-            const btns = navContainer.querySelectorAll('.nav-btn');
-            btns.forEach(btn => {
+                const label = document.createElement('span');
+                label.textContent = category;
+                btn.appendChild(label);
+
                 btn.addEventListener('click', (e) => {
                     const targetCat = e.currentTarget.dataset.filter;
                     window.switchCategory(targetCat);
@@ -837,6 +1027,19 @@
                     
                     executeSearch();
                 });
+
+                fragment.appendChild(btn);
+            });
+
+            navContainer.replaceChildren(fragment);
+        }
+
+        let searchFrame = null;
+        function scheduleSearch() {
+            if (searchFrame) cancelAnimationFrame(searchFrame);
+            searchFrame = requestAnimationFrame(() => {
+                searchFrame = null;
+                executeSearch();
             });
         }
 
@@ -852,13 +1055,13 @@
                     window.switchCategory('全部工具');
                 }
                 
-                executeSearch();
+                scheduleSearch();
             });
 
             clearBtn.addEventListener('click', () => {
                 searchInput.value = '';
                 clearBtn.style.display = 'none';
-                executeSearch();
+                scheduleSearch();
                 searchInput.focus();
             });
         }
@@ -866,28 +1069,33 @@
         window.executeSearch = function() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
             const toolCards = document.querySelectorAll('.tool-card');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             let hasVisible = false;
             let delayIndex = 0;
 
             toolCards.forEach(card => {
-                const cats = card.dataset.category;
+                const categories = (card.dataset.category || '').split('\u001f');
                 const name = card.dataset.name;
-                const text = card.textContent.toLowerCase();
+                const text = card.dataset.search || '';
                 
                 let filterMatch = false;
                 if(window.activeFilter === '我的收藏') {
                     filterMatch = favorites.includes(name);
                 } else {
-                    filterMatch = (window.activeFilter === '全部工具' || cats.includes(window.activeFilter));
+                    filterMatch = (window.activeFilter === '全部工具' || categories.includes(window.activeFilter));
                 }
 
                 const searchMatch = (searchTerm === '' || text.includes(searchTerm));
                 
                 if (filterMatch && searchMatch) {
                     card.classList.remove('hidden');
-                    card.style.animation = 'none';
-                    void card.offsetWidth; 
-                    card.style.animation = `fadeSlideUp 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${delayIndex * 0.03}s`;
+                    card.style.opacity = '';
+                    if (!reduceMotion && delayIndex < 24) {
+                        card.style.animation = `fadeSlideUp 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards ${delayIndex * 0.025}s`;
+                    } else {
+                        card.style.animation = 'none';
+                        card.style.opacity = '1';
+                    }
                     delayIndex++;
                     hasVisible = true;
                 } else {
@@ -900,7 +1108,18 @@
             let noMsg = document.getElementById('no-results');
             if (!hasVisible && !noMsg) {
                 const grid = document.getElementById('tool-grid');
-                grid.insertAdjacentHTML('beforeend', '<h3 id="no-results" style="text-align:center; grid-column:1/-1; opacity:0.6; padding-top: 40px; font-weight: 400; animation: fadeIn 0.5s forwards;">尚未收藏工具，或找不到符合的結果。</h3>');
+                noMsg = document.createElement('h3');
+                noMsg.id = 'no-results';
+                noMsg.textContent = '尚未收藏工具，或找不到符合的結果。';
+                Object.assign(noMsg.style, {
+                    textAlign: 'center',
+                    gridColumn: '1 / -1',
+                    opacity: '0.6',
+                    paddingTop: '40px',
+                    fontWeight: '400',
+                    animation: 'fadeIn 0.5s forwards'
+                });
+                grid.appendChild(noMsg);
             } else if (hasVisible && noMsg) {
                 noMsg.remove();
             }
@@ -910,7 +1129,9 @@
         }
 
         function initializeParticles(theme = 'dark') {
-            const container = tsParticles.domItem(0);
+            if (!window.tsParticles || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const container = window.tsParticles.domItem(0);
             if(container) container.destroy();
 
             const baseConfig = {
@@ -933,7 +1154,7 @@
                 baseConfig.particles.color = { value:["#ffffff"] };
                 baseConfig.particles.links.color = "#ffffff";
             }
-            tsParticles.load({ id: "tsparticles", options: baseConfig });
+            window.tsParticles.load({ id: "tsparticles", options: baseConfig });
         }
     </script>
 </body>

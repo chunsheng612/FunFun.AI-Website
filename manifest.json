@@ -2,10 +2,15 @@
   "name": "方方老師 AI 工具箱 | 專業教育 AI 應用",
   "short_name": "方方AI工具箱",
   "description": "探索方方老師精心設計的 AI 工具，涵蓋課程設計、教材產出、教學評量與行政輔助，提升教育專業與效率。",
-  "start_url": ".",
+  "id": "/",
+  "start_url": "./",
+  "scope": "./",
+  "lang": "zh-TW",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#FAF3E0",
   "theme_color": "#C19A6B",
+  "categories": ["education", "productivity", "utilities"],
   "icons": [
     {
       "src": "assets/images/icon-192x192.png",
