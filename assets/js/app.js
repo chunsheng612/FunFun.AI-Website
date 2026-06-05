@@ -95,8 +95,11 @@ function parseCSVRow(str) {
 }
 
 function getSafeExternalUrl(value) {
+    const trimmedValue = String(value || '').trim();
+    if (!trimmedValue) return null;
+
     try {
-        const url = new URL(value, window.location.href);
+        const url = new URL(trimmedValue, window.location.href);
         return ['http:', 'https:'].includes(url.protocol) ? url.href : null;
     } catch {
         return null;
