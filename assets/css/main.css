@@ -167,6 +167,8 @@ body.light-mode .nav-btn.active { color: var(--color-bg-base); }
     backdrop-filter: blur(12px);
 }
 .auth-btn:hover { background: var(--color-accent-hover); border-color: var(--color-accent); transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+.auth-btn:disabled { cursor: wait; opacity: 0.72; transform: none; }
+.auth-btn.is-loading { pointer-events: none; }
 .auth-btn img { width: 22px; height: 22px; border-radius: 50%; display: none; object-fit: cover; }
 .auth-btn span { font-size: 0.9rem; font-weight: 600; white-space: nowrap; }
 

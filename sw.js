@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v8';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
@@ -7,6 +7,7 @@ const CORE_ASSETS = [
   './manifest.json',
   './assets/css/main.css',
   './assets/js/app.js',
+  './assets/js/app-20260607-auth.js',
   './POEAILearning.html',
   './sunoAILearning.html',
   './notionAI.html',
@@ -50,17 +51,26 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  if (isFreshAsset(url)) {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
   if (isStaticAsset(url)) {
     event.respondWith(cacheFirst(request));
   }
 });
+
+function isFreshAsset(url) {
+  return /\.(?:css|js)$/i.test(url.pathname);
+}
 
 function isStaticAsset(url) {
   return /\.(?:css|js|html|json|png|jpg|jpeg|webp|svg|ico|woff2?)$/i.test(url.pathname);
 }
 
 async function cacheFirst(request) {
-  const cached = await caches.match(request, { ignoreSearch: true });
+  const cached = await caches.match(request);
   if (cached) return cached;
 
   const response = await fetch(request);
