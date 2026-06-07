@@ -214,13 +214,12 @@ function setupAuth() {
     }
 
     function getAuthErrorMessage(error) {
-        const code = error?.code || 'unknown-error';
-        const msg = error?.message || '';
+        const code = error?.code || '';
         if (code === 'auth/popup-blocked') return '瀏覽器擋下登入彈跳視窗，請允許彈跳視窗後再試。';
         if (code === 'auth/popup-closed-by-user') return '登入視窗已關閉，尚未完成登入。';
         if (code === 'auth/unauthorized-domain') return '目前網站網域尚未加入 Firebase Authentication 授權網域。';
-        if (code === 'auth/internal-error') return `登入初始化失敗。\n\n詳細錯誤：${msg}\n(請截圖或複製此段文字給我)`;
-        return `登入失敗 (${code})\n詳細錯誤：${msg}`;
+        if (code === 'auth/internal-error') return '登入初始化失敗，請重新整理後再試。';
+        return '登入失敗，請稍後再試。';
     }
 
     function shouldUseRedirectFallback(error) {
@@ -229,7 +228,7 @@ function setupAuth() {
 
     getRedirectResult(auth).catch(error => {
         console.error("Redirect 登入結果讀取失敗", error);
-        // 不在這裡使用 alert，避免使用者一開啟網頁就一直看到錯誤（例如在 file:// 下）
+        alert(getAuthErrorMessage(error));
     });
 
     onAuthStateChanged(auth, async (user) => {
@@ -241,21 +240,6 @@ function setupAuth() {
 
             const docSnap = await getDoc(doc(db, "users", user.uid));
             favorites = docSnap.exists() ? (docSnap.data().favorites || []) : [];
-            
-            // 處理登入前點擊的愛心
-            const pendingFavorite = sessionStorage.getItem('pendingFavorite');
-            if (pendingFavorite) {
-                sessionStorage.removeItem('pendingFavorite');
-                if (!favorites.includes(pendingFavorite)) {
-                    favorites.push(pendingFavorite);
-                    try {
-                        await setDoc(doc(db, "users", user.uid), { favorites }, { merge: true });
-                    } catch (error) {
-                        console.error("收藏同步失敗", error);
-                    }
-                }
-            }
-
             updateAllHearts();
 
             if (window.activeFilter === '我的收藏') executeSearch();
@@ -280,12 +264,22 @@ function setupAuth() {
             signOut(auth).then(() => alert("已登出！"));
         } else {
             setAuthButtonBusy(true);
-            authText.textContent = "前往登入...";
             try {
-                await signInWithRedirect(auth, provider);
+                await signInWithPopup(auth, provider);
             } catch (error) {
-                console.error("頁面跳轉登入失敗", error);
+                console.error("彈跳視窗登入失敗", error);
+                if (shouldUseRedirectFallback(error)) {
+                    authText.textContent = "前往登入...";
+                    try {
+                        await signInWithRedirect(auth, provider);
+                    } catch (redirectError) {
+                        console.error("頁面跳轉登入失敗", redirectError);
+                        alert(getAuthErrorMessage(redirectError));
+                    }
+                    return;
+                }
                 alert(getAuthErrorMessage(error));
+            } finally {
                 setAuthButtonBusy(false);
             }
         }
@@ -303,13 +297,7 @@ function initializeExternalLinks() {
 // ==========================
 window.toggleFavorite = async function(toolName, btnElement) {
     if (!currentUser) {
-        const wantsToLogin = confirm("💡 請先登入才能將工具加入專屬清單。是否前往 Google 登入？");
-        if (wantsToLogin) {
-            sessionStorage.setItem('pendingFavorite', toolName);
-            const provider = new GoogleAuthProvider();
-            provider.setCustomParameters({ prompt: 'select_account' });
-            signInWithRedirect(auth, provider);
-        }
+        alert("💡 請先點擊右上角「登入收藏」，才能將工具加入您的專屬清單喔！");
         return;
     }
 
