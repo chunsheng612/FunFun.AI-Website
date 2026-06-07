@@ -214,12 +214,13 @@ function setupAuth() {
     }
 
     function getAuthErrorMessage(error) {
-        const code = error?.code || '';
+        const code = error?.code || 'unknown-error';
+        const msg = error?.message || '';
         if (code === 'auth/popup-blocked') return '瀏覽器擋下登入彈跳視窗，請允許彈跳視窗後再試。';
         if (code === 'auth/popup-closed-by-user') return '登入視窗已關閉，尚未完成登入。';
         if (code === 'auth/unauthorized-domain') return '目前網站網域尚未加入 Firebase Authentication 授權網域。';
-        if (code === 'auth/internal-error') return '登入初始化失敗，請重新整理後再試。';
-        return '登入失敗，請稍後再試。';
+        if (code === 'auth/internal-error') return `登入初始化失敗。\n\n詳細錯誤：${msg}\n(請截圖或複製此段文字給我)`;
+        return `登入失敗 (${code})\n詳細錯誤：${msg}`;
     }
 
     function shouldUseRedirectFallback(error) {
@@ -228,7 +229,7 @@ function setupAuth() {
 
     getRedirectResult(auth).catch(error => {
         console.error("Redirect 登入結果讀取失敗", error);
-        alert(getAuthErrorMessage(error));
+        // 不在這裡使用 alert，避免使用者一開啟網頁就一直看到錯誤（例如在 file:// 下）
     });
 
     onAuthStateChanged(auth, async (user) => {
