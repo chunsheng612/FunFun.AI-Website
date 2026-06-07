@@ -240,6 +240,21 @@ function setupAuth() {
 
             const docSnap = await getDoc(doc(db, "users", user.uid));
             favorites = docSnap.exists() ? (docSnap.data().favorites || []) : [];
+            
+            // 處理登入前點擊的愛心
+            const pendingFavorite = sessionStorage.getItem('pendingFavorite');
+            if (pendingFavorite) {
+                sessionStorage.removeItem('pendingFavorite');
+                if (!favorites.includes(pendingFavorite)) {
+                    favorites.push(pendingFavorite);
+                    try {
+                        await setDoc(doc(db, "users", user.uid), { favorites }, { merge: true });
+                    } catch (error) {
+                        console.error("收藏同步失敗", error);
+                    }
+                }
+            }
+
             updateAllHearts();
 
             if (window.activeFilter === '我的收藏') executeSearch();
@@ -264,22 +279,12 @@ function setupAuth() {
             signOut(auth).then(() => alert("已登出！"));
         } else {
             setAuthButtonBusy(true);
+            authText.textContent = "前往登入...";
             try {
-                await signInWithPopup(auth, provider);
+                await signInWithRedirect(auth, provider);
             } catch (error) {
-                console.error("彈跳視窗登入失敗", error);
-                if (shouldUseRedirectFallback(error)) {
-                    authText.textContent = "前往登入...";
-                    try {
-                        await signInWithRedirect(auth, provider);
-                    } catch (redirectError) {
-                        console.error("頁面跳轉登入失敗", redirectError);
-                        alert(getAuthErrorMessage(redirectError));
-                    }
-                    return;
-                }
+                console.error("頁面跳轉登入失敗", error);
                 alert(getAuthErrorMessage(error));
-            } finally {
                 setAuthButtonBusy(false);
             }
         }
@@ -297,7 +302,13 @@ function initializeExternalLinks() {
 // ==========================
 window.toggleFavorite = async function(toolName, btnElement) {
     if (!currentUser) {
-        alert("💡 請先點擊右上角「登入收藏」，才能將工具加入您的專屬清單喔！");
+        const wantsToLogin = confirm("💡 請先登入才能將工具加入專屬清單。是否前往 Google 登入？");
+        if (wantsToLogin) {
+            sessionStorage.setItem('pendingFavorite', toolName);
+            const provider = new GoogleAuthProvider();
+            provider.setCustomParameters({ prompt: 'select_account' });
+            signInWithRedirect(auth, provider);
+        }
         return;
     }
 
