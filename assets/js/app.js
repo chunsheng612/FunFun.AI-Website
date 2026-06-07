@@ -215,11 +215,15 @@ function setupAuth() {
 
     function getAuthErrorMessage(error) {
         const code = error?.code || '';
-        if (code === 'auth/popup-blocked') return '瀏覽器擋下登入彈跳視窗，已改用頁面跳轉登入。';
+        if (code === 'auth/popup-blocked') return '瀏覽器擋下登入彈跳視窗，請允許彈跳視窗後再試。';
         if (code === 'auth/popup-closed-by-user') return '登入視窗已關閉，尚未完成登入。';
         if (code === 'auth/unauthorized-domain') return '目前網站網域尚未加入 Firebase Authentication 授權網域。';
-        if (code === 'auth/internal-error') return '登入彈跳視窗初始化失敗，已改用頁面跳轉登入。';
+        if (code === 'auth/internal-error') return '登入初始化失敗，請重新整理後再試。';
         return '登入失敗，請稍後再試。';
+    }
+
+    function shouldUseRedirectFallback(error) {
+        return ['auth/popup-blocked', 'auth/internal-error'].includes(error?.code);
     }
 
     getRedirectResult(auth).catch(error => {
@@ -264,9 +268,14 @@ function setupAuth() {
                 await signInWithPopup(auth, provider);
             } catch (error) {
                 console.error("彈跳視窗登入失敗", error);
-                if (['auth/popup-blocked', 'auth/internal-error'].includes(error?.code)) {
-                    alert(getAuthErrorMessage(error));
-                    await signInWithRedirect(auth, provider);
+                if (shouldUseRedirectFallback(error)) {
+                    authText.textContent = "前往登入...";
+                    try {
+                        await signInWithRedirect(auth, provider);
+                    } catch (redirectError) {
+                        console.error("頁面跳轉登入失敗", redirectError);
+                        alert(getAuthErrorMessage(redirectError));
+                    }
                     return;
                 }
                 alert(getAuthErrorMessage(error));
