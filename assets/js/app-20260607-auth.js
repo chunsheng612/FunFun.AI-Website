@@ -213,20 +213,33 @@ function setupAuth() {
         if (isBusy) authText.textContent = "登入中...";
     }
 
+    function isMobileOrNarrow() {
+        const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        const isNarrow = window.innerWidth < 768;
+        return isTouchDevice || isNarrow;
+    }
+
     function getAuthErrorMessage(error) {
+        console.error("Firebase Auth Error Full:", error);
         const code = error?.code || '';
+        const message = error?.message || '';
+        console.error("Firebase Auth Error Code:", code, "Message:", message);
+
         if (code === 'auth/popup-blocked') return '瀏覽器擋下登入彈跳視窗，請允許彈跳視窗後再試。';
         if (code === 'auth/popup-closed-by-user') return '登入視窗已關閉，尚未完成登入。';
         if (code === 'auth/unauthorized-domain') return '目前網站網域尚未加入 Firebase Authentication 授權網域。';
         if (code === 'auth/internal-error') return '登入初始化失敗，請重新整理後再試。';
+        if (code === 'auth/operation-not-allowed') return '此登入方式尚未啟用，請至 Firebase Console 開啟 Google 登入。';
+        if (code === 'auth/network-request-failed') return '網路連線異常，請檢查網路後再試。';
         return '登入失敗，請稍後再試。';
     }
 
-    function shouldUseRedirectFallback(error) {
-        return ['auth/popup-blocked', 'auth/internal-error'].includes(error?.code);
-    }
-
-    getRedirectResult(auth).catch(error => {
+    getRedirectResult(auth).then(result => {
+        if (result) {
+            console.log("Redirect 登入成功", result.user?.email);
+        }
+    }).catch(error => {
+        if (error?.code === 'auth/popup-closed-by-user') return;
         console.error("Redirect 登入結果讀取失敗", error);
         alert(getAuthErrorMessage(error));
     });
@@ -264,21 +277,34 @@ function setupAuth() {
             signOut(auth).then(() => alert("已登出！"));
         } else {
             setAuthButtonBusy(true);
+
+            // 手機或寬度 < 768：直接使用 redirect
+            if (isMobileOrNarrow()) {
+                authText.textContent = "前往登入...";
+                try {
+                    await signInWithRedirect(auth, provider);
+                } catch (redirectError) {
+                    console.error("頁面跳轉登入失敗", redirectError);
+                    alert(getAuthErrorMessage(redirectError));
+                    setAuthButtonBusy(false);
+                }
+                return;
+            }
+
+            // 桌機：先嘗試 popup，失敗再 fallback 到 redirect
             try {
                 await signInWithPopup(auth, provider);
             } catch (error) {
                 console.error("彈跳視窗登入失敗", error);
-                if (shouldUseRedirectFallback(error)) {
-                    authText.textContent = "前往登入...";
-                    try {
-                        await signInWithRedirect(auth, provider);
-                    } catch (redirectError) {
-                        console.error("頁面跳轉登入失敗", redirectError);
-                        alert(getAuthErrorMessage(redirectError));
-                    }
-                    return;
+                // popup 失敗時 fallback 到 redirect（不限特定錯誤碼）
+                authText.textContent = "前往登入...";
+                try {
+                    await signInWithRedirect(auth, provider);
+                } catch (redirectError) {
+                    console.error("頁面跳轉登入也失敗", redirectError);
+                    alert(getAuthErrorMessage(redirectError));
                 }
-                alert(getAuthErrorMessage(error));
+                return;
             } finally {
                 setAuthButtonBusy(false);
             }
