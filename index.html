@@ -86,6 +86,48 @@
                         新手推薦
                     </h2>
                 </div>
+
+                <section class="skill-guide glass-panel is-hidden" id="skill-guide" aria-labelledby="skill-guide-title">
+                    <div class="skill-guide-intro">
+                        <div class="skill-guide-kicker">INSTALLABLE WORKFLOWS</div>
+                        <h3 id="skill-guide-title">把好用的工作流程，裝進你的 AI 助手</h3>
+                        <p>點開下方技能卡即可前往 GitHub。下載含有 <code>SKILL.md</code> 的完整技能資料夾，再放入對應位置即可使用。</p>
+                    </div>
+
+                    <div class="skill-install-grid">
+                        <article class="skill-install-card">
+                            <div class="skill-install-heading">
+                                <span class="skill-install-number">01</span>
+                                <div>
+                                    <span class="skill-platform">OPENAI</span>
+                                    <h4>安裝到 Codex</h4>
+                                </div>
+                            </div>
+                            <p>將技能資料夾放入個人 Skills 目錄；安裝後可用 <code>$技能名稱</code> 呼叫。</p>
+                            <button type="button" class="skill-copy-btn" data-copy-value="~/.agents/skills/&lt;skill-name&gt;/" aria-label="複製 Codex Skill 安裝路徑">
+                                <code>~/.agents/skills/&lt;skill-name&gt;/</code>
+                                <span>複製路徑</span>
+                            </button>
+                        </article>
+
+                        <article class="skill-install-card">
+                            <div class="skill-install-heading">
+                                <span class="skill-install-number">02</span>
+                                <div>
+                                    <span class="skill-platform">ANTHROPIC</span>
+                                    <h4>安裝到 Claude Code</h4>
+                                </div>
+                            </div>
+                            <p>將技能資料夾放入個人 Skills 目錄；安裝後可用 <code>/技能名稱</code> 呼叫。</p>
+                            <button type="button" class="skill-copy-btn" data-copy-value="~/.claude/skills/&lt;skill-name&gt;/" aria-label="複製 Claude Code Skill 安裝路徑">
+                                <code>~/.claude/skills/&lt;skill-name&gt;/</code>
+                                <span>複製路徑</span>
+                            </button>
+                        </article>
+                    </div>
+
+                    <p class="skill-guide-note"><strong>小提醒：</strong>請先閱讀各 GitHub 專案的 README；若技能沒有立即出現，重新啟動 Codex 或 Claude Code。</p>
+                </section>
                 
                 <div class="tool-grid" id="tool-grid">
                     <h3 id="loading-message" class="loading-message">
@@ -115,6 +157,6 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.4.0/tsparticles.bundle.min.js"></script>
 
     <!-- Firebase SDK & 主程式邏輯 (以 Module 方式載入) -->
-    <script type="module" src="assets/js/app-20260607-auth.js"></script>
+    <script type="module" src="assets/js/app.js?v=20260810-skill-hub"></script>
 </body>
 </html>
