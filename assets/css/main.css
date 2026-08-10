@@ -14,6 +14,8 @@
     --color-accent: #a7a7d1;
     --color-accent-hover: rgba(167, 167, 209, 0.2);
     --color-heart: #ff4757;
+    --color-skill: #7dd3fc;
+    --color-skill-soft: rgba(125, 211, 252, 0.12);
     
     /* 液態按鈕專屬變數 */
     --color-button-shadow-1: rgba(0, 0, 0, 0.05);
@@ -38,6 +40,8 @@ body.light-mode {
     --color-accent: #6F4E37;
     --color-accent-hover: rgba(111, 78, 55, 0.1);
     --color-heart: #D84315;
+    --color-skill: #0f6f78;
+    --color-skill-soft: rgba(15, 111, 120, 0.1);
 
     /* 液態按鈕淺色變數 */
     --color-button-shadow-1: rgba(255, 255, 255, 0.8);
@@ -189,6 +193,126 @@ body.light-mode .nav-btn.active { color: var(--color-bg-base); }
 .section-header { margin-bottom: 24px; padding-left: 4px;}
 .section-title { font-size: 1.35rem; font-weight: 700; display: flex; align-items: center; gap: 10px; color: var(--color-text-primary);}
 .section-title svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2;}
+
+/* --- Installable Skill Guide --- */
+.skill-guide {
+    position: relative;
+    flex-shrink: 0;
+    overflow: hidden;
+    margin: -4px 0 24px;
+    padding: clamp(22px, 3vw, 34px);
+    border-radius: 24px;
+    animation: fadeSlideUp 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.skill-guide::before {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    top: -170px;
+    right: -80px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--color-skill-soft), transparent 68%);
+    pointer-events: none;
+}
+.skill-guide-intro { position: relative; max-width: 760px; }
+.skill-guide-kicker {
+    color: var(--color-skill);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    margin-bottom: 8px;
+}
+.skill-guide h3 {
+    color: var(--color-text-primary);
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+}
+.skill-guide-intro p {
+    color: var(--color-text-secondary);
+    margin-top: 10px;
+    line-height: 1.7;
+}
+.skill-guide code {
+    color: var(--color-text-primary);
+    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-size: 0.88em;
+}
+.skill-install-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 24px;
+}
+.skill-install-card {
+    position: relative;
+    padding: 18px;
+    border: 1px solid var(--color-glass-border);
+    border-radius: 18px;
+    background: var(--color-input-bg);
+}
+.skill-install-heading { display: flex; align-items: center; gap: 12px; }
+.skill-install-number {
+    display: grid;
+    place-items: center;
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    border: 1px solid var(--color-skill);
+    border-radius: 12px;
+    color: var(--color-skill);
+    font: 700 0.76rem/1 "SFMono-Regular", Consolas, monospace;
+}
+.skill-platform {
+    display: block;
+    margin-bottom: 2px;
+    color: var(--color-text-secondary);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+.skill-install-card h4 { color: var(--color-text-primary); font-size: 1rem; }
+.skill-install-card > p {
+    min-height: 3.1em;
+    margin: 13px 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+.skill-copy-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--color-glass-border);
+    border-radius: 12px;
+    background: var(--color-glass-bg);
+    color: var(--color-text-primary);
+    cursor: pointer;
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.skill-copy-btn:hover {
+    border-color: var(--color-skill);
+    background: var(--color-skill-soft);
+    transform: translateY(-1px);
+}
+.skill-copy-btn span {
+    flex: 0 0 auto;
+    color: var(--color-skill);
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+.skill-guide-note {
+    margin-top: 16px;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    line-height: 1.55;
+}
+.skill-guide-note strong { color: var(--color-text-primary); }
 
 /* --- Tool Grid & Cards --- */
 .tool-grid {
@@ -359,5 +483,10 @@ body.light-mode .button-wrap button::after { background: conic-gradient(from var
     .clear-btn { right: 16px; } 
     
     .content-area { padding: 16px 12px; }
+    .skill-guide { margin-bottom: 18px; padding: 20px 16px; border-radius: 20px; }
+    .skill-install-grid { grid-template-columns: 1fr; }
+    .skill-install-card > p { min-height: auto; }
+    .skill-copy-btn { align-items: flex-start; }
+    .skill-copy-btn code { overflow-wrap: anywhere; text-align: left; }
     .tool-grid { grid-template-columns: 1fr; gap: 16px; }
 }
