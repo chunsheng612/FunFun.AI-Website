@@ -43,12 +43,13 @@ const categoryIcons = {
     "班級經營與互動": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
     "親師溝通與行政": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
     "學生自學與遊戲": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"/><path d="M6 12h4"/><path d="M8 10v4"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></svg>`,
+    "Skill 專區": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.86 5.36.78-3.88 3.78.92 5.34L12 14.24l-4.8 2.52.92-5.34-3.88-3.78 5.36-.78L12 2z"/><path d="M8 21h8"/><path d="M10 18h4"/></svg>`,
     "特殊教育類別": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M4 8h16"/><path d="M12 6v8"/><path d="M12 14l-4 7"/><path d="M12 14l4 7"/><path d="M9 13h6"/></svg>`,
     "專業進修與生活": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`
 };
 categoryIcons["特殊教育種類"] = categoryIcons["特殊教育類別"];
 
-const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "特殊教育類別", "專業進修與生活", "全部工具"];
+const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "Skill 專區", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "特殊教育類別", "專業進修與生活", "全部工具"];
 
 function getCategoryIcon(categoryName) {
     return categoryIcons[categoryName] || categoryIcons["全部工具"];
@@ -190,11 +191,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     initializeMobileSearch();
     initializeExternalLinks();
     initializeSearch();
+    initializeSkillGuide();
     setupAuth(); // 啟動 Firebase 監聽
     registerServiceWorker();
 
-    const allTools = await loadToolsFromSheet(GOOGLE_SHEET_URL);
-    if (allTools.length > 0) showReadyUI();
+    showReadyUI();
+    await loadToolsFromSheet(GOOGLE_SHEET_URL);
 });
 
 // ==========================
@@ -316,6 +318,37 @@ function initializeExternalLinks() {
     document.getElementById('facebook-link-btn').addEventListener('click', () => {
         openExternalLink('https://www.facebook.com/FunFun.AI.Teacher/');
     });
+}
+
+function initializeSkillGuide() {
+    document.querySelectorAll('.skill-copy-btn').forEach(button => {
+        const defaultLabel = button.querySelector('span')?.textContent || '複製路徑';
+
+        button.addEventListener('click', async () => {
+            const value = button.dataset.copyValue || '';
+            const label = button.querySelector('span');
+
+            try {
+                await navigator.clipboard.writeText(value);
+                if (label) label.textContent = '已複製';
+            } catch {
+                if (label) label.textContent = '請手動複製';
+            }
+
+            window.setTimeout(() => {
+                if (label) label.textContent = defaultLabel;
+            }, 1800);
+        });
+    });
+}
+
+function updateSkillGuideVisibility() {
+    const guide = document.getElementById('skill-guide');
+    if (!guide) return;
+
+    const isSkillSection = window.activeFilter === 'Skill 專區';
+    const hasSearchTerm = document.getElementById('search-input').value.trim().length > 0;
+    guide.classList.toggle('is-hidden', !isSkillSection || hasSearchTerm);
 }
 
 // ==========================
@@ -603,6 +636,7 @@ window.switchCategory = function(categoryName) {
     
     window.activeFilter = categoryName;
     setSectionTitle(window.activeFilter);
+    updateSkillGuideVisibility();
     document.getElementById('content-area').scrollTo(0,0);
 }
 
@@ -623,18 +657,18 @@ function generateNavButtons() {
 
         btn.addEventListener('click', (e) => {
             const targetCat = e.currentTarget.dataset.filter;
+            const searchInput = document.getElementById('search-input');
+            if(searchInput.value !== '') {
+                searchInput.value = '';
+                document.getElementById('clear-btn').style.display = 'none';
+            }
+
             window.switchCategory(targetCat);
             
             // 手機版自動收起選單
             if(window.innerWidth <= 768 && targetCat !== '我的收藏' || (targetCat === '我的收藏' && currentUser)) {
                 document.getElementById('sidebar').classList.remove('active');
                 document.getElementById('sidebar-overlay').classList.remove('active');
-            }
-            
-            const searchInput = document.getElementById('search-input');
-            if(searchInput.value !== '') {
-                searchInput.value = '';
-                document.getElementById('clear-btn').style.display = 'none';
             }
             
             executeSearch();
@@ -718,20 +752,25 @@ window.executeSearch = function() {
     });
 
     let noMsg = document.getElementById('no-results');
-    if (!hasVisible && !noMsg) {
-        const grid = document.getElementById('tool-grid');
-        noMsg = document.createElement('h3');
-        noMsg.id = 'no-results';
-        noMsg.textContent = '尚未收藏工具，或找不到符合的結果。';
-        Object.assign(noMsg.style, {
-            textAlign: 'center',
-            gridColumn: '1 / -1',
-            opacity: '0.6',
-            paddingTop: '40px',
-            fontWeight: '400',
-            animation: 'fadeIn 0.5s forwards'
-        });
-        grid.appendChild(noMsg);
+    if (!hasVisible) {
+        if (!noMsg) {
+            const grid = document.getElementById('tool-grid');
+            noMsg = document.createElement('h3');
+            noMsg.id = 'no-results';
+            Object.assign(noMsg.style, {
+                textAlign: 'center',
+                gridColumn: '1 / -1',
+                opacity: '0.6',
+                paddingTop: '40px',
+                fontWeight: '400',
+                animation: 'fadeIn 0.5s forwards'
+            });
+            grid.appendChild(noMsg);
+        }
+
+        noMsg.textContent = window.activeFilter === 'Skill 專區'
+            ? 'Skill 即將上架，敬請期待。'
+            : '尚未收藏工具，或找不到符合的結果。';
     } else if (hasVisible && noMsg) {
         noMsg.remove();
     }
