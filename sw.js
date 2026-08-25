@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v13';
+const CACHE_VERSION = 'v14';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
