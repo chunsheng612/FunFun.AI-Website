@@ -42,6 +42,7 @@ const categoryIcons = {
     "評量與作業批改": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>`,
     "班級經營與互動": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
     "親師溝通與行政": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    "學習遊戲": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 6H5a2 2 0 0 0-2 2v1a3 3 0 0 0 3 3h2"/><path d="M16 6h3a2 2 0 0 1 2 2v1a3 3 0 0 1-3 3h-2"/><path d="M12 13v5"/><path d="M9 21h6"/></svg>`,
     "學生自學與遊戲": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2" ry="2"/><path d="M6 12h4"/><path d="M8 10v4"/><line x1="15" y1="13" x2="15.01" y2="13"/><line x1="18" y1="11" x2="18.01" y2="11"/></svg>`,
     "Skill 專區": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 4.86 5.36.78-3.88 3.78.92 5.34L12 14.24l-4.8 2.52.92-5.34-3.88-3.78 5.36-.78L12 2z"/><path d="M8 21h8"/><path d="M10 18h4"/></svg>`,
     "特殊教育類別": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M4 8h16"/><path d="M12 6v8"/><path d="M12 14l-4 7"/><path d="M12 14l4 7"/><path d="M9 13h6"/></svg>`,
@@ -49,7 +50,7 @@ const categoryIcons = {
 };
 categoryIcons["特殊教育種類"] = categoryIcons["特殊教育類別"];
 
-const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "Skill 專區", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學生自學與遊戲", "特殊教育類別", "專業進修與生活", "全部工具"];
+const orderedCategories = ["我的收藏", "新手推薦", "精選必備", "Skill 專區", "課程與教案設計", "評量與作業批改", "班級經營與互動", "親師溝通與行政", "學習遊戲", "學生自學與遊戲", "特殊教育類別", "專業進修與生活", "全部工具"];
 
 function getCategoryIcon(categoryName) {
     return categoryIcons[categoryName] || categoryIcons["全部工具"];
@@ -734,7 +735,9 @@ window.executeSearch = function() {
 
         noMsg.textContent = window.activeFilter === 'Skill 專區'
             ? 'Skill 即將上架，敬請期待。'
-            : '尚未收藏工具，或找不到符合的結果。';
+            : window.activeFilter === '學習遊戲'
+                ? '請在 Google Sheet 的「分類標籤」填寫「學習遊戲」，這裡就會顯示遊戲。'
+                : '尚未收藏工具，或找不到符合的結果。';
     } else if (hasVisible && noMsg) {
         noMsg.remove();
     }
