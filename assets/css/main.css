@@ -490,3 +490,9 @@ body.light-mode .button-wrap button::after { background: conic-gradient(from var
     .skill-copy-btn code { overflow-wrap: anywhere; text-align: left; }
     .tool-grid { grid-template-columns: 1fr; gap: 16px; }
 }
+
+/* Gemini Spark actions inside the existing tool cards. */
+.spark-install-status { flex-basis: 100%; margin: 0; font-size: 0.85rem; color: var(--color-text-secondary); }
+.spark-install-status:empty { display: none; }
+.spark-install-fallback { width: 100%; min-height: 140px; padding: 10px; border-radius: 8px; background: var(--color-background); color: var(--color-text-primary); }
+.spark-install-fallback[hidden] { display: none; }

@@ -1,3 +1,4 @@
+import { loadSparkSkills, mergeSparkSkills, appendSparkSkillActions } from './spark-skills.js';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
@@ -31,7 +32,7 @@ const db = getFirestore(app);
 let currentUser = null;
 let favorites = [];
 let availableCategories = new Set();
-window.activeFilter = '新手推薦'; // 讓全域可讀取
+window.activeFilter = new URLSearchParams(window.location.search).get('category') === 'Skill 專區' ? 'Skill 專區' : '新手推薦'; // 讓全域可讀取
 
 const categoryIcons = {
     "我的收藏": `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`,
@@ -137,6 +138,7 @@ function setSectionTitle(categoryName) {
 function showReadyUI() {
     generateNavButtons();
     setSectionTitle(window.activeFilter);
+    updateSkillGuideVisibility();
     document.getElementById('main-footer').classList.remove('is-hidden');
 }
 
@@ -520,7 +522,8 @@ function createToolCard(name, data) {
     const buttons = document.createElement('div');
     buttons.className = 'card-buttons';
 
-    for(let i = 1; i <= 4; i++) {
+    if (data.sparkSkill) appendSparkSkillActions(buttons, data.sparkSkill, openExternalLink);
+    for(let i = 1; !data.sparkSkill && i <= 4; i++) {
         const safeUrl = getSafeExternalUrl(data[`url${i}`]);
         if (safeUrl) {
             const wrap = document.createElement('div');
@@ -545,12 +548,13 @@ function createToolCard(name, data) {
 
 function renderToolsFromCSV(csvText) {
     const toolGrid = document.getElementById('tool-grid');
-    const toolMap = parseToolsFromCSV(csvText);
+    const toolMap = mergeSparkSkills(parseToolsFromCSV(csvText));
+    for (const data of toolMap.values()) data.categories.forEach(category => availableCategories.add(category));
     const sortedTools = Array.from(toolMap.entries());
     const fragment = document.createDocumentFragment();
 
     sortedTools.forEach(([name, data]) => {
-        fragment.appendChild(createToolCard(name, data));
+        fragment.appendChild(createToolCard(data.displayName || name, data));
     });
 
     toolGrid.replaceChildren(fragment);
@@ -562,11 +566,14 @@ function renderToolsFromCSV(csvText) {
 }
 
 async function loadToolsFromSheet(sheetUrl) {
+    await loadSparkSkills();
     let renderedTools = [];
     const cachedSheet = readCachedSheetText();
 
     if (cachedSheet) {
         renderedTools = renderToolsFromCSV(cachedSheet.csvText);
+    } else {
+        renderedTools = renderToolsFromCSV('工具名稱,工具說明,分類標籤');
     }
 
     try {
