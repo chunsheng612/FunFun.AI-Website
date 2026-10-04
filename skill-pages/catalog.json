@@ -1,0 +1,200 @@
+[
+  {
+    "row": 272,
+    "skill": "build-firebase-cloudflare-app",
+    "name": "自動部署和串聯後端Skill",
+    "display_name": "自動部署和串聯後端Skill",
+    "short_description": "可將設計或想法轉化為部署在 Cloudflare 上的 Firebase 支援的應用程式",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/build-firebase-cloudflare-app",
+    "skill_path": "build-firebase-cloudflare-app/SKILL.md",
+    "skill_folder": "build-firebase-cloudflare-app",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/build-firebase-cloudflare-app/main/build-firebase-cloudflare-app/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/build-firebase-cloudflare-app/blob/main/build-firebase-cloudflare-app/SKILL.md",
+    "page_path": "skill-pages/build-firebase-cloudflare-app/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/build-firebase-cloudflare-app/",
+    "aliases": [
+      "https://github.com/chunsheng612/build-firebase-cloudflare-app",
+      "https://github.com/chunsheng612/build-firebase-cloudflare-app"
+    ]
+  },
+  {
+    "row": 273,
+    "skill": "render-zhuyin-web",
+    "name": "網頁中文字直式注音Skill",
+    "display_name": "網頁中文字直式注音Skill",
+    "short_description": "可將現有的中文應用程式，為每一個中文字增加垂直的注音",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/render-zhuyin-web",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/render-zhuyin-web/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/render-zhuyin-web/blob/main/SKILL.md",
+    "page_path": "skill-pages/render-zhuyin-web/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/render-zhuyin-web/",
+    "aliases": [
+      "https://github.com/chunsheng612/render-zhuyin-web",
+      "https://github.com/chunsheng612/render-zhuyin-web"
+    ]
+  },
+  {
+    "row": 274,
+    "skill": "grill-me",
+    "name": "Grill Me",
+    "display_name": "Grill Me",
+    "short_description": "有系統地審視你的設計和想法，思考那些你可能忽略的實作細節。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/mattpocock/skills",
+    "skill_path": "skills/productivity/grilling/SKILL.md",
+    "skill_folder": "skills/productivity/grilling",
+    "planned_url": "https://raw.githubusercontent.com/mattpocock/skills/main/skills/productivity/grilling/SKILL.md",
+    "view_url": "https://github.com/mattpocock/skills/blob/main/skills/productivity/grilling/SKILL.md",
+    "page_path": "skill-pages/grill-me/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/grill-me/",
+    "aliases": [
+      "https://claudemarketplaces.com/skills/mattpocock/skills/grill-me",
+      "https://github.com/mattpocock/skills"
+    ]
+  },
+  {
+    "row": 275,
+    "skill": "frontend-design",
+    "name": "Frontend Design",
+    "display_name": "Frontend Design",
+    "short_description": "創建HTML/CSS/JS 或 React 元件，獨特的字體、創意佈局和精心設計的動畫。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/anthropics/skills",
+    "skill_path": "skills/frontend-design/SKILL.md",
+    "skill_folder": "skills/frontend-design",
+    "planned_url": "https://raw.githubusercontent.com/anthropics/skills/main/skills/frontend-design/SKILL.md",
+    "view_url": "https://github.com/anthropics/skills/blob/main/skills/frontend-design/SKILL.md",
+    "page_path": "skill-pages/frontend-design/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/frontend-design/",
+    "aliases": [
+      "https://claudemarketplaces.com/skills/anthropics/skills/frontend-design",
+      "https://github.com/anthropics/skills"
+    ]
+  },
+  {
+    "row": 277,
+    "skill": "teacher-course-assignment-skill",
+    "name": "教師配課助手Skill",
+    "display_name": "教師配課助手Skill",
+    "short_description": "配課助手，能妥善協助學校配課，前後比對，並產出多項資料。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/teacher-course-assignment-skill",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/teacher-course-assignment-skill/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/teacher-course-assignment-skill/blob/main/SKILL.md",
+    "page_path": "skill-pages/teacher-course-assignment-skill/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/teacher-course-assignment-skill/",
+    "aliases": [
+      "https://github.com/chunsheng612/teacher-course-assignment-skill",
+      "https://github.com/chunsheng612/teacher-course-assignment-skill"
+    ]
+  },
+  {
+    "row": 278,
+    "skill": "teacher-slide-image-workshop",
+    "name": "教育簡報投影片生成Skill",
+    "display_name": "教育簡報投影片生成Skill",
+    "short_description": "能夠將上傳的資料，以AI繪製出每一張的簡報頁面（支援50張簡報以上）。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/teacher-slide-image-workshop",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/teacher-slide-image-workshop/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/teacher-slide-image-workshop/blob/main/SKILL.md",
+    "page_path": "skill-pages/teacher-slide-image-workshop/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/teacher-slide-image-workshop/",
+    "aliases": [
+      "https://github.com/chunsheng612/teacher-slide-image-workshop",
+      "https://github.com/chunsheng612/teacher-slide-image-workshop"
+    ]
+  },
+  {
+    "row": 280,
+    "skill": "github-pages-publisher",
+    "name": "網頁上傳至Github",
+    "display_name": "網頁上傳至Github",
+    "short_description": "AI agent可以自動幫你上傳網站至Github，一鍵完成。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/github-pages-publisher",
+    "skill_path": "github-pages-publisher/SKILL.md",
+    "skill_folder": "github-pages-publisher",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/github-pages-publisher/main/github-pages-publisher/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/github-pages-publisher/blob/main/github-pages-publisher/SKILL.md",
+    "page_path": "skill-pages/github-pages-publisher/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/github-pages-publisher/",
+    "aliases": [
+      "https://github.com/chunsheng612/github-pages-publisher",
+      "https://github.com/chunsheng612/github-pages-publisher"
+    ]
+  },
+  {
+    "row": 281,
+    "skill": "funfun-edu-gem-hub",
+    "name": "FunFun Edu Gem Hub Skill",
+    "display_name": "FunFun Edu Gem Hub Skill",
+    "short_description": "本專案彙整了現場教師與教育工作者精雕細琢的 172 款 Gemini Gems",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/funfun-edu-gem-hub",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/funfun-edu-gem-hub/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/funfun-edu-gem-hub/blob/main/SKILL.md",
+    "page_path": "skill-pages/funfun-edu-gem-hub/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/funfun-edu-gem-hub/",
+    "aliases": [
+      "https://github.com/chunsheng612/funfun-edu-gem-hub",
+      "https://github.com/chunsheng612/funfun-edu-gem-hub"
+    ]
+  },
+  {
+    "row": 285,
+    "skill": "parent-meeting-studio",
+    "name": "班親會設計Skill",
+    "display_name": "班親會設計Skill",
+    "short_description": "班親會簡報＋班親會網站」的 Agent Skill。",
+    "categories": [
+      "班級經營與互動"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/parent-meeting-studio",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/parent-meeting-studio/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/parent-meeting-studio/blob/main/SKILL.md",
+    "page_path": "skill-pages/parent-meeting-studio/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/parent-meeting-studio/",
+    "aliases": [
+      "https://github.com/chunsheng612/parent-meeting-studio",
+      "https://github.com/chunsheng612/parent-meeting-studio"
+    ]
+  }
+]

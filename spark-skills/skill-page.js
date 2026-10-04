@@ -1,5 +1,18 @@
-function installationPrompt(element) {
+async function installationPrompt(element) {
   const source = new URL(element.dataset.installSource || element.dataset.source, window.location.href);
+  if (element.dataset.installType === 'repository') {
+    const repository = new URL(element.dataset.repository);
+    if (source.origin !== 'https://raw.githubusercontent.com' || repository.origin !== 'https://github.com') {
+      throw new Error('技能來源網址格式不正確。');
+    }
+    const { repositoryInstallationPrompt } = await import('../assets/js/spark-skills.js');
+    return repositoryInstallationPrompt({
+      display_name: element.dataset.title,
+      repository_url: repository.href,
+      planned_url: source.href,
+      skill_folder: element.dataset.folder
+    });
+  }
   if ((source.origin !== window.location.origin && source.origin !== 'https://chunsheng612.github.io') || !source.pathname.endsWith('/SKILL.md')) {
     throw new Error('技能來源網址格式不正確。');
   }
@@ -13,12 +26,14 @@ for (const button of document.querySelectorAll('[data-copy-install]')) {
     const fallback = scope.querySelector('[data-copy-fallback]');
     const textarea = fallback.querySelector('textarea');
     try {
-      const prompt = installationPrompt(button);
+      const prompt = await installationPrompt(button);
       // A visible fallback also lets users inspect exactly what will be installed.
       textarea.value = prompt;
       await navigator.clipboard.writeText(prompt);
       fallback.hidden = true;
-      status.textContent = '已複製安裝指令，請貼到 Gemini Spark。';
+      status.textContent = button.dataset.installType === 'repository'
+        ? '已複製安裝指令，請貼到你的 AI 助手。'
+        : '已複製安裝指令，請貼到 Gemini Spark。';
       button.textContent = '已複製';
       window.setTimeout(() => { button.textContent = '複製安裝'; }, 2500);
     } catch (error) {
@@ -49,7 +64,7 @@ if (viewButton) {
       const response = await fetch(viewButton.dataset.source);
       if (!response.ok) throw new Error('無法讀取技能內容，請稍後再試。');
       const text = await response.text();
-      if (!text.startsWith('---\n')) throw new Error('技能檔案格式不正確，請稍後再試。');
+      if (!/^---\r?\n/.test(text)) throw new Error('技能檔案格式不正確，請稍後再試。');
       pre.textContent = text;
       loaded = true;
     } catch (error) {

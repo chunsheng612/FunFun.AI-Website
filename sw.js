@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v17-spark-integrated';
+const CACHE_VERSION = 'v18-all-skills-actions';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
@@ -9,6 +9,7 @@ const CORE_ASSETS = [
   './assets/js/app.js',
   './assets/js/spark-skills.js',
   './spark-skills/catalog.json',
+  './skill-pages/catalog.json',
   './POEAILearning.html',
   './sunoAILearning.html',
   './notionAI.html',
@@ -63,7 +64,7 @@ self.addEventListener('fetch', event => {
 });
 
 function isFreshAsset(url) {
-  return /\.(?:css|js|md)$/i.test(url.pathname) || url.pathname.endsWith('/spark-skills/catalog.json');
+  return /\.(?:css|js|md)$/i.test(url.pathname) || url.pathname.endsWith('/spark-skills/catalog.json') || url.pathname.endsWith('/skill-pages/catalog.json');
 }
 
 function isStaticAsset(url) {
