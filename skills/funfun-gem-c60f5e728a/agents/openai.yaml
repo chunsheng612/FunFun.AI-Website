@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-場景地圖設計師"
+  short_description: "協助完成場景地圖設計師的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-c60f5e728a 協助我完成「FunFun.AI-場景地圖設計師」的任務。"

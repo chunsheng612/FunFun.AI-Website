@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-沙龍攝影師與影像設計師"
+  short_description: "協助完成沙龍攝影師與影像設計師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-bf3175bba5 協助我完成「FunFun.AI-沙龍攝影師與影像設計師」的任務。"

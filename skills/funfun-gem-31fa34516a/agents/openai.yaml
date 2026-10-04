@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-「Pop Art 普普風」個人配圖生成器"
+  short_description: "協助完成「Pop Art 普普風」個人配圖生成器的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-31fa34516a 協助我完成「FunFun.AI-「Pop Art 普普風」個人配圖生成器」的任務。"

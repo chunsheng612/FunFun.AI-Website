@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-國語作文鷹架教練(特殊教育)"
+  short_description: "協助完成國語作文鷹架教練(特殊教育)的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-0533340556 協助我完成「FunFun.AI-國語作文鷹架教練(特殊教育)」的任務。"

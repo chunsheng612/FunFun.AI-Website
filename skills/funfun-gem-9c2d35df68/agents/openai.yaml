@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-旅遊數位APP工具"
+  short_description: "協助完成旅遊數位APP工具的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-9c2d35df68 協助我完成「FunFun.AI-旅遊數位APP工具」的任務。"

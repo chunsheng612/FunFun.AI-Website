@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-數位學習單AI設計助手"
+  short_description: "協助完成數位學習單AI設計助手的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-5430dcf1dc 協助我完成「FunFun.AI-數位學習單AI設計助手」的任務。"

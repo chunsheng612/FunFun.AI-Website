@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-國小專用ChatGPT"
+  short_description: "協助完成國小專用ChatGPT的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-b26c074f59 協助我完成「FunFun.AI-國小專用ChatGPT」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-數學具體化教材(特殊教育)"
+  short_description: "協助完成數學具體化教材(特殊教育)的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-907a0bf30e 協助我完成「FunFun.AI-數學具體化教材(特殊教育)」的任務。"

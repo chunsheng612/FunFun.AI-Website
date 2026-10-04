@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-期末評語生成機器人"
+  short_description: "協助完成期末評語生成機器人的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-04cf7b3e95 協助我完成「FunFun.AI-期末評語生成機器人」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "國小五年級社會探究學習"
+  short_description: "協助完成國小五年級社會探究學習的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-ff7d4f6e46 協助我完成「國小五年級社會探究學習」的任務。"

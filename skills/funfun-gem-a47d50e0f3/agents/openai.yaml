@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-二次訪談聚焦"
+  short_description: "協助完成二次訪談聚焦的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-a47d50e0f3 協助我完成「FunFun.AI-二次訪談聚焦」的任務。"

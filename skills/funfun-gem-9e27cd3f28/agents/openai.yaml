@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-教案解析與優化助理"
+  short_description: "協助完成教案解析與優化助理的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-9e27cd3f28 協助我完成「FunFun.AI-教案解析與優化助理」的任務。"

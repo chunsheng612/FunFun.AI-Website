@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-國小活動海報製作工具"
+  short_description: "協助完成國小活動海報製作工具的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-7c20be79c7 協助我完成「FunFun.AI-國小活動海報製作工具」的任務。"

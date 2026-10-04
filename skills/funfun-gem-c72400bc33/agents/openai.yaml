@@ -1,0 +1,4 @@
+interface:
+  display_name: "RayStock AI 股票分析 v4.1 - 是 Ray 不是 Array"
+  short_description: "協助完成RayStock AI 股票分析 v4.1 - 是 Ray 不是 Array的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-c72400bc33 協助我完成「RayStock AI 股票分析 v4.1 - 是 Ray 不是 Array」的任務。"

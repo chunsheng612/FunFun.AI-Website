@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-PIRLS四層次閱讀測驗"
+  short_description: "協助完成PIRLS四層次閱讀測驗的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-6bd33771b4 協助我完成「FunFun.AI-PIRLS四層次閱讀測驗」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "開學救命包生成師｜教師暑假備課"
+  short_description: "協助完成開學救命包生成師｜教師暑假備課的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-08561edd6d 協助我完成「開學救命包生成師｜教師暑假備課」的任務。"

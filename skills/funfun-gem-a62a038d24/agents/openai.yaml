@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-APA參考文獻自動改寫"
+  short_description: "協助完成APA參考文獻自動改寫的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-a62a038d24 協助我完成「FunFun.AI-APA參考文獻自動改寫」的任務。"

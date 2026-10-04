@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-誇張似顏繪插畫師"
+  short_description: "協助完成誇張似顏繪插畫師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-581d6615e8 協助我完成「FunFun.AI-誇張似顏繪插畫師」的任務。"

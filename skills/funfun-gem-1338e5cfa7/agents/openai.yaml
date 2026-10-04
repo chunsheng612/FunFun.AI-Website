@@ -1,0 +1,4 @@
+interface:
+  display_name: "遊戲美術總監-方方老師"
+  short_description: "協助完成遊戲美術總監-方方老師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-1338e5cfa7 協助我完成「遊戲美術總監-方方老師」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-防災創意說故事機器人"
+  short_description: "協助完成防災創意說故事機器人的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-7c10b150aa 協助我完成「FunFun.AI-防災創意說故事機器人」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-研習海報生成工具"
+  short_description: "協助完成研習海報生成工具的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-e454bd9735 協助我完成「FunFun.AI-研習海報生成工具」的任務。"

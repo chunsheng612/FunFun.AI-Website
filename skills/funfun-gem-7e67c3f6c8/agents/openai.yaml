@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-Q版大頭貼生成"
+  short_description: "協助完成Q版大頭貼生成的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-7e67c3f6c8 協助我完成「FunFun.AI-Q版大頭貼生成」的任務。"

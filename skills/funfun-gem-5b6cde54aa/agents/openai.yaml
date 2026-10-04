@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-故事語織小幫手"
+  short_description: "協助完成故事語織小幫手的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-5b6cde54aa 協助我完成「FunFun.AI-故事語織小幫手」的任務。"

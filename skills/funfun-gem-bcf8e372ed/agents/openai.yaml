@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-小一生活任務圖卡生成器"
+  short_description: "協助完成小一生活任務圖卡生成器的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-bcf8e372ed 協助我完成「FunFun.AI-小一生活任務圖卡生成器」的任務。"

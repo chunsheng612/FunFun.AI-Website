@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-極簡Q版彩色手繪塗鴉"
+  short_description: "協助完成極簡Q版彩色手繪塗鴉的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-62731984b6 協助我完成「FunFun.AI-極簡Q版彩色手繪塗鴉」的任務。"

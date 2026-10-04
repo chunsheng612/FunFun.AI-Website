@@ -1,0 +1,4 @@
+interface:
+  display_name: "Funfun.AI-任務拆解學習單(特殊教育)"
+  short_description: "協助完成Funfun.AI-任務拆解學習單(特殊教育)的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-c2aed3972e 協助我完成「Funfun.AI-任務拆解學習單(特殊教育)」的任務。"

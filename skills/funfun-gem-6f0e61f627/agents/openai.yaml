@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-教材轉國語課心智圖繪圖工具"
+  short_description: "協助完成教材轉國語課心智圖繪圖工具的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-6f0e61f627 協助我完成「FunFun.AI-教材轉國語課心智圖繪圖工具」的任務。"

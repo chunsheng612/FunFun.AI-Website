@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-學生提問升級助手"
+  short_description: "協助完成學生提問升級助手的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-703c783ce2 協助我完成「FunFun.AI-學生提問升級助手」的任務。"

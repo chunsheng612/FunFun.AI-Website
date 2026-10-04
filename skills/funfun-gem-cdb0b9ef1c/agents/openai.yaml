@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-GreenBuild"
+  short_description: "協助完成GreenBuild的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-cdb0b9ef1c 協助我完成「FunFun.AI-GreenBuild」的任務。"

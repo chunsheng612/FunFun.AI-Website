@@ -1,0 +1,4 @@
+interface:
+  display_name: "直式文字辨識小幫手By鈺珣"
+  short_description: "協助完成直式文字辨識小幫手By鈺珣的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-e96ec38fb4 協助我完成「直式文字辨識小幫手By鈺珣」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-回覆家長親師溝通小幫手"
+  short_description: "協助完成回覆家長親師溝通小幫手的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-b965952547 協助我完成「FunFun.AI-回覆家長親師溝通小幫手」的任務。"

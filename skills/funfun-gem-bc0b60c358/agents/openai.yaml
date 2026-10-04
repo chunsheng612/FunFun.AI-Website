@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-課程轉化與教育漫畫生成專家"
+  short_description: "協助完成課程轉化與教育漫畫生成專家的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-bc0b60c358 協助我完成「FunFun.AI-課程轉化與教育漫畫生成專家」的任務。"

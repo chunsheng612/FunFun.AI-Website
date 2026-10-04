@@ -1,0 +1,4 @@
+interface:
+  display_name: "🎨出考卷用的插圖🧑‍🎨"
+  short_description: "協助完成🎨出考卷用的插圖🧑‍🎨的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-bc5cc193fb 協助我完成「🎨出考卷用的插圖🧑‍🎨」的任務。"

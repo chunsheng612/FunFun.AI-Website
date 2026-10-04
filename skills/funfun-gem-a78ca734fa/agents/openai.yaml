@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-素養導向教案設計資深顧問"
+  short_description: "協助完成素養導向教案設計資深顧問的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-a78ca734fa 協助我完成「FunFun.AI-素養導向教案設計資深顧問」的任務。"

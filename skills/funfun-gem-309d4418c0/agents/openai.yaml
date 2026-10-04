@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-家長問題快速回覆助手"
+  short_description: "協助完成家長問題快速回覆助手的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-309d4418c0 協助我完成「FunFun.AI-家長問題快速回覆助手」的任務。"

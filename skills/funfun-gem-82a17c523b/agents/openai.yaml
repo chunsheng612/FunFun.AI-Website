@@ -1,0 +1,4 @@
+interface:
+  display_name: "嘉北國小-米食設計家"
+  short_description: "協助完成嘉北國小-米食設計家的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-82a17c523b 協助我完成「嘉北國小-米食設計家」的任務。"

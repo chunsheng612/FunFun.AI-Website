@@ -1,0 +1,4 @@
+interface:
+  display_name: "製作Google Slides簡報大師"
+  short_description: "協助完成製作Google Slides簡報大師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-fab0aeadb6 協助我完成「製作Google Slides簡報大師」的任務。"

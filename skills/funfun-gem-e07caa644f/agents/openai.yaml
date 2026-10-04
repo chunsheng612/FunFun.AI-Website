@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-電子書轉化AI Gems學習工具"
+  short_description: "協助完成電子書轉化AI Gems學習工具的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-e07caa644f 協助我完成「FunFun.AI-電子書轉化AI Gems學習工具」的任務。"

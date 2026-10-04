@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-學生作業追問產生器"
+  short_description: "協助完成學生作業追問產生器的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-a3a028e9d9 協助我完成「FunFun.AI-學生作業追問產生器」的任務。"

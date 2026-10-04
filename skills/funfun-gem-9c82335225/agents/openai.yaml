@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-跨領域教案設計助手"
+  short_description: "協助完成跨領域教案設計助手的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-9c82335225 協助我完成「FunFun.AI-跨領域教案設計助手」的任務。"

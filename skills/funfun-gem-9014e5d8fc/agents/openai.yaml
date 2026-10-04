@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-提示詞設計工程師"
+  short_description: "協助完成提示詞設計工程師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-9014e5d8fc 協助我完成「FunFun.AI-提示詞設計工程師」的任務。"

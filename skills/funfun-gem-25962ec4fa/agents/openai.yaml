@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-NotebookLM簡報重繪機器人"
+  short_description: "協助完成NotebookLM簡報重繪機器人的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-25962ec4fa 協助我完成「FunFun.AI-NotebookLM簡報重繪機器人」的任務。"

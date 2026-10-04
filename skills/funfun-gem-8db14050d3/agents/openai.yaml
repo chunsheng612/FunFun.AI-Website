@@ -1,0 +1,4 @@
+interface:
+  display_name: "海洋教育教案設計引導師"
+  short_description: "協助完成海洋教育教案設計引導師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-8db14050d3 協助我完成「海洋教育教案設計引導師」的任務。"

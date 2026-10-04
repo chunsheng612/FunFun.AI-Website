@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-「似顏繪」教師圖卡製作工具"
+  short_description: "協助完成「似顏繪」教師圖卡製作工具的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-be4f3497e3 協助我完成「FunFun.AI-「似顏繪」教師圖卡製作工具」的任務。"

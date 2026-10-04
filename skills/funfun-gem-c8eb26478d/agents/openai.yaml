@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-AI圖像創意師"
+  short_description: "協助完成AI圖像創意師的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-c8eb26478d 協助我完成「FunFun.AI-AI圖像創意師」的任務。"

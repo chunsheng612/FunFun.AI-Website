@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-報紙轉成主播的專業寫手"
+  short_description: "協助完成報紙轉成主播的專業寫手的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-3ba707de50 協助我完成「FunFun.AI-報紙轉成主播的專業寫手」的任務。"

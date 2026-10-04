@@ -1,0 +1,4 @@
+interface:
+  display_name: "PIRLS親子閱讀討論學習單小助理"
+  short_description: "協助完成PIRLS親子閱讀討論學習單小助理的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-5226138c32 協助我完成「PIRLS親子閱讀討論學習單小助理」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-現代流行用語融入古文助教"
+  short_description: "協助完成現代流行用語融入古文助教的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-e1261ec126 協助我完成「FunFun.AI-現代流行用語融入古文助教」的任務。"

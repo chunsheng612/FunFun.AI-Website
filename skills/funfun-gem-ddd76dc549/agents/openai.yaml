@@ -1,0 +1,4 @@
+interface:
+  display_name: "學期評語工具"
+  short_description: "協助完成學期評語工具的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-ddd76dc549 協助我完成「學期評語工具」的任務。"

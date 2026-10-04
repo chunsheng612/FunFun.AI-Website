@@ -1,0 +1,4 @@
+interface:
+  display_name: "★ 個人 IP 產生器"
+  short_description: "協助完成★ 個人 IP 產生器的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-22dfce3653 協助我完成「★ 個人 IP 產生器」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-素養試題生成"
+  short_description: "協助完成素養試題生成的素材整理、設計與內容產出，依原有任務規格執行"
+  default_prompt: "請使用 $funfun-gem-c4ba7a2d90 協助我完成「FunFun.AI-素養試題生成」的任務。"

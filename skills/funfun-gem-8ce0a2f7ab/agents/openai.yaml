@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-個人專屬可愛食譜"
+  short_description: "協助完成個人專屬可愛食譜的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-8ce0a2f7ab 協助我完成「FunFun.AI-個人專屬可愛食譜」的任務。"

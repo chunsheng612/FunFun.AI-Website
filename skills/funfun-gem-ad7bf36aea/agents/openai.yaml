@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-資源回收簡報的老師"
+  short_description: "協助完成資源回收簡報的老師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-ad7bf36aea 協助我完成「FunFun.AI-資源回收簡報的老師」的任務。"

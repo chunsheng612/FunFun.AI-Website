@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-輔導紀錄撰寫機器人"
+  short_description: "協助完成輔導紀錄撰寫機器人的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-8a59a56a6a 協助我完成「FunFun.AI-輔導紀錄撰寫機器人」的任務。"

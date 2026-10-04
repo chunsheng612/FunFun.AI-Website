@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-教學卓越獎的資深評審委員"
+  short_description: "協助完成教學卓越獎的資深評審委員的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-dc84dea74a 協助我完成「FunFun.AI-教學卓越獎的資深評審委員」的任務。"

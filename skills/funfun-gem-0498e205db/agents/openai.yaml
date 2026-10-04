@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-學校市長選舉海報製作"
+  short_description: "協助完成學校市長選舉海報製作的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-0498e205db 協助我完成「FunFun.AI-學校市長選舉海報製作」的任務。"

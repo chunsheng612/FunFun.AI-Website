@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-Line貼圖製作大師"
+  short_description: "協助完成Line貼圖製作大師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-eae2ba35b4 協助我完成「FunFun.AI-Line貼圖製作大師」的任務。"

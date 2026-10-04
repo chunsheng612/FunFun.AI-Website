@@ -1,0 +1,4 @@
+interface:
+  display_name: "新世紀自然素養題達人 Created by 張仲傑老師"
+  short_description: "協助完成新世紀自然素養題達人 Created by 張仲傑老師的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-b73e43d7db 協助我完成「新世紀自然素養題達人 Created by 張仲傑老師」的任務。"

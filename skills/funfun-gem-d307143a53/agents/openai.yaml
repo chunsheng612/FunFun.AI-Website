@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-合理調整評量(特殊教育)"
+  short_description: "協助完成合理調整評量(特殊教育)的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-d307143a53 協助我完成「FunFun.AI-合理調整評量(特殊教育)」的任務。"

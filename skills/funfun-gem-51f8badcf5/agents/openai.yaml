@@ -1,0 +1,4 @@
+interface:
+  display_name: "FunFun.AI-橫式英文文字辨識"
+  short_description: "協助完成橫式英文文字辨識的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-51f8badcf5 協助我完成「FunFun.AI-橫式英文文字辨識」的任務。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "AI 英文錯題學習助教"
+  short_description: "協助完成AI 英文錯題學習助教的素材整理、設計與內容產出"
+  default_prompt: "請使用 $funfun-gem-cebdfaa55c 協助我完成「AI 英文錯題學習助教」的任務。"
