@@ -38,13 +38,6 @@ export function mergeSparkSkills(toolMap) {
 }
 
 export function appendSparkSkillActions(buttons, skill, openLink) {
-    const page = new URL(skill.page_path || `spark-skills/${skill.skill}/`, document.baseURI);
-    const source = skill.planned_url;
-    const name = skill.display_name || skill.name;
-    const prompt = skill.install_type === 'repository'
-        ? repositoryInstallationPrompt(skill)
-        : `請讀取以下網址的完整 SKILL.md，依內容建立並儲存一個 Gemini Spark 技能，名稱為「${name}」。保留完整任務流程、評分規準與輸出格式。這次只建立技能，先不要執行技能中的任務。若無法讀取網址或無法儲存技能，請明確告訴我，不要宣稱安裝成功。\n${source}`;
-    const nextStep = skill.install_type === 'repository' ? '你的 AI 助手' : 'Gemini Spark';
     buttons.dataset.sparkSkill = skill.skill;
     const status = document.createElement('p');
     status.className = 'spark-install-status';
@@ -53,8 +46,8 @@ export function appendSparkSkillActions(buttons, skill, openLink) {
     fallback.className = 'spark-install-fallback';
     fallback.readOnly = true;
     fallback.hidden = true;
-    fallback.setAttribute('aria-label', '可手動複製的安裝指令');
-    for (const action of ['查看 Skill', '複製安裝']) {
+    fallback.setAttribute('aria-label', '可手動複製的技能內容或資料夾連結');
+    for (const action of ['Gemini生成技能', 'Agent安裝技能', '原始來源']) {
         const wrap = document.createElement('div');
         wrap.className = 'button-wrap';
         const button = document.createElement('button');
@@ -62,23 +55,41 @@ export function appendSparkSkillActions(buttons, skill, openLink) {
         const label = document.createElement('span');
         label.textContent = action;
         button.append(label);
+        button.title = action === 'Gemini生成技能' ? '複製完整 SKILL.md 內容，貼到 Gemini'
+            : action === 'Agent安裝技能' ? '複製 GitHub 技能資料夾連結' : '開啟原始 GitHub 專案';
+        if (action === 'Gemini生成技能') {
+            const preload = () => readSkillMarkdown(skill).catch(() => {});
+            button.addEventListener('pointerenter', preload);
+            button.addEventListener('focus', preload);
+        }
         button.addEventListener('click', async () => {
-            if (action === '查看 Skill') {
-                window.location.assign(page.href + '?view=1');
+            if (action === '原始來源') {
+                window.location.assign(githubLink(skill.repository_url));
                 return;
             }
-            fallback.value = prompt;
+            button.disabled = true;
+            fallback.value = '';
+            fallback.hidden = true;
             try {
-                await navigator.clipboard.writeText(prompt);
+                const text = action === 'Gemini生成技能'
+                    ? await readSkillMarkdown(skill) : githubLink(skill.folder_url);
+                fallback.value = text;
+                await navigator.clipboard.writeText(text);
                 fallback.hidden = true;
-                status.textContent = `已複製安裝指令，請貼到${nextStep}。`;
-                label.textContent = '已複製';
-                setTimeout(() => { label.textContent = action; }, 2500);
-            } catch {
+                status.textContent = action === 'Gemini生成技能'
+                    ? '已複製完整 SKILL.md 內容，請貼到 Gemini 生成技能。'
+                    : '已複製 GitHub 技能資料夾連結，請貼到你的 Agent 安裝。';
+            } catch (error) {
+                if (!fallback.value) {
+                    status.textContent = error.message || '無法讀取技能內容，請稍後再試。';
+                    return;
+                }
                 fallback.hidden = false;
                 fallback.focus();
                 fallback.select();
-                status.textContent = `請複製下方已選取的安裝指令，貼到${nextStep}。`;
+                status.textContent = '瀏覽器未允許自動複製，請複製下方已選取的內容。';
+            } finally {
+                button.disabled = false;
             }
         });
         wrap.append(button);
@@ -87,6 +98,26 @@ export function appendSparkSkillActions(buttons, skill, openLink) {
     buttons.append(status, fallback);
 }
 
-export function repositoryInstallationPrompt(skill) {
-    return `請從以下 GitHub 專案安裝技能「${skill.display_name || skill.name}」。先閱讀 SKILL.md 與 README，僅安裝下列技能資料夾及必要的附屬檔案，保留完整流程與輸出格式，勿安裝專案中的其他技能。請依目前 AI 平台支援的方式安裝；若在 Gemini Spark，請依內容建立並儲存技能，缺少本機工具或附件時明確說明。這次只安裝，先不要執行技能中的任務。確認可使用後再回報；無法讀取來源或安裝時，請說明原因，不要宣稱安裝成功。\n專案：${skill.repository_url}\n技能檔：${skill.planned_url}\n技能資料夾：${skill.skill_folder}`;
+function githubLink(value) {
+    const url = new URL(value);
+    if (url.origin !== 'https://github.com' || url.username || url.password) throw new Error('GitHub 來源網址格式不正確。');
+    return url.href;
+}
+
+const markdownCache = new Map();
+export async function readSkillMarkdown(skill) {
+    const path = skill.page_path || `spark-skills/${skill.skill}/`;
+    const url = new URL(path + 'SKILL.md', new URL('../../', import.meta.url));
+    if (url.origin !== location.origin || !url.pathname.endsWith('/SKILL.md')) throw new Error('技能來源網址格式不正確。');
+    if (!markdownCache.has(url.href)) {
+        const request = fetch(url, {signal: AbortSignal.timeout(15000)})
+            .then(async response => {
+                if (!response.ok) throw new Error('無法讀取 SKILL.md，請稍後再試。');
+                const text = await response.text();
+                if (!/^---\r?\n/.test(text)) throw new Error('技能檔案格式不正確。');
+                return text;
+            }).catch(error => { markdownCache.delete(url.href); throw error; });
+        markdownCache.set(url.href, request);
+    }
+    return markdownCache.get(url.href);
 }

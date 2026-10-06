@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v18-all-skills-actions';
+const CACHE_VERSION = 'v19-skill-content-copy';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
