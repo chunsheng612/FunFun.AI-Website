@@ -70,6 +70,7 @@ export function appendSparkSkillActions(buttons, skill, openLink) {
             button.disabled = true;
             fallback.value = '';
             fallback.hidden = true;
+            status.textContent = action === 'Gemini生成技能' ? '正在讀取完整 SKILL.md…' : '正在複製 GitHub 資料夾連結…';
             try {
                 const text = action === 'Gemini生成技能'
                     ? await readSkillMarkdown(skill) : githubLink(skill.folder_url);
@@ -116,7 +117,11 @@ export async function readSkillMarkdown(skill) {
                 const text = await response.text();
                 if (!/^---\r?\n/.test(text)) throw new Error('技能檔案格式不正確。');
                 return text;
-            }).catch(error => { markdownCache.delete(url.href); throw error; });
+            }).catch(error => {
+                markdownCache.delete(url.href);
+                if (error.name === 'TimeoutError' || error.name === 'AbortError') throw new Error('讀取 SKILL.md 逾時，請再按一次重試。');
+                throw error;
+            });
         markdownCache.set(url.href, request);
     }
     return markdownCache.get(url.href);
