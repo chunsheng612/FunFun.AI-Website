@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v19-skill-content-copy';
+const CACHE_VERSION = 'v20-original-prompts';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
@@ -64,7 +64,7 @@ self.addEventListener('fetch', event => {
 });
 
 function isFreshAsset(url) {
-  return /\.(?:css|js|md)$/i.test(url.pathname) || url.pathname.endsWith('/spark-skills/catalog.json') || url.pathname.endsWith('/skill-pages/catalog.json');
+  return /\.(?:css|js|md|txt)$/i.test(url.pathname) || url.pathname.endsWith('/spark-skills/catalog.json') || url.pathname.endsWith('/skill-pages/catalog.json');
 }
 
 function isStaticAsset(url) {

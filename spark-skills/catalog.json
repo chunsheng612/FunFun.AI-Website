@@ -15,7 +15,9 @@
     "short_description": "將照片或描述轉成極簡 Q 版彩色手繪插畫。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-62731984b6",
-    "page_path": "spark-skills/funfun-gem-62731984b6/"
+    "page_path": "spark-skills/funfun-gem-62731984b6/",
+    "original_prompt_path": "spark-skills/funfun-gem-62731984b6/original-prompt.txt",
+    "original_prompt_sha256": "63f0a677b61a8eec9954fa4553a025fc96c7848bb882d717c645805f943163df"
   },
   {
     "number": 2,
@@ -33,7 +35,9 @@
     "short_description": "辨識國小手寫作文，提供分析、批改與評分。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d2974d15e0",
-    "page_path": "spark-skills/funfun-gem-d2974d15e0/"
+    "page_path": "spark-skills/funfun-gem-d2974d15e0/",
+    "original_prompt_path": "spark-skills/funfun-gem-d2974d15e0/original-prompt.txt",
+    "original_prompt_sha256": "9533777ea1656c976216bfac29499690e2679cda9cd3e1e9e405004d20a13d2b"
   },
   {
     "number": 3,
@@ -51,7 +55,9 @@
     "short_description": "依教學內容設計一年級注音學習活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bef92e0cbe",
-    "page_path": "spark-skills/funfun-gem-bef92e0cbe/"
+    "page_path": "spark-skills/funfun-gem-bef92e0cbe/",
+    "original_prompt_path": "spark-skills/funfun-gem-bef92e0cbe/original-prompt.txt",
+    "original_prompt_sha256": "378fa95458718846d16779c2c2793c7674edf7c4299a5566562eedc7e875fd9e"
   },
   {
     "number": 4,
@@ -69,7 +75,9 @@
     "short_description": "將班級規定轉成正向文字與圖像海報。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5714655b2d",
-    "page_path": "spark-skills/funfun-gem-5714655b2d/"
+    "page_path": "spark-skills/funfun-gem-5714655b2d/",
+    "original_prompt_path": "spark-skills/funfun-gem-5714655b2d/original-prompt.txt",
+    "original_prompt_sha256": "d38d5719e647dc71080fc4482e71964a45f2079a2638303b32b420668e7d80bd"
   },
   {
     "number": 5,
@@ -87,7 +95,9 @@
     "short_description": "規劃開學第一週活動、常規與親師溝通。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-08561edd6d",
-    "page_path": "spark-skills/funfun-gem-08561edd6d/"
+    "page_path": "spark-skills/funfun-gem-08561edd6d/",
+    "original_prompt_path": "spark-skills/funfun-gem-08561edd6d/original-prompt.txt",
+    "original_prompt_sha256": "262797e30e5c5a9a6a4f4fbb5dfc8c508b531ca1f1e1bebabebc4dda29e6ad5c"
   },
   {
     "number": 6,
@@ -105,7 +115,9 @@
     "short_description": "依家長提問產出溫和、清楚的回覆。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-309d4418c0",
-    "page_path": "spark-skills/funfun-gem-309d4418c0/"
+    "page_path": "spark-skills/funfun-gem-309d4418c0/",
+    "original_prompt_path": "spark-skills/funfun-gem-309d4418c0/original-prompt.txt",
+    "original_prompt_sha256": "96eb255addd394c0dafabec776199ba33fa1a05781b350c07faa71e443eb8322"
   },
   {
     "number": 7,
@@ -123,7 +135,9 @@
     "short_description": "將一年級親師訊息改寫成專業、客觀的文字。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-8cae02bd2d",
-    "page_path": "spark-skills/funfun-gem-8cae02bd2d/"
+    "page_path": "spark-skills/funfun-gem-8cae02bd2d/",
+    "original_prompt_path": "spark-skills/funfun-gem-8cae02bd2d/original-prompt.txt",
+    "original_prompt_sha256": "45096db64d450a0bfe856a90258b9cdb11551774ed06e35e75d57ee921eca2f9"
   },
   {
     "number": 8,
@@ -141,7 +155,9 @@
     "short_description": "將小一生活任務拆成簡單步驟圖卡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bcf8e372ed",
-    "page_path": "spark-skills/funfun-gem-bcf8e372ed/"
+    "page_path": "spark-skills/funfun-gem-bcf8e372ed/",
+    "original_prompt_path": "spark-skills/funfun-gem-bcf8e372ed/original-prompt.txt",
+    "original_prompt_sha256": "59f50e243557145a209b73d1477f37d6279ac90f4856fe558f936df5cc207c25"
   },
   {
     "number": 9,
@@ -159,7 +175,9 @@
     "short_description": "辨識高中國文手寫內容，協助學測作文評閱。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9275a1c5bf",
-    "page_path": "spark-skills/funfun-gem-9275a1c5bf/"
+    "page_path": "spark-skills/funfun-gem-9275a1c5bf/",
+    "original_prompt_path": "spark-skills/funfun-gem-9275a1c5bf/original-prompt.txt",
+    "original_prompt_sha256": "58082b510eeb3436544e7c7f86b44193067674c4aab2b29962e2d4642bc50b8e"
   },
   {
     "number": 10,
@@ -177,7 +195,9 @@
     "short_description": "依國中會考作文規準提供批改與建議。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-be14f326ce",
-    "page_path": "spark-skills/funfun-gem-be14f326ce/"
+    "page_path": "spark-skills/funfun-gem-be14f326ce/",
+    "original_prompt_path": "spark-skills/funfun-gem-be14f326ce/original-prompt.txt",
+    "original_prompt_sha256": "ed804b94ab7cee80d24825aa5c4d8ba03f22247d1b02d841ba1f8cbec7d0d580"
   },
   {
     "number": 11,
@@ -195,7 +215,9 @@
     "short_description": "辨識國小作文照片，提供評分與修改建議。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-4ac4e97c94",
-    "page_path": "spark-skills/funfun-gem-4ac4e97c94/"
+    "page_path": "spark-skills/funfun-gem-4ac4e97c94/",
+    "original_prompt_path": "spark-skills/funfun-gem-4ac4e97c94/original-prompt.txt",
+    "original_prompt_sha256": "5de5156263766862ed5473787d859158f6fa6fb96306e605bc95c2d256ce7f24"
   },
   {
     "number": 12,
@@ -213,7 +235,9 @@
     "short_description": "整理學生獲獎資訊，撰寫學校榮譽榜公告。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a59dc18d11",
-    "page_path": "spark-skills/funfun-gem-a59dc18d11/"
+    "page_path": "spark-skills/funfun-gem-a59dc18d11/",
+    "original_prompt_path": "spark-skills/funfun-gem-a59dc18d11/original-prompt.txt",
+    "original_prompt_sha256": "81c6e83a199f1790a116ccc6661c7436c6b8926e1042fa1f2daa1b68780ab965"
   },
   {
     "number": 13,
@@ -231,7 +255,9 @@
     "short_description": "依照片設計誇張風格的似顏繪插畫。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-581d6615e8",
-    "page_path": "spark-skills/funfun-gem-581d6615e8/"
+    "page_path": "spark-skills/funfun-gem-581d6615e8/",
+    "original_prompt_path": "spark-skills/funfun-gem-581d6615e8/original-prompt.txt",
+    "original_prompt_sha256": "f07b65ee0d9757f556b5eb7bd3f7eeac3f9b59d5f148b480e09418c5e21b3ed8"
   },
   {
     "number": 14,
@@ -249,7 +275,9 @@
     "short_description": "辨識高中英文作文，提供評分與修正建議。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-0ad144c730",
-    "page_path": "spark-skills/funfun-gem-0ad144c730/"
+    "page_path": "spark-skills/funfun-gem-0ad144c730/",
+    "original_prompt_path": "spark-skills/funfun-gem-0ad144c730/original-prompt.txt",
+    "original_prompt_sha256": "3296c1ef52fec70fdd17d042a90166271df276a0588278bc49f9069cf2ef956a"
   },
   {
     "number": 15,
@@ -267,7 +295,9 @@
     "short_description": "引導家長與孩子一起創作原創故事。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-3e608d25f9",
-    "page_path": "spark-skills/funfun-gem-3e608d25f9/"
+    "page_path": "spark-skills/funfun-gem-3e608d25f9/",
+    "original_prompt_path": "spark-skills/funfun-gem-3e608d25f9/original-prompt.txt",
+    "original_prompt_sha256": "b2ede4c62d167c5b30b0551d377a9fea003fc9be7fcb946d2e3c4eff43c6efa7"
   },
   {
     "number": 16,
@@ -285,7 +315,9 @@
     "short_description": "規劃開學首週流程、活動與班級常規。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e46e7156c8",
-    "page_path": "spark-skills/funfun-gem-e46e7156c8/"
+    "page_path": "spark-skills/funfun-gem-e46e7156c8/",
+    "original_prompt_path": "spark-skills/funfun-gem-e46e7156c8/original-prompt.txt",
+    "original_prompt_sha256": "7a11e91d8b138149cd094413d0f3d782447c137cdd70b872ecfe538b1c14f637"
   },
   {
     "number": 17,
@@ -303,7 +335,9 @@
     "short_description": "將防災知識改寫成創意故事。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7c10b150aa",
-    "page_path": "spark-skills/funfun-gem-7c10b150aa/"
+    "page_path": "spark-skills/funfun-gem-7c10b150aa/",
+    "original_prompt_path": "spark-skills/funfun-gem-7c10b150aa/original-prompt.txt",
+    "original_prompt_sha256": "e7025569a3661944f7f6cc21dc24d31a5f54d50ef39062b85fb4008e8af12749"
   },
   {
     "number": 18,
@@ -321,7 +355,9 @@
     "short_description": "依口語需求修改圖片，保留指定畫面元素。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-eedf407776",
-    "page_path": "spark-skills/funfun-gem-eedf407776/"
+    "page_path": "spark-skills/funfun-gem-eedf407776/",
+    "original_prompt_path": "spark-skills/funfun-gem-eedf407776/original-prompt.txt",
+    "original_prompt_sha256": "d3480f76273efa325b52a652620118ae55d588fdac2ef7df51a7a2a1acc33999"
   },
   {
     "number": 19,
@@ -339,7 +375,9 @@
     "short_description": "依照片與需求設計沙龍攝影風格影像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bf3175bba5",
-    "page_path": "spark-skills/funfun-gem-bf3175bba5/"
+    "page_path": "spark-skills/funfun-gem-bf3175bba5/",
+    "original_prompt_path": "spark-skills/funfun-gem-bf3175bba5/original-prompt.txt",
+    "original_prompt_sha256": "ce41a45d23b6ada4febc59a019eaa49139836f1c770c71ded9431da98a39a4db"
   },
   {
     "number": 20,
@@ -357,7 +395,9 @@
     "short_description": "撰寫宣導海報的標題、文案與視覺概念。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d23ecf752b",
-    "page_path": "spark-skills/funfun-gem-d23ecf752b/"
+    "page_path": "spark-skills/funfun-gem-d23ecf752b/",
+    "original_prompt_path": "spark-skills/funfun-gem-d23ecf752b/original-prompt.txt",
+    "original_prompt_sha256": "5c4119f5e600fa0a12350b7fee738b8135c433eaf978367a4ca05597b9304c93"
   },
   {
     "number": 21,
@@ -375,7 +415,9 @@
     "short_description": "為特殊教育學生設計構思單與作文鷹架。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-0533340556",
-    "page_path": "spark-skills/funfun-gem-0533340556/"
+    "page_path": "spark-skills/funfun-gem-0533340556/",
+    "original_prompt_path": "spark-skills/funfun-gem-0533340556/original-prompt.txt",
+    "original_prompt_sha256": "325d641527859b2f5c96c76245a75aa21b91ed81d15d5afb3ec46143dd7a2fba"
   },
   {
     "number": 22,
@@ -393,7 +435,9 @@
     "short_description": "依學生優缺點撰寫具體、自然的學期評語。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ddd76dc549",
-    "page_path": "spark-skills/funfun-gem-ddd76dc549/"
+    "page_path": "spark-skills/funfun-gem-ddd76dc549/",
+    "original_prompt_path": "spark-skills/funfun-gem-ddd76dc549/original-prompt.txt",
+    "original_prompt_sha256": "34aea4f61b2ecbf8664dc38859611562d6414c945b772c4a59dd29181dcf9ded"
   },
   {
     "number": 23,
@@ -411,7 +455,9 @@
     "short_description": "依遊戲藍圖設計背景場景與地圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c60f5e728a",
-    "page_path": "spark-skills/funfun-gem-c60f5e728a/"
+    "page_path": "spark-skills/funfun-gem-c60f5e728a/",
+    "original_prompt_path": "spark-skills/funfun-gem-c60f5e728a/original-prompt.txt",
+    "original_prompt_sha256": "f180c0c9df6c25d71eb63b16ebc7f71659b40bd3b6612cd02164cbb24038f3e4"
   },
   {
     "number": 24,
@@ -429,7 +475,9 @@
     "short_description": "設計橫版遊戲的角色、敵人與道具素材。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-62102d2460",
-    "page_path": "spark-skills/funfun-gem-62102d2460/"
+    "page_path": "spark-skills/funfun-gem-62102d2460/",
+    "original_prompt_path": "spark-skills/funfun-gem-62102d2460/original-prompt.txt",
+    "original_prompt_sha256": "8d732ef061b54c0e3e3b267bbed84ef5baaf660c7ba5bb2a08ac83d7f211ca01"
   },
   {
     "number": 25,
@@ -447,7 +495,9 @@
     "short_description": "將遊戲構想整理成橫版過關遊戲藍圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-49dab2479f",
-    "page_path": "spark-skills/funfun-gem-49dab2479f/"
+    "page_path": "spark-skills/funfun-gem-49dab2479f/",
+    "original_prompt_path": "spark-skills/funfun-gem-49dab2479f/original-prompt.txt",
+    "original_prompt_sha256": "97845f41cc32386b3b5872273dfee17841efe97cd0132e4f88bb57f98f0ca624"
   },
   {
     "number": 26,
@@ -465,7 +515,9 @@
     "short_description": "依故事主題與影片需求規劃分鏡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d36931fd8b",
-    "page_path": "spark-skills/funfun-gem-d36931fd8b/"
+    "page_path": "spark-skills/funfun-gem-d36931fd8b/",
+    "original_prompt_path": "spark-skills/funfun-gem-d36931fd8b/original-prompt.txt",
+    "original_prompt_sha256": "ffc5bc405a5909adc0ad4915b784ccbbd3eca8647f63426abe3bdbdf5351c1f2"
   },
   {
     "number": 27,
@@ -483,7 +535,9 @@
     "short_description": "結合個人照片與食譜，設計可愛食譜圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-8ce0a2f7ab",
-    "page_path": "spark-skills/funfun-gem-8ce0a2f7ab/"
+    "page_path": "spark-skills/funfun-gem-8ce0a2f7ab/",
+    "original_prompt_path": "spark-skills/funfun-gem-8ce0a2f7ab/original-prompt.txt",
+    "original_prompt_sha256": "6ad8b8d3f17f2cd6f1da760b445be524a29857a2073c1f8eb730bd64c1b649ca"
   },
   {
     "number": 28,
@@ -501,7 +555,9 @@
     "short_description": "將文本改編成不同支持程度的閱讀教材。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1a866fe4b9",
-    "page_path": "spark-skills/funfun-gem-1a866fe4b9/"
+    "page_path": "spark-skills/funfun-gem-1a866fe4b9/",
+    "original_prompt_path": "spark-skills/funfun-gem-1a866fe4b9/original-prompt.txt",
+    "original_prompt_sha256": "fb8ff00cf8e1eba387403b3c9f5e96669ca1f240d6e187a250d84d88113f1bab"
   },
   {
     "number": 29,
@@ -519,7 +575,9 @@
     "short_description": "依學生程度設計多層次學習單。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c60d8e9065",
-    "page_path": "spark-skills/funfun-gem-c60d8e9065/"
+    "page_path": "spark-skills/funfun-gem-c60d8e9065/",
+    "original_prompt_path": "spark-skills/funfun-gem-c60d8e9065/original-prompt.txt",
+    "original_prompt_sha256": "0cb2985f0f0c163f63915ea7d49a477744bb2682a9f263aa2c34cf66483b5741"
   },
   {
     "number": 30,
@@ -537,7 +595,9 @@
     "short_description": "將事件整理成 ABC 行為紀錄與支持策略。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ae6ca75801",
-    "page_path": "spark-skills/funfun-gem-ae6ca75801/"
+    "page_path": "spark-skills/funfun-gem-ae6ca75801/",
+    "original_prompt_path": "spark-skills/funfun-gem-ae6ca75801/original-prompt.txt",
+    "original_prompt_sha256": "9b3b3d79b07fa717d5d200dc760be61e80cdb9d1fbfacf401801a5e829db2ee8"
   },
   {
     "number": 31,
@@ -555,7 +615,9 @@
     "short_description": "將課堂規則與流程設計成圖像提示卡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-fb07b9cf00",
-    "page_path": "spark-skills/funfun-gem-fb07b9cf00/"
+    "page_path": "spark-skills/funfun-gem-fb07b9cf00/",
+    "original_prompt_path": "spark-skills/funfun-gem-fb07b9cf00/original-prompt.txt",
+    "original_prompt_sha256": "f40296ccd9cb93d8815b4d93d0fe8f8754d1cd61a0b223829e56f03b04dcb134"
   },
   {
     "number": 32,
@@ -573,7 +635,9 @@
     "short_description": "依 UDL 原則改編教材，提供多元學習方式。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bef5a4232f",
-    "page_path": "spark-skills/funfun-gem-bef5a4232f/"
+    "page_path": "spark-skills/funfun-gem-bef5a4232f/",
+    "original_prompt_path": "spark-skills/funfun-gem-bef5a4232f/original-prompt.txt",
+    "original_prompt_sha256": "b679da0cd8bdffb02c69c47f9ca6c74516d2ad0d425511109418150d854da090"
   },
   {
     "number": 33,
@@ -591,7 +655,9 @@
     "short_description": "將教材改成短句、關鍵詞與圖像提示版本。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e80e63b783",
-    "page_path": "spark-skills/funfun-gem-e80e63b783/"
+    "page_path": "spark-skills/funfun-gem-e80e63b783/",
+    "original_prompt_path": "spark-skills/funfun-gem-e80e63b783/original-prompt.txt",
+    "original_prompt_sha256": "e4734b58deb26b9e8a8b1ab86bbee96a6a01b5a661cc10d597bda3a118064614"
   },
   {
     "number": 34,
@@ -609,7 +675,9 @@
     "short_description": "依學生作業設計追問，確認理解與思考歷程。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a3a028e9d9",
-    "page_path": "spark-skills/funfun-gem-a3a028e9d9/"
+    "page_path": "spark-skills/funfun-gem-a3a028e9d9/",
+    "original_prompt_path": "spark-skills/funfun-gem-a3a028e9d9/original-prompt.txt",
+    "original_prompt_sha256": "da625cac87121f8bfec17df657b91b55c4d290019b1b15b24d7e91d8f98f7172"
   },
   {
     "number": 35,
@@ -627,7 +695,9 @@
     "short_description": "分析英文錯題，提供解說與練習。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-cebdfaa55c",
-    "page_path": "spark-skills/funfun-gem-cebdfaa55c/"
+    "page_path": "spark-skills/funfun-gem-cebdfaa55c/",
+    "original_prompt_path": "spark-skills/funfun-gem-cebdfaa55c/original-prompt.txt",
+    "original_prompt_sha256": "cf83d3fabdb7a8adc47008081c877c3d5e4b75ff4cb7d68744e417d66176da4a"
   },
   {
     "number": 36,
@@ -645,7 +715,9 @@
     "short_description": "整理校事調查資料，協助撰寫調查報告。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-3f7b82fbd3",
-    "page_path": "spark-skills/funfun-gem-3f7b82fbd3/"
+    "page_path": "spark-skills/funfun-gem-3f7b82fbd3/",
+    "original_prompt_path": "spark-skills/funfun-gem-3f7b82fbd3/original-prompt.txt",
+    "original_prompt_sha256": "cc02f1d6dfc5dd3cc07b3c9d6bc41a035ec3fde1b28e62cd7d05fbf39896dca0"
   },
   {
     "number": 37,
@@ -663,7 +735,9 @@
     "short_description": "設計看圖猜成語活動與提示。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-28648e108c",
-    "page_path": "spark-skills/funfun-gem-28648e108c/"
+    "page_path": "spark-skills/funfun-gem-28648e108c/",
+    "original_prompt_path": "spark-skills/funfun-gem-28648e108c/original-prompt.txt",
+    "original_prompt_sha256": "0dba0b09d8c00724c89c196c59d6bc87d78840d5f308032354b9e09a5b9d031e"
   },
   {
     "number": 38,
@@ -681,7 +755,9 @@
     "short_description": "將學生照片轉成漫畫風格圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9beb8c27d7",
-    "page_path": "spark-skills/funfun-gem-9beb8c27d7/"
+    "page_path": "spark-skills/funfun-gem-9beb8c27d7/",
+    "original_prompt_path": "spark-skills/funfun-gem-9beb8c27d7/original-prompt.txt",
+    "original_prompt_sha256": "34dec171a2540088b1aa01b6d19eefdd5f266c723c33106e30d50047fd52ee7c"
   },
   {
     "number": 39,
@@ -699,7 +775,9 @@
     "short_description": "將古文內容改編成分鏡與漫畫。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7ebe498506",
-    "page_path": "spark-skills/funfun-gem-7ebe498506/"
+    "page_path": "spark-skills/funfun-gem-7ebe498506/",
+    "original_prompt_path": "spark-skills/funfun-gem-7ebe498506/original-prompt.txt",
+    "original_prompt_sha256": "73ab81b62baf8ccc20cde2a76e7c140e054f6396b657f5761253b9fa412fca63"
   },
   {
     "number": 40,
@@ -717,7 +795,9 @@
     "short_description": "依指定文字創作等字數的畢業祝賀藏頭詩。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d5521efbf9",
-    "page_path": "spark-skills/funfun-gem-d5521efbf9/"
+    "page_path": "spark-skills/funfun-gem-d5521efbf9/",
+    "original_prompt_path": "spark-skills/funfun-gem-d5521efbf9/original-prompt.txt",
+    "original_prompt_sha256": "610f33998973fbb50440e1aeed2c785851a5aa8e85fd2f92707f123e0b7bef2e"
   },
   {
     "number": 41,
@@ -735,7 +815,9 @@
     "short_description": "將生字融入故事，規劃教學漫畫。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-f3ff1c4a99",
-    "page_path": "spark-skills/funfun-gem-f3ff1c4a99/"
+    "page_path": "spark-skills/funfun-gem-f3ff1c4a99/",
+    "original_prompt_path": "spark-skills/funfun-gem-f3ff1c4a99/original-prompt.txt",
+    "original_prompt_sha256": "5c69e63244eeac6af83631eb0c569b1e553e5e32bab0a02c2c28ef8c19a1ce58"
   },
   {
     "number": 42,
@@ -753,7 +835,9 @@
     "short_description": "依活動資料撰寫新聞報導與成果文章。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a5cd6d1a77",
-    "page_path": "spark-skills/funfun-gem-a5cd6d1a77/"
+    "page_path": "spark-skills/funfun-gem-a5cd6d1a77/",
+    "original_prompt_path": "spark-skills/funfun-gem-a5cd6d1a77/original-prompt.txt",
+    "original_prompt_sha256": "3c56d39609c792eb715788974993360594970a463100c38c87aced0069bdf747"
   },
   {
     "number": 43,
@@ -771,7 +855,9 @@
     "short_description": "引導文字與詞語練習，設計一字千金學習活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9689e4cb9a",
-    "page_path": "spark-skills/funfun-gem-9689e4cb9a/"
+    "page_path": "spark-skills/funfun-gem-9689e4cb9a/",
+    "original_prompt_path": "spark-skills/funfun-gem-9689e4cb9a/original-prompt.txt",
+    "original_prompt_sha256": "2b68aa8734f1f1e06d761b1c21f53ddf46c15e84693a7489d550bcad17f6fd17"
   },
   {
     "number": 44,
@@ -789,7 +875,9 @@
     "short_description": "設計國小活動海報的版面、文案與圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7c20be79c7",
-    "page_path": "spark-skills/funfun-gem-7c20be79c7/"
+    "page_path": "spark-skills/funfun-gem-7c20be79c7/",
+    "original_prompt_path": "spark-skills/funfun-gem-7c20be79c7/original-prompt.txt",
+    "original_prompt_sha256": "1ca77f8276a213f75acb078d5377a27fd0b11c6de9ebf77c2f033bd5ee71a1e9"
   },
   {
     "number": 45,
@@ -807,7 +895,9 @@
     "short_description": "依素材產出 Pop Art 普普風配圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-31fa34516a",
-    "page_path": "spark-skills/funfun-gem-31fa34516a/"
+    "page_path": "spark-skills/funfun-gem-31fa34516a/",
+    "original_prompt_path": "spark-skills/funfun-gem-31fa34516a/original-prompt.txt",
+    "original_prompt_sha256": "9270f0483083f5899f20b1f234d12d51c216aa6a9d136267dc664b1571440c4a"
   },
   {
     "number": 46,
@@ -825,7 +915,9 @@
     "short_description": "依素材產出日系療癒風配圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-0fe507e0f3",
-    "page_path": "spark-skills/funfun-gem-0fe507e0f3/"
+    "page_path": "spark-skills/funfun-gem-0fe507e0f3/",
+    "original_prompt_path": "spark-skills/funfun-gem-0fe507e0f3/original-prompt.txt",
+    "original_prompt_sha256": "2b8f5d8d764f3c951f8fa9a440e7a7cad506889c5e82f18e6a86bf94a3e169ad"
   },
   {
     "number": 47,
@@ -843,7 +935,9 @@
     "short_description": "依素材產出美式卡通風配圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-73653975f8",
-    "page_path": "spark-skills/funfun-gem-73653975f8/"
+    "page_path": "spark-skills/funfun-gem-73653975f8/",
+    "original_prompt_path": "spark-skills/funfun-gem-73653975f8/original-prompt.txt",
+    "original_prompt_sha256": "5785067990f6f8ebc204ce8c126c214a2691996d3488293e74b386f8113cdc06"
   },
   {
     "number": 48,
@@ -861,7 +955,9 @@
     "short_description": "引導學生創作防災故事。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c47ba049e1",
-    "page_path": "spark-skills/funfun-gem-c47ba049e1/"
+    "page_path": "spark-skills/funfun-gem-c47ba049e1/",
+    "original_prompt_path": "spark-skills/funfun-gem-c47ba049e1/original-prompt.txt",
+    "original_prompt_sha256": "8aa92375a523fefc90f437fdf4d1470ad7b096fd187d9eda6f52fa709243e0d6"
   },
   {
     "number": 49,
@@ -879,7 +975,9 @@
     "short_description": "規劃防災繪本的插畫風格與分鏡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a5042893bd",
-    "page_path": "spark-skills/funfun-gem-a5042893bd/"
+    "page_path": "spark-skills/funfun-gem-a5042893bd/",
+    "original_prompt_path": "spark-skills/funfun-gem-a5042893bd/original-prompt.txt",
+    "original_prompt_sha256": "3268ff5af01af82eb1cdbe6e7a18f4ab48f2b0f3267ff96cc02eff43eceae108"
   },
   {
     "number": 50,
@@ -897,7 +995,9 @@
     "short_description": "規劃學術圖像、圖表架構與呈現方式。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-4f952dad60",
-    "page_path": "spark-skills/funfun-gem-4f952dad60/"
+    "page_path": "spark-skills/funfun-gem-4f952dad60/",
+    "original_prompt_path": "spark-skills/funfun-gem-4f952dad60/original-prompt.txt",
+    "original_prompt_sha256": "88a9428591d2113ff7d34ec9e04d1343302e9558b80e64b6d529a4479453efa2"
   },
   {
     "number": 51,
@@ -915,7 +1015,9 @@
     "short_description": "依素材產出莫蘭迪色簡約風配圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-84666fe741",
-    "page_path": "spark-skills/funfun-gem-84666fe741/"
+    "page_path": "spark-skills/funfun-gem-84666fe741/",
+    "original_prompt_path": "spark-skills/funfun-gem-84666fe741/original-prompt.txt",
+    "original_prompt_sha256": "20d92588a3eff15929006ba71b7ba9aa319e1772252e86643100d9710df4f4ce"
   },
   {
     "number": 52,
@@ -933,7 +1035,9 @@
     "short_description": "設計職人圖書館主題海報。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1c5ac5d3a8",
-    "page_path": "spark-skills/funfun-gem-1c5ac5d3a8/"
+    "page_path": "spark-skills/funfun-gem-1c5ac5d3a8/",
+    "original_prompt_path": "spark-skills/funfun-gem-1c5ac5d3a8/original-prompt.txt",
+    "original_prompt_sha256": "04c00294eb9e32457786b9cef343595485e44da0875c6d1e5f4725aa09f7c204"
   },
   {
     "number": 53,
@@ -951,7 +1055,9 @@
     "short_description": "將電子書內容轉成 AI 評量指令與題目。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-261e6846d7",
-    "page_path": "spark-skills/funfun-gem-261e6846d7/"
+    "page_path": "spark-skills/funfun-gem-261e6846d7/",
+    "original_prompt_path": "spark-skills/funfun-gem-261e6846d7/original-prompt.txt",
+    "original_prompt_sha256": "f5dca04472a0bc4a5abf14b3437a83af1182017d74e95fa3f569b6486ef1230f"
   },
   {
     "number": 54,
@@ -969,7 +1075,9 @@
     "short_description": "將電子書內容轉成 AI 學習引導與活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e07caa644f",
-    "page_path": "spark-skills/funfun-gem-e07caa644f/"
+    "page_path": "spark-skills/funfun-gem-e07caa644f/",
+    "original_prompt_path": "spark-skills/funfun-gem-e07caa644f/original-prompt.txt",
+    "original_prompt_sha256": "05045b1fd0ac228e92f84107f38aa919ce83d121c2ae25920ea157a633af18c3"
   },
   {
     "number": 55,
@@ -987,7 +1095,9 @@
     "short_description": "設計研習海報的文案、版面與圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e454bd9735",
-    "page_path": "spark-skills/funfun-gem-e454bd9735/"
+    "page_path": "spark-skills/funfun-gem-e454bd9735/",
+    "original_prompt_path": "spark-skills/funfun-gem-e454bd9735/original-prompt.txt",
+    "original_prompt_sha256": "8c92e9510d8ab060464cd50f4c270d4400814b2b378a925443e4c2e4a7e1fcde"
   },
   {
     "number": 56,
@@ -1005,7 +1115,9 @@
     "short_description": "將教學文字轉成可遊玩的單檔 HTML 遊戲。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5a20515ae7",
-    "page_path": "spark-skills/funfun-gem-5a20515ae7/"
+    "page_path": "spark-skills/funfun-gem-5a20515ae7/",
+    "original_prompt_path": "spark-skills/funfun-gem-5a20515ae7/original-prompt.txt",
+    "original_prompt_sha256": "8772828997aee7a40d90201e4bff793d52ac65c4f56a32b60a7c0890a5fd6e50"
   },
   {
     "number": 57,
@@ -1023,7 +1135,9 @@
     "short_description": "依教師照片與情境設計似顏繪教學圖卡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-be4f3497e3",
-    "page_path": "spark-skills/funfun-gem-be4f3497e3/"
+    "page_path": "spark-skills/funfun-gem-be4f3497e3/",
+    "original_prompt_path": "spark-skills/funfun-gem-be4f3497e3/original-prompt.txt",
+    "original_prompt_sha256": "e6571523d21d62cb3ed52f65fc3bba122f0779f9edcea184ccc72d937d88c920"
   },
   {
     "number": 58,
@@ -1041,7 +1155,9 @@
     "short_description": "依主題設計海報文案、版面與視覺元素。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-278728a0ac",
-    "page_path": "spark-skills/funfun-gem-278728a0ac/"
+    "page_path": "spark-skills/funfun-gem-278728a0ac/",
+    "original_prompt_path": "spark-skills/funfun-gem-278728a0ac/original-prompt.txt",
+    "original_prompt_sha256": "05badbbbbad890b5a12d7e025f8fb549800f4c2abb6bbde03d60035792f5df07"
   },
   {
     "number": 59,
@@ -1059,7 +1175,9 @@
     "short_description": "依 NotebookLM 簡報內容重新設計投影片圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-25962ec4fa",
-    "page_path": "spark-skills/funfun-gem-25962ec4fa/"
+    "page_path": "spark-skills/funfun-gem-25962ec4fa/",
+    "original_prompt_path": "spark-skills/funfun-gem-25962ec4fa/original-prompt.txt",
+    "original_prompt_sha256": "d4ac75db2c21880fe55c38b0b840c121c15553da27daf25b7d3896d2a654ad48"
   },
   {
     "number": 60,
@@ -1077,7 +1195,9 @@
     "short_description": "依照片設計具有個人特色的似顏繪貼圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ae93576bfd",
-    "page_path": "spark-skills/funfun-gem-ae93576bfd/"
+    "page_path": "spark-skills/funfun-gem-ae93576bfd/",
+    "original_prompt_path": "spark-skills/funfun-gem-ae93576bfd/original-prompt.txt",
+    "original_prompt_sha256": "cce41d04edbc59a44146893c3fabd96b1e5f4cf6d0f9d71327e0ffbc87fa98ea"
   },
   {
     "number": 61,
@@ -1095,7 +1215,9 @@
     "short_description": "依照片或描述設計 Q 版大頭貼。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7e67c3f6c8",
-    "page_path": "spark-skills/funfun-gem-7e67c3f6c8/"
+    "page_path": "spark-skills/funfun-gem-7e67c3f6c8/",
+    "original_prompt_path": "spark-skills/funfun-gem-7e67c3f6c8/original-prompt.txt",
+    "original_prompt_sha256": "059667d9560f6d4e875e5bc11634d5af9cc758abfb16fb41fa56f56898904b13"
   },
   {
     "number": 62,
@@ -1113,7 +1235,9 @@
     "short_description": "將成語故事改編成教學漫畫。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-0d51808f9c",
-    "page_path": "spark-skills/funfun-gem-0d51808f9c/"
+    "page_path": "spark-skills/funfun-gem-0d51808f9c/",
+    "original_prompt_path": "spark-skills/funfun-gem-0d51808f9c/original-prompt.txt",
+    "original_prompt_sha256": "09d000d33a82cd2c49cb8f29c7372f4ba6fd12e5b9a38ea0dfb31fa803303a1e"
   },
   {
     "number": 63,
@@ -1131,7 +1255,9 @@
     "short_description": "規劃成語漫畫的故事、分鏡與圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ce90ff37bc",
-    "page_path": "spark-skills/funfun-gem-ce90ff37bc/"
+    "page_path": "spark-skills/funfun-gem-ce90ff37bc/",
+    "original_prompt_path": "spark-skills/funfun-gem-ce90ff37bc/original-prompt.txt",
+    "original_prompt_sha256": "c7594e2eee375748024e6d45d577384b2812d56bc36b66e52e6dd02c780badf5"
   },
   {
     "number": 64,
@@ -1149,7 +1275,9 @@
     "short_description": "將課程內容改編成教育漫畫與教學活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bc0b60c358",
-    "page_path": "spark-skills/funfun-gem-bc0b60c358/"
+    "page_path": "spark-skills/funfun-gem-bc0b60c358/",
+    "original_prompt_path": "spark-skills/funfun-gem-bc0b60c358/original-prompt.txt",
+    "original_prompt_sha256": "c8afa37d23307ed5223247fa55c8e15c6e42e5610c21f45386da1aa4a09d6ed5"
   },
   {
     "number": 65,
@@ -1167,7 +1295,9 @@
     "short_description": "協助撰寫學校公文簽、函與擬辦內容。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-05f9502352",
-    "page_path": "spark-skills/funfun-gem-05f9502352/"
+    "page_path": "spark-skills/funfun-gem-05f9502352/",
+    "original_prompt_path": "spark-skills/funfun-gem-05f9502352/original-prompt.txt",
+    "original_prompt_sha256": "375df9b046e3b5769f1996e22c70630213456280a481652a208987224982f297"
   },
   {
     "number": 66,
@@ -1185,7 +1315,9 @@
     "short_description": "將行事曆整理成清楚、美觀的版面。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c4bd70edb4",
-    "page_path": "spark-skills/funfun-gem-c4bd70edb4/"
+    "page_path": "spark-skills/funfun-gem-c4bd70edb4/",
+    "original_prompt_path": "spark-skills/funfun-gem-c4bd70edb4/original-prompt.txt",
+    "original_prompt_sha256": "b728ba0855ae121f17883ed55ac59272788faeb48c3b59893947eec1f17162d8"
   },
   {
     "number": 67,
@@ -1203,7 +1335,9 @@
     "short_description": "規劃教育簡報的重點、敘事與視覺架構。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1471d5f86b",
-    "page_path": "spark-skills/funfun-gem-1471d5f86b/"
+    "page_path": "spark-skills/funfun-gem-1471d5f86b/",
+    "original_prompt_path": "spark-skills/funfun-gem-1471d5f86b/original-prompt.txt",
+    "original_prompt_sha256": "c5a808db95a5eee63aadbaf9e09b656fcb6fae6a77209ad19832e5d785524ce3"
   },
   {
     "number": 68,
@@ -1221,7 +1355,9 @@
     "short_description": "辨識橫式英文圖片，轉成可編輯文字。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-51f8badcf5",
-    "page_path": "spark-skills/funfun-gem-51f8badcf5/"
+    "page_path": "spark-skills/funfun-gem-51f8badcf5/",
+    "original_prompt_path": "spark-skills/funfun-gem-51f8badcf5/original-prompt.txt",
+    "original_prompt_sha256": "cc8ec6507bc229f499e999aa5d687fedb381e500f496aaa6db00f54c6fd3722f"
   },
   {
     "number": 69,
@@ -1239,7 +1375,9 @@
     "short_description": "依教學主題設計歌曲歌詞與音樂提示詞。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-381410ade2",
-    "page_path": "spark-skills/funfun-gem-381410ade2/"
+    "page_path": "spark-skills/funfun-gem-381410ade2/",
+    "original_prompt_path": "spark-skills/funfun-gem-381410ade2/original-prompt.txt",
+    "original_prompt_sha256": "ebaf83b2270210e0b67df1a8049b0222e2663cf4197dcd9c5dae8e5e6165140f"
   },
   {
     "number": 70,
@@ -1257,7 +1395,9 @@
     "short_description": "整理計畫架構，協助撰寫執行內容。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-797ddd306f",
-    "page_path": "spark-skills/funfun-gem-797ddd306f/"
+    "page_path": "spark-skills/funfun-gem-797ddd306f/",
+    "original_prompt_path": "spark-skills/funfun-gem-797ddd306f/original-prompt.txt",
+    "original_prompt_sha256": "32321d34c0845c29a3e79b2bf665d2e2be638801fbd7c30715675ec723e53403"
   },
   {
     "number": 71,
@@ -1275,7 +1415,9 @@
     "short_description": "依教學需求規劃教育科技工具與應用。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d51524e2b9",
-    "page_path": "spark-skills/funfun-gem-d51524e2b9/"
+    "page_path": "spark-skills/funfun-gem-d51524e2b9/",
+    "original_prompt_path": "spark-skills/funfun-gem-d51524e2b9/original-prompt.txt",
+    "original_prompt_sha256": "2be1ece403371bf56a8967dda51507715cf4a239681336e5f6d7e74cac9af627"
   },
   {
     "number": 72,
@@ -1293,7 +1435,9 @@
     "short_description": "依旅遊需求規劃數位 APP 內容與功能。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9c2d35df68",
-    "page_path": "spark-skills/funfun-gem-9c2d35df68/"
+    "page_path": "spark-skills/funfun-gem-9c2d35df68/",
+    "original_prompt_path": "spark-skills/funfun-gem-9c2d35df68/original-prompt.txt",
+    "original_prompt_sha256": "d0c77e6a19bc947824e0f28cb10c5fa7235316a73a3906f984eea3282b78a7c2"
   },
   {
     "number": 73,
@@ -1311,7 +1455,9 @@
     "short_description": "協助規劃課程進度、教學活動與評量。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-2057a9a5e5",
-    "page_path": "spark-skills/funfun-gem-2057a9a5e5/"
+    "page_path": "spark-skills/funfun-gem-2057a9a5e5/",
+    "original_prompt_path": "spark-skills/funfun-gem-2057a9a5e5/original-prompt.txt",
+    "original_prompt_sha256": "e723beb3aa98e6fc3deeff68026369e11af1dcc3693ec6ab101e5505ce3647f1"
   },
   {
     "number": 74,
@@ -1329,7 +1475,9 @@
     "short_description": "依核心素養設計與優化教案。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a78ca734fa",
-    "page_path": "spark-skills/funfun-gem-a78ca734fa/"
+    "page_path": "spark-skills/funfun-gem-a78ca734fa/",
+    "original_prompt_path": "spark-skills/funfun-gem-a78ca734fa/original-prompt.txt",
+    "original_prompt_sha256": "73ac6d14185dbdbd8eb3bf25fbd6527395fd9eb6712de6b714a8d61deeb67744"
   },
   {
     "number": 75,
@@ -1347,7 +1495,9 @@
     "short_description": "設計特殊教育所需的視覺提示與輔具。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bb0f632650",
-    "page_path": "spark-skills/funfun-gem-bb0f632650/"
+    "page_path": "spark-skills/funfun-gem-bb0f632650/",
+    "original_prompt_path": "spark-skills/funfun-gem-bb0f632650/original-prompt.txt",
+    "original_prompt_sha256": "1847cf70734d45241e1e6bd81c7408fe2f6a7d9c216ed314d0a58442966826c2"
   },
   {
     "number": 76,
@@ -1365,7 +1515,9 @@
     "short_description": "依情境與學習目標產出素養導向試題。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c4ba7a2d90",
-    "page_path": "spark-skills/funfun-gem-c4ba7a2d90/"
+    "page_path": "spark-skills/funfun-gem-c4ba7a2d90/",
+    "original_prompt_path": "spark-skills/funfun-gem-c4ba7a2d90/original-prompt.txt",
+    "original_prompt_sha256": "e39697231384cb8fab99fa056f6cf70b6819bb435f0385b7246c4262eaa1ee46"
   },
   {
     "number": 77,
@@ -1383,7 +1535,9 @@
     "short_description": "將班級規則改編成學生易懂的圖卡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d8fa21f59c",
-    "page_path": "spark-skills/funfun-gem-d8fa21f59c/"
+    "page_path": "spark-skills/funfun-gem-d8fa21f59c/",
+    "original_prompt_path": "spark-skills/funfun-gem-d8fa21f59c/original-prompt.txt",
+    "original_prompt_sha256": "069b8f49840b9fe8302f8e818acab07104fe723e0997baaec642fc470193cb44"
   },
   {
     "number": 78,
@@ -1401,7 +1555,9 @@
     "short_description": "規劃 LINE 貼圖角色、情緒與畫面。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-2acbbb3c72",
-    "page_path": "spark-skills/funfun-gem-2acbbb3c72/"
+    "page_path": "spark-skills/funfun-gem-2acbbb3c72/",
+    "original_prompt_path": "spark-skills/funfun-gem-2acbbb3c72/original-prompt.txt",
+    "original_prompt_sha256": "b5ea5a6ac7d35bbed8d1edf714109ebd18258d66c5437b3eb702248d727c2154"
   },
   {
     "number": 79,
@@ -1419,7 +1575,9 @@
     "short_description": "依任務需求設計結構清楚的 AI 提示詞。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9014e5d8fc",
-    "page_path": "spark-skills/funfun-gem-9014e5d8fc/"
+    "page_path": "spark-skills/funfun-gem-9014e5d8fc/",
+    "original_prompt_path": "spark-skills/funfun-gem-9014e5d8fc/original-prompt.txt",
+    "original_prompt_sha256": "65ad44aff6cd3087de8e3b3ef8623b0b71b93e9e7d7398d44de443e3c6e8e347"
   },
   {
     "number": 80,
@@ -1437,7 +1595,9 @@
     "short_description": "將課表整理成美觀、易讀的版面。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7d14cc744b",
-    "page_path": "spark-skills/funfun-gem-7d14cc744b/"
+    "page_path": "spark-skills/funfun-gem-7d14cc744b/",
+    "original_prompt_path": "spark-skills/funfun-gem-7d14cc744b/original-prompt.txt",
+    "original_prompt_sha256": "4e7e96133d6f594c28f19a813239bea20429af06673ce93596e8206e9353e6d5"
   },
   {
     "number": 81,
@@ -1455,7 +1615,9 @@
     "short_description": "設計作文教學、練習與回饋用的 AI 提示詞。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-dc56b17b86",
-    "page_path": "spark-skills/funfun-gem-dc56b17b86/"
+    "page_path": "spark-skills/funfun-gem-dc56b17b86/",
+    "original_prompt_path": "spark-skills/funfun-gem-dc56b17b86/original-prompt.txt",
+    "original_prompt_sha256": "b93e152ff4d6f4815c9cf719b184122886084af3e8afa259a73a1ee1347ab6b3"
   },
   {
     "number": 82,
@@ -1473,7 +1635,9 @@
     "short_description": "檢視教學卓越獎資料，提供評審觀點與建議。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-dc84dea74a",
-    "page_path": "spark-skills/funfun-gem-dc84dea74a/"
+    "page_path": "spark-skills/funfun-gem-dc84dea74a/",
+    "original_prompt_path": "spark-skills/funfun-gem-dc84dea74a/original-prompt.txt",
+    "original_prompt_sha256": "34de1f2deac37a4951e4f950abbe4085b04b343223908184641626bcc90469bf"
   },
   {
     "number": 83,
@@ -1491,7 +1655,9 @@
     "short_description": "將簡報文稿轉成圖像與版面設計。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-02a9beb527",
-    "page_path": "spark-skills/funfun-gem-02a9beb527/"
+    "page_path": "spark-skills/funfun-gem-02a9beb527/",
+    "original_prompt_path": "spark-skills/funfun-gem-02a9beb527/original-prompt.txt",
+    "original_prompt_sha256": "106cbdc15fa76f6bdf4a4cf8757806fed963ac68eb8600283ffad6454fdd17db"
   },
   {
     "number": 84,
@@ -1509,7 +1675,9 @@
     "short_description": "提供國小英語學習引導與練習。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c06a9fa6be",
-    "page_path": "spark-skills/funfun-gem-c06a9fa6be/"
+    "page_path": "spark-skills/funfun-gem-c06a9fa6be/",
+    "original_prompt_path": "spark-skills/funfun-gem-c06a9fa6be/original-prompt.txt",
+    "original_prompt_sha256": "8dbfa1081cec6c486cea4aa8ae677b231332dc371e15aa3c3f3ee176bb1b12f2"
   },
   {
     "number": 85,
@@ -1527,7 +1695,9 @@
     "short_description": "辨識直式手寫作文，轉成可編輯文字。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-acfc995962",
-    "page_path": "spark-skills/funfun-gem-acfc995962/"
+    "page_path": "spark-skills/funfun-gem-acfc995962/",
+    "original_prompt_path": "spark-skills/funfun-gem-acfc995962/original-prompt.txt",
+    "original_prompt_sha256": "2341a11d16d370eda8f0fa8227ff772f74f6e32137863afd2c5095ddb66c5e94"
   },
   {
     "number": 86,
@@ -1545,7 +1715,9 @@
     "short_description": "依原圖需求提升圖片清晰度與可讀性。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7bc5c045c4",
-    "page_path": "spark-skills/funfun-gem-7bc5c045c4/"
+    "page_path": "spark-skills/funfun-gem-7bc5c045c4/",
+    "original_prompt_path": "spark-skills/funfun-gem-7bc5c045c4/original-prompt.txt",
+    "original_prompt_sha256": "6a2bec16e7f7b21bc8f394b35710aaaf319ca1308b63d013f664559a0ba365a9"
   },
   {
     "number": 87,
@@ -1563,7 +1735,9 @@
     "short_description": "將新聞素材改寫成適合主播口播的文稿。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-3ba707de50",
-    "page_path": "spark-skills/funfun-gem-3ba707de50/"
+    "page_path": "spark-skills/funfun-gem-3ba707de50/",
+    "original_prompt_path": "spark-skills/funfun-gem-3ba707de50/original-prompt.txt",
+    "original_prompt_sha256": "9cce73b563f6d6fb5b3ffea8200961bc034e6c46b24d1f0a2b2b537e4f3005de"
   },
   {
     "number": 88,
@@ -1581,7 +1755,9 @@
     "short_description": "整理錄音內容，協助編碼與主題分析。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e543f2f369",
-    "page_path": "spark-skills/funfun-gem-e543f2f369/"
+    "page_path": "spark-skills/funfun-gem-e543f2f369/",
+    "original_prompt_path": "spark-skills/funfun-gem-e543f2f369/original-prompt.txt",
+    "original_prompt_sha256": "8b1bf06326032ac709beb62f99e1fd2071b4437e78b9be23188ddd229091b514"
   },
   {
     "number": 89,
@@ -1599,7 +1775,9 @@
     "short_description": "依素材規劃與製作 Google Slides 簡報。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-fab0aeadb6",
-    "page_path": "spark-skills/funfun-gem-fab0aeadb6/"
+    "page_path": "spark-skills/funfun-gem-fab0aeadb6/",
+    "original_prompt_path": "spark-skills/funfun-gem-fab0aeadb6/original-prompt.txt",
+    "original_prompt_sha256": "9180c13c5feaf760ef13d631cf000b1ce0f8fffa23ca678c6caa97687bc3bb2c"
   },
   {
     "number": 90,
@@ -1617,7 +1795,9 @@
     "short_description": "引導學生設計結合台灣與南非特色的米食。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-82a17c523b",
-    "page_path": "spark-skills/funfun-gem-82a17c523b/"
+    "page_path": "spark-skills/funfun-gem-82a17c523b/",
+    "original_prompt_path": "spark-skills/funfun-gem-82a17c523b/original-prompt.txt",
+    "original_prompt_sha256": "9e3f40b33e54225a57aa439f5abc349a9322cb829a58effbcea0d5e1ced43083"
   },
   {
     "number": 91,
@@ -1635,7 +1815,9 @@
     "short_description": "翻譯研究圖卡文字，保留學術內容與結構。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-aab043061e",
-    "page_path": "spark-skills/funfun-gem-aab043061e/"
+    "page_path": "spark-skills/funfun-gem-aab043061e/",
+    "original_prompt_path": "spark-skills/funfun-gem-aab043061e/original-prompt.txt",
+    "original_prompt_sha256": "1ca752463569dcd11f69c1fd8a928e86c8cc04eb859b575140d76e955df309b7"
   },
   {
     "number": 92,
@@ -1653,7 +1835,9 @@
     "short_description": "設計 LINE 貼圖畫面與製作規格。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-eae2ba35b4",
-    "page_path": "spark-skills/funfun-gem-eae2ba35b4/"
+    "page_path": "spark-skills/funfun-gem-eae2ba35b4/",
+    "original_prompt_path": "spark-skills/funfun-gem-eae2ba35b4/original-prompt.txt",
+    "original_prompt_sha256": "df0f34f0e45138f5e9305b8cc1765ba17d704cbeb590f036ce26c4445af82668"
   },
   {
     "number": 93,
@@ -1671,7 +1855,9 @@
     "short_description": "將國語教材整理成心智圖內容與繪圖提示。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-6f0e61f627",
-    "page_path": "spark-skills/funfun-gem-6f0e61f627/"
+    "page_path": "spark-skills/funfun-gem-6f0e61f627/",
+    "original_prompt_path": "spark-skills/funfun-gem-6f0e61f627/original-prompt.txt",
+    "original_prompt_sha256": "59226941c01e7c35be51a3f6565781d99b62e09467c1d8a69e2e6f577de3cb8e"
   },
   {
     "number": 94,
@@ -1689,7 +1875,9 @@
     "short_description": "將教材重點整理成清楚的心智圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-3d07408b70",
-    "page_path": "spark-skills/funfun-gem-3d07408b70/"
+    "page_path": "spark-skills/funfun-gem-3d07408b70/",
+    "original_prompt_path": "spark-skills/funfun-gem-3d07408b70/original-prompt.txt",
+    "original_prompt_sha256": "27882b844e6e6f8c8bb81335dd671a694c6e93a7db9d44fd9cbb77eaf522d8db"
   },
   {
     "number": 95,
@@ -1707,7 +1895,9 @@
     "short_description": "將教案轉成易讀的教學網頁。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-f4e28d675e",
-    "page_path": "spark-skills/funfun-gem-f4e28d675e/"
+    "page_path": "spark-skills/funfun-gem-f4e28d675e/",
+    "original_prompt_path": "spark-skills/funfun-gem-f4e28d675e/original-prompt.txt",
+    "original_prompt_sha256": "019f815497ef903e1cb6b3d1339c7ffa75eb6eecaa49733b4537b4bb0ede3b47"
   },
   {
     "number": 96,
@@ -1725,7 +1915,9 @@
     "short_description": "整理訪談重點，協助撰寫初稿。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-fe8803ac50",
-    "page_path": "spark-skills/funfun-gem-fe8803ac50/"
+    "page_path": "spark-skills/funfun-gem-fe8803ac50/",
+    "original_prompt_path": "spark-skills/funfun-gem-fe8803ac50/original-prompt.txt",
+    "original_prompt_sha256": "c3f379fec26f9a87d667eded8ca51a59a7522d8b0e8a75d3985f85fcd0ed7684"
   },
   {
     "number": 97,
@@ -1743,7 +1935,9 @@
     "short_description": "設計社會情緒學習教案與活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9918092617",
-    "page_path": "spark-skills/funfun-gem-9918092617/"
+    "page_path": "spark-skills/funfun-gem-9918092617/",
+    "original_prompt_path": "spark-skills/funfun-gem-9918092617/original-prompt.txt",
+    "original_prompt_sha256": "3cba64faf3e54466eb74b3974eee434fc65a243f39886c62b2a7625dde5f168f"
   },
   {
     "number": 98,
@@ -1761,7 +1955,9 @@
     "short_description": "將媒體素養內容改編成學習遊戲。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-13ddb9bebd",
-    "page_path": "spark-skills/funfun-gem-13ddb9bebd/"
+    "page_path": "spark-skills/funfun-gem-13ddb9bebd/",
+    "original_prompt_path": "spark-skills/funfun-gem-13ddb9bebd/original-prompt.txt",
+    "original_prompt_sha256": "617454d084bab8ad39f7d505f6a43f3ae2d5e2bd5e1b7534add7620cca758e0f"
   },
   {
     "number": 99,
@@ -1779,7 +1975,9 @@
     "short_description": "依素養導向原則設計情境題與評量規準。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a593f4a0ec",
-    "page_path": "spark-skills/funfun-gem-a593f4a0ec/"
+    "page_path": "spark-skills/funfun-gem-a593f4a0ec/",
+    "original_prompt_path": "spark-skills/funfun-gem-a593f4a0ec/original-prompt.txt",
+    "original_prompt_sha256": "412a7a5b13885d97228f246d374b21dc31b9088ea16beb0829d5022d8533e80a"
   },
   {
     "number": 100,
@@ -1797,7 +1995,9 @@
     "short_description": "提供作文構思、段落安排與修改引導。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-21b1443d04",
-    "page_path": "spark-skills/funfun-gem-21b1443d04/"
+    "page_path": "spark-skills/funfun-gem-21b1443d04/",
+    "original_prompt_path": "spark-skills/funfun-gem-21b1443d04/original-prompt.txt",
+    "original_prompt_sha256": "d530b7e48cf8111fef35d9e3190e5b817d31b53c5f1a73404e1d06ed10ba1de6"
   },
   {
     "number": 101,
@@ -1815,7 +2015,9 @@
     "short_description": "依課程需求產出素養導向教案。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-70f1136230",
-    "page_path": "spark-skills/funfun-gem-70f1136230/"
+    "page_path": "spark-skills/funfun-gem-70f1136230/",
+    "original_prompt_path": "spark-skills/funfun-gem-70f1136230/original-prompt.txt",
+    "original_prompt_sha256": "3bd62e5824fbb863265e31fe70c380cf5bb68aeeba1b7ea73b740fbcdffeac81"
   },
   {
     "number": 102,
@@ -1833,7 +2035,9 @@
     "short_description": "提供作文寫作指導與個別回饋。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-6223933893",
-    "page_path": "spark-skills/funfun-gem-6223933893/"
+    "page_path": "spark-skills/funfun-gem-6223933893/",
+    "original_prompt_path": "spark-skills/funfun-gem-6223933893/original-prompt.txt",
+    "original_prompt_sha256": "b2ce4bf2ae971c220f014aa68d824bd4c042fa5e861c6cdc5855667d3c5c66d8"
   },
   {
     "number": 103,
@@ -1851,7 +2055,9 @@
     "short_description": "以生活情境設計物理題目與解說。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5a07df8fd8",
-    "page_path": "spark-skills/funfun-gem-5a07df8fd8/"
+    "page_path": "spark-skills/funfun-gem-5a07df8fd8/",
+    "original_prompt_path": "spark-skills/funfun-gem-5a07df8fd8/original-prompt.txt",
+    "original_prompt_sha256": "976852684953e79deb18bf43fc04cdba0f310f338bd0979f97f4852eb66668c8"
   },
   {
     "number": 104,
@@ -1869,7 +2075,9 @@
     "short_description": "引導英文教材閱讀，設計理解與延伸活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-84b0707cc8",
-    "page_path": "spark-skills/funfun-gem-84b0707cc8/"
+    "page_path": "spark-skills/funfun-gem-84b0707cc8/",
+    "original_prompt_path": "spark-skills/funfun-gem-84b0707cc8/original-prompt.txt",
+    "original_prompt_sha256": "8bfd1acd98f689f49826ac11f9ed40043ab6b67b26fbc4a5e629edcebf82c529"
   },
   {
     "number": 105,
@@ -1887,7 +2095,9 @@
     "short_description": "整合不同領域，設計跨領域教學活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9c82335225",
-    "page_path": "spark-skills/funfun-gem-9c82335225/"
+    "page_path": "spark-skills/funfun-gem-9c82335225/",
+    "original_prompt_path": "spark-skills/funfun-gem-9c82335225/original-prompt.txt",
+    "original_prompt_sha256": "4ce6c2c53e1af75d841cc08344d63857f604aa9614a0b20bfc814d418adecd01"
   },
   {
     "number": 106,
@@ -1905,7 +2115,9 @@
     "short_description": "依文本與學生程度設計閱讀教案。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ed72a51314",
-    "page_path": "spark-skills/funfun-gem-ed72a51314/"
+    "page_path": "spark-skills/funfun-gem-ed72a51314/",
+    "original_prompt_path": "spark-skills/funfun-gem-ed72a51314/original-prompt.txt",
+    "original_prompt_sha256": "0448f6344da0e216605923f70912016d25267c730e8ee178578f2d744a2a25cd"
   },
   {
     "number": 107,
@@ -1923,7 +2135,9 @@
     "short_description": "規劃資源回收主題簡報內容與圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ad7bf36aea",
-    "page_path": "spark-skills/funfun-gem-ad7bf36aea/"
+    "page_path": "spark-skills/funfun-gem-ad7bf36aea/",
+    "original_prompt_path": "spark-skills/funfun-gem-ad7bf36aea/original-prompt.txt",
+    "original_prompt_sha256": "4231eef48ad87ec25ce063faf10e47ea7e9dd296e31b781176a22988ca736d4b"
   },
   {
     "number": 108,
@@ -1941,7 +2155,9 @@
     "short_description": "提供適合國小學生的英語對話與學習支持。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-4a6122ff84",
-    "page_path": "spark-skills/funfun-gem-4a6122ff84/"
+    "page_path": "spark-skills/funfun-gem-4a6122ff84/",
+    "original_prompt_path": "spark-skills/funfun-gem-4a6122ff84/original-prompt.txt",
+    "original_prompt_sha256": "8dbfa1081cec6c486cea4aa8ae677b231332dc371e15aa3c3f3ee176bb1b12f2"
   },
   {
     "number": 109,
@@ -1959,7 +2175,9 @@
     "short_description": "提供適合國小學生的問答與學習引導。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-b26c074f59",
-    "page_path": "spark-skills/funfun-gem-b26c074f59/"
+    "page_path": "spark-skills/funfun-gem-b26c074f59/",
+    "original_prompt_path": "spark-skills/funfun-gem-b26c074f59/original-prompt.txt",
+    "original_prompt_sha256": "84529be382f2f3cc810ef5c7195b1b197529697113f1c44e2ff38703d6c9d570"
   },
   {
     "number": 110,
@@ -1977,7 +2195,9 @@
     "short_description": "將參考文獻整理與改寫成 APA 格式。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a62a038d24",
-    "page_path": "spark-skills/funfun-gem-a62a038d24/"
+    "page_path": "spark-skills/funfun-gem-a62a038d24/",
+    "original_prompt_path": "spark-skills/funfun-gem-a62a038d24/original-prompt.txt",
+    "original_prompt_sha256": "eadea2311ceabcced54217c7cbab7a08b4f0850180ae3af44c194278549d66c1"
   },
   {
     "number": 111,
@@ -1995,7 +2215,9 @@
     "short_description": "檢視與改寫提示詞，提升任務要求的清晰度。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-6859710c20",
-    "page_path": "spark-skills/funfun-gem-6859710c20/"
+    "page_path": "spark-skills/funfun-gem-6859710c20/",
+    "original_prompt_path": "spark-skills/funfun-gem-6859710c20/original-prompt.txt",
+    "original_prompt_sha256": "b1f6388bb1b128d4ff5f3e62fdf20d0f41ecdac37ca0f74b3b2359f775d2d643"
   },
   {
     "number": 112,
@@ -2013,7 +2235,9 @@
     "short_description": "提供鼓勵式健康習慣建議與行動規劃。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9df12be164",
-    "page_path": "spark-skills/funfun-gem-9df12be164/"
+    "page_path": "spark-skills/funfun-gem-9df12be164/",
+    "original_prompt_path": "spark-skills/funfun-gem-9df12be164/original-prompt.txt",
+    "original_prompt_sha256": "af797caf80b149f7e8092597fb0468015c5f82dac4a9bf6425897cc38b08464d"
   },
   {
     "number": 113,
@@ -2031,7 +2255,9 @@
     "short_description": "協助編織故事情節、角色與文字表達。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5b6cde54aa",
-    "page_path": "spark-skills/funfun-gem-5b6cde54aa/"
+    "page_path": "spark-skills/funfun-gem-5b6cde54aa/",
+    "original_prompt_path": "spark-skills/funfun-gem-5b6cde54aa/original-prompt.txt",
+    "original_prompt_sha256": "cc888171c127e0bcfde7425f7286b40bed490489806b5470b9bce03ed0b75647"
   },
   {
     "number": 114,
@@ -2049,7 +2275,9 @@
     "short_description": "規劃得獎成果海報的內容與視覺呈現。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a33457e7be",
-    "page_path": "spark-skills/funfun-gem-a33457e7be/"
+    "page_path": "spark-skills/funfun-gem-a33457e7be/",
+    "original_prompt_path": "spark-skills/funfun-gem-a33457e7be/original-prompt.txt",
+    "original_prompt_sha256": "d2c036852029c42f742666881e8b879a98363d21b988f2d9a77d7be1b8bcdf56"
   },
   {
     "number": 115,
@@ -2067,7 +2295,9 @@
     "short_description": "將教學概念轉成清楚的圖解。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a007fe36c5",
-    "page_path": "spark-skills/funfun-gem-a007fe36c5/"
+    "page_path": "spark-skills/funfun-gem-a007fe36c5/",
+    "original_prompt_path": "spark-skills/funfun-gem-a007fe36c5/original-prompt.txt",
+    "original_prompt_sha256": "6c1e9d6dc2faa40df2c6766f8e7934f6cb6155b3dd5b867d425d6c04fcf7ffb9"
   },
   {
     "number": 116,
@@ -2085,7 +2315,9 @@
     "short_description": "依教學情境設計插圖與畫面。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5f067faf57",
-    "page_path": "spark-skills/funfun-gem-5f067faf57/"
+    "page_path": "spark-skills/funfun-gem-5f067faf57/",
+    "original_prompt_path": "spark-skills/funfun-gem-5f067faf57/original-prompt.txt",
+    "original_prompt_sha256": "afeb9a46012a0fccd54911e6a19ce8b0e83c9cb6108ebca3e94534cd464fcee5"
   },
   {
     "number": 117,
@@ -2103,7 +2335,9 @@
     "short_description": "依主題發想圖像概念與創作提示詞。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c8eb26478d",
-    "page_path": "spark-skills/funfun-gem-c8eb26478d/"
+    "page_path": "spark-skills/funfun-gem-c8eb26478d/",
+    "original_prompt_path": "spark-skills/funfun-gem-c8eb26478d/original-prompt.txt",
+    "original_prompt_sha256": "afa19957dff30c1b67aa245efd3aae25607890310c38c092a733014f4d964b54"
   },
   {
     "number": 118,
@@ -2121,7 +2355,9 @@
     "short_description": "將學生問題改寫成更有深度的探究提問。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-703c783ce2",
-    "page_path": "spark-skills/funfun-gem-703c783ce2/"
+    "page_path": "spark-skills/funfun-gem-703c783ce2/",
+    "original_prompt_path": "spark-skills/funfun-gem-703c783ce2/original-prompt.txt",
+    "original_prompt_sha256": "66682376d7c21c04585f38a53be0fabfdc49f4f82ec31d7411cfb580652591b9"
   },
   {
     "number": 119,
@@ -2139,7 +2375,9 @@
     "short_description": "為故事分鏡設計一致的繪圖提示詞。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-f16ef61cc3",
-    "page_path": "spark-skills/funfun-gem-f16ef61cc3/"
+    "page_path": "spark-skills/funfun-gem-f16ef61cc3/",
+    "original_prompt_path": "spark-skills/funfun-gem-f16ef61cc3/original-prompt.txt",
+    "original_prompt_sha256": "f64e6d3dca8f890d98972de079e0ba5722d5af731836fb1f32d6ee5d6afc8345"
   },
   {
     "number": 120,
@@ -2157,7 +2395,9 @@
     "short_description": "規劃故事場景、環境細節與畫面設定。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-802e5d7790",
-    "page_path": "spark-skills/funfun-gem-802e5d7790/"
+    "page_path": "spark-skills/funfun-gem-802e5d7790/",
+    "original_prompt_path": "spark-skills/funfun-gem-802e5d7790/original-prompt.txt",
+    "original_prompt_sha256": "42a62d5c18ce7c2c6fe257250537a6cfe2bfb2a76da485f793ffd6ddbf4b8de6"
   },
   {
     "number": 121,
@@ -2175,7 +2415,9 @@
     "short_description": "設計角色外觀、服裝與一致的造型規格。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-f84b18eb96",
-    "page_path": "spark-skills/funfun-gem-f84b18eb96/"
+    "page_path": "spark-skills/funfun-gem-f84b18eb96/",
+    "original_prompt_path": "spark-skills/funfun-gem-f84b18eb96/original-prompt.txt",
+    "original_prompt_sha256": "89a82fc596935f58acb1c5a98f391eb88ccb941c2a0ceefcd2418975f7273194"
   },
   {
     "number": 122,
@@ -2193,7 +2435,9 @@
     "short_description": "撰寫特殊教育教材的親師合作說明。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-06aced8993",
-    "page_path": "spark-skills/funfun-gem-06aced8993/"
+    "page_path": "spark-skills/funfun-gem-06aced8993/",
+    "original_prompt_path": "spark-skills/funfun-gem-06aced8993/original-prompt.txt",
+    "original_prompt_sha256": "0897dd6c653fc8a1f837d9fb3473987af22e508913395d1aef8a899794825bff"
   },
   {
     "number": 123,
@@ -2211,7 +2455,9 @@
     "short_description": "將 IEP 目標對應到教材與學習活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c66f76245c",
-    "page_path": "spark-skills/funfun-gem-c66f76245c/"
+    "page_path": "spark-skills/funfun-gem-c66f76245c/",
+    "original_prompt_path": "spark-skills/funfun-gem-c66f76245c/original-prompt.txt",
+    "original_prompt_sha256": "2ec5b90e4a7b8450a3bcb81e1f2fc1c076cf1be0f1e63c0eb35752e4991bda8b"
   },
   {
     "number": 124,
@@ -2229,7 +2475,9 @@
     "short_description": "依學生需求調整評量方式與支持措施。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-d307143a53",
-    "page_path": "spark-skills/funfun-gem-d307143a53/"
+    "page_path": "spark-skills/funfun-gem-d307143a53/",
+    "original_prompt_path": "spark-skills/funfun-gem-d307143a53/original-prompt.txt",
+    "original_prompt_sha256": "4958fbba7accca1deb64ee565f44ce7ba315011f75f2ab60f66c807c9ab511bb"
   },
   {
     "number": 125,
@@ -2247,7 +2495,9 @@
     "short_description": "設計輔助溝通用的 AAC 圖卡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1ed6f348e5",
-    "page_path": "spark-skills/funfun-gem-1ed6f348e5/"
+    "page_path": "spark-skills/funfun-gem-1ed6f348e5/",
+    "original_prompt_path": "spark-skills/funfun-gem-1ed6f348e5/original-prompt.txt",
+    "original_prompt_sha256": "4823fac0e353463a1a239de6d86fe6b4d75ddfe6f570dea69c113f561ab2e2f7"
   },
   {
     "number": 126,
@@ -2265,7 +2515,9 @@
     "short_description": "將生活自理任務拆成可操作的流程卡。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1aa41cfddf",
-    "page_path": "spark-skills/funfun-gem-1aa41cfddf/"
+    "page_path": "spark-skills/funfun-gem-1aa41cfddf/",
+    "original_prompt_path": "spark-skills/funfun-gem-1aa41cfddf/original-prompt.txt",
+    "original_prompt_sha256": "6f364792ee3326f4e3317cab17907b4b38940e405fce8747154be3341c059e04"
   },
   {
     "number": 127,
@@ -2283,7 +2535,9 @@
     "short_description": "設計辨識情緒與練習調節的教材。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-0019b6cff5",
-    "page_path": "spark-skills/funfun-gem-0019b6cff5/"
+    "page_path": "spark-skills/funfun-gem-0019b6cff5/",
+    "original_prompt_path": "spark-skills/funfun-gem-0019b6cff5/original-prompt.txt",
+    "original_prompt_sha256": "47bc33488dddbb166fa549e14ce337db523c25054d13667c690877deb28a9653"
   },
   {
     "number": 128,
@@ -2301,7 +2555,9 @@
     "short_description": "依學生情境撰寫社交故事與提示。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ffa4d8d1b8",
-    "page_path": "spark-skills/funfun-gem-ffa4d8d1b8/"
+    "page_path": "spark-skills/funfun-gem-ffa4d8d1b8/",
+    "original_prompt_path": "spark-skills/funfun-gem-ffa4d8d1b8/original-prompt.txt",
+    "original_prompt_sha256": "5e8b31f8ae288389881ad8098ad35ffc50970dd9c0816b73cbbb8281db6bbb38"
   },
   {
     "number": 129,
@@ -2319,7 +2575,9 @@
     "short_description": "將社會科概念整理成適合學生的概念圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bfd9586fb5",
-    "page_path": "spark-skills/funfun-gem-bfd9586fb5/"
+    "page_path": "spark-skills/funfun-gem-bfd9586fb5/",
+    "original_prompt_path": "spark-skills/funfun-gem-bfd9586fb5/original-prompt.txt",
+    "original_prompt_sha256": "575d8b26903e9320b9ab20753f92bd51153bf279c4a53f1b9ac11a572816a102"
   },
   {
     "number": 130,
@@ -2337,7 +2595,9 @@
     "short_description": "依學生需求改編自然探究活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-2d6fb2b802",
-    "page_path": "spark-skills/funfun-gem-2d6fb2b802/"
+    "page_path": "spark-skills/funfun-gem-2d6fb2b802/",
+    "original_prompt_path": "spark-skills/funfun-gem-2d6fb2b802/original-prompt.txt",
+    "original_prompt_sha256": "e8b658e7b427cd84d168bfe41b8da1d8d3f67770bfee6dda6b0d0e7fe0705a3b"
   },
   {
     "number": 131,
@@ -2355,7 +2615,9 @@
     "short_description": "分析數學錯誤，設計再教學與練習。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-fdad003f18",
-    "page_path": "spark-skills/funfun-gem-fdad003f18/"
+    "page_path": "spark-skills/funfun-gem-fdad003f18/",
+    "original_prompt_path": "spark-skills/funfun-gem-fdad003f18/original-prompt.txt",
+    "original_prompt_sha256": "6d10fc9acb52ea9b03bf3857a4f8d8b22f3e543818dc69f7d3a973425ebbc435"
   },
   {
     "number": 132,
@@ -2373,7 +2635,9 @@
     "short_description": "將抽象數學概念轉成具體操作教材。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-907a0bf30e",
-    "page_path": "spark-skills/funfun-gem-907a0bf30e/"
+    "page_path": "spark-skills/funfun-gem-907a0bf30e/",
+    "original_prompt_path": "spark-skills/funfun-gem-907a0bf30e/original-prompt.txt",
+    "original_prompt_sha256": "727cd59afb7e308f573f5e55e59b5b6ee265aa638a275e000ea85c1fff423176"
   },
   {
     "number": 133,
@@ -2391,7 +2655,9 @@
     "short_description": "設計兼顧不同學習需求的融合課堂教案。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-26c7a6362d",
-    "page_path": "spark-skills/funfun-gem-26c7a6362d/"
+    "page_path": "spark-skills/funfun-gem-26c7a6362d/",
+    "original_prompt_path": "spark-skills/funfun-gem-26c7a6362d/original-prompt.txt",
+    "original_prompt_sha256": "f5d117c0fa12bb54bcd8cc835d0a309713a975a660e77a0f86ffd3490d121f81"
   },
   {
     "number": 134,
@@ -2409,7 +2675,9 @@
     "short_description": "將學習任務拆成小步驟與支持型學習單。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c2aed3972e",
-    "page_path": "spark-skills/funfun-gem-c2aed3972e/"
+    "page_path": "spark-skills/funfun-gem-c2aed3972e/",
+    "original_prompt_path": "spark-skills/funfun-gem-c2aed3972e/original-prompt.txt",
+    "original_prompt_sha256": "847d8cd69fae469af0561b2e14a343a002bae091b5f561d37faeb933f48a7a74"
   },
   {
     "number": 135,
@@ -2427,7 +2695,9 @@
     "short_description": "結合現代用語解說古文，設計學習活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e1261ec126",
-    "page_path": "spark-skills/funfun-gem-e1261ec126/"
+    "page_path": "spark-skills/funfun-gem-e1261ec126/",
+    "original_prompt_path": "spark-skills/funfun-gem-e1261ec126/original-prompt.txt",
+    "original_prompt_sha256": "ffdb18dfa9a293bdb879ded962408418582d3b32276ce839dd476a21d3526560"
   },
   {
     "number": 136,
@@ -2445,7 +2715,9 @@
     "short_description": "引導學生撰寫日記與自我反思。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7689cbb845",
-    "page_path": "spark-skills/funfun-gem-7689cbb845/"
+    "page_path": "spark-skills/funfun-gem-7689cbb845/",
+    "original_prompt_path": "spark-skills/funfun-gem-7689cbb845/original-prompt.txt",
+    "original_prompt_sha256": "c47f4663a61fba16ff5326ef4a56c108600e96f2e01341062f4505343398b4a7"
   },
   {
     "number": 137,
@@ -2463,7 +2735,9 @@
     "short_description": "依評量規準評閱學生專題並提供回饋。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-7b6d4b670e",
-    "page_path": "spark-skills/funfun-gem-7b6d4b670e/"
+    "page_path": "spark-skills/funfun-gem-7b6d4b670e/",
+    "original_prompt_path": "spark-skills/funfun-gem-7b6d4b670e/original-prompt.txt",
+    "original_prompt_sha256": "0bdaaa23627ee4d13cccdded79e50d204a5bbbb61f8eec43bbef8285a2c7cfc1"
   },
   {
     "number": 138,
@@ -2481,7 +2755,9 @@
     "short_description": "協助撰寫突發事件的家長溝通訊息。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-3688a82d5c",
-    "page_path": "spark-skills/funfun-gem-3688a82d5c/"
+    "page_path": "spark-skills/funfun-gem-3688a82d5c/",
+    "original_prompt_path": "spark-skills/funfun-gem-3688a82d5c/original-prompt.txt",
+    "original_prompt_sha256": "08ce7e7380f90bcdcaf76cf25362439652c61b8f34c06440d7743c389dc32391"
   },
   {
     "number": 139,
@@ -2499,7 +2775,9 @@
     "short_description": "依親師溝通情境撰寫合宜的家長回覆。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-b965952547",
-    "page_path": "spark-skills/funfun-gem-b965952547/"
+    "page_path": "spark-skills/funfun-gem-b965952547/",
+    "original_prompt_path": "spark-skills/funfun-gem-b965952547/original-prompt.txt",
+    "original_prompt_sha256": "5b8173f993f8cf4e7eec983d90f308b17baf735a1e03e1804e2d7a161de5dfc8"
   },
   {
     "number": 140,
@@ -2517,7 +2795,9 @@
     "short_description": "將輔導資料整理成客觀、具體的紀錄。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-8a59a56a6a",
-    "page_path": "spark-skills/funfun-gem-8a59a56a6a/"
+    "page_path": "spark-skills/funfun-gem-8a59a56a6a/",
+    "original_prompt_path": "spark-skills/funfun-gem-8a59a56a6a/original-prompt.txt",
+    "original_prompt_sha256": "fcd3ceb8771f1a6db6f1e7924c65db0b631453650a05f147286eb75348600ff5"
   },
   {
     "number": 141,
@@ -2535,7 +2815,9 @@
     "short_description": "依教學需求設計數位學習單與互動內容。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5430dcf1dc",
-    "page_path": "spark-skills/funfun-gem-5430dcf1dc/"
+    "page_path": "spark-skills/funfun-gem-5430dcf1dc/",
+    "original_prompt_path": "spark-skills/funfun-gem-5430dcf1dc/original-prompt.txt",
+    "original_prompt_sha256": "d00fb32a16015776fa3558dfac539be40f79b0bf54160745b3aa948a48733a57"
   },
   {
     "number": 142,
@@ -2553,7 +2835,9 @@
     "short_description": "將英語名言改編成廣播文稿與學習素材。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-243a4475f3",
-    "page_path": "spark-skills/funfun-gem-243a4475f3/"
+    "page_path": "spark-skills/funfun-gem-243a4475f3/",
+    "original_prompt_path": "spark-skills/funfun-gem-243a4475f3/original-prompt.txt",
+    "original_prompt_sha256": "03c27ffe48dc6e5914224a7e0681f5d8c9586aaa6f9dfed6a0da7410ad0bdcbf"
   },
   {
     "number": 143,
@@ -2571,7 +2855,9 @@
     "short_description": "設計媒體素養課程的教案與學習活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bfddcd38f3",
-    "page_path": "spark-skills/funfun-gem-bfddcd38f3/"
+    "page_path": "spark-skills/funfun-gem-bfddcd38f3/",
+    "original_prompt_path": "spark-skills/funfun-gem-bfddcd38f3/original-prompt.txt",
+    "original_prompt_sha256": "d75cde49f27dd4c983159e17819e7f523ad9bf5190ccad573587a261041e4ddf"
   },
   {
     "number": 144,
@@ -2589,7 +2875,9 @@
     "short_description": "依課程目標生成教學學習單。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-005c135848",
-    "page_path": "spark-skills/funfun-gem-005c135848/"
+    "page_path": "spark-skills/funfun-gem-005c135848/",
+    "original_prompt_path": "spark-skills/funfun-gem-005c135848/original-prompt.txt",
+    "original_prompt_sha256": "4dd6958757c01d0443bbcbe1142dbc8a12c96d97bd62db83ea8ada90b10c7cda"
   },
   {
     "number": 145,
@@ -2607,7 +2895,9 @@
     "short_description": "引導綠建築設計，產出剖面圖提示與說明。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-cdb0b9ef1c",
-    "page_path": "spark-skills/funfun-gem-cdb0b9ef1c/"
+    "page_path": "spark-skills/funfun-gem-cdb0b9ef1c/",
+    "original_prompt_path": "spark-skills/funfun-gem-cdb0b9ef1c/original-prompt.txt",
+    "original_prompt_sha256": "68989206f97244ab4489258ec8aa87cb1f9c0479e74a91d93c9a2097ffe5c206"
   },
   {
     "number": 146,
@@ -2625,7 +2915,9 @@
     "short_description": "規劃教育 AI 聊天機器人的角色與教學流程。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-6101279616",
-    "page_path": "spark-skills/funfun-gem-6101279616/"
+    "page_path": "spark-skills/funfun-gem-6101279616/",
+    "original_prompt_path": "spark-skills/funfun-gem-6101279616/original-prompt.txt",
+    "original_prompt_sha256": "34831ae3d3d431e1d1bea8049de832bdcddf6ca5bfa6cdb4a97a992996025a7c"
   },
   {
     "number": 147,
@@ -2643,7 +2935,9 @@
     "short_description": "設計教學演示與公開課的單堂教案。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a04a748075",
-    "page_path": "spark-skills/funfun-gem-a04a748075/"
+    "page_path": "spark-skills/funfun-gem-a04a748075/",
+    "original_prompt_path": "spark-skills/funfun-gem-a04a748075/original-prompt.txt",
+    "original_prompt_sha256": "8fd58de70f04f0593a1500459e94c63c683fad5c49a36a3f9149cf75a0a548ce"
   },
   {
     "number": 148,
@@ -2661,7 +2955,9 @@
     "short_description": "依教師需求客製化親師溝通訊息。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-cdd49aad3e",
-    "page_path": "spark-skills/funfun-gem-cdd49aad3e/"
+    "page_path": "spark-skills/funfun-gem-cdd49aad3e/",
+    "original_prompt_path": "spark-skills/funfun-gem-cdd49aad3e/original-prompt.txt",
+    "original_prompt_sha256": "3c614939ab74b7f23ba7d1aa8f48360ba78a795eab6daa90cf82ec80d19d12d8"
   },
   {
     "number": 149,
@@ -2679,7 +2975,9 @@
     "short_description": "分析既有教案，優化目標、活動與評量。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-9e27cd3f28",
-    "page_path": "spark-skills/funfun-gem-9e27cd3f28/"
+    "page_path": "spark-skills/funfun-gem-9e27cd3f28/",
+    "original_prompt_path": "spark-skills/funfun-gem-9e27cd3f28/original-prompt.txt",
+    "original_prompt_sha256": "9453b769672a00bf6855ad054292ce7389ae8589d9628c09c9335318dbc3724f"
   },
   {
     "number": 150,
@@ -2697,7 +2995,9 @@
     "short_description": "依 PIRLS 四層次設計閱讀理解題目。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-6bd33771b4",
-    "page_path": "spark-skills/funfun-gem-6bd33771b4/"
+    "page_path": "spark-skills/funfun-gem-6bd33771b4/",
+    "original_prompt_path": "spark-skills/funfun-gem-6bd33771b4/original-prompt.txt",
+    "original_prompt_sha256": "27dfa27f7cba6822f21ba6f2233c478ba82c4785674036e2bd63013c170f646e"
   },
   {
     "number": 151,
@@ -2715,7 +3015,9 @@
     "short_description": "依學生表現撰寫具體的期末評語。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-04cf7b3e95",
-    "page_path": "spark-skills/funfun-gem-04cf7b3e95/"
+    "page_path": "spark-skills/funfun-gem-04cf7b3e95/",
+    "original_prompt_path": "spark-skills/funfun-gem-04cf7b3e95/original-prompt.txt",
+    "original_prompt_sha256": "9f45c99daa68717f16c96463cc92a3ade214ab77de751e323130bc0b9d9faaaa"
   },
   {
     "number": 152,
@@ -2733,7 +3035,9 @@
     "short_description": "整理二次訪談重點，聚焦追問與分析。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-a47d50e0f3",
-    "page_path": "spark-skills/funfun-gem-a47d50e0f3/"
+    "page_path": "spark-skills/funfun-gem-a47d50e0f3/",
+    "original_prompt_path": "spark-skills/funfun-gem-a47d50e0f3/original-prompt.txt",
+    "original_prompt_sha256": "f113187dfa23c1c216407f82c086c02a1c61de0a48c3297b709d1b989fad6f0e"
   },
   {
     "number": 153,
@@ -2751,7 +3055,9 @@
     "short_description": "提供資安與 AI 隱私問題的說明與建議。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-f2d387dce7",
-    "page_path": "spark-skills/funfun-gem-f2d387dce7/"
+    "page_path": "spark-skills/funfun-gem-f2d387dce7/",
+    "original_prompt_path": "spark-skills/funfun-gem-f2d387dce7/original-prompt.txt",
+    "original_prompt_sha256": "ca0970b8fdc240b4f6a203b9b75df215158e5e42c149499736b45ec0da2101d4"
   },
   {
     "number": 154,
@@ -2769,7 +3075,9 @@
     "short_description": "規劃遊戲美術風格、角色與場景素材。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1338e5cfa7",
-    "page_path": "spark-skills/funfun-gem-1338e5cfa7/"
+    "page_path": "spark-skills/funfun-gem-1338e5cfa7/",
+    "original_prompt_path": "spark-skills/funfun-gem-1338e5cfa7/original-prompt.txt",
+    "original_prompt_sha256": "09d98bf21ad9db5e8090b79307cdc727a72954b68ea1bbd5de601777ec8bcb45"
   },
   {
     "number": 155,
@@ -2787,7 +3095,9 @@
     "short_description": "將英文俚語轉成情境漫畫與學習解說。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-fbb7c41f06",
-    "page_path": "spark-skills/funfun-gem-fbb7c41f06/"
+    "page_path": "spark-skills/funfun-gem-fbb7c41f06/",
+    "original_prompt_path": "spark-skills/funfun-gem-fbb7c41f06/original-prompt.txt",
+    "original_prompt_sha256": "d6b334b7290bfdffd364f25f88960e82cc583d18b42928dcde022f5061a82c2a"
   },
   {
     "number": 156,
@@ -2805,7 +3115,9 @@
     "short_description": "設計學校市長選舉海報的文案與圖像。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-0498e205db",
-    "page_path": "spark-skills/funfun-gem-0498e205db/"
+    "page_path": "spark-skills/funfun-gem-0498e205db/",
+    "original_prompt_path": "spark-skills/funfun-gem-0498e205db/original-prompt.txt",
+    "original_prompt_sha256": "8bfe736928a1f88e50ffd4ba42a15c52d01c29cb2f4e25eda037e4039e9f9777"
   },
   {
     "number": 157,
@@ -2823,7 +3135,9 @@
     "short_description": "設計國小五年級社會科探究活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-ff7d4f6e46",
-    "page_path": "spark-skills/funfun-gem-ff7d4f6e46/"
+    "page_path": "spark-skills/funfun-gem-ff7d4f6e46/",
+    "original_prompt_path": "spark-skills/funfun-gem-ff7d4f6e46/original-prompt.txt",
+    "original_prompt_sha256": "d75cb608a06cb003ca384421f8445ddd060424389482abff965310b5401f4788"
   },
   {
     "number": 158,
@@ -2841,7 +3155,9 @@
     "short_description": "依構想規劃與製作可遊玩的遊戲。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-89e2a51553",
-    "page_path": "spark-skills/funfun-gem-89e2a51553/"
+    "page_path": "spark-skills/funfun-gem-89e2a51553/",
+    "original_prompt_path": "spark-skills/funfun-gem-89e2a51553/original-prompt.txt",
+    "original_prompt_sha256": "c7ce01cc4756360dd5b2605d10c344484575269a6a465efc04578ddeaf1b93b3"
   },
   {
     "number": 159,
@@ -2871,7 +3187,9 @@
     "short_description": "依照片與職業設計可愛的個人 IP 角色。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-22dfce3653",
-    "page_path": "spark-skills/funfun-gem-22dfce3653/"
+    "page_path": "spark-skills/funfun-gem-22dfce3653/",
+    "original_prompt_path": "spark-skills/funfun-gem-22dfce3653/original-prompt.txt",
+    "original_prompt_sha256": "483e5c9778a9bb7e059962f26b017ca17b233d506f9cb25c949ba45055d4ed4f"
   },
   {
     "number": 161,
@@ -2889,7 +3207,9 @@
     "short_description": "依 PIRLS 層次設計親子閱讀討論學習單。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-5226138c32",
-    "page_path": "spark-skills/funfun-gem-5226138c32/"
+    "page_path": "spark-skills/funfun-gem-5226138c32/",
+    "original_prompt_path": "spark-skills/funfun-gem-5226138c32/original-prompt.txt",
+    "original_prompt_sha256": "d3940b654b829234837fb05553b0b76211c9104d028ae0ea69ba77062ed5213b"
   },
   {
     "number": 162,
@@ -2907,7 +3227,9 @@
     "short_description": "整理台股基本面與籌碼資料，產出分析報告。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-c72400bc33",
-    "page_path": "spark-skills/funfun-gem-c72400bc33/"
+    "page_path": "spark-skills/funfun-gem-c72400bc33/",
+    "original_prompt_path": "spark-skills/funfun-gem-c72400bc33/original-prompt.txt",
+    "original_prompt_sha256": "0a45324d56f03760a8027973e62256297c76cfd15bbf1cf533b7d31bc4a4c62b"
   },
   {
     "number": 163,
@@ -2925,7 +3247,9 @@
     "short_description": "設計自然科生活情境題與素養評量。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-b73e43d7db",
-    "page_path": "spark-skills/funfun-gem-b73e43d7db/"
+    "page_path": "spark-skills/funfun-gem-b73e43d7db/",
+    "original_prompt_path": "spark-skills/funfun-gem-b73e43d7db/original-prompt.txt",
+    "original_prompt_sha256": "01b2621fbcc84845695c4d152e0036e2ba0baeffff71477957456156bd04fc0f"
   },
   {
     "number": 164,
@@ -2943,7 +3267,9 @@
     "short_description": "辨識直式文字圖片，轉成可編輯文字。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-e96ec38fb4",
-    "page_path": "spark-skills/funfun-gem-e96ec38fb4/"
+    "page_path": "spark-skills/funfun-gem-e96ec38fb4/",
+    "original_prompt_path": "spark-skills/funfun-gem-e96ec38fb4/original-prompt.txt",
+    "original_prompt_sha256": "ec4053201bc6c423f899be16df08d63f77332b81dd3659ace554d8f89e4bf062"
   },
   {
     "number": 165,
@@ -2961,7 +3287,9 @@
     "short_description": "協助聚焦簡報目標、重點與敘事結構。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-132c7f6787",
-    "page_path": "spark-skills/funfun-gem-132c7f6787/"
+    "page_path": "spark-skills/funfun-gem-132c7f6787/",
+    "original_prompt_path": "spark-skills/funfun-gem-132c7f6787/original-prompt.txt",
+    "original_prompt_sha256": "f7fa46f72008e19263e26eda672f5842ce5835a7b71f9047e45aea3b438b0af5"
   },
   {
     "number": 166,
@@ -2979,7 +3307,9 @@
     "short_description": "引導閱讀心得的構思、整理與撰寫。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-849e25876e",
-    "page_path": "spark-skills/funfun-gem-849e25876e/"
+    "page_path": "spark-skills/funfun-gem-849e25876e/",
+    "original_prompt_path": "spark-skills/funfun-gem-849e25876e/original-prompt.txt",
+    "original_prompt_sha256": "96ea4929789e1464ee4c245b900735fcd636867dc81f9fcc3e21af23433acd05"
   },
   {
     "number": 167,
@@ -2997,7 +3327,9 @@
     "short_description": "協助整理書籍重點並撰寫閱讀心得。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-1b2aec4301",
-    "page_path": "spark-skills/funfun-gem-1b2aec4301/"
+    "page_path": "spark-skills/funfun-gem-1b2aec4301/",
+    "original_prompt_path": "spark-skills/funfun-gem-1b2aec4301/original-prompt.txt",
+    "original_prompt_sha256": "9b277a68243bdb10dff8bc06a88f7a79c80ede584d34ab68d7d2bb8b71adb565"
   },
   {
     "number": 168,
@@ -3015,7 +3347,9 @@
     "short_description": "以提問引導學生表達閱讀感受與心得。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-4c6f445732",
-    "page_path": "spark-skills/funfun-gem-4c6f445732/"
+    "page_path": "spark-skills/funfun-gem-4c6f445732/",
+    "original_prompt_path": "spark-skills/funfun-gem-4c6f445732/original-prompt.txt",
+    "original_prompt_sha256": "ebcc0287a1c61c9036da70a4a7e0f8cba670e02b0976ec1674308362698eb274"
   },
   {
     "number": 169,
@@ -3033,7 +3367,9 @@
     "short_description": "將故事構想整理成繪本內容與插畫規劃。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-52a3bb0b71",
-    "page_path": "spark-skills/funfun-gem-52a3bb0b71/"
+    "page_path": "spark-skills/funfun-gem-52a3bb0b71/",
+    "original_prompt_path": "spark-skills/funfun-gem-52a3bb0b71/original-prompt.txt",
+    "original_prompt_sha256": "9afbac132c8f6d56b24911c1ca40cc57da14b281804037f795bffa9dd4c6f961"
   },
   {
     "number": 170,
@@ -3051,7 +3387,9 @@
     "short_description": "依試題內容設計適合考卷使用的插圖。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-bc5cc193fb",
-    "page_path": "spark-skills/funfun-gem-bc5cc193fb/"
+    "page_path": "spark-skills/funfun-gem-bc5cc193fb/",
+    "original_prompt_path": "spark-skills/funfun-gem-bc5cc193fb/original-prompt.txt",
+    "original_prompt_sha256": "884b414cf9092c1d0b5cd0d32cf0098bf5310f773ef56c1edf38253698f2e981"
   },
   {
     "number": 171,
@@ -3069,6 +3407,8 @@
     "short_description": "引導設計海洋教育教案與探究活動。",
     "repository_url": "https://github.com/chunsheng612/FunFun.AI-Website",
     "folder_url": "https://github.com/chunsheng612/FunFun.AI-Website/tree/main/spark-skills/funfun-gem-8db14050d3",
-    "page_path": "spark-skills/funfun-gem-8db14050d3/"
+    "page_path": "spark-skills/funfun-gem-8db14050d3/",
+    "original_prompt_path": "spark-skills/funfun-gem-8db14050d3/original-prompt.txt",
+    "original_prompt_sha256": "599e7d01becd1b799ce54afa33f0eaf622de5032b49ff42bcfab3ce7b16ab74d"
   }
 ]
