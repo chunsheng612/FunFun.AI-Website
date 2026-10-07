@@ -89,9 +89,9 @@
 
                 <section class="skill-guide glass-panel is-hidden" id="skill-guide" aria-labelledby="skill-guide-title">
                     <div class="skill-guide-intro">
-                        <div class="skill-guide-kicker">INSTALLABLE WORKFLOWS</div>
+                        <div class="skill-guide-kicker">SKILL 使用指南</div>
                         <h3 id="skill-guide-title">把好用的工作流程，裝進你的 AI 助手</h3>
-                        <p>「Gemini生成技能」複製完整 SKILL.md 內容，貼到 Gemini 後請它生成技能。「Agent安裝技能」複製 GitHub 技能資料夾連結。「原始來源」開啟 GitHub 原始專案。</p>
+                        <p>先從下方選擇需要的 Skill，再依使用方式點選卡片上的按鈕。</p>
                     </div>
 
                     <div class="skill-install-grid">
@@ -99,34 +99,37 @@
                             <div class="skill-install-heading">
                                 <span class="skill-install-number">01</span>
                                 <div>
-                                    <span class="skill-platform">OPENAI</span>
-                                    <h4>安裝到 Codex</h4>
+                                    <span class="skill-platform">GEMINI</span>
+                                    <h4>Gemini生成技能</h4>
                                 </div>
                             </div>
-                            <p>將技能資料夾放入個人 Skills 目錄；安裝後可用 <code>$技能名稱</code> 呼叫。</p>
-                            <button type="button" class="skill-copy-btn" data-copy-value="~/.agents/skills/&lt;skill-name&gt;/" aria-label="複製 Codex Skill 安裝路徑">
-                                <code>~/.agents/skills/&lt;skill-name&gt;/</code>
-                                <span>複製路徑</span>
-                            </button>
+                            <p>點下方技能卡的「Gemini生成技能」，複製完整 SKILL.md 內容。貼到 Gemini 後，告訴它：「請依這份內容建立技能，先不要執行任務。」</p>
                         </article>
 
                         <article class="skill-install-card">
                             <div class="skill-install-heading">
                                 <span class="skill-install-number">02</span>
                                 <div>
-                                    <span class="skill-platform">ANTHROPIC</span>
-                                    <h4>安裝到 Claude Code</h4>
+                                    <span class="skill-platform">AGENT</span>
+                                    <h4>Agent安裝技能</h4>
                                 </div>
                             </div>
-                            <p>將技能資料夾放入個人 Skills 目錄；安裝後可用 <code>/技能名稱</code> 呼叫。</p>
-                            <button type="button" class="skill-copy-btn" data-copy-value="~/.claude/skills/&lt;skill-name&gt;/" aria-label="複製 Claude Code Skill 安裝路徑">
-                                <code>~/.claude/skills/&lt;skill-name&gt;/</code>
-                                <span>複製路徑</span>
-                            </button>
+                            <p>點下方技能卡的「Agent安裝技能」，複製 GitHub 技能資料夾連結。貼到支援 Skill 的 Agent，請它安裝這個技能及必要的附屬檔案。</p>
+                        </article>
+
+                        <article class="skill-install-card">
+                            <div class="skill-install-heading">
+                                <span class="skill-install-number">03</span>
+                                <div>
+                                    <span class="skill-platform">GITHUB</span>
+                                    <h4>原始來源</h4>
+                                </div>
+                            </div>
+                            <p>點下方技能卡的「原始來源」，開啟 GitHub 原始專案。可查看 README、SKILL.md 與附屬檔案，了解技能用途和所需工具。</p>
                         </article>
                     </div>
 
-                    <p class="skill-guide-note"><strong>小提醒：</strong>請先閱讀各 GitHub 專案的 README；若技能沒有立即出現，重新啟動 Codex 或 Claude Code。</p>
+                    <p class="skill-guide-note"><strong>使用提醒：</strong>複製後，請在你的 AI 助手中確認技能已建立或安裝完成。各技能需要的工具與附件，請參考「原始來源」。</p>
                 </section>
                 
                 <div class="tool-grid" id="tool-grid">
