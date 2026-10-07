@@ -58,6 +58,14 @@ export function appendSparkSkillActions(buttons, skill, openLink) {
         button.title = action === 'Gemini生成技能' ? '複製完整 SKILL.md 內容，貼到 Gemini'
             : action === 'Agent安裝技能' ? '複製 GitHub 技能資料夾連結'
             : action === '複製原始prompt' ? '複製原始 prompt 文字' : '開啟原始 GitHub 專案';
+        if (action === '複製原始prompt' && skill.original_prompt_origin === 'authored') {
+            button.title = '複製 FunFun.AI 補寫提示詞，非原作者原稿';
+            button.setAttribute('aria-description', button.title);
+            const note = document.createElement('small');
+            note.className = 'skill-prompt-unavailable';
+            note.textContent = 'FunFun.AI 補寫提示詞';
+            wrap.append(note);
+        }
         if (action === '複製原始prompt' && !skill.original_prompt_path) {
             button.disabled = true;
             button.title = '此技能未提供原始 prompt';
@@ -92,7 +100,7 @@ export function appendSparkSkillActions(buttons, skill, openLink) {
                 fallback.hidden = true;
                 status.textContent = action === 'Gemini生成技能'
                     ? '已複製完整 SKILL.md 內容，請貼到 Gemini 生成技能。'
-                    : action === '複製原始prompt' ? '已複製原始 prompt。'
+                    : action === '複製原始prompt' ? (skill.original_prompt_origin === 'authored' ? '已複製 FunFun.AI 補寫提示詞。' : '已複製原始 prompt。')
                     : '已複製 GitHub 技能資料夾連結，請貼到你的 Agent 安裝。';
             } catch (error) {
                 if (!fallback.value) {

@@ -20,7 +20,10 @@
       "https://github.com/chunsheng612/build-firebase-cloudflare-app",
       "https://github.com/chunsheng612/build-firebase-cloudflare-app"
     ],
-    "folder_url": "https://github.com/chunsheng612/build-firebase-cloudflare-app/tree/main/build-firebase-cloudflare-app"
+    "folder_url": "https://github.com/chunsheng612/build-firebase-cloudflare-app/tree/main/build-firebase-cloudflare-app",
+    "original_prompt_path": "skill-pages/build-firebase-cloudflare-app/original-prompt.txt",
+    "original_prompt_sha256": "b21d2bd6470018d97aef77ddfd6ba3a1437624bc0f2ffa79741b78d1d40c29f1",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 273,
@@ -43,7 +46,10 @@
       "https://github.com/chunsheng612/render-zhuyin-web",
       "https://github.com/chunsheng612/render-zhuyin-web"
     ],
-    "folder_url": "https://github.com/chunsheng612/render-zhuyin-web/tree/main"
+    "folder_url": "https://github.com/chunsheng612/render-zhuyin-web/tree/main",
+    "original_prompt_path": "skill-pages/render-zhuyin-web/original-prompt.txt",
+    "original_prompt_sha256": "32984491c1d4bedbb6d91ba468138ef95bfe1739250e2452af7e35bfe25def7f",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 274,
@@ -66,7 +72,10 @@
       "https://claudemarketplaces.com/skills/mattpocock/skills/grill-me",
       "https://github.com/mattpocock/skills"
     ],
-    "folder_url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling"
+    "folder_url": "https://github.com/mattpocock/skills/tree/main/skills/productivity/grilling",
+    "original_prompt_path": "skill-pages/grill-me/original-prompt.txt",
+    "original_prompt_sha256": "7527dd44cc1f6bb6684b9774242303c1e6049b9759f2c140a465568dec641019",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 275,
@@ -89,7 +98,10 @@
       "https://claudemarketplaces.com/skills/anthropics/skills/frontend-design",
       "https://github.com/anthropics/skills"
     ],
-    "folder_url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design"
+    "folder_url": "https://github.com/anthropics/skills/tree/main/skills/frontend-design",
+    "original_prompt_path": "skill-pages/frontend-design/original-prompt.txt",
+    "original_prompt_sha256": "8b0a9cc9a0a91c11e380a7fe178038cb660410a21d98dff507ec52c98be85661",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 277,
@@ -112,7 +124,10 @@
       "https://github.com/chunsheng612/teacher-course-assignment-skill",
       "https://github.com/chunsheng612/teacher-course-assignment-skill"
     ],
-    "folder_url": "https://github.com/chunsheng612/teacher-course-assignment-skill/tree/main"
+    "folder_url": "https://github.com/chunsheng612/teacher-course-assignment-skill/tree/main",
+    "original_prompt_path": "skill-pages/teacher-course-assignment-skill/original-prompt.txt",
+    "original_prompt_sha256": "8485b8611fae4ec545c13b9f6568c687cebda52c806b85f17aa7d789e5764204",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 278,
@@ -135,7 +150,10 @@
       "https://github.com/chunsheng612/teacher-slide-image-workshop",
       "https://github.com/chunsheng612/teacher-slide-image-workshop"
     ],
-    "folder_url": "https://github.com/chunsheng612/teacher-slide-image-workshop/tree/main"
+    "folder_url": "https://github.com/chunsheng612/teacher-slide-image-workshop/tree/main",
+    "original_prompt_path": "skill-pages/teacher-slide-image-workshop/original-prompt.txt",
+    "original_prompt_sha256": "789ecefa03471d63fda28dd4b34c69b7dced820beff238a4703572197635c05b",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 280,
@@ -158,7 +176,10 @@
       "https://github.com/chunsheng612/github-pages-publisher",
       "https://github.com/chunsheng612/github-pages-publisher"
     ],
-    "folder_url": "https://github.com/chunsheng612/github-pages-publisher/tree/main/github-pages-publisher"
+    "folder_url": "https://github.com/chunsheng612/github-pages-publisher/tree/main/github-pages-publisher",
+    "original_prompt_path": "skill-pages/github-pages-publisher/original-prompt.txt",
+    "original_prompt_sha256": "8a9373131c96febd193baf7875e0fd4676a3beb4e61efd02117b56973a36a413",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 281,
@@ -181,7 +202,10 @@
       "https://github.com/chunsheng612/funfun-edu-gem-hub",
       "https://github.com/chunsheng612/funfun-edu-gem-hub"
     ],
-    "folder_url": "https://github.com/chunsheng612/funfun-edu-gem-hub/tree/main"
+    "folder_url": "https://github.com/chunsheng612/funfun-edu-gem-hub/tree/main",
+    "original_prompt_path": "skill-pages/funfun-edu-gem-hub/original-prompt.txt",
+    "original_prompt_sha256": "bb4d93245a52850dfedbae07be7f56473995736c9a6e118ac2412bb519834eec",
+    "original_prompt_origin": "authored"
   },
   {
     "row": 285,
@@ -204,6 +228,9 @@
       "https://github.com/chunsheng612/parent-meeting-studio",
       "https://github.com/chunsheng612/parent-meeting-studio"
     ],
-    "folder_url": "https://github.com/chunsheng612/parent-meeting-studio/tree/main"
+    "folder_url": "https://github.com/chunsheng612/parent-meeting-studio/tree/main",
+    "original_prompt_path": "skill-pages/parent-meeting-studio/original-prompt.txt",
+    "original_prompt_sha256": "042ea623c726d1d070db61707ba639321bdccfd30f92f548675e9825d71eb407",
+    "original_prompt_origin": "authored"
   }
 ]
