@@ -1,4 +1,4 @@
-import { loadSparkSkills, mergeSparkSkills, appendSparkSkillActions } from './spark-skills.js';
+import { loadSparkSkills, mergeSparkSkills, appendSparkSkillActions } from './spark-skills.js?v=20261008-copy-note';
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getAuth, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";

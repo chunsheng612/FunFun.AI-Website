@@ -1,4 +1,4 @@
-import { appendSparkSkillActions, readSkillMarkdown } from '../assets/js/spark-skills.js';
+import { appendSparkSkillActions, readSkillMarkdown } from '../assets/js/spark-skills.js?v=20261008-copy-note';
 const main = document.querySelector('[data-skill-config]');
 if (main) {
     const skill = JSON.parse(main.dataset.skillConfig);
