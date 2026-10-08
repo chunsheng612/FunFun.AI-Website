@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v21-authored-prompts';
+const CACHE_VERSION = 'v22-prompt-copy-note';
 const STATIC_CACHE = `funfun-static-${CACHE_VERSION}`;
 
 const CORE_ASSETS = [
