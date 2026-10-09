@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="方方老師的備課神兵 Chrome 擴充功能隱私權政策：Google 登入、提示詞儲存與 AI 提交的資料處理方式。"><title>隱私權政策｜方方老師的備課神兵</title><style>:root{color-scheme:light;font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;color:#254b3e;background:#f2f6ef}*{box-sizing:border-box}body{margin:0}header{padding:25px max(24px,calc((100vw - 800px)/2));border-bottom:1px solid #d5e2d5;background:#e7efe4}header a{font-size:14px;font-weight:600;text-decoration:none}main{max-width:800px;margin:40px auto 70px;padding:0 24px}h1{font-size:clamp(26px,4vw,36px);line-height:1.5;margin:0 0 18px;letter-spacing:.02em}h2{font-size:20px;line-height:1.5;margin:38px 0 13px}p,li{font-size:15px;line-height:1.95;color:#435b4d}li{margin:0 0 12px}ol{padding-left:25px}a{color:#176a52;overflow-wrap:anywhere;text-underline-offset:3px}a:focus-visible{outline:3px solid #276e54;outline-offset:3px}code{font-family:ui-monospace,monospace;font-size:.9em;background:#e2ebdf;padding:2px 5px;border-radius:4px;overflow-wrap:anywhere}strong{color:#214d39}footer{padding-top:24px;border-top:1px solid #d5e2d5;margin-top:40px;font-size:13px;line-height:1.8;color:#607664}</style></head><body><header><a href="https://chunsheng612.github.io/FunFun.AI-Website/">方方老師・教育 AI 工具箱</a></header><main><h1>方方老師的備課神兵：隱私權政策</h1>
+<p>生效日期：2026 年 10 月 9 日。適用版本：2.2.0。</p>
+<p>方方老師的備課神兵（以下稱「本工具」）在 ChatGPT、Gemini 與 Claude 對話頁面提供備課提示詞庫。開發者聯絡信箱為 <strong>changsheng0612@gmail.com</strong>。Google 登入與 Drive 儲存屬於選用功能，下列相關說明於該功能啟用且使用者授權後適用。</p>
+<h2>我們處理哪些資料</h2>
+<ol><li><strong>本機使用設定</strong>：書本位置、顯示狀態、模式、液態玻璃設定，以及最近使用的工具 ID。用於呈現介面與快速找到工具。</li><li><strong>常用工具與個人提示詞</strong>：使用者選取的常用工具 ID、自訂名稱、提示詞內容，以及同步所需的修改時間、刪除標記與安裝識別碼。用於儲存、取回、跨裝置合併及避免已刪除項目再次出現。</li><li><strong>Google 基本帳號資料</strong>：使用者選用登入後，取得帳號識別碼、顯示名稱與 email，方便確認目前帳號並隔離不同帳號的資料。不取得 Google 密碼。</li><li><strong>授權資訊</strong>：Chrome Identity 與擴充功能背景程序處理 Google OAuth access token，用於已授權的帳號與 Drive 操作；不將 token 交給 AI 網頁，也不把它寫入個人提示詞檔案或本機資料檔。</li><li><strong>當次輸入內容</strong>：使用者點選工具時，讀取目前 AI 輸入框的草稿，與選定提示詞一併提交；內容可能包含使用者主動提供的親師訊息等個人通訊。工具只定位必要的輸入區、送出按鈕與回覆狀態，不擷取完整對話歷史或一般瀏覽紀錄。手動 HTML 匯出只處理使用者在彈出視窗中貼上的內容與檔名。</li></ol>
+<h2>資料存放與傳輸</h2>
+<p>介面設定、最近使用及個人資料快取存放在本機 Chrome 的擴充功能專用儲存區。啟用 Google 登入並授權後，常用工具與個人提示詞透過 HTTPS 儲存在<strong>使用者自己 Google Drive 的應用程式專用空間（appDataFolder）</strong>。這是隱藏的應用程式資料，不會出現在一般 Drive 檔案清單；本工具不取得讀寫整個 Drive 的權限。</p>
+<p>本工具使用 <code>openid</code>、<code>email</code>、<code>profile</code> 與 <code>drive.appdata</code> 權限。登入時會嘗試同步，使用者也可選擇「立即同步」；已登入時會定期重試同步。離線時修改會先保存在本機，直到同步成功。</p>
+<p>點選工具即會將選定提示詞、Skill 製作指令及當次任務草稿帶入目前 AI 平台並送出。這些內容由該平台依其服務條款與隱私權政策處理，使用者應自行確認平台設定。AI 的回覆不會由本工具收集到開發者的伺服器。手動 HTML 匯出的內容只建立成本機下載檔案。</p>
+<p>本工具沒有開發者自設的資料接收伺服器、廣告追蹤或使用分析服務；不販售使用者資料，也不向資料仲介提供資料。除使用者選擇的 AI 平台及授權的 Google 功能外，不主動將上述內容傳給其他服務。開發者不會透過本工具遠端讀取使用者的 Drive 資料或對話。</p>
+<h2>查看、刪除與保留</h2>
+<p>使用者可在書本查看常用工具與自己的提示詞。個人提示詞右側的垃圾桶圖示可刪除該項，刪除後有 12 秒可選擇復原。刪除會移除目前有效資料中的提示詞內容，並保留最少的刪除標記以避免其他裝置再次帶回；同步失敗時，刪除操作會等待之後同步。</p>
+<p>各安裝裝置分別保存同步檔案。因此，尚未再次同步的其他裝置或其舊檔，可能仍保有先前內容；這些裝置完成同步後，該項目會從可用清單移除。刪除單一項目不等於立刻抹除所有離線裝置、舊同步檔或 Google 可能保留的版本。若需要清除整個雲端資料集，請在 Google Drive 的應用程式管理中移除本工具的隱藏應用程式資料，並移除各裝置的擴充功能本機資料，避免舊快取再次同步。</p>
+<p>登出會隱藏該帳號的個人內容並清除本工具的授權權杖快取，<strong>不會刪除雲端資料或帳號專用的本機提示詞快取</strong>。本機快取會保留到使用者刪除資料或移除擴充功能；雲端資料會保留到使用者刪除該資料集。移除 Chrome 擴充功能與刪除 Google Drive 隱藏資料是不同操作。使用者也可從 Google 帳號管理撤回授權，但撤回授權本身不代表資料已刪除。</p>
+<p>已提交到 AI 平台的內容及使用者自行下載的檔案，不會隨本工具中的刪除操作一起刪除，需由使用者在對應平台或本機自行管理。</p>
+<h2>安全與使用限制</h2>
+<p>Google API 連線使用 HTTPS；授權權杖由 Chrome Identity 與背景程序處理。個人資料在本機仍受使用者的 Chrome 設定檔與裝置存取權限影響，本工具不另外提供端對端或本機欄位加密。請妥善管理自己的裝置及 AI／Google 帳號，並依學校或所屬單位規則決定是否提供個人資料。</p>
+<p>本工具對使用者資料的使用遵守 Chrome 線上應用程式商店的使用者資料政策，包括 Limited Use 限制：資料只用於明確提供的備課提示詞、個人儲存與同步功能，不用於廣告、信用評估或與上述功能無關的用途；不以人工閱讀使用者私有提示詞或通訊作為服務流程。</p>
+<h2>聯絡與政策更新</h2>
+<p>如需資料處理、刪除方式或工具使用協助，請寄信至 <strong>changsheng0612@gmail.com</strong>。使用者主動寄送的支援信件將用於處理該次問題；請只提供解決問題所需的內容。若功能或資料處理方式變更，本政策會更新生效日期與相關說明。</p>
+<p>產品網站：<a href="https://chunsheng612.github.io/FunFun.AI-Website/">https://chunsheng612.github.io/FunFun.AI-Website/</a></p><footer>隱私權與資料處理聯絡：<a href="mailto:changsheng0612@gmail.com">changsheng0612@gmail.com</a></footer></main></body></html>
