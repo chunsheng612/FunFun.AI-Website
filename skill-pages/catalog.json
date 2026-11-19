@@ -236,9 +236,9 @@
   {
     "row": 480,
     "skill": "education-document-reviewer",
-    "name": "教育文件對抗批改Skill",
-    "display_name": "教育文件對抗批改Skill",
-    "short_description": "先理解全案脈絡，再依原範本、任務需求及共同規準，對教案、學習單、課程計畫與行政提案進行證據式對抗批改。",
+    "name": "教育文件對抗批改Skill（徐臺屏老師）",
+    "display_name": "教育文件對抗批改Skill（徐臺屏老師）",
+    "short_description": "先理解全案脈絡，再依原範本、任務需求及共同規準，對教案、學習單、課程計畫與行政提案進行證據式對抗批改。（資料來源：徐臺屏老師）",
     "categories": [
       "Skill 專區"
     ],
@@ -256,15 +256,15 @@
     ],
     "folder_url": "https://github.com/chunsheng612/education-document-reviewer/tree/main",
     "original_prompt_path": "skill-pages/education-document-reviewer/original-prompt.txt",
-    "original_prompt_sha256": "6f860ee3f68393bbddbe9f452cdc0db94675ef477a79be29af42425fea55734b",
+    "original_prompt_sha256": "823eb1bdadda9aa25791f72b2cf76eed91bd473048e2160ebe13ce6af2689837",
     "original_prompt_origin": "authored"
   },
   {
     "row": 481,
     "skill": "template-reverse-cloner",
-    "name": "範本逆向解析與引導生成Skill",
-    "display_name": "範本逆向解析與引導生成Skill",
-    "short_description": "依既有範本逆向解析欄位與設計關係，透過分次引導產出保留原格式的教案、學習單、行政計畫與 TDO 觀課紀錄。",
+    "name": "範本解析與引導生成Skill（徐臺屏老師）",
+    "display_name": "範本解析與引導生成Skill（徐臺屏老師）",
+    "short_description": "依既有範本逆向解析欄位與設計關係，透過分次引導產出保留原格式的教案、學習單、行政計畫與 TDO 觀課紀錄。（資料來源：徐臺屏老師）",
     "categories": [
       "Skill 專區"
     ],
@@ -282,7 +282,7 @@
     ],
     "folder_url": "https://github.com/chunsheng612/template-reverse-cloner/tree/main",
     "original_prompt_path": "skill-pages/template-reverse-cloner/original-prompt.txt",
-    "original_prompt_sha256": "f2be1123964198511b36dd2c900c50e2ca18ca47108a257a6d9c21e8098db752",
+    "original_prompt_sha256": "8cea00f661ede61375048b27e3d4914ca982608f36391c6a044467b5e2713b1e",
     "original_prompt_origin": "authored"
   }
 ]
