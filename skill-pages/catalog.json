@@ -232,5 +232,57 @@
     "original_prompt_path": "skill-pages/parent-meeting-studio/original-prompt.txt",
     "original_prompt_sha256": "042ea623c726d1d070db61707ba639321bdccfd30f92f548675e9825d71eb407",
     "original_prompt_origin": "authored"
+  },
+  {
+    "row": 286,
+    "skill": "education-document-reviewer",
+    "name": "教育文件對抗批改Skill",
+    "display_name": "教育文件對抗批改Skill",
+    "short_description": "先理解全案脈絡，再依原範本、任務需求及共同規準，對教案、學習單、課程計畫與行政提案進行證據式對抗批改。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/education-document-reviewer",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/education-document-reviewer/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/education-document-reviewer/blob/main/SKILL.md",
+    "page_path": "skill-pages/education-document-reviewer/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/education-document-reviewer/",
+    "aliases": [
+      "https://github.com/chunsheng612/education-document-reviewer",
+      "https://github.com/chunsheng612/education-document-reviewer"
+    ],
+    "folder_url": "https://github.com/chunsheng612/education-document-reviewer/tree/main",
+    "original_prompt_path": "skill-pages/education-document-reviewer/original-prompt.txt",
+    "original_prompt_sha256": "6f860ee3f68393bbddbe9f452cdc0db94675ef477a79be29af42425fea55734b",
+    "original_prompt_origin": "authored"
+  },
+  {
+    "row": 287,
+    "skill": "template-reverse-cloner",
+    "name": "範本逆向解析與引導生成Skill",
+    "display_name": "範本逆向解析與引導生成Skill",
+    "short_description": "依既有範本逆向解析欄位與設計關係，透過分次引導產出保留原格式的教案、學習單、行政計畫與 TDO 觀課紀錄。",
+    "categories": [
+      "Skill 專區"
+    ],
+    "install_type": "repository",
+    "repository_url": "https://github.com/chunsheng612/template-reverse-cloner",
+    "skill_path": "SKILL.md",
+    "skill_folder": ".",
+    "planned_url": "https://raw.githubusercontent.com/chunsheng612/template-reverse-cloner/main/SKILL.md",
+    "view_url": "https://github.com/chunsheng612/template-reverse-cloner/blob/main/SKILL.md",
+    "page_path": "skill-pages/template-reverse-cloner/",
+    "page_url": "https://chunsheng612.github.io/FunFun.AI-Website/skill-pages/template-reverse-cloner/",
+    "aliases": [
+      "https://github.com/chunsheng612/template-reverse-cloner",
+      "https://github.com/chunsheng612/template-reverse-cloner"
+    ],
+    "folder_url": "https://github.com/chunsheng612/template-reverse-cloner/tree/main",
+    "original_prompt_path": "skill-pages/template-reverse-cloner/original-prompt.txt",
+    "original_prompt_sha256": "f2be1123964198511b36dd2c900c50e2ca18ca47108a257a6d9c21e8098db752",
+    "original_prompt_origin": "authored"
   }
 ]
