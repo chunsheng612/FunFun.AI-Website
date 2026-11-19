@@ -234,7 +234,7 @@
     "original_prompt_origin": "authored"
   },
   {
-    "row": 286,
+    "row": 480,
     "skill": "education-document-reviewer",
     "name": "教育文件對抗批改Skill",
     "display_name": "教育文件對抗批改Skill",
@@ -260,7 +260,7 @@
     "original_prompt_origin": "authored"
   },
   {
-    "row": 287,
+    "row": 481,
     "skill": "template-reverse-cloner",
     "name": "範本逆向解析與引導生成Skill",
     "display_name": "範本逆向解析與引導生成Skill",
